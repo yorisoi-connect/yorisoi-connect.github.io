@@ -389,16 +389,10 @@
       aspect-ratio: 1;
       max-width: 200px;
       border-radius: 20px;
-      background: linear-gradient(135deg, rgba(74,124,111,0.15), rgba(123,174,159,0.1));
+      object-fit: cover;
       border: 1.5px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
+      display: block;
     }
-    .message-avatar .avatar-icon { font-size: 48px; opacity: 0.5; }
-    .message-avatar .avatar-note { font-size: 10px; color: var(--text-sub); letter-spacing: 0.05em; }
     .message-quote {
       font-family: 'Shippori Mincho', serif;
       font-size: clamp(16px, 2vw, 20px);
@@ -498,8 +492,8 @@
           施設に入居されている方にも、ご自宅でお一人でお過ごしの方にも。
         </p>
         <div class="hero-btns fade-up delay-3">
-          <a href="./tomobanashi/" class="btn btn-outline btn-arrow">ともばなし（施設向け）</a>
           <a href="./moshimoshi-call/" class="btn btn-outline btn-arrow">もしもしコール（個人向け）</a>
+          <a href="./makaseteya/" class="btn btn-outline btn-arrow">まかせて屋（くらしのお手伝い）</a>
         </div>
       </div>
     </div>
@@ -512,26 +506,26 @@
         <p class="section-label">Our Services</p>
         <h2 class="section-title">2つのサービス</h2>
         <p class="section-sub">
-          施設向けと個人向け、それぞれに寄り添う形で<br>
-          定期電話会話サービスを提供しています。
+          定期的なお電話と、くらしのお手伝い。<br>
+          2つの形でご高齢の方とご家族に寄り添います。
         </p>
       </div>
       <div class="services-grid">
-        <div class="service-card fade-up delay-1">
-          <span class="card-tag">施設向け</span>
-          <h3 class="card-name">ともばなし</h3>
-          <p class="card-desc">
-            施設に入居されているご高齢の方に、専任スタッフが週2回・定期的にお電話してお話しをするサービスです。入居者の方の孤独を解消し、「選ばれる施設」づくりをサポートします。
-          </p>
-          <a href="./tomobanashi/" class="card-link">詳しく見る</a>
-        </div>
-        <div class="service-card accent fade-up delay-2">
+        <div class="service-card accent fade-up delay-1">
           <span class="card-tag yellow">個人向け</span>
           <h3 class="card-name">もしもしコール</h3>
           <p class="card-desc">
             一人暮らしのご高齢の親御様に、ご家族の代わりに定期的にお電話してお話しをするサービスです。離れて暮らすご家族の安心感にもつながります。
           </p>
           <a href="./moshimoshi-call/" class="card-link">詳しく見る</a>
+        </div>
+        <div class="service-card fade-up delay-2">
+          <span class="card-tag">葛飾区の便利屋</span>
+          <h3 class="card-name">まかせて屋</h3>
+          <p class="card-desc">
+            電球の交換や草むしり、お掃除など、ご高齢の方の“ちょっとした”お困りごとを15分500円〜でお手伝いする、葛飾区内の便利屋サービスです。
+          </p>
+          <a href="./makaseteya/" class="card-link">詳しく見る</a>
         </div>
       </div>
     </div>
@@ -542,10 +536,7 @@
     <div class="container">
       <div class="message-inner">
         <div class="fade-up">
-          <div class="message-avatar">
-            <span class="avatar-icon">👤</span>
-            <span class="avatar-note">写真準備中</span>
-          </div>
+          <img class="message-avatar" src="assets/images/daihyo.png" alt="よりそいコネクト 代表 戸梶 凌" width="200" height="200">
         </div>
         <div class="fade-up delay-1">
           <p class="section-label">Message</p>

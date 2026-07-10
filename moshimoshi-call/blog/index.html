@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ブログ｜もしもしコール｜よりそいコネクト</title>
+  <meta name="description" content="もしもしコールのお知らせ・コラム・スタッフの声をお届けします。">
+
+  <!-- OGP -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="もしもしコール">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="ブログ｜もしもしコール">
+  <meta property="og:description" content="もしもしコールのお知らせ・コラム・スタッフの声をお届けします。">
+  <meta property="og:url" content="https://yorisoi-connect.com/moshimoshi-call/blog/">
+  <meta property="og:image" content="https://yorisoi-connect.com/moshimoshi-call/images/ogp.png">
+
+  <!-- Google Fonts: Noto Sans JP -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/moshimoshi-call/style.css">
+</head>
+<body>
+
+  <!-- ============================== ヘッダー（全ページ共通） ============================== -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="/moshimoshi-call/" class="site-logo">もしもし<span>コール</span></a>
+
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="global-nav">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="global-nav" id="global-nav" aria-label="グローバルナビゲーション">
+        <ul>
+          <li><a href="/moshimoshi-call/#features">サービスの特徴</a></li>
+          <li><a href="/moshimoshi-call/price/">料金プラン</a></li>
+          <li><a href="/moshimoshi-call/faq/">よくある質問</a></li>
+          <li><a href="/moshimoshi-call/blog/">ブログ</a></li>
+          <li><a href="/moshimoshi-call/contact/">お問い合わせ</a></li>
+          <li class="nav-cta"><a href="https://lin.ee/S9PcDYm" target="_blank" rel="noopener" class="btn btn-line btn-small">LINEで相談する</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ページタイトル帯 -->
+    <div class="page-header">
+      <h1>ブログ</h1>
+      <p class="page-lead">お知らせ・コラム・スタッフの声をお届けします。</p>
+    </div>
+
+    <!-- パンくずリスト -->
+    <div class="container">
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <ol>
+          <li><a href="/moshimoshi-call/">トップ</a></li>
+          <li>ブログ</li>
+        </ol>
+      </nav>
+    </div>
+
+    <section class="section section-tight">
+      <div class="container">
+
+        <!-- カテゴリフィルター（script.jsで表示を切り替え） -->
+        <div class="blog-filter" role="group" aria-label="カテゴリで絞り込み">
+          <button type="button" class="filter-btn is-active" data-filter="all">すべて</button>
+          <button type="button" class="filter-btn" data-filter="news">お知らせ</button>
+          <button type="button" class="filter-btn" data-filter="column">コラム</button>
+          <button type="button" class="filter-btn" data-filter="staff">スタッフの声</button>
+        </div>
+
+        <!-- 記事一覧（各カードは後から個別ページへのリンクを追加する想定のプレースホルダー） -->
+        <div class="blog-grid">
+
+          <!-- 記事1：お知らせ -->
+          <article class="blog-card" data-category="news">
+            <div class="blog-card-thumb" aria-hidden="true">📢</div>
+            <div class="blog-card-body">
+              <p class="blog-card-badge">お知らせ</p>
+              <h2 class="blog-card-title">もしもしコールの公式サイトをオープンしました</h2>
+              <p class="blog-card-date"><time datetime="2025-07">2025年7月</time></p>
+              <p class="blog-card-excerpt">このたび、もしもしコールの公式サイトを公開いたしました。サービスの特徴や料金プラン、よくあるご質問などを掲載しています。今後はこちらのブログでお知らせやコラムもお届けしてまいります。</p>
+            </div>
+          </article>
+
+          <!-- 記事2：コラム -->
+          <article class="blog-card" data-category="column">
+            <div class="blog-card-thumb" aria-hidden="true">💭</div>
+            <div class="blog-card-body">
+              <p class="blog-card-badge badge-column">コラム</p>
+              <h2 class="blog-card-title">高齢者の孤独について考える〜一人暮らしの親を持つご家族へ〜</h2>
+              <p class="blog-card-date"><time datetime="2025-07">2025年7月</time></p>
+              <p class="blog-card-excerpt">一人暮らしの高齢者は年々増えていると言われています。離れて暮らすご家族にできることは何か。孤独感と日々の暮らしの関わりについて、いま考えられていることを整理してみました。</p>
+            </div>
+          </article>
+
+          <!-- 記事3：スタッフの声 -->
+          <article class="blog-card" data-category="staff">
+            <div class="blog-card-thumb" aria-hidden="true">🎧</div>
+            <div class="blog-card-body">
+              <p class="blog-card-badge badge-staff">スタッフの声</p>
+              <h2 class="blog-card-title">初めての通話で感じたこと</h2>
+              <p class="blog-card-date"><time datetime="2025-07">2025年7月</time></p>
+              <p class="blog-card-excerpt">はじめてお電話を担当したスタッフが感じたことをお話しします。最初は緊張していたご利用者様が、回を重ねるごとに笑い声を聞かせてくださるようになるまでの、小さな変化の記録です。</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== CTA ============================== -->
+    <section class="section section-green contact-cta">
+      <div class="container container-narrow">
+        <h2 class="section-title">まずはお気軽にご相談ください</h2>
+        <p class="section-lead">サービスについてのご質問・ご相談はお気軽にどうぞ。</p>
+        <div class="contact-buttons">
+          <a href="https://lin.ee/S9PcDYm" target="_blank" rel="noopener" class="btn btn-line btn-large">LINEで無料相談</a>
+          <a href="/moshimoshi-call/contact/" class="btn btn-outline btn-large">お問い合わせ</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================== フッター（全ページ共通） ============================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <p class="footer-logo">もしもしコール</p>
+          <p class="footer-company">運営：<a href="https://yorisoi-connect.com/" target="_blank" rel="noopener">よりそいコネクト</a></p>
+        </div>
+        <nav class="footer-nav" aria-label="フッターナビゲーション">
+          <ul>
+            <li><a href="/moshimoshi-call/">トップ</a></li>
+            <li><a href="/moshimoshi-call/price/">料金</a></li>
+            <li><a href="/moshimoshi-call/faq/">よくある質問</a></li>
+            <li><a href="/moshimoshi-call/blog/">ブログ</a></li>
+            <li><a href="/moshimoshi-call/contact/">お問い合わせ</a></li>
+            <li><a href="/moshimoshi-call/company/">会社概要</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="footer-copy">© 2026 よりそいコネクト</p>
+    </div>
+  </footer>
+
+  <!-- ============================== モバイル固定CTAバー ============================== -->
+  <div class="cta-bar" role="complementary" aria-label="お問い合わせ">
+    <a href="https://lin.ee/S9PcDYm" target="_blank" rel="noopener" class="cta-bar-btn cta-bar-line">LINEで無料相談</a>
+    <a href="tel:0368225257" class="cta-bar-btn cta-bar-tel"><span aria-hidden="true"></span> 電話する</a>
+  </div>
+
+  <script src="/moshimoshi-call/script.js"></script>
+</body>
+</html>
