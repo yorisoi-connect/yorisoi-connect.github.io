@@ -126,6 +126,24 @@
     }
     .blog-card.is-hidden { display: none; }
 
+    /* リンク化された記事カード */
+    a.blog-card {
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    a.blog-card:hover {
+      border-color: var(--primary);
+      box-shadow: 0 8px 32px rgba(74,124,111,0.16);
+      transform: translateY(-2px);
+    }
+    a.blog-card:hover .blog-card-title { color: var(--primary-dark); }
+    .blog-card-more {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
     .blog-card-thumb {
       flex-shrink: 0;
       width: 56px;
@@ -219,15 +237,16 @@
         <div class="blog-grid">
 
           <!-- 記事1：お知らせ -->
-          <article class="blog-card" data-category="news">
+          <a class="blog-card" data-category="news" href="/blog/moshimoshi-call-site-open/">
             <div class="blog-card-thumb" aria-hidden="true">📢</div>
             <div class="blog-card-body">
               <p class="blog-card-badge">お知らせ</p>
               <h2 class="blog-card-title">もしもしコールの公式サイトをオープンしました</h2>
-              <p class="blog-card-date"><time datetime="2025-07">2025年7月</time></p>
+              <p class="blog-card-date"><time datetime="2026-07-10">2026年7月10日</time></p>
               <p class="blog-card-excerpt">このたび、もしもしコールの公式サイトを公開いたしました。サービスの特徴や料金プラン、よくあるご質問などを掲載しています。今後はこちらのブログでお知らせやコラムもお届けしてまいります。</p>
+              <span class="blog-card-more">続きを読む →</span>
             </div>
-          </article>
+          </a>
 
           <!-- 記事2：コラム -->
           <article class="blog-card" data-category="column">

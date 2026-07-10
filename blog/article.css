@@ -1,0 +1,153 @@
+/* ============================================================
+   ブログ記事ページ共通スタイル（/blog/配下の全記事で読み込む）
+   一覧ページ(/blog/index.html)のデザイントークンと揃えている
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary:      #4A7C6F;
+  --primary-dark: #3a6358;
+  --bg:           #F7F4EF;
+  --text:         #2D2D2D;
+  --text-sub:     #6B6B6B;
+  --border:       #E5E0D8;
+  --white:        #ffffff;
+}
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.9;
+  font-size: 16px;
+}
+
+a { text-decoration: none; color: inherit; }
+
+.container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+/* ── Nav ── */
+nav.site-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 32px;
+  background: rgba(247,244,239,0.92);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--primary);
+  letter-spacing: 0.05em;
+}
+.nav-links { display: flex; gap: 24px; list-style: none; }
+.nav-links a { font-size: 14px; color: var(--text-sub); }
+.nav-links a:hover { color: var(--primary); }
+
+/* ── パンくず ── */
+.breadcrumb {
+  padding: 24px 0 0;
+  font-size: 12px;
+  color: var(--text-sub);
+}
+.breadcrumb a { color: var(--primary); }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb .sep { margin: 0 6px; }
+
+/* ── 記事ヘッダー ── */
+.article-header { padding: 32px 0 8px; }
+.article-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--primary-dark);
+  background: rgba(74,124,111,0.1);
+  border-radius: 999px;
+  padding: 3px 12px;
+  margin-bottom: 12px;
+}
+.article-badge.badge-column { color: #8a6a3b; background: rgba(232,168,124,0.18); }
+.article-badge.badge-staff  { color: #5a5a8a; background: rgba(122,122,180,0.14); }
+
+.article-title {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.55;
+  letter-spacing: 0.03em;
+  margin-bottom: 10px;
+}
+.article-date { font-size: 13px; color: var(--text-sub); }
+
+/* ── 記事本文 ── */
+.article-body { padding: 24px 0 48px; }
+.article-body p { margin-bottom: 1.4em; }
+.article-body h2 {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.6;
+  margin: 2em 0 0.8em;
+  padding-left: 14px;
+  border-left: 4px solid var(--primary);
+}
+.article-body h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 1.6em 0 0.6em;
+}
+.article-body ul, .article-body ol { margin: 0 0 1.4em 1.4em; }
+.article-body li { margin-bottom: 0.4em; }
+.article-body a { color: var(--primary); text-decoration: underline; }
+.article-body strong { background: linear-gradient(transparent 65%, rgba(232,168,124,0.35) 65%); }
+
+/* ── 記事末尾CTA ── */
+.article-cta {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px 24px;
+  text-align: center;
+  margin: 0 0 40px;
+  box-shadow: 0 4px 24px rgba(74,124,111,0.08);
+}
+.article-cta p { font-size: 14px; color: var(--text-sub); margin-bottom: 16px; }
+.article-cta .cta-btn {
+  display: inline-block;
+  background: var(--primary);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 15px;
+  padding: 12px 32px;
+  border-radius: 999px;
+  transition: background 0.2s;
+}
+.article-cta .cta-btn:hover { background: var(--primary-dark); }
+
+/* ── 一覧へ戻る ── */
+.back-to-list { text-align: center; padding-bottom: 72px; }
+.back-to-list a {
+  font-size: 14px;
+  color: var(--primary);
+  font-weight: 700;
+}
+.back-to-list a:hover { text-decoration: underline; }
+
+/* ── Footer ── */
+footer { background: #2a3d38; padding: 32px 24px; text-align: center; }
+footer .footer-links { margin-bottom: 14px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+footer .footer-links a { font-size: 13px; color: rgba(255,255,255,0.7); }
+footer .footer-links a:hover { color: #fff; }
+footer p { font-size: 12px; color: rgba(255,255,255,0.4); }
+
+@media (max-width: 640px) {
+  nav.site-nav { padding: 16px 20px; }
+  .nav-links { gap: 16px; }
+  .nav-links a { font-size: 13px; }
+  .article-title { font-size: 23px; }
+  .article-body h2 { font-size: 19px; }
+}

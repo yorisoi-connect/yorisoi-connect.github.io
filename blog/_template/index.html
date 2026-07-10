@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  ブログ記事テンプレート
+  ============================================================
+  ※このフォルダ（blog/_template/）はアンダースコア始まりのため
+    GitHub Pages（Jekyll）では公開されません。安心して編集OK。
+
+  ■ 新しい記事の作り方
+  1. このファイルを blog/記事スラッグ/index.html にコピーする
+     （スラッグは英小文字とハイフン。例: blog/how-to-tell-parents/）
+  2. このコメントブロックを削除する
+  3. 【】で囲まれた箇所をすべて置き換える（Ctrl+Fで「【」を検索すると漏れ防止）
+     - カテゴリバッジのclass:
+       お知らせ      → class="article-badge"
+       コラム        → class="article-badge badge-column"
+       スタッフの声  → class="article-badge badge-staff"
+  4. blog/index.html の一覧に記事カード（<a class="blog-card">）を追加する
+     ※新しい記事ほど上に置く
+  5. sitemap.xml に記事URLを追加する
+  6. コミット＆push後、Google Search Consoleの「URL検査」で
+     インデックス登録をリクエストすると反映が早い
+  ============================================================
+-->
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>【記事タイトル】｜ブログ｜よりそいコネクト</title>
+  <meta name="description" content="【記事の要約。検索結果に表示される。80〜120文字目安】">
+  <link rel="canonical" href="https://yorisoi-connect.com/blog/【記事スラッグ】/">
+
+  <!-- OGP -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="よりそいコネクト">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="【記事タイトル】">
+  <meta property="og:description" content="【記事の要約（短め）】">
+  <meta property="og:url" content="https://yorisoi-connect.com/blog/【記事スラッグ】/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/blog/article.css">
+
+  <!-- 構造化データ: BlogPosting -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "【記事タイトル】",
+    "description": "【記事の要約（短め）】",
+    "datePublished": "【公開日 例: 2026-07-10】",
+    "dateModified": "【更新日 例: 2026-07-10】",
+    "author": {"@type": "Organization", "name": "よりそいコネクト"},
+    "publisher": {"@type": "Organization", "name": "よりそいコネクト"},
+    "mainEntityOfPage": "https://yorisoi-connect.com/blog/【記事スラッグ】/"
+  }
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG9KYK977N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TG9KYK977N');
+  </script>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="/" class="nav-logo">よりそいコネクト</a>
+    <ul class="nav-links">
+      <li><a href="/">トップ</a></li>
+      <li><a href="/company/">会社概要</a></li>
+      <li><a href="/#contact">お問い合わせ</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="container">
+
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <a href="/blog/">ブログ</a><span class="sep">›</span>【記事タイトル】
+      </nav>
+
+      <header class="article-header">
+        <p class="article-badge">【カテゴリ名（お知らせ／コラム／スタッフの声）】</p>
+        <h1 class="article-title">【記事タイトル】</h1>
+        <p class="article-date"><time datetime="【公開日 例: 2026-07-10】">【表示用の日付 例: 2026年7月10日】</time></p>
+      </header>
+
+      <div class="article-body">
+        <p>【導入文。読者の悩みへの共感から入ると読まれやすい】</p>
+
+        <h2>【見出し1】</h2>
+        <p>【本文。強調したい箇所は <strong>strongタグ</strong> でマーカー風になる】</p>
+
+        <h2>【見出し2】</h2>
+        <p>【本文】</p>
+        <ul>
+          <li>【箇条書きも使える】</li>
+          <li>【箇条書き】</li>
+        </ul>
+
+        <p>【まとめの文章】</p>
+      </div>
+
+      <div class="article-cta">
+        <p>【CTAの誘導文。例: 離れて暮らす親御さまのことでお悩みの方は、お気軽にご相談ください。】</p>
+        <a href="/moshimoshi-call/" class="cta-btn">もしもしコールを見る</a>
+      </div>
+
+      <p class="back-to-list"><a href="/blog/">← ブログ一覧へ戻る</a></p>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="/">トップ</a>
+      <a href="/company/">会社概要</a>
+      <a href="/blog/">ブログ</a>
+      <a href="/#contact">お問い合わせ</a>
+    </div>
+    <p>© 2026 よりそいコネクト. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
