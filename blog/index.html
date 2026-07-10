@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ブログ｜よりそいコネクト</title>
+  <meta name="description" content="よりそいコネクトのお知らせ・コラム・スタッフの声をお届けします。">
+  <link rel="canonical" href="https://yorisoi-connect.com/blog/">
+
+  <!-- OGP -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="よりそいコネクト">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="ブログ｜よりそいコネクト">
+  <meta property="og:description" content="よりそいコネクトのお知らせ・コラム・スタッフの声をお届けします。">
+  <meta property="og:url" content="https://yorisoi-connect.com/blog/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary:      #4A7C6F;
+      --primary-dark: #3a6358;
+      --bg:           #F7F4EF;
+      --text:         #2D2D2D;
+      --text-sub:     #6B6B6B;
+      --border:       #E5E0D8;
+      --white:        #ffffff;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.75;
+      font-size: 16px;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Nav（本体サイトと共通の見た目） ── */
+    nav.site-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 32px;
+      background: rgba(247,244,239,0.92);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--primary);
+      letter-spacing: 0.05em;
+    }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { font-size: 14px; color: var(--text-sub); }
+    .nav-links a:hover { color: var(--primary); }
+
+    /* ── ページタイトル ── */
+    .page-header { text-align: center; padding: 64px 24px 40px; }
+    .page-label {
+      font-size: 12px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    .page-title {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.04em;
+    }
+    .page-lead { margin-top: 14px; font-size: 15px; color: var(--text-sub); }
+
+    /* ── カテゴリフィルター ── */
+    .blog-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 36px;
+    }
+    .filter-btn {
+      padding: 8px 20px;
+      border: 1.5px solid var(--border);
+      border-radius: 999px;
+      background: var(--white);
+      color: var(--text-sub);
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .filter-btn:hover { border-color: var(--primary); color: var(--primary-dark); }
+    .filter-btn.is-active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: var(--white);
+    }
+
+    /* ── 記事カード ── */
+    .blog-section { padding: 0 0 88px; }
+    .blog-grid { display: grid; gap: 20px; }
+
+    .blog-card {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 24px rgba(74,124,111,0.08);
+    }
+    .blog-card.is-hidden { display: none; }
+
+    .blog-card-thumb {
+      flex-shrink: 0;
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      background: rgba(74,124,111,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+    }
+
+    .blog-card-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--primary-dark);
+      background: rgba(74,124,111,0.1);
+      border-radius: 999px;
+      padding: 3px 12px;
+      margin-bottom: 8px;
+    }
+    .badge-column { color: #8a6a3b; background: rgba(232,168,124,0.18); }
+    .badge-staff  { color: #5a5a8a; background: rgba(122,122,180,0.14); }
+
+    .blog-card-title {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 19px;
+      font-weight: 600;
+      line-height: 1.6;
+      margin-bottom: 4px;
+    }
+    .blog-card-date { font-size: 12px; color: var(--text-sub); margin-bottom: 8px; }
+    .blog-card-excerpt { font-size: 14px; color: var(--text-sub); }
+
+    /* ── Footer ── */
+    footer { background: #2a3d38; padding: 32px 24px; text-align: center; }
+    footer .footer-links { margin-bottom: 14px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+    footer .footer-links a { font-size: 13px; color: rgba(255,255,255,0.7); }
+    footer .footer-links a:hover { color: #fff; }
+    footer p { font-size: 12px; color: rgba(255,255,255,0.4); }
+
+    @media (max-width: 640px) {
+      nav.site-nav { padding: 16px 20px; }
+      .nav-links { gap: 16px; }
+      .nav-links a { font-size: 13px; }
+      .page-title { font-size: 26px; }
+      .blog-card { flex-direction: column; gap: 12px; padding: 20px; }
+    }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG9KYK977N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TG9KYK977N');
+  </script>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="/" class="nav-logo">よりそいコネクト</a>
+    <ul class="nav-links">
+      <li><a href="/">トップ</a></li>
+      <li><a href="/company/">会社概要</a></li>
+      <li><a href="/#contact">お問い合わせ</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="page-header">
+      <p class="page-label">Blog</p>
+      <h1 class="page-title">ブログ</h1>
+      <p class="page-lead">お知らせ・コラム・スタッフの声をお届けします。</p>
+    </div>
+
+    <section class="blog-section">
+      <div class="container">
+
+        <!-- カテゴリフィルター -->
+        <div class="blog-filter" role="group" aria-label="カテゴリで絞り込み">
+          <button type="button" class="filter-btn is-active" data-filter="all">すべて</button>
+          <button type="button" class="filter-btn" data-filter="news">お知らせ</button>
+          <button type="button" class="filter-btn" data-filter="column">コラム</button>
+          <button type="button" class="filter-btn" data-filter="staff">スタッフの声</button>
+        </div>
+
+        <!-- 記事一覧（各カードは後から個別ページへのリンクを追加する想定のプレースホルダー） -->
+        <div class="blog-grid">
+
+          <!-- 記事1：お知らせ -->
+          <article class="blog-card" data-category="news">
+            <div class="blog-card-thumb" aria-hidden="true">📢</div>
+            <div class="blog-card-body">
+              <p class="blog-card-badge">お知らせ</p>
+              <h2 class="blog-card-title">もしもしコールの公式サイトをオープンしました</h2>
+              <p class="blog-card-date"><time datetime="2025-07">2025年7月</time></p>
+              <p class="blog-card-excerpt">このたび、もしもしコールの公式サイトを公開いたしました。サービスの特徴や料金プラン、よくあるご質問などを掲載しています。今後はこちらのブログでお知らせやコラムもお届けしてまいります。</p>
+            </div>
+          </article>
+
+          <!-- 記事2：コラム -->
+          <article class="blog-card" data-category="column">
+            <div class="blog-card-thumb" aria-hidden="true">💭</div>
+            <div class="blog-card-body">
+              <p class="blog-card-badge badge-column">コラム</p>
+              <h2 class="blog-card-title">高齢者の孤独について考える〜一人暮らしの親を持つご家族へ〜</h2>
+              <p class="blog-card-date"><time datetime="2025-07">2025年7月</time></p>
+              <p class="blog-card-excerpt">一人暮らしの高齢者は年々増えていると言われています。離れて暮らすご家族にできることは何か。孤独感と日々の暮らしの関わりについて、いま考えられていることを整理してみました。</p>
+            </div>
+          </article>
+
+          <!-- 記事3：スタッフの声 -->
+          <article class="blog-card" data-category="staff">
+            <div class="blog-card-thumb" aria-hidden="true">🎧</div>
+            <div class="blog-card-body">
+              <p class="blog-card-badge badge-staff">スタッフの声</p>
+              <h2 class="blog-card-title">初めての通話で感じたこと</h2>
+              <p class="blog-card-date"><time datetime="2025-07">2025年7月</time></p>
+              <p class="blog-card-excerpt">はじめてお電話を担当したスタッフが感じたことをお話しします。最初は緊張していたご利用者様が、回を重ねるごとに笑い声を聞かせてくださるようになるまでの、小さな変化の記録です。</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="/">トップ</a>
+      <a href="/company/">会社概要</a>
+      <a href="/blog/">ブログ</a>
+      <a href="/#contact">お問い合わせ</a>
+    </div>
+    <p>© 2026 よりそいコネクト. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // カテゴリフィルター
+    const btns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.blog-card');
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btns.forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        const f = btn.dataset.filter;
+        cards.forEach(c => c.classList.toggle('is-hidden', f !== 'all' && c.dataset.category !== f));
+      });
+    });
+  </script>
+</body>
+</html>

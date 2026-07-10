@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>会社概要｜よりそいコネクト</title>
+  <meta name="description" content="高齢者向けサービス「もしもしコール」「まかせて屋」を運営する、よりそいコネクトの会社概要ページです。">
+  <link rel="canonical" href="https://yorisoi-connect.com/company/">
+
+  <!-- OGP -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="よりそいコネクト">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="会社概要｜よりそいコネクト">
+  <meta property="og:description" content="高齢者向けサービス「もしもしコール」「まかせて屋」を運営する、よりそいコネクトの会社概要ページです。">
+  <meta property="og:url" content="https://yorisoi-connect.com/company/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary:      #4A7C6F;
+      --primary-dark: #3a6358;
+      --bg:           #F7F4EF;
+      --text:         #2D2D2D;
+      --text-sub:     #6B6B6B;
+      --border:       #E5E0D8;
+      --white:        #ffffff;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.75;
+      font-size: 16px;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Nav（本体サイトと共通の見た目） ── */
+    nav.site-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 32px;
+      background: rgba(247,244,239,0.92);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--primary);
+      letter-spacing: 0.05em;
+    }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { font-size: 14px; color: var(--text-sub); }
+    .nav-links a:hover { color: var(--primary); }
+
+    /* ── ページタイトル ── */
+    .page-header { text-align: center; padding: 64px 24px 40px; }
+    .page-label {
+      font-size: 12px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    .page-title {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.04em;
+    }
+    .page-lead { margin-top: 14px; font-size: 15px; color: var(--text-sub); }
+
+    /* ── 会社概要テーブル ── */
+    .company-section { padding: 8px 0 72px; }
+    .company-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(74,124,111,0.08);
+    }
+    .company-table th,
+    .company-table td {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+      font-size: 15px;
+    }
+    .company-table tr:last-child th,
+    .company-table tr:last-child td { border-bottom: none; }
+    .company-table th {
+      width: 9em;
+      font-weight: 700;
+      color: var(--primary-dark);
+      background: rgba(74,124,111,0.06);
+      white-space: nowrap;
+    }
+    .company-table a { color: var(--primary-dark); text-decoration: underline; text-underline-offset: 3px; }
+
+    .company-note { margin-top: 16px; font-size: 13px; color: var(--text-sub); }
+
+    /* ── サービスリンク ── */
+    .services-links { padding: 0 0 88px; text-align: center; }
+    .services-links h2 {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .service-btns { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      border: 1.5px solid var(--primary);
+      border-radius: 999px;
+      color: var(--primary-dark);
+      font-size: 15px;
+      font-weight: 700;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn:hover { background: var(--primary); color: var(--white); }
+
+    /* ── Footer ── */
+    footer { background: #2a3d38; padding: 32px 24px; text-align: center; }
+    footer .footer-links { margin-bottom: 14px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+    footer .footer-links a { font-size: 13px; color: rgba(255,255,255,0.7); }
+    footer .footer-links a:hover { color: #fff; }
+    footer p { font-size: 12px; color: rgba(255,255,255,0.4); }
+
+    @media (max-width: 640px) {
+      nav.site-nav { padding: 16px 20px; }
+      .nav-links { gap: 16px; }
+      .nav-links a { font-size: 13px; }
+      .page-title { font-size: 26px; }
+      .company-table th { width: 7em; }
+      .company-table th, .company-table td { padding: 14px 14px; font-size: 14px; }
+    }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG9KYK977N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TG9KYK977N');
+  </script>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="/" class="nav-logo">よりそいコネクト</a>
+    <ul class="nav-links">
+      <li><a href="/">トップ</a></li>
+      <li><a href="/blog/">ブログ</a></li>
+      <li><a href="/#contact">お問い合わせ</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="page-header">
+      <p class="page-label">Company</p>
+      <h1 class="page-title">会社概要</h1>
+      <p class="page-lead">「もしもしコール」「まかせて屋」を運営する、よりそいコネクトのご紹介です。</p>
+    </div>
+
+    <section class="company-section">
+      <div class="container">
+        <table class="company-table">
+          <tbody>
+            <tr>
+              <th scope="row">屋号</th>
+              <td>よりそいコネクト</td>
+            </tr>
+            <tr>
+              <th scope="row">代表者</th>
+              <td>戸梶 凌（とかじ りょう）</td>
+            </tr>
+            <tr>
+              <th scope="row">所在地</th>
+              <td>東京都葛飾区</td>
+            </tr>
+            <tr>
+              <th scope="row">開業</th>
+              <td>2026年7月</td>
+            </tr>
+            <tr>
+              <th scope="row">電話番号</th>
+              <td><a href="tel:0368225257">03-6822-5257</a>（担当者直通：<a href="tel:08029685824">080-2968-5824</a>）</td>
+            </tr>
+            <tr>
+              <th scope="row">メール</th>
+              <td><a href="mailto:yorisoi.connect@gmail.com">yorisoi.connect@gmail.com</a></td>
+            </tr>
+            <tr>
+              <th scope="row">事業内容</th>
+              <td>
+                高齢者向け定期電話サービス「<a href="/moshimoshi-call/">もしもしコール</a>」の運営<br>
+                くらしのお手伝い「<a href="/makaseteya/">まかせて屋</a>」（葛飾区内の便利屋）の運営
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="services-links">
+      <div class="container">
+        <h2>サービスのご案内</h2>
+        <div class="service-btns">
+          <a href="/moshimoshi-call/" class="btn">もしもしコール（定期電話サービス）</a>
+          <a href="/makaseteya/" class="btn">まかせて屋（くらしのお手伝い）</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="/">トップ</a>
+      <a href="/company/">会社概要</a>
+      <a href="/blog/">ブログ</a>
+      <a href="/#contact">お問い合わせ</a>
+    </div>
+    <p>© 2026 よりそいコネクト. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
