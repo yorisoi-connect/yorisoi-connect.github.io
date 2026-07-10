@@ -364,7 +364,6 @@ a   { color: var(--accent-dark); }
   height: 160px;
   border-radius: 50%;
   object-fit: cover;
-  object-position: 50% 8%; /* 全身写真なので顔の位置で切り抜く */
   border: 3px solid var(--accent-light);
 }
 
