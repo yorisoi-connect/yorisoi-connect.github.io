@@ -1,8 +1,9 @@
-# まかせて屋 ランディングページ
+# おとなり屋 ランディングページ
 
-葛飾区の便利屋サービス「まかせて屋」のLPです。
+葛飾区の便利屋サービス「おとなり屋」のLPです。
+(旧名称「まかせて屋」から2026年7月に改名。旧URL `/makaseteya/` は本ページへ自動転送されます)
 
-- 公開URL: https://yorisoi-connect.com/makaseteya/
+- 公開URL: https://yorisoi-connect.com/otonariya/
 - 構成: `index.html` + `style.css` のみの静的ページ(ビルド不要)
 
 ## 画像の差し替え手順
@@ -17,17 +18,17 @@
 
 手順:
 
-1. 新しい画像を `makaseteya/images/tsunagu.png`(または `daihyo.png`)として上書き保存
+1. 新しい画像を `otonariya/images/tsunagu.png`(または `daihyo.png`)として上書き保存
 2. コミットしてプッシュ
 
 ```sh
 cd ~/workspace/yorisoi-connect
-git add makaseteya/images/
-git commit -m "まかせて屋LPの画像を差し替え"
+git add otonariya/images/
+git commit -m "おとなり屋LPの画像を差し替え"
 git push origin main
 ```
 
-3. 1〜2分待ってから https://yorisoi-connect.com/makaseteya/ をスマホで再読み込みして確認
+3. 1〜2分待ってから https://yorisoi-connect.com/otonariya/ をスマホで再読み込みして確認
    (古い画像が表示される場合はブラウザのキャッシュが原因。ページを強制再読み込みしてください)
 
 ※ 別のファイル形式(jpgなど)を使いたい場合は、`index.html` 内の
