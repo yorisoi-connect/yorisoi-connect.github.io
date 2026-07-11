@@ -237,6 +237,18 @@ a   { color: var(--accent-dark); }
   color: var(--text-sub);
 }
 
+.price-mitsumori {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--accent-dark);
+  background: var(--accent-light);
+  border-radius: 10px;
+  padding: 14px 16px;
+  line-height: 1.8;
+}
+
 /* ── (3) サービス一覧 ── */
 .service-grid {
   display: grid;
@@ -374,6 +386,13 @@ a   { color: var(--accent-dark); }
   margin-bottom: 12px;
 }
 
+.anshin-message {
+  font-size: 17px;
+  line-height: 2;
+  text-align: left;
+  margin-bottom: 14px;
+}
+
 .anshin-company { font-size: 17px; color: var(--text-sub); }
 
 .text-link {
@@ -413,7 +432,50 @@ a   { color: var(--accent-dark); }
   color: var(--text-sub);
 }
 
-/* ── (7) 離れて暮らすご家族の方へ ── */
+/* ── (7) よくあるご質問 ── */
+.faq-item {
+  background: var(--white);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px 22px;
+  margin-bottom: 14px;
+}
+
+.faq-q {
+  position: relative;
+  padding-left: 1.8em;
+  font-size: 19px;
+  font-weight: 900;
+  color: var(--accent-dark);
+  line-height: 1.8;
+  margin-bottom: 8px;
+}
+
+.faq-q::before {
+  content: "Q";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 900;
+}
+
+.faq-a {
+  position: relative;
+  padding-left: 1.8em;
+  font-size: 18px;
+  line-height: 1.9;
+}
+
+.faq-a::before {
+  content: "A";
+  position: absolute;
+  left: 0;
+  color: var(--text-sub);
+  font-weight: 900;
+}
+
+/* ── (8) 離れて暮らすご家族の方へ ── */
 .section-family {
   background: var(--bg-deep);
 }
