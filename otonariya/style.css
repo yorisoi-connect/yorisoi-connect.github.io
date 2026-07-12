@@ -257,6 +257,11 @@ a   { color: var(--accent-dark); }
   margin-bottom: 24px;
 }
 
+/* 2カラムだと見出しが折り返す中間幅では1カラムにする */
+@media (max-width: 719px) {
+  .service-grid { grid-template-columns: 1fr; }
+}
+
 .service-card {
   background: var(--white);
   border: 2px solid var(--border);
@@ -266,7 +271,7 @@ a   { color: var(--accent-dark); }
 }
 
 .service-card-title {
-  font-size: 22px;
+  font-size: 20px;           /* 全角13文字の見出しが2カラムでも1行に収まるサイズ */
   font-weight: 900;
   color: var(--accent);
   border-bottom: 3px solid var(--accent-light);
