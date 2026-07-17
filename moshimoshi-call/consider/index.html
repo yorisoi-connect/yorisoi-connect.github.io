@@ -59,6 +59,42 @@
     .concern-body li + li { margin-top: 8px; }
     .concern-body .note-text { margin-top: 20px; }
     .concern-body .section-cta { margin-top: 28px; }
+    /* 伝え方のヒント：カード型レイアウト */
+    .hint-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .hint-card {
+      background: #fff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
+      padding: 24px 20px;
+    }
+    .hint-label {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-primary-dark);
+      background: var(--color-bg-green);
+      border-radius: var(--radius-btn);
+      padding: 4px 14px;
+      margin-bottom: 12px;
+    }
+    .hint-quote {
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .hint-text {
+      font-size: 14px;
+      color: var(--color-text-light);
+    }
+    .concern-body .hint-cards + p { margin-top: 24px; }
+    @media (max-width: 767px) {
+      .hint-cards { grid-template-columns: 1fr; }
+    }
   </style>
 
   <!-- Google tag (gtag.js) -->
@@ -132,14 +168,24 @@
     <section class="section section-green" id="concern-persuasion" data-ga-section="concern_persuasion">
       <div class="container container-narrow concern-body">
         <h2 class="section-title">1. 親を説得できるか不安</h2>
-        <p>「一人暮らしが心配だから」と伝えたら、「まだ元気だから必要ない」と断られてしまいそう——そんなご心配をお持ちの方は少なくありません。</p>
+        <p>「まだ元気だから必要ない」と、親御さまに断られてしまいそう——そんな方は少なくありません。</p>
         <p>伝え方をすこし変えるだけで、受け止められ方が変わることがあります。</p>
-        <ul>
-          <li>「あなたが心配だから」ではなく、<strong>「離れて暮らす自分が安心したいから、受けてみてほしい」</strong>と、ご自身を主語にして伝える</li>
-          <li>契約の話から入らず、<strong>「1ヶ月は無料で試せるから、一度だけ話してみない？」</strong>と、お試しとして提案する</li>
-        </ul>
+
+        <div class="hint-cards fade-in">
+          <div class="hint-card">
+            <p class="hint-label">ヒント1：自分を主語にする</p>
+            <p class="hint-quote">「離れて暮らす自分が安心したいから、受けてみてほしい」</p>
+            <p class="hint-text">「あなたが心配だから」と説得するのではなく、ご自身の気持ちとして伝える方法です。</p>
+          </div>
+          <div class="hint-card">
+            <p class="hint-label">ヒント2：お試しとして提案する</p>
+            <p class="hint-quote">「1ヶ月は無料で試せるから、一度だけ話してみない？」</p>
+            <p class="hint-text">契約の話はいったん脇に置いて、気軽に始められるお試しとして誘う方法です。</p>
+          </div>
+        </div>
+
         <p>それでも伝え方に迷うときは、スタッフからご本人へ直接ご説明することも可能です。</p>
-        <p>親の説得がご不安な方は、お気軽にご相談ください。</p>
+        <p>親御さまの説得がご不安な方は、お気軽にご相談ください。</p>
         <p class="note-text">最初は乗り気でなかった親御さまが打ち解けていったという、<a href="#voice">ご家族の声</a>もご紹介しています。</p>
       </div>
     </section>
