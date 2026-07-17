@@ -23,9 +23,18 @@
     gtag('config', 'G-TG9KYK977N');
 
     // お問い合わせフォーム送信完了の計測
-    gtag('event', 'generate_lead', {
-      'lead_source': 'moshimoshi_call_contact_form'
-    });
+    // (再読み込みやブックマーク再訪での重複計上を防ぐため、同一セッション内では1回だけ送信)
+    (function () {
+      var sentKey = 'ga_lead_sent_moshimoshi_call';
+      var alreadySent = false;
+      try { alreadySent = sessionStorage.getItem(sentKey) === '1'; } catch (e) {}
+      if (!alreadySent) {
+        gtag('event', 'generate_lead', {
+          'lead_source': 'moshimoshi_call_contact_form'
+        });
+        try { sessionStorage.setItem(sentKey, '1'); } catch (e) {}
+      }
+    })();
   </script>
 </head>
 <body>
@@ -76,7 +85,7 @@
       <div class="container container-narrow">
         <h2 class="section-title">お問い合わせを受け付けました</h2>
         <p class="section-lead">
-          内容を確認のうえ、担当者より2営業日以内にご連絡いたします。<br>
+          内容を確認のうえ、担当者より順次ご連絡いたします。<br>
           今しばらくお待ちくださいませ。
         </p>
         <p class="note-text">
