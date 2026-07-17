@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UTM付きURL生成ツール(社内用)|よりそいコネクト</title>
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", Meiryo, sans-serif;
+      background: #f5f7f6;
+      color: #333;
+      line-height: 1.7;
+      padding: 24px 16px 64px;
+    }
+    .wrap { max-width: 640px; margin: 0 auto; }
+    h1 { font-size: 1.3rem; margin-bottom: 4px; }
+    .note { font-size: 0.85rem; color: #777; margin-bottom: 24px; }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      margin-bottom: 20px;
+    }
+    label { display: block; font-weight: 700; font-size: 0.95rem; margin: 16px 0 4px; }
+    label:first-child { margin-top: 0; }
+    .hint { font-size: 0.8rem; color: #888; font-weight: 400; }
+    select, input[type="text"] {
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #fff;
+    }
+    input.custom-input { margin-top: 6px; display: none; }
+    input.custom-input.is-visible { display: block; }
+    .result-label { font-weight: 700; margin-bottom: 8px; }
+    #result {
+      width: 100%;
+      min-height: 90px;
+      padding: 10px 12px;
+      font-size: 0.9rem;
+      font-family: Consolas, Monaco, monospace;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #fafafa;
+      word-break: break-all;
+      resize: vertical;
+    }
+    #copy-btn {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 10px 28px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      background: #2e8b6e;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #copy-btn:disabled { background: #bbb; cursor: not-allowed; }
+    #copy-btn.copied { background: #1a6b52; }
+    .error { color: #c0392b; font-size: 0.85rem; margin-top: 8px; min-height: 1.4em; }
+    a { color: #2e8b6e; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>UTM付きURL生成ツール</h1>
+    <p class="note">社内用ツールです。命名ルールの詳細は docs/utm-guide.md を参照してください。</p>
+
+    <div class="card">
+      <label for="dest">遷移先ページ</label>
+      <select id="dest">
+        <option value="https://yorisoi-connect.com/">よりそいコネクト トップ</option>
+        <option value="https://yorisoi-connect.com/moshimoshi-call/">もしもしコール トップ</option>
+        <option value="https://yorisoi-connect.com/moshimoshi-call/price/">もしもしコール 料金</option>
+        <option value="https://yorisoi-connect.com/moshimoshi-call/contact/">もしもしコール お問い合わせ</option>
+        <option value="https://yorisoi-connect.com/otonariya/">おとなり屋</option>
+        <option value="https://yorisoi-connect.com/blog/">ブログ</option>
+        <option value="__custom__">その他(URLを直接入力)</option>
+      </select>
+      <input type="text" id="dest-custom" class="custom-input" placeholder="https://yorisoi-connect.com/...">
+
+      <label for="source">施策の出所(utm_source)</label>
+      <select id="source">
+        <option value="flyer">flyer(チラシ・ポスティング)</option>
+        <option value="youtube">youtube</option>
+        <option value="instagram">instagram</option>
+        <option value="line">line(LINE公式・配信)</option>
+        <option value="facebook">facebook</option>
+        <option value="x">x(旧Twitter)</option>
+        <option value="google">google(Google広告)</option>
+        <option value="newspaper">newspaper(新聞折込・地域紙)</option>
+        <option value="poster">poster(掲示板・店頭ポスター)</option>
+        <option value="referral_partner">referral_partner(提携先・紹介元)</option>
+        <option value="__custom__">その他(直接入力)</option>
+      </select>
+      <input type="text" id="source-custom" class="custom-input" placeholder="半角英小文字とアンダースコアのみ">
+
+      <label for="medium">媒体の種類(utm_medium)</label>
+      <select id="medium">
+        <option value="print">print(紙媒体:チラシ・新聞・ポスター)</option>
+        <option value="video">video(動画広告)</option>
+        <option value="social">social(SNS通常投稿)</option>
+        <option value="paid_social">paid_social(SNS有料広告)</option>
+        <option value="cpc">cpc(クリック課金型広告)</option>
+        <option value="email">email(メール配信)</option>
+        <option value="referral">referral(紹介・提携先経由)</option>
+        <option value="qr">qr(紙以外のQRコード設置物)</option>
+        <option value="__custom__">その他(直接入力)</option>
+      </select>
+      <input type="text" id="medium-custom" class="custom-input" placeholder="半角英小文字とアンダースコアのみ">
+
+      <label for="campaign">キャンペーン名(utm_campaign)
+        <span class="hint">例: 2026summer_flyer_v1(年+時期_施策内容_バージョン)</span>
+      </label>
+      <input type="text" id="campaign" placeholder="2026summer_flyer_v1">
+      <p class="error" id="error"></p>
+    </div>
+
+    <div class="card">
+      <p class="result-label">生成されたURL</p>
+      <textarea id="result" readonly></textarea>
+      <br>
+      <button id="copy-btn" disabled>コピー</button>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var destSel = document.getElementById('dest');
+      var destCustom = document.getElementById('dest-custom');
+      var sourceSel = document.getElementById('source');
+      var sourceCustom = document.getElementById('source-custom');
+      var mediumSel = document.getElementById('medium');
+      var mediumCustom = document.getElementById('medium-custom');
+      var campaign = document.getElementById('campaign');
+      var result = document.getElementById('result');
+      var copyBtn = document.getElementById('copy-btn');
+      var errorEl = document.getElementById('error');
+
+      var VALID_PARAM = /^[a-z0-9_]+$/;
+
+      function toggleCustom(sel, input) {
+        input.classList.toggle('is-visible', sel.value === '__custom__');
+      }
+
+      function getValue(sel, input) {
+        return sel.value === '__custom__' ? input.value.trim() : sel.value;
+      }
+
+      function build() {
+        errorEl.textContent = '';
+        result.value = '';
+        copyBtn.disabled = true;
+        copyBtn.classList.remove('copied');
+        copyBtn.textContent = 'コピー';
+
+        var dest = getValue(destSel, destCustom);
+        var source = getValue(sourceSel, sourceCustom);
+        var medium = getValue(mediumSel, mediumCustom);
+        var camp = campaign.value.trim();
+
+        if (!dest || !source || !medium || !camp) {
+          errorEl.textContent = camp ? '未入力の項目があります。' : '';
+          return;
+        }
+
+        var url;
+        try {
+          url = new URL(dest);
+        } catch (e) {
+          errorEl.textContent = '遷移先URLの形式が正しくありません(https:// から入力してください)。';
+          return;
+        }
+
+        var invalid = [];
+        if (!VALID_PARAM.test(source)) invalid.push('utm_source');
+        if (!VALID_PARAM.test(medium)) invalid.push('utm_medium');
+        if (!VALID_PARAM.test(camp)) invalid.push('utm_campaign');
+        if (invalid.length > 0) {
+          errorEl.textContent = invalid.join('、') + ' は半角英小文字・数字・アンダースコアのみで入力してください。';
+          return;
+        }
+
+        url.searchParams.set('utm_source', source);
+        url.searchParams.set('utm_medium', medium);
+        url.searchParams.set('utm_campaign', camp);
+
+        result.value = url.toString();
+        copyBtn.disabled = false;
+      }
+
+      copyBtn.addEventListener('click', function () {
+        if (!result.value) return;
+        var done = function () {
+          copyBtn.textContent = 'コピーしました';
+          copyBtn.classList.add('copied');
+          setTimeout(function () {
+            copyBtn.textContent = 'コピー';
+            copyBtn.classList.remove('copied');
+          }, 2000);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(result.value).then(done);
+        } else {
+          result.select();
+          document.execCommand('copy');
+          done();
+        }
+      });
+
+      [destSel, sourceSel, mediumSel].forEach(function (sel) {
+        sel.addEventListener('change', function () {
+          toggleCustom(destSel, destCustom);
+          toggleCustom(sourceSel, sourceCustom);
+          toggleCustom(mediumSel, mediumCustom);
+          build();
+        });
+      });
+      [destCustom, sourceCustom, mediumCustom, campaign].forEach(function (input) {
+        input.addEventListener('input', build);
+      });
+    })();
+  </script>
+</body>
+</html>
