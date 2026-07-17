@@ -104,6 +104,16 @@
       background: none;
       box-shadow: none;
     }
+    /* お試し→CTA→フッターは緑をつなげるため、共通CSSの白ウェーブ装飾を消す
+       (ウェーブ分の余白 calc(80px + 52px) も標準の80pxに戻す) */
+    #trial::after,
+    #contact::after { display: none; }
+    #trial,
+    #contact { padding-bottom: 80px; }
+    @media (max-width: 768px) {
+      #trial,
+      #contact { padding-bottom: 56px; }
+    }
   </style>
 
   <!-- Google tag (gtag.js) -->
