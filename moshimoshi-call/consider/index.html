@@ -95,6 +95,15 @@
     @media (max-width: 767px) {
       .hint-cards { grid-template-columns: 1fr; }
     }
+    /* お試しセクションを緑背景にした際、薄緑のステップカードが背景に沈まないよう白にする */
+    #trial .trial-step {
+      background: #fff;
+      box-shadow: var(--shadow-card);
+    }
+    #trial .trial-step--arrow {
+      background: none;
+      box-shadow: none;
+    }
   </style>
 
   <!-- Google tag (gtag.js) -->
@@ -173,12 +182,12 @@
 
         <div class="hint-cards fade-in">
           <div class="hint-card">
-            <p class="hint-label">ヒント1：自分を主語にする</p>
+            <p class="hint-label">伝え方1：自分を主語にする</p>
             <p class="hint-quote">「離れて暮らす自分が安心したいから、受けてみてほしい」</p>
             <p class="hint-text">「あなたが心配だから」と説得するのではなく、ご自身の気持ちとして伝える方法です。</p>
           </div>
           <div class="hint-card">
-            <p class="hint-label">ヒント2：お試しとして提案する</p>
+            <p class="hint-label">伝え方2：お試しとして提案する</p>
             <p class="hint-quote">「1ヶ月は無料で試せるから、一度だけ話してみない？」</p>
             <p class="hint-text">契約の話はいったん脇に置いて、気軽に始められるお試しとして誘う方法です。</p>
           </div>
@@ -296,7 +305,7 @@
     </section>
 
     <!-- ============================== (7) お試しのご案内 ============================== -->
-    <section class="section" id="trial" data-ga-section="trial">
+    <section class="section section-green" id="trial" data-ga-section="trial">
       <div class="container">
         <h2 class="section-title">まずは無料のお試しから</h2>
         <p class="section-lead">ここまでお読みいただいた方は、大切なご家族の日常生活の質向上に大変ご興味があるのだと思います。<br>お試し期間は、正式なお申込が前提ではなく、このサービスが合うか合わないかのご判断をいただくためにご用意しております。<br>「ちょっと試してみるか」くらいの気持ちでお連絡いただいて構いませんので、もし迷っている場合はぜひご相談ください。</p>
