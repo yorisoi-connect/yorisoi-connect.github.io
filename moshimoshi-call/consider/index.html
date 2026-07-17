@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>申込を検討している方へ｜もしもしコール｜よりそいコネクト</title>
-  <meta name="description" content="もしもしコールのお申込を検討中の方へ。1ヶ月目完全無料のお試し制度、解約やご本人への説明などよくあるご不安への回答、ご利用までの流れをまとめました。">
+  <meta name="description" content="もしもしコールのお申込を迷っている方へ。「親が説得できるか」「料金」「効果」「解約」「始め方」——申込前によくある5つの不安にお答えします。1ヶ月無料のお試し制度あり。">
 
   <!-- OGP -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="もしもしコール">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:title" content="申込を検討している方へ｜もしもしコール">
-  <meta property="og:description" content="1ヶ月目完全無料のお試し制度、解約やご本人への説明などよくあるご不安への回答、ご利用までの流れをまとめました。">
+  <meta property="og:description" content="「親が説得できるか」「料金」「効果」「解約」「始め方」——申込前によくある5つの不安にお答えします。1ヶ月無料のお試し制度あり。">
   <meta property="og:url" content="https://yorisoi-connect.com/moshimoshi-call/consider/">
   <meta property="og:image" content="https://yorisoi-connect.com/moshimoshi-call/images/ogp.png">
   <link rel="canonical" href="https://yorisoi-connect.com/moshimoshi-call/consider/">
@@ -27,6 +27,40 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="/moshimoshi-call/style.css">
+
+  <!-- このページ専用：5つの不安の目次・本文 -->
+  <style>
+    .concern-index {
+      list-style: none;
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 0;
+    }
+    .concern-index li + li { margin-top: 12px; }
+    .concern-index a {
+      display: block;
+      padding: 14px 20px;
+      background: var(--color-bg-green);
+      border-radius: var(--radius-card);
+      font-weight: 700;
+    }
+    .concern-index a::before {
+      content: "▼ ";
+      color: var(--color-primary);
+    }
+    /* 全体リセットで消える段落・箇条書きの余白をこのページの本文だけ復元する */
+    .concern-body p + p,
+    .concern-body ul + p,
+    .concern-body p + ul { margin-top: 16px; }
+    .concern-body ul {
+      list-style: disc;
+      padding-left: 1.5em;
+    }
+    .concern-body li + li { margin-top: 8px; }
+    .concern-body .note-text { margin-top: 20px; }
+    .concern-body .section-cta { margin-top: 28px; }
+  </style>
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG9KYK977N"></script>
   <script>
@@ -65,7 +99,7 @@
     <!-- ページタイトル帯 -->
     <div class="page-header">
       <h1>申込を検討している方へ</h1>
-      <p class="page-lead">ご利用を迷っている段階の方に向けて、お試し制度・よくあるご不安への回答・ご利用までの流れをまとめました。</p>
+      <p class="page-lead">お申込前によくいただく5つの不安に、もしもしコールの仕組みでお答えします。</p>
     </div>
 
     <!-- パンくずリスト -->
@@ -78,11 +112,146 @@
       </nav>
     </div>
 
-    <!-- ============================== (1) お試し制度 ============================== -->
-    <section class="section section-tight" id="trial" data-ga-section="trial">
+    <!-- ============================== (0) リード・目次 ============================== -->
+    <section class="section section-tight">
+      <div class="container container-narrow">
+        <h2 class="section-title">申込前によくある5つの不安</h2>
+        <p class="section-lead">サービスの内容をご覧いただいたうえで、それでもお申込を迷われる方は少なくありません。よくいただく不安は、次の5つに集約されます。当てはまるものからご覧ください。</p>
+
+        <ol class="concern-index fade-in">
+          <li><a href="#concern-persuasion">親が説得できるか不安</a></li>
+          <li><a href="#concern-price">料金を払い続けられるか不安</a></li>
+          <li><a href="#concern-effect">効果があるのか分からない</a></li>
+          <li><a href="#concern-cancel">契約後にやめられないのではないか</a></li>
+          <li><a href="#concern-start">何から始めればいいか分からない</a></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============================== (1) 親が説得できるか不安 ============================== -->
+    <section class="section section-green" id="concern-persuasion" data-ga-section="concern_persuasion">
+      <div class="container container-narrow concern-body">
+        <h2 class="section-title">1. 親が説得できるか不安</h2>
+        <p>「一人暮らしが心配だから」と伝えたら、「まだ元気だから必要ない」と断られてしまいそう——そんなご心配をお持ちの方は少なくありません。</p>
+        <p>伝え方をすこし変えるだけで、受け止められ方が変わることがあります。</p>
+        <ul>
+          <li>「あなたが心配だから」ではなく、<strong>「離れて暮らす自分が安心したいから、受けてみてほしい」</strong>と、ご自身を主語にして伝える</li>
+          <li>契約の話から入らず、<strong>「1ヶ月は無料で試せるから、一度だけ話してみない？」</strong>と、お試しとして提案する</li>
+        </ul>
+        <p>それでも伝え方に迷うときは、スタッフからご本人へ直接ご説明することも可能です。ご家族おひとりで説得を抱え込む必要はありません。</p>
+        <p class="note-text">最初は乗り気でなかった親御さまが打ち解けていった、<a href="#voice">ご家族の声</a>もご紹介しています。</p>
+      </div>
+    </section>
+
+    <!-- ============================== (2) 料金を払い続けられるか不安 ============================== -->
+    <section class="section" id="concern-price" data-ga-section="concern_price">
+      <div class="container container-narrow concern-body">
+        <h2 class="section-title">2. 料金を払い続けられるか不安</h2>
+        <p>もしもしコールの月額は、<strong>ライトプラン 3,500円（税込・月2回のお電話）</strong>から。おすすめのスタンダードプランは<strong>7,500円（税込）</strong>で、週1回のお電話とご家族への週次レポートが付きます。</p>
+        <p>また、いきなり月額のお支払いが始まることはありません。まずは<strong>1ヶ月、完全無料</strong>でお試しいただき、ご満足いただけた場合にのみ正式なお申込（登録料 8,000円・税込）に進む流れです。プランの変更は月単位でいつでも可能です。</p>
+        <div class="section-cta">
+          <a href="/moshimoshi-call/price/" class="btn btn-outline btn-large">料金プランの詳細を見る</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== (3) 効果があるのか分からない ============================== -->
+    <section class="section section-green" id="concern-effect" data-ga-section="concern_effect">
+      <div class="container container-narrow concern-body">
+        <h2 class="section-title">3. 効果があるのか分からない</h2>
+        <p>「電話だけで何が変わるの？」と思われるかもしれません。</p>
+        <p>もしもしコールでは、通話のたびに「会話の様子」と「担当者からのひとこと」をレポートにしてご家族へお届けします。親御さまの声の調子や暮らしぶりの変化を、<strong>レポートで確かめながら</strong>続けられます。</p>
+        <p>また、家族にはかえって話しにくい体調のことや悩みごとが、第三者との定期的な会話のなかで自然と出てくることもあります。</p>
+        <p class="note-text">レポートの内容は<a href="/moshimoshi-call/#report">トップページ</a>で詳しくご紹介しています。</p>
+      </div>
+    </section>
+
+    <!-- ============================== (4) 契約後にやめられないのではないか ============================== -->
+    <section class="section" id="concern-cancel" data-ga-section="concern_cancel">
+      <div class="container container-narrow concern-body">
+        <h2 class="section-title">4. 契約後にやめられないのではないか</h2>
+        <p>もしもしコールは<strong>1ヶ月単位でいつでも解約でき、解約金・違約金はありません</strong>。当月末日までにご連絡いただければ、その月の末日をもって解約となり、翌月分の料金はかかりません。</p>
+        <p>そもそも最初の1ヶ月は無料のお試し期間ですので、「合わない」と感じたら正式なお申込に進まない、という選択もできます。ご入院やご旅行などの際は、解約ではなく一時休止として柔軟に対応することも可能です。</p>
+        <p class="note-text">解約について詳しくは<a href="/moshimoshi-call/faq/">よくある質問</a>をご覧ください。</p>
+      </div>
+    </section>
+
+    <!-- ============================== (5) 何から始めればいいか分からない ============================== -->
+    <section class="section section-green" id="concern-start" data-ga-section="concern_start">
       <div class="container">
-        <h2 class="section-title">まずは無料でお試しいただけます</h2>
-        <p class="section-lead">「続けられるか分からない」「親に合うか不安」という方のために、無料で始められるお試し制度をご用意しています。</p>
+        <h2 class="section-title">5. 何から始めればいいか分からない</h2>
+        <p class="section-lead">最初の一歩は、LINE・お電話・メールフォームでの<strong>無料相談</strong>です。「まだ迷っている」「話だけ聞きたい」という段階のご連絡も歓迎です。<br>お申込後は、次の流れでお電話が始まります。</p>
+        <ol class="flow-steps">
+          <li class="flow-step fade-in">
+            <div class="flow-step-num">1</div>
+            <h3>お申し込み</h3>
+            <p>WEBまたはお電話でお申し込みください</p>
+          </li>
+          <li class="flow-step fade-in">
+            <div class="flow-step-num">2</div>
+            <h3>ご利用説明</h3>
+            <p>お電話でサービスの流れをご説明します</p>
+          </li>
+          <li class="flow-step fade-in">
+            <div class="flow-step-num">3</div>
+            <h3>日時を決定</h3>
+            <p>ご希望の曜日・時間帯をお伺いし決定します</p>
+          </li>
+          <li class="flow-step fade-in">
+            <div class="flow-step-num">4</div>
+            <h3>サービス開始</h3>
+            <p>毎週スタッフからお電話いたします</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============================== (6) 利用者の声（抜粋） ============================== -->
+    <section class="section voice" id="voice">
+      <div class="container">
+        <h2 class="section-title">ご利用者様の声</h2>
+        <p class="section-lead">実際にご利用いただいたご家族からいただいた声の一部をご紹介します。</p>
+
+        <div class="voice-carousel-wrap fade-in">
+          <button class="carousel-btn carousel-btn-prev" aria-label="前の声を見る">&#8249;</button>
+          <div class="carousel-track-wrap">
+            <ul class="carousel-track">
+              <li class="carousel-slide">
+                <div class="voice-card">
+                  <p class="voice-badge voice-badge-family">ご家族の声</p>
+                  <p class="voice-stars" aria-label="5段階評価で5">★★★★★</p>
+                  <p class="voice-text">最初は「知らない人と電話なんて」と母が渋っていたのですが、話しやすいスタッフの方のおかげで徐々に打ち解けてきたようです。今では自分から楽しみにしていると聞いて、頼んでよかったと感じています。</p>
+                  <p class="voice-attr">50代男性・東京都在住</p>
+                </div>
+              </li>
+              <li class="carousel-slide">
+                <div class="voice-card">
+                  <p class="voice-badge voice-badge-family">ご家族の声</p>
+                  <p class="voice-stars" aria-label="5段階評価で5">★★★★★</p>
+                  <p class="voice-text">父が電話の後は機嫌がいいとデイサービスのスタッフさんに言われて驚きました。話し相手がいるというのは想像以上に大切なことなんだと、あらためて感じています。</p>
+                  <p class="voice-attr">50代女性・北海道在住</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <button class="carousel-btn carousel-btn-next" aria-label="次の声を見る">&#8250;</button>
+        </div>
+
+        <div class="carousel-dots" aria-hidden="true"></div>
+
+        <p class="note-text">※モニター期間中のご利用者様の声を掲載しています。</p>
+
+        <div class="section-cta">
+          <a href="/moshimoshi-call/#voice" class="btn btn-outline btn-large">ほかの声も見る</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== (7) お試しのご案内 ============================== -->
+    <section class="section" id="trial" data-ga-section="trial">
+      <div class="container">
+        <h2 class="section-title">まずは無料のお試しから</h2>
+        <p class="section-lead">お試しのご利用は、正式なお申込が前提ではありません。ご満足いただけた場合にのみ、お進みください。</p>
 
         <div class="campaign-banner fade-in">
           <p class="campaign-banner-title">2ヶ月お試しキャンペーン実施中！</p>
@@ -114,156 +283,14 @@
             </div>
           </li>
         </ol>
-
-        <div class="section-cta">
-          <a href="/moshimoshi-call/price/" class="btn btn-outline btn-large">料金プランの詳細を見る</a>
-        </div>
       </div>
     </section>
 
-    <!-- ============================== (2) よくあるご不安 ============================== -->
-    <section class="section section-green" id="concerns" data-ga-section="concerns">
+    <!-- ============================== (8) お問い合わせCTA ============================== -->
+    <section class="section section-green contact-cta" id="contact" data-ga-section="contact_cta">
       <div class="container container-narrow">
-        <h2 class="section-title">よくあるご不安にお答えします</h2>
-        <p class="section-lead">お申込の前によくいただくご質問をまとめました。</p>
-
-        <div class="faq-list">
-          <div class="faq-item">
-            <button type="button" class="faq-question" aria-expanded="false">
-              <span class="faq-q-mark" aria-hidden="true">Q</span>解約はいつでもできますか？
-              <span class="faq-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq-answer">
-              <p>はい、1ヶ月単位でいつでも解約いただけます。解約金・違約金はありません。お電話・LINE・メールでご連絡ください。当月末日までにご連絡いただいた場合、その月の末日をもって解約となり、翌月分の料金はかかりません。</p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button type="button" class="faq-question" aria-expanded="false">
-              <span class="faq-q-mark" aria-hidden="true">Q</span>親本人への説明はどうすればいいですか？
-              <span class="faq-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq-answer">
-              <p>ご家族からご説明いただくのが一般的ですが、ご希望の場合はスタッフからご説明することも可能です。</p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button type="button" class="faq-question" aria-expanded="false">
-              <span class="faq-q-mark" aria-hidden="true">Q</span>何を話すのですか？
-              <span class="faq-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq-answer">
-              <p>天気や最近のテレビ・趣味のことなど、日常の雑談が中心です。お話が苦手な方でもスタッフが自然な流れで話題を作ります。</p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button type="button" class="faq-question" aria-expanded="false">
-              <span class="faq-q-mark" aria-hidden="true">Q</span>入院などで一時的にお休みすることはできますか？
-              <span class="faq-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq-answer">
-              <p>はい、ご相談ください。ご入院やご旅行など、ご事情に合わせて休止・再開など柔軟に対応させていただきます。</p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button type="button" class="faq-question" aria-expanded="false">
-              <span class="faq-q-mark" aria-hidden="true">Q</span>医療や介護のサービスですか？
-              <span class="faq-icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq-answer">
-              <p>いいえ、あくまで「お話し相手」のサービスです。医療・介護行為は一切行いません。</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="section-cta">
-          <a href="/moshimoshi-call/faq/" class="btn btn-outline btn-large">すべてのFAQを見る</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================== (3) ご利用までの流れ ============================== -->
-    <section class="section flow" id="flow" data-ga-section="flow">
-      <div class="container">
-        <h2 class="section-title">ご利用までの流れ</h2>
-        <ol class="flow-steps">
-          <li class="flow-step fade-in">
-            <div class="flow-step-num">1</div>
-            <h3>お申し込み</h3>
-            <p>WEBまたはお電話でお申し込みください</p>
-          </li>
-          <li class="flow-step fade-in">
-            <div class="flow-step-num">2</div>
-            <h3>ご利用説明</h3>
-            <p>お電話でサービスの流れをご説明します</p>
-          </li>
-          <li class="flow-step fade-in">
-            <div class="flow-step-num">3</div>
-            <h3>日時を決定</h3>
-            <p>ご希望の曜日・時間帯をお伺いし決定します</p>
-          </li>
-          <li class="flow-step fade-in">
-            <div class="flow-step-num">4</div>
-            <h3>サービス開始</h3>
-            <p>毎週スタッフからお電話いたします</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- ============================== (4) 利用者の声（抜粋） ============================== -->
-    <section class="section section-green voice" id="voice">
-      <div class="container">
-        <h2 class="section-title">ご利用者様の声</h2>
-        <p class="section-lead">実際にご利用いただいた方・ご家族からいただいた声の一部をご紹介します。</p>
-
-        <div class="voice-carousel-wrap fade-in">
-          <button class="carousel-btn carousel-btn-prev" aria-label="前の声を見る">&#8249;</button>
-          <div class="carousel-track-wrap">
-            <ul class="carousel-track">
-              <li class="carousel-slide">
-                <div class="voice-card">
-                  <p class="voice-badge voice-badge-family">ご家族の声</p>
-                  <p class="voice-stars" aria-label="5段階評価で5">★★★★★</p>
-                  <p class="voice-text">最初は「知らない人と電話なんて」と母が渋っていたのですが、話しやすいスタッフの方のおかげで徐々に打ち解けてきたようです。今では自分から楽しみにしていると聞いて、頼んでよかったと感じています。</p>
-                  <p class="voice-attr">50代男性・東京都在住</p>
-                </div>
-              </li>
-              <li class="carousel-slide">
-                <div class="voice-card">
-                  <p class="voice-badge voice-badge-user">利用者の声</p>
-                  <p class="voice-stars" aria-label="5段階評価で5">★★★★★</p>
-                  <p class="voice-text">電話の日が近づくと、何を話そうかなと考えるようになりました。話し終わったあとはすっきりした気持ちになります。</p>
-                  <p class="voice-attr">80代女性・岡山県在住</p>
-                </div>
-              </li>
-              <li class="carousel-slide">
-                <div class="voice-card">
-                  <p class="voice-badge voice-badge-family">ご家族の声</p>
-                  <p class="voice-stars" aria-label="5段階評価で5">★★★★★</p>
-                  <p class="voice-text">毎週のレポートは最初のヒアリングでどれくらいの情報を伝えるか聞いてもらえて誠実だなと思いました。実家まで2時間かかるので、頻繁には会えませんが、レポートで親の様子が見えるようで安心です。</p>
-                  <p class="voice-attr">50代女性・東京都在住</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <button class="carousel-btn carousel-btn-next" aria-label="次の声を見る">&#8250;</button>
-        </div>
-
-        <div class="carousel-dots" aria-hidden="true"></div>
-
-        <p class="note-text">※モニター期間中のご利用者様の声を掲載しています。</p>
-
-        <div class="section-cta">
-          <a href="/moshimoshi-call/#voice" class="btn btn-outline btn-large">ほかの声も見る</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================== (5) お問い合わせCTA ============================== -->
-    <section class="section contact-cta" id="contact" data-ga-section="contact_cta">
-      <div class="container container-narrow">
-        <h2 class="section-title">まずはお気軽にご相談ください</h2>
-        <p class="section-lead">迷っている段階でのご相談も歓迎です。LINE・お電話・メールフォームよりお気軽にどうぞ。</p>
+        <h2 class="section-title">無料お試しのご相談から始められます</h2>
+        <p class="section-lead">お申込を決めていなくても大丈夫です。ご質問だけのご連絡もお気軽にどうぞ。</p>
         <div class="contact-buttons">
           <a href="https://lin.ee/S9PcDYm" target="_blank" rel="noopener" class="btn btn-line btn-large">LINEで無料相談</a>
           <a href="tel:0368225257" class="btn btn-tel btn-large"><span aria-hidden="true"></span> 電話で相談：03-6822-5257</a>
