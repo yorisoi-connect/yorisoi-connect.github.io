@@ -253,7 +253,7 @@ html.js .fade-in {
   transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
 }
 
-.fade-in.is-visible {
+html.js .fade-in.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -265,7 +265,7 @@ html.js .rise {
   transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
 }
 
-.rise.is-visible {
+html.js .rise.is-visible {
   opacity: 1;
   transform: none;
 }
@@ -276,7 +276,7 @@ html.js .wipe {
   transition: clip-path 0.8s var(--ease);
 }
 
-.wipe.is-visible {
+html.js .wipe.is-visible {
   clip-path: inset(-8px);
 }
 
