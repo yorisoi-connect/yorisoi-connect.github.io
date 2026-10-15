@@ -1910,9 +1910,32 @@ html.js .wipe.is-visible {
   color: #fff;
 }
 
-/* 「大」選択時はページ全体を拡大表示（html.fs-lg は各ページ冒頭のインラインJSが復元） */
+/* PCの広い画面ではページ全体を拡大表示（スマホ・タブレットは等倍のまま）。
+   拡大後の実質幅が約1100px（ヘッダーが1行に収まる幅）を下回らない倍率に段階設定 */
+:root {
+  --page-zoom: 1;
+  --page-zoom-lg: 1.18;
+}
+
+@media (min-width: 1200px) {
+  :root { --page-zoom: 1.1; }
+}
+
+@media (min-width: 1440px) {
+  :root { --page-zoom: 1.2; --page-zoom-lg: 1.3; }
+}
+
+@media (min-width: 1700px) {
+  :root { --page-zoom: 1.25; --page-zoom-lg: 1.45; }
+}
+
+body {
+  zoom: var(--page-zoom);
+}
+
+/* 「大」選択時はさらに拡大（html.fs-lg は各ページ冒頭のインラインJSが復元） */
 html.fs-lg body {
-  zoom: 1.18;
+  zoom: var(--page-zoom-lg);
 }
 
 /* --------------------------------------------------------------------------

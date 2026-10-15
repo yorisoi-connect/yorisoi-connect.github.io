@@ -126,8 +126,28 @@ document.addEventListener('DOMContentLoaded', function () {
       { threshold: 0.15 }
     );
 
+    // .wipe は clip-path で完全に切り抜かれていて交差判定が成立しないため、
+    // 親要素を監視し、その上端が画面に入ったら見出し本体を出現させる
+    var wipeObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.querySelectorAll(':scope > .wipe').forEach(function (el) {
+              el.classList.add('is-visible');
+            });
+            wipeObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -10% 0px' }
+    );
+
     fadeEls.forEach(function (el) {
-      observer.observe(el);
+      if (el.classList.contains('wipe')) {
+        wipeObserver.observe(el.parentElement);
+      } else {
+        observer.observe(el);
+      }
     });
   } else {
     // 非対応ブラウザではそのまま表示
