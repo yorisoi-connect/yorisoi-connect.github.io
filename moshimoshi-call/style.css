@@ -741,6 +741,27 @@ html.js .wipe.is-visible {
   margin-top: 64px;
 }
 
+/* 横スクロール案内（script.jsが挿入し、はみ出している時だけ .is-scrollable で表示）。
+   枠と一緒に流れないよう左端に固定する */
+.table-scroll-hint {
+  display: none;
+  position: sticky;
+  left: 0;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+.table-scroll-hint::before {
+  content: "\2194";
+  margin-right: 6px;
+}
+
+.table-scroll.is-scrollable > .table-scroll-hint {
+  display: block;
+}
+
 /* ── マーカーハイライトアニメーション ── */
 .marker-text {
   background: linear-gradient(transparent 55%, rgba(255, 220, 50, 0.55) 55%);

@@ -157,6 +157,32 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ------------------------------------------------------------------
+     4b. 表の横スクロール案内（.table-scroll）
+         表が枠からはみ出して横スクロールが発生している時だけ、
+         表の上に「この表は横にスクロールできます」を表示する
+     ------------------------------------------------------------------ */
+  var tableScrolls = document.querySelectorAll('.table-scroll');
+
+  tableScrolls.forEach(function (wrap) {
+    var hint = document.createElement('p');
+    hint.className = 'table-scroll-hint';
+    hint.textContent = 'この表は横にスクロールできます';
+    wrap.insertBefore(hint, wrap.firstChild);
+  });
+
+  function updateTableScrollHints() {
+    tableScrolls.forEach(function (wrap) {
+      wrap.classList.toggle('is-scrollable', wrap.scrollWidth > wrap.clientWidth + 1);
+    });
+  }
+
+  if (tableScrolls.length > 0) {
+    updateTableScrollHints();
+    window.addEventListener('resize', updateTableScrollHints);
+    window.addEventListener('load', updateTableScrollHints);
+  }
+
+  /* ------------------------------------------------------------------
      5. マーカーハイライトアニメーション（.marker-text）
      ------------------------------------------------------------------ */
   var markerEls = document.querySelectorAll('.marker-text');
