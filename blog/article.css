@@ -1,153 +1,172 @@
 /* ============================================================
-   ブログ記事ページ共通スタイル（/blog/配下の全記事で読み込む）
-   一覧ページ(/blog/index.html)のデザイントークンと揃えている
+   ブログ記事ページ専用スタイル（/blog/配下の全記事で読み込む）
+   配色・ヘッダー・フッター・パンくず・カテゴリバッジなどの共通部品は
+   /assets/css/site.css にあり、記事ページでは先にそちらを読み込む
    ============================================================ */
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root {
-  --primary:      #4A7C6F;
-  --primary-dark: #3a6358;
-  --bg:           #F7F4EF;
-  --text:         #2D2D2D;
-  --text-sub:     #6B6B6B;
-  --border:       #E5E0D8;
-  --white:        #ffffff;
+.article-main .container {
+  max-width: 760px;
 }
-
-body {
-  font-family: 'Noto Sans JP', sans-serif;
-  color: var(--text);
-  background: var(--bg);
-  line-height: 1.9;
-  font-size: 16px;
-}
-
-a { text-decoration: none; color: inherit; }
-
-.container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
-
-/* ── Nav ── */
-nav.site-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 32px;
-  background: rgba(247,244,239,0.92);
-  border-bottom: 1px solid var(--border);
-}
-.nav-logo {
-  font-family: 'Shippori Mincho', serif;
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--primary);
-  letter-spacing: 0.05em;
-}
-.nav-links { display: flex; gap: 24px; list-style: none; }
-.nav-links a { font-size: 14px; color: var(--text-sub); }
-.nav-links a:hover { color: var(--primary); }
-
-/* ── パンくず ── */
-.breadcrumb {
-  padding: 24px 0 0;
-  font-size: 12px;
-  color: var(--text-sub);
-}
-.breadcrumb a { color: var(--primary); }
-.breadcrumb a:hover { text-decoration: underline; }
-.breadcrumb .sep { margin: 0 6px; }
 
 /* ── 記事ヘッダー ── */
-.article-header { padding: 32px 0 8px; }
-.article-badge {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--primary-dark);
-  background: rgba(74,124,111,0.1);
-  border-radius: 999px;
-  padding: 3px 12px;
-  margin-bottom: 12px;
+.article-header {
+  padding: 32px 0 20px;
+  border-bottom: 1px solid var(--color-border);
 }
-.article-badge.badge-column { color: #8a6a3b; background: rgba(232,168,124,0.18); }
-.article-badge.badge-staff  { color: #5a5a8a; background: rgba(122,122,180,0.14); }
 
 .article-title {
-  font-family: 'Shippori Mincho', serif;
-  font-size: 28px;
-  font-weight: 600;
+  font-size: clamp(24px, 18px + 1.3vw, 32px);
+  font-weight: 700;
   line-height: 1.55;
-  letter-spacing: 0.03em;
   margin-bottom: 10px;
 }
-.article-date { font-size: 13px; color: var(--text-sub); }
+
+.article-date {
+  font-size: 14px;
+  color: var(--color-text-light);
+}
+
+/* 読み込み時に記事ヘッダーを順に浮かび上がらせる */
+html.js .article-header > * {
+  animation: rise-in 0.8s var(--ease) both;
+}
+
+html.js .article-header > :nth-child(2) { animation-delay: 0.08s; }
+html.js .article-header > :nth-child(3) { animation-delay: 0.16s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .article-header > * {
+    animation: none;
+  }
+}
 
 /* ── 記事本文 ── */
-.article-body { padding: 24px 0 48px; }
-.article-body p { margin-bottom: 1.4em; }
-.article-body h2 {
-  font-family: 'Shippori Mincho', serif;
-  font-size: 21px;
-  font-weight: 600;
-  line-height: 1.6;
-  margin: 2em 0 0.8em;
-  padding-left: 14px;
-  border-left: 4px solid var(--primary);
-}
-.article-body h3 {
+.article-body {
+  padding: 32px 0 48px;
   font-size: 17px;
-  font-weight: 700;
-  margin: 1.6em 0 0.6em;
+  line-height: 2;
 }
-.article-body ul, .article-body ol { margin: 0 0 1.4em 1.4em; }
-.article-body li { margin-bottom: 0.4em; }
-.article-body a { color: var(--primary); text-decoration: underline; }
-.article-body strong { background: linear-gradient(transparent 65%, rgba(232,168,124,0.35) 65%); }
+
+.article-body p {
+  margin-bottom: 1.5em;
+}
+
+.article-body h2 {
+  font-size: clamp(20px, 17px + 0.6vw, 24px);
+  font-weight: 700;
+  line-height: 1.6;
+  margin: 2.2em 0 0.9em;
+  padding: 12px 18px;
+  border-left: 5px solid var(--color-primary);
+  border-radius: 0 10px 10px 0;
+  background: var(--color-bg-green);
+}
+
+.article-body h3 {
+  font-size: 19px;
+  font-weight: 700;
+  margin: 1.8em 0 0.6em;
+}
+
+.article-body ul,
+.article-body ol {
+  margin: 0 0 1.5em;
+  padding: 20px 24px 20px 44px;
+  border-radius: var(--radius-card);
+  background: var(--color-bg-cream);
+}
+
+.article-body ul {
+  list-style: disc;
+}
+
+.article-body ol {
+  list-style: decimal;
+}
+
+.article-body li {
+  margin-bottom: 0.5em;
+}
+
+.article-body li::marker {
+  color: var(--color-primary);
+}
+
+.article-body a {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.article-body strong {
+  background: linear-gradient(transparent 62%, rgba(210, 180, 140, 0.32) 62%);
+}
 
 /* ── 記事末尾CTA ── */
 .article-cta {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 28px 24px;
+  background: linear-gradient(135deg, #F2F6F3 0%, #E4ECE6 100%);
+  border-radius: var(--radius-card);
+  padding: 36px 28px;
   text-align: center;
   margin: 0 0 40px;
-  box-shadow: 0 4px 24px rgba(74,124,111,0.08);
 }
-.article-cta p { font-size: 14px; color: var(--text-sub); margin-bottom: 16px; }
+
+.article-cta p {
+  color: var(--color-text-light);
+  margin-bottom: 18px;
+}
+
+/* 旧マークアップ（.cta-btn）も共通ボタンと同じ見た目にする */
 .article-cta .cta-btn {
-  display: inline-block;
-  background: var(--primary);
-  color: var(--white);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 36px;
+  border-radius: var(--radius-btn);
+  background: var(--color-primary-dark);
+  color: #fff;
   font-weight: 700;
-  font-size: 15px;
-  padding: 12px 32px;
-  border-radius: 999px;
-  transition: background 0.2s;
+  box-shadow: 0 4px 14px rgba(79, 122, 99, 0.28);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background-color 0.25s var(--ease);
 }
-.article-cta .cta-btn:hover { background: var(--primary-dark); }
+
+.article-cta .cta-btn::after {
+  content: "→";
+  transition: transform 0.25s var(--ease);
+}
+
+.article-cta .cta-btn:hover {
+  background: #436A55;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(79, 122, 99, 0.4);
+}
+
+.article-cta .cta-btn:hover::after {
+  transform: translateX(4px);
+}
 
 /* ── 一覧へ戻る ── */
-.back-to-list { text-align: center; padding-bottom: 72px; }
-.back-to-list a {
-  font-size: 14px;
-  color: var(--primary);
-  font-weight: 700;
+.back-to-list {
+  text-align: center;
+  padding-bottom: 80px;
 }
-.back-to-list a:hover { text-decoration: underline; }
 
-/* ── Footer ── */
-footer { background: #2a3d38; padding: 32px 24px; text-align: center; }
-footer .footer-links { margin-bottom: 14px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-footer .footer-links a { font-size: 13px; color: rgba(255,255,255,0.7); }
-footer .footer-links a:hover { color: #fff; }
-footer p { font-size: 12px; color: rgba(255,255,255,0.4); }
+.back-to-list a {
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
 
-@media (max-width: 640px) {
-  nav.site-nav { padding: 16px 20px; }
-  .nav-links { gap: 16px; }
-  .nav-links a { font-size: 13px; }
-  .article-title { font-size: 23px; }
-  .article-body h2 { font-size: 19px; }
+.back-to-list a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .article-body {
+    font-size: 16px;
+  }
+
+  .article-body ul,
+  .article-body ol {
+    padding: 16px 18px 16px 36px;
+  }
 }

@@ -2,6 +2,8 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <!-- html.js付与（JS動作時のみ出現アニメを有効化）＋文字サイズ設定（標準/大）の復元 -->
+  <script>(function(d){d.className+=" js";try{if(localStorage.getItem("mc-fs")==="lg")d.className+=" fs-lg"}catch(e){}})(document.documentElement)</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>もしもしコールの公式サイトをオープンしました｜ブログ｜よりそいコネクト</title>
   <meta name="description" content="一人暮らしの親御さまへの定期電話サービス「もしもしコール」の公式サイトを公開しました。サービスの特徴・料金プラン・レポートのサンプルなどをご覧いただけます。">
@@ -17,7 +19,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
   <link rel="stylesheet" href="/blog/article.css">
 
   <!-- 構造化データ: BlogPosting -->
@@ -46,16 +49,33 @@
 </head>
 <body>
 
-  <nav class="site-nav">
-    <a href="/" class="nav-logo">よりそいコネクト</a>
-    <ul class="nav-links">
-      <li><a href="/">トップ</a></li>
-      <li><a href="/company/">会社概要</a></li>
-      <li><a href="/#contact">お問い合わせ</a></li>
-    </ul>
-  </nav>
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="/" class="site-logo">よりそいコネクト</a>
 
-  <main>
+      <div class="fs-toggle" role="group" aria-label="文字サイズ変更">
+        <span class="fs-label">文字サイズ</span>
+        <button type="button" class="fs-btn is-active" data-fs="std" aria-pressed="true">標準</button>
+        <button type="button" class="fs-btn" data-fs="lg" aria-pressed="false">大</button>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="global-nav">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="global-nav" id="global-nav" aria-label="グローバルナビゲーション">
+        <ul>
+          <li><a href="/#services">サービス</a></li>
+          <li><a href="/#message">代表メッセージ</a></li>
+          <li><a href="/company/">会社概要</a></li>
+          <li><a href="/blog/" aria-current="page">ブログ</a></li>
+          <li><a href="/#contact">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="article-main">
     <div class="container">
 
       <nav class="breadcrumb" aria-label="パンくずリスト">
@@ -87,7 +107,7 @@
         <p>今後はこちらのブログで、お知らせのほか、離れて暮らす親御さまとの関わり方についてのコラムや、スタッフの声もお届けしてまいります。どうぞよろしくお願いいたします。</p>
       </div>
 
-      <div class="article-cta">
+      <div class="article-cta fade-in">
         <p>サービスの詳細・ご相談はこちらから。「話だけ聞きたい」でも大歓迎です。</p>
         <a href="/moshimoshi-call/" class="cta-btn">もしもしコールを見る</a>
       </div>
@@ -97,16 +117,28 @@
     </div>
   </main>
 
-  <footer>
-    <div class="footer-links">
-      <a href="/">トップ</a>
-      <a href="/company/">会社概要</a>
-      <a href="/blog/">ブログ</a>
-      <a href="/#contact">お問い合わせ</a>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <p class="footer-logo">よりそいコネクト</p>
+          <p class="footer-tagline">話すことが、生きる力になる。</p>
+        </div>
+        <nav class="footer-nav" aria-label="フッターナビゲーション">
+          <ul>
+            <li><a href="/">トップ</a></li>
+            <li><a href="/company/">会社概要</a></li>
+            <li><a href="/blog/">ブログ</a></li>
+            <li><a href="/moshimoshi-call/">もしもしコール</a></li>
+            <li><a href="/#contact">お問い合わせ</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="footer-copy">© 2026 よりそいコネクト. All rights reserved.</p>
     </div>
-    <p>© 2026 よりそいコネクト. All rights reserved.</p>
   </footer>
 
+  <script src="/assets/js/site.js" defer></script>
   <script src="/assets/js/analytics.js" defer></script>
 </body>
 </html>

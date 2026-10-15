@@ -2,6 +2,8 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <!-- html.js付与（JS動作時のみ出現アニメを有効化）＋文字サイズ設定（標準/大）の復元 -->
+  <script>(function(d){d.className+=" js";try{if(localStorage.getItem("mc-fs")==="lg")d.className+=" fs-lg"}catch(e){}})(document.documentElement)</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>よりそいコネクト | 高齢者向け孤独ケアサービス</title>
   <meta name="description" content="よりそいコネクトは、高齢者の孤独ケアに取り組む会社です。会話でゆるやかに見守る定期電話サービス「もしもしコール」を運営しています。">
@@ -42,449 +44,362 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* ===== トップページ専用スタイル（共通部品は /assets/css/site.css） ===== */
 
-    :root {
-      --primary:      #4A7C6F;
-      --primary-dark: #3a6358;
-      --secondary:    #7BAE9F;
-      --bg:           #F7F4EF;
-      --accent:       #E8A87C;
-      --accent-dark:  #d4935f;
-      --text:         #2D2D2D;
-      --text-sub:     #6B6B6B;
-      --border:       #E5E0D8;
-      --white:        #ffffff;
-      --yellow:       #F5C842;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Noto Sans JP', sans-serif;
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.75;
-      font-size: 16px;
-    }
-
-    a { text-decoration: none; color: inherit; }
-
-    .container {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* ── スプラッシュオーバーレイ ── */
+    /* ── スプラッシュ ── */
     #splash-overlay {
       position: fixed;
       inset: 0;
       z-index: 9999;
-      background: #F7F4EF;
+      background: var(--color-bg-green);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 12px;
       pointer-events: none;
-      opacity: 1;
       transition: opacity 1s ease;
     }
-    #splash-overlay.hide {
-      opacity: 0;
-    }
-    #splash-overlay.gone {
-      display: none;
-    }
+    #splash-overlay.hide { opacity: 0; }
+    #splash-overlay.gone { display: none; }
     .splash-logo {
-      font-family: 'Shippori Mincho', serif;
-      font-size: 22px;
-      font-weight: 500;
-      color: var(--primary);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--color-text);
       letter-spacing: 0.06em;
       opacity: 0;
       transform: translateY(10px);
       transition: opacity 0.45s ease, transform 0.45s ease;
     }
     .splash-line {
-      width: 32px;
-      height: 1.5px;
-      background: var(--primary);
-      opacity: 0;
-      transition: opacity 0.45s ease 0.1s;
+      width: 0;
+      height: 3px;
+      border-radius: 2px;
+      background: var(--color-primary);
+      transition: width 0.6s var(--ease) 0.1s;
     }
     .splash-catch {
       font-family: 'Shippori Mincho', serif;
-      font-size: 13px;
-      color: var(--text-sub);
+      font-size: 15px;
+      color: var(--color-text-light);
       letter-spacing: 0.08em;
       opacity: 0;
       transform: translateY(8px);
       transition: opacity 0.45s ease 0.15s, transform 0.45s ease 0.15s;
     }
     #splash-overlay.show .splash-logo,
-    #splash-overlay.show .splash-catch {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    #splash-overlay.show .splash-line {
-      opacity: 1;
-    }
+    #splash-overlay.show .splash-catch { opacity: 1; transform: none; }
+    #splash-overlay.show .splash-line { width: 40px; }
 
-    /* ── フェードインアニメーション ── */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .fade-up.delay-1 { transition-delay: 0.1s; }
-    .fade-up.delay-2 { transition-delay: 0.2s; }
-    .fade-up.delay-3 { transition-delay: 0.35s; }
-    .fade-up.delay-4 { transition-delay: 0.5s; }
-
-    /* ── Nav ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 16px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: rgba(247,244,239,0.88);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-logo {
-      font-family: 'Shippori Mincho', serif;
-      font-size: 17px;
-      font-weight: 600;
-      color: var(--primary);
-      letter-spacing: 0.04em;
-    }
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: 13px;
-      color: var(--text-sub);
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--primary); }
-
-    /* ── Hero ── */
+    /* ── ヒーロー ── */
     .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 120px 24px 80px;
-      position: relative;
       overflow: hidden;
+      background: linear-gradient(135deg, #F2F6F3 0%, #E4ECE6 60%, #D9E5DC 100%);
+      padding-top: 112px;
+      padding-bottom: calc(120px + 52px);
     }
-    .hero-bg {
+    /* ゆっくり漂う装飾円 */
+    .hero-blob {
       position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(123,174,159,0.15) 0%, transparent 70%),
-                  radial-gradient(ellipse 40% 40% at 20% 80%, rgba(245,200,66,0.1) 0%, transparent 60%);
+      border-radius: 50%;
       pointer-events: none;
+      animation: float-blob 16s ease-in-out infinite alternate;
     }
+    .hero-blob-1 {
+      width: 560px; height: 560px;
+      top: -200px; right: -140px;
+      background: rgba(127, 168, 143, 0.13);
+    }
+    .hero-blob-2 {
+      width: 300px; height: 300px;
+      bottom: -40px; left: -80px;
+      background: rgba(255, 255, 255, 0.45);
+      animation-delay: -8s;
+    }
+    .hero-blob-3 {
+      width: 120px; height: 120px;
+      top: 22%; right: 18%;
+      background: rgba(210, 180, 140, 0.14);
+      animation-duration: 11s;
+    }
+    /* ゆっくり回る点線リング */
     .hero-ring {
       position: absolute;
-      right: -120px;
+      right: 6%;
       top: 50%;
-      transform: translateY(-50%);
-      width: 560px;
-      height: 560px;
+      width: 420px;
+      height: 420px;
+      margin-top: -210px;
       border-radius: 50%;
-      border: 1.5px solid rgba(74,124,111,0.12);
+      border: 2px dashed rgba(127, 168, 143, 0.25);
       pointer-events: none;
-    }
-    .hero-ring::before {
-      content: '';
-      position: absolute;
-      inset: 40px;
-      border-radius: 50%;
-      border: 1px solid rgba(74,124,111,0.08);
+      animation: spin 80s linear infinite;
     }
     .hero-inner {
       position: relative;
-      max-width: 680px;
+      z-index: 1;
+      max-width: 720px;
     }
     .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 11px;
-      font-family: 'Inter', sans-serif;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--primary);
+      display: inline-block;
+      padding: 6px 18px;
+      border-radius: var(--radius-btn);
+      background: rgba(127, 168, 143, 0.15);
+      color: var(--color-primary-dark);
+      font-size: 14px;
+      font-weight: 700;
       margin-bottom: 24px;
-    }
-    .hero-eyebrow::before {
-      content: '';
-      display: block;
-      width: 24px;
-      height: 1.5px;
-      background: var(--primary);
     }
     .hero-catch {
       font-family: 'Shippori Mincho', serif;
-      font-size: clamp(36px, 5.5vw, 58px);
-      font-weight: 500;
-      line-height: 1.5;
-      color: var(--text);
-      margin-bottom: 28px;
+      font-size: clamp(36px, 22px + 3.6vw, 64px);
+      font-weight: 600;
+      line-height: 1.45;
       letter-spacing: 0.02em;
+      margin-bottom: 28px;
     }
+    .hero-catch .line { display: block; }
     .hero-catch em {
       font-style: normal;
-      color: var(--primary);
+      color: var(--color-primary-dark);
+      background: linear-gradient(transparent 70%, rgba(210, 180, 140, 0.28) 70%);
     }
     .hero-sub {
-      font-size: 16px;
-      color: var(--text-sub);
-      line-height: 1.9;
-      max-width: 680px;
-      margin-bottom: 48px;
+      font-size: 17px;
+      color: var(--color-text-light);
+      line-height: 1.95;
+      margin-bottom: 40px;
     }
-    .hero-btns {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      justify-content: center;
+    /* 読み込み時（スプラッシュが消える頃）に上から順に浮かび上がる */
+    html.js .hero-anim {
+      animation: rise-in 0.9s var(--ease) both;
+      animation-delay: calc(1.15s + var(--d, 0s));
     }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 28px;
-      border-radius: 50px;
-      font-size: 14px;
-      font-weight: 700;
-      font-family: 'Noto Sans JP', sans-serif;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      border: 2px solid transparent;
-      white-space: nowrap;
-    }
-    .btn-primary {
-      background: var(--primary);
-      color: #fff;
-      border-color: var(--primary);
-    }
-    .btn-primary:hover {
-      background: var(--primary-dark);
-      border-color: var(--primary-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(74,124,111,0.3);
-    }
-    .btn-outline {
-      background: transparent;
-      color: var(--primary);
-      border-color: var(--primary);
-    }
-    .btn-outline:hover {
-      background: var(--primary);
-      color: #fff;
-      transform: translateY(-2px);
-    }
-    .btn-arrow::after {
-      content: '→';
-      font-size: 16px;
-    }
-
-    /* ── Section 共通 ── */
-    section {
-      padding: 96px 24px;
-    }
-    .section-label {
-      font-size: 11px;
-      font-family: 'Inter', sans-serif;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--primary);
-      margin-bottom: 12px;
-    }
-    .section-title {
-      font-family: 'Shippori Mincho', serif;
-      font-size: clamp(24px, 3.5vw, 34px);
-      font-weight: 500;
-      line-height: 1.5;
-      color: var(--text);
-      margin-bottom: 16px;
-    }
-    .section-sub {
-      font-size: 15px;
-      color: var(--text-sub);
-      line-height: 1.9;
-      max-width: 520px;
-    }
-
-    /* ── Services ── */
-    .services { background: var(--white); }
-    .services-header {
-      text-align: center;
-      margin-bottom: 64px;
-    }
-    .services-header .section-sub { margin: 0 auto; }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 28px;
-      max-width: 880px;
-      margin: 0 auto;
-    }
-    .service-card {
-      border: 1.5px solid var(--border);
-      border-radius: 20px;
-      padding: 40px 36px;
-      background: var(--bg);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .service-card::before {
-      content: '';
+    /* スクロールを促す線 */
+    .scroll-cue {
       position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 4px;
-      background: var(--primary);
-      border-radius: 20px 20px 0 0;
+      left: 50%;
+      bottom: 76px;
+      z-index: 1;
+      width: 2px;
+      height: 48px;
+      margin-left: -1px;
+      overflow: hidden;
+      background: rgba(127, 168, 143, 0.2);
     }
-    .service-card.accent::before { background: var(--yellow); }
+    .scroll-cue::after {
+      content: "";
+      position: absolute;
+      left: 0; top: 0;
+      width: 100%; height: 50%;
+      background: var(--color-primary);
+      animation: cue 2s var(--ease) infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes cue {
+      from { transform: translateY(-100%); }
+      to   { transform: translateY(200%); }
+    }
+
+    /* ── サービス ── */
+    .service-card {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      max-width: 920px;
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid var(--color-border);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      color: var(--color-text);
+      transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+    }
     .service-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 16px 48px rgba(74,124,111,0.12);
+      box-shadow: var(--shadow-card-hover);
     }
+    .service-card-img {
+      overflow: hidden;
+      background: var(--color-bg-green);
+    }
+    .service-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease);
+    }
+    .service-card:hover .service-card-img img { transform: scale(1.05); }
+    .service-card-body { padding: 44px 40px; }
     .card-tag {
       display: inline-block;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      border-radius: 20px;
-      background: rgba(74,124,111,0.1);
-      color: var(--primary);
-      margin-bottom: 14px;
-    }
-    .card-tag.yellow {
-      background: rgba(245,200,66,0.2);
-      color: #8a6800;
-    }
-    .card-name {
-      font-family: 'Shippori Mincho', serif;
-      font-size: 26px;
-      font-weight: 500;
-      color: var(--text);
-      margin-bottom: 12px;
-    }
-    .card-desc {
-      font-size: 14px;
-      color: var(--text-sub);
-      line-height: 1.85;
-      margin-bottom: 28px;
-    }
-    .card-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
       font-size: 13px;
       font-weight: 700;
-      color: var(--primary);
-      transition: gap 0.2s;
+      padding: 4px 14px;
+      border-radius: 999px;
+      background: rgba(210, 180, 140, 0.16);
+      color: #8A6A45;
+      margin-bottom: 14px;
     }
-    .card-link:hover { gap: 10px; }
-    .card-link::after { content: '→'; }
+    .card-name {
+      font-size: clamp(26px, 20px + 1vw, 32px);
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 14px;
+    }
+    .card-name span { color: var(--color-primary); }
+    .card-desc {
+      color: var(--color-text-light);
+      line-height: 1.9;
+      margin-bottom: 28px;
+    }
 
-    /* ── Message ── */
-    .message { background: var(--bg); }
+    /* ── 代表メッセージ ── */
     .message-inner {
-      max-width: 760px;
+      max-width: 860px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 2fr;
+      grid-template-columns: 240px 1fr;
       gap: 56px;
       align-items: center;
     }
+    .message-photo {
+      position: relative;
+      width: 220px;
+      margin: 0 auto;
+    }
+    /* 写真のまわりをゆっくり回る点線リング */
+    .message-photo::before {
+      content: "";
+      position: absolute;
+      inset: -14px;
+      border-radius: 50%;
+      border: 2px dashed rgba(127, 168, 143, 0.45);
+      animation: spin 40s linear infinite;
+    }
     .message-avatar {
+      position: relative;
+      display: block;
       width: 100%;
       aspect-ratio: 1;
-      max-width: 200px;
-      border-radius: 20px;
+      border-radius: 50%;
       object-fit: cover;
-      border: 1.5px solid var(--border);
-      display: block;
+      border: 6px solid #fff;
+      box-shadow: var(--shadow-card);
     }
+    .message .section-eyebrow { text-align: left; }
     .message-quote {
-      font-family: 'Shippori Mincho', serif;
-      font-size: clamp(16px, 2vw, 20px);
-      line-height: 2;
-      color: var(--text);
-      margin-bottom: 28px;
       position: relative;
-      padding-left: 20px;
+      font-family: 'Shippori Mincho', serif;
+      font-size: clamp(19px, 15px + 0.8vw, 24px);
+      font-weight: 600;
+      line-height: 2;
+      margin-bottom: 24px;
+      padding-top: 28px;
     }
+    /* 大きな引用符のアクセント */
     .message-quote::before {
-      content: '';
+      content: "\201C";
       position: absolute;
-      left: 0; top: 8px; bottom: 8px;
-      width: 3px;
-      background: var(--primary);
-      border-radius: 2px;
+      top: -22px;
+      left: -6px;
+      font-family: Georgia, serif;
+      font-size: 88px;
+      line-height: 1;
+      color: rgba(127, 168, 143, 0.3);
     }
-    .message-name { font-size: 14px; color: var(--text-sub); }
+    .message-name { color: var(--color-text-light); }
     .message-name strong {
-      font-size: 16px;
-      color: var(--text);
-      font-weight: 700;
       display: block;
-      margin-bottom: 2px;
+      font-size: 18px;
+      color: var(--color-text);
     }
 
-    /* ── Contact ── */
-    .contact { background: var(--primary); text-align: center; }
-    .contact .section-label { color: rgba(255,255,255,0.6); }
-    .contact .section-title { color: #fff; }
-    .contact .section-sub { color: rgba(255,255,255,0.75); margin: 0 auto 44px; }
-    .contact-items { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
-    .contact-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    /* ── お問い合わせ ── */
+    .contact-items {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 32px 24px;
+      border-radius: var(--radius-card);
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      text-align: center;
+      transition: background-color 0.3s ease, transform 0.35s var(--ease);
+    }
+    .contact-item:hover {
+      background: rgba(255, 255, 255, 0.11);
+      transform: translateY(-4px);
+    }
+    .contact-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-primary-dark);
+      margin-bottom: 4px;
+    }
+    .contact-icon svg { width: 24px; height: 24px; }
     .contact-item-label {
-      font-size: 10px;
-      font-family: 'Inter', sans-serif;
+      font-size: 13px;
       font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.16em;
+      color: #B9CFC1;
     }
-    .contact-item-value { font-size: 18px; font-weight: 700; color: #fff; }
+    .contact-item-value {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.6;
+      word-break: break-all;
+    }
     .contact-item-value a { color: #fff; }
+    .contact-item-value a:hover { text-decoration: underline; }
+    .contact-item-note {
+      display: block;
+      margin-top: 6px;
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(234, 243, 236, 0.7);
+    }
 
-    /* ── Footer ── */
-    footer { background: #2a3d38; padding: 28px 24px; text-align: center; }
-    footer .footer-links { margin-bottom: 12px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-    footer .footer-links a { font-size: 13px; color: rgba(255,255,255,0.7); }
-    footer .footer-links a:hover { color: #fff; }
-    footer p { font-size: 12px; color: rgba(255,255,255,0.4); }
-
-    @media (max-width: 640px) {
-      .hero-catch { font-size: 32px; }
-      .message-inner { grid-template-columns: 1fr; gap: 32px; }
-      .message-avatar { max-width: 100px; }
-      nav .nav-links { display: none; }
+    @media (max-width: 768px) {
+      .hero { padding-top: 72px; padding-bottom: calc(96px + 36px); }
+      .hero-ring { width: 280px; height: 280px; margin-top: -140px; right: -80px; }
+      .hero-blob-1 { width: 380px; height: 380px; }
+      .hero-blob-3 { width: 80px; height: 80px; top: 24px; right: 24px; }
+      .scroll-cue { bottom: 52px; height: 36px; }
+      .service-card { grid-template-columns: 1fr; }
+      .service-card-img { aspect-ratio: 16 / 9; }
+      .service-card-body { padding: 28px 24px 32px; }
+      .message-inner { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+      .message-photo { width: 160px; }
+      .message .section-eyebrow { text-align: center; }
+      .message-quote { text-align: left; }
+      .contact-items { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .hero-catch { font-size: 30px; }
+      .hero-catch .line { white-space: nowrap; }
+      .hero-sub { font-size: 15px; }
+      .contact-item-value { font-size: 17px; }
+      .hero-sub br { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-blob, .hero-ring, .message-photo::before, .scroll-cue::after,
+      html.js .hero-anim { animation: none; }
     }
   </style>
   <!-- Google tag (gtag.js) -->
@@ -500,150 +415,176 @@
 <body>
 
   <!-- スプラッシュオーバーレイ -->
-  <div id="splash-overlay">
+  <div id="splash-overlay" aria-hidden="true">
     <span class="splash-logo">よりそいコネクト</span>
     <div class="splash-line"></div>
     <span class="splash-catch">話すことが、生きる力になる。</span>
   </div>
 
-  <!-- Nav -->
-  <nav>
-    <div class="nav-logo">よりそいコネクト</div>
-    <ul class="nav-links">
-      <li><a href="#services">サービス</a></li>
-      <li><a href="#message">代表メッセージ</a></li>
-      <li><a href="/company/">会社概要</a></li>
-      <li><a href="/blog/">ブログ</a></li>
-      <li><a href="#contact">お問い合わせ</a></li>
-    </ul>
-  </nav>
+  <!-- ヘッダー -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="/" class="site-logo">よりそいコネクト</a>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-ring"></div>
-    <div class="container">
-      <div class="hero-inner">
-        <p class="hero-eyebrow fade-up">高齢者向け孤独ケアサービス</p>
-        <h1 class="hero-catch fade-up delay-1">
-          話すことが、<br><em>生きる力になる。</em>
-        </h1>
-        <p class="hero-sub fade-up delay-2">
-          よりそいコネクトは、孤独に寄り添う定期コミュニケーションサービスを提供しています。<br>
-          施設に入居されている方にも、ご自宅でお一人でお過ごしの方にも。
-        </p>
-        <div class="hero-btns fade-up delay-3">
-          <a href="./moshimoshi-call/" class="btn btn-outline btn-arrow">もしもしコール（個人向け）</a>
-        </div>
+      <div class="fs-toggle" role="group" aria-label="文字サイズ変更">
+        <span class="fs-label">文字サイズ</span>
+        <button type="button" class="fs-btn is-active" data-fs="std" aria-pressed="true">標準</button>
+        <button type="button" class="fs-btn" data-fs="lg" aria-pressed="false">大</button>
       </div>
+
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="global-nav">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="global-nav" id="global-nav" aria-label="グローバルナビゲーション">
+        <ul>
+          <li><a href="/#services">サービス</a></li>
+          <li><a href="/#message">代表メッセージ</a></li>
+          <li><a href="/company/">会社概要</a></li>
+          <li><a href="/blog/">ブログ</a></li>
+          <li><a href="/#contact">お問い合わせ</a></li>
+        </ul>
+      </nav>
     </div>
-  </section>
+  </header>
 
-  <!-- Services -->
-  <section class="services" id="services" data-ga-section="services">
-    <div class="container">
-      <div class="services-header fade-up">
-        <p class="section-label">Our Services</p>
-        <h2 class="section-title">サービスのご案内</h2>
-        <p class="section-sub">
-          定期的なお電話で、<br>
-          ご高齢の方とご家族に寄り添います。
-        </p>
-      </div>
-      <div class="services-grid">
-        <div class="service-card accent fade-up delay-1">
-          <span class="card-tag yellow">個人向け</span>
-          <h3 class="card-name">もしもしコール</h3>
-          <p class="card-desc">
-            一人暮らしのご高齢の親御様に、ご家族の代わりに定期的にお電話してお話しをするサービスです。離れて暮らすご家族の安心感にもつながります。
+  <main>
+    <!-- Hero -->
+    <section class="section hero wave-to-white">
+      <div class="hero-blob hero-blob-1" aria-hidden="true"></div>
+      <div class="hero-blob hero-blob-2" aria-hidden="true"></div>
+      <div class="hero-blob hero-blob-3" aria-hidden="true"></div>
+      <div class="hero-ring" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero-inner">
+          <p class="hero-eyebrow hero-anim">高齢者向け孤独ケアサービス</p>
+          <h1 class="hero-catch">
+            <span class="line hero-anim" style="--d: 0.08s">話すことが、</span>
+            <span class="line hero-anim" style="--d: 0.2s"><em>生きる力になる。</em></span>
+          </h1>
+          <p class="hero-sub hero-anim" style="--d: 0.32s">
+            よりそいコネクトは、孤独に寄り添う定期コミュニケーションサービスを提供しています。<br>
+            施設に入居されている方にも、ご自宅でお一人でお過ごしの方にも。
           </p>
-          <a href="./moshimoshi-call/" class="card-link">詳しく見る</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Message -->
-  <section class="message" id="message">
-    <div class="container">
-      <div class="message-inner">
-        <div class="fade-up">
-          <img class="message-avatar" src="assets/images/daihyo.png" alt="よりそいコネクト 代表 戸梶 凌" width="200" height="200">
-        </div>
-        <div class="fade-up delay-1">
-          <p class="section-label">Message</p>
-          <blockquote class="message-quote">
-            「電話一本から、誰かの毎日に楽しみを届けたい。
-            話すことが、その人の生きる力になると信じています。」
-          </blockquote>
-          <div class="message-name">
-            <strong>戸梶 凌</strong>
-            よりそいコネクト 代表
+          <div class="hero-anim" style="--d: 0.44s">
+            <a href="./moshimoshi-call/" class="btn btn-primary btn-large btn-arrow">もしもしコール（個人向け）</a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+      <div class="scroll-cue" aria-hidden="true"></div>
+    </section>
 
-  <!-- Contact -->
-  <section class="contact" id="contact" data-ga-section="contact_cta">
-    <div class="container">
-      <div class="fade-up">
-        <p class="section-label">Contact</p>
-        <h2 class="section-title">お問い合わせ</h2>
-        <p class="section-sub">
+    <!-- Services -->
+    <section class="section wave-to-cream" id="services" data-ga-section="services">
+      <div class="container">
+        <p class="section-eyebrow fade-in">OUR SERVICES</p>
+        <h2 class="section-title wipe">サービスのご案内</h2>
+        <p class="section-lead fade-in">
+          定期的なお電話で、<br>
+          ご高齢の方とご家族に寄り添います。
+        </p>
+        <a href="./moshimoshi-call/" class="service-card rise">
+          <div class="service-card-img">
+            <img src="/moshimoshi-call/assets/images/hero.png" alt="笑顔で電話をする高齢女性の写真" width="1537" height="1023" loading="lazy">
+          </div>
+          <div class="service-card-body">
+            <span class="card-tag">個人向け</span>
+            <h3 class="card-name">もしもし<span>コール</span></h3>
+            <p class="card-desc">
+              一人暮らしのご高齢の親御様に、ご家族の代わりに定期的にお電話してお話しをするサービスです。離れて暮らすご家族の安心感にもつながります。
+            </p>
+            <span class="btn btn-outline btn-arrow">詳しく見る</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Message -->
+    <section class="section section-cream message wave-to-dark" id="message">
+      <div class="container">
+        <div class="message-inner">
+          <div class="message-photo rise">
+            <img class="message-avatar" src="assets/images/daihyo.png" alt="よりそいコネクト 代表 戸梶 凌" width="220" height="220" loading="lazy">
+          </div>
+          <div class="fade-in">
+            <p class="section-eyebrow">MESSAGE</p>
+            <blockquote class="message-quote">
+              「電話一本から、誰かの毎日に楽しみを届けたい。
+              話すことが、その人の生きる力になると信じています。」
+            </blockquote>
+            <div class="message-name">
+              <strong>戸梶 凌</strong>
+              よりそいコネクト 代表
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section section-dark" id="contact" data-ga-section="contact_cta">
+      <div class="container">
+        <p class="section-eyebrow fade-in">CONTACT</p>
+        <h2 class="section-title wipe">お問い合わせ</h2>
+        <p class="section-lead fade-in">
           サービスに関するご質問・ご相談はお気軽にお問合せください。
         </p>
-      </div>
-      <div class="contact-items fade-up delay-1">
-        <div class="contact-item">
-          <span class="contact-item-label">Mail</span>
-          <span class="contact-item-value">
-            <a href="mailto:info@yorisoi-connect.com">info@yorisoi-connect.com</a>
-          </span>
+        <div class="contact-items stagger">
+          <div class="contact-item rise">
+            <span class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            </span>
+            <span class="contact-item-label">MAIL</span>
+            <span class="contact-item-value">
+              <a href="mailto:info@yorisoi-connect.com">info@yorisoi-connect.com</a>
+            </span>
+          </div>
+          <div class="contact-item rise">
+            <span class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+            </span>
+            <span class="contact-item-label">TEL</span>
+            <span class="contact-item-value">
+              <a href="tel:0368225257">03-6822-5257</a>
+              <span class="contact-item-note">※担当者直通</span>
+              <a href="tel:08029685824">080-2968-5824</a>
+            </span>
+          </div>
         </div>
-        <div class="contact-item">
-          <span class="contact-item-label">Tel</span>
-          <span class="contact-item-value">
-            <a href="tel:0368225257">03-6822-5257</a><br>
-            <small class="contact-item-label">※担当者直通</small><br>
-            <a href="tel:08029685824">080-2968-5824</a>
-          </span>
-        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- Footer -->
-  <footer>
-    <div class="footer-links">
-      <a href="/company/">会社概要</a>
-      <a href="/blog/">ブログ</a>
-      <a href="/moshimoshi-call/">もしもしコール</a>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <p class="footer-logo">よりそいコネクト</p>
+          <p class="footer-tagline">話すことが、生きる力になる。</p>
+        </div>
+        <nav class="footer-nav" aria-label="フッターナビゲーション">
+          <ul>
+            <li><a href="/">トップ</a></li>
+            <li><a href="/company/">会社概要</a></li>
+            <li><a href="/blog/">ブログ</a></li>
+            <li><a href="/moshimoshi-call/">もしもしコール</a></li>
+            <li><a href="/#contact">お問い合わせ</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="footer-copy">© 2026 よりそいコネクト. All rights reserved.</p>
     </div>
-    <p>© 2026 よりそいコネクト. All rights reserved.</p>
   </footer>
 
   <script>
-    // スプラッシュ制御
+    // スプラッシュ制御（少し待ってロゴを表示 → 1.2秒後にフェードアウト → 完全に除去）
     const overlay = document.getElementById('splash-overlay');
-    // 少し待ってからロゴをふわっと表示
     setTimeout(() => overlay.classList.add('show'), 80);
-    // 1.2秒後にフェードアウト開始
     setTimeout(() => overlay.classList.add('hide'), 1200);
-    // フェードアウト完了後に完全削除（スクロール等を妨げないよう）
     setTimeout(() => overlay.classList.add('gone'), 1750);
-
-    // スクロールフェードイン
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
   </script>
-
+  <script src="/assets/js/site.js" defer></script>
   <script src="/assets/js/analytics.js" defer></script>
 </body>
 </html>
