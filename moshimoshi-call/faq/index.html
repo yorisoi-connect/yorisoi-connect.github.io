@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- html.js付与（JS動作時のみ出現アニメを有効化）＋文字サイズ設定（標準/大）の復元 -->
+  <script>(function(d){d.className+=" js";try{if(localStorage.getItem("mc-fs")==="lg")d.className+=" fs-lg"}catch(e){}})(document.documentElement)</script>
   <title>よくある質問｜もしもしコール｜よりそいコネクト</title>
   <meta name="description" content="もしもしコールに関するよくある質問をまとめています。サービス内容・料金・ご利用方法・緊急時の対応など。">
 
@@ -117,6 +119,13 @@
     <div class="header-inner">
       <a href="/moshimoshi-call/" class="site-logo">もしもし<span>コール</span></a>
 
+      <!-- 文字サイズ切り替え -->
+      <div class="fs-toggle" role="group" aria-label="文字サイズ変更">
+        <span class="fs-label">文字サイズ</span>
+        <button type="button" class="fs-btn is-active" data-fs="std" aria-pressed="true">標準</button>
+        <button type="button" class="fs-btn" data-fs="lg" aria-pressed="false">大</button>
+      </div>
+
       <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="global-nav">
         <span></span><span></span><span></span>
       </button>
@@ -152,7 +161,7 @@
       </nav>
     </div>
 
-    <section class="section section-tight">
+    <section class="section section-tight wave-to-dark">
       <div class="container container-narrow">
 
         <!-- ============================== カテゴリ：サービス内容 ============================== -->
@@ -305,9 +314,9 @@
     </section>
 
     <!-- ============================== CTA ============================== -->
-    <section class="section section-green contact-cta">
+    <section class="section section-dark contact-cta">
       <div class="container container-narrow">
-        <h2 class="section-title">解決しないご質問はありませんか？</h2>
+        <h2 class="section-title wipe">解決しないご質問はありませんか？</h2>
         <p class="section-lead">こちらに掲載のないご質問も、お気軽にお問い合わせください。</p>
         <div class="contact-buttons">
           <a href="https://lin.ee/S9PcDYm" target="_blank" rel="noopener" class="btn btn-line btn-large">LINEで無料相談</a>

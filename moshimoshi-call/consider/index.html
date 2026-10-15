@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- html.js付与（JS動作時のみ出現アニメを有効化）＋文字サイズ設定（標準/大）の復元 -->
+  <script>(function(d){d.className+=" js";try{if(localStorage.getItem("mc-fs")==="lg")d.className+=" fs-lg"}catch(e){}})(document.documentElement)</script>
   <title>申込を検討している方へ｜もしもしコール｜よりそいコネクト</title>
   <meta name="description" content="もしもしコールのお申込を迷っている方へ。「親が説得できるか」「料金」「効果」「解約」「始め方」——申込前によくある5つの不安にお答えします。1ヶ月無料のお試し制度あり。">
 
@@ -106,12 +108,9 @@
     }
     /* お試し→CTA→フッターは緑をつなげるため、共通CSSの白ウェーブ装飾を消す
        (ウェーブ分の余白 calc(80px + 52px) も標準の80pxに戻す) */
-    #trial::after,
     #contact::after { display: none; }
-    #trial,
     #contact { padding-bottom: 80px; }
     @media (max-width: 768px) {
-      #trial,
       #contact { padding-bottom: 56px; }
     }
   </style>
@@ -131,6 +130,13 @@
   <header class="site-header" id="site-header">
     <div class="header-inner">
       <a href="/moshimoshi-call/" class="site-logo">もしもし<span>コール</span></a>
+
+      <!-- 文字サイズ切り替え -->
+      <div class="fs-toggle" role="group" aria-label="文字サイズ変更">
+        <span class="fs-label">文字サイズ</span>
+        <button type="button" class="fs-btn is-active" data-fs="std" aria-pressed="true">標準</button>
+        <button type="button" class="fs-btn" data-fs="lg" aria-pressed="false">大</button>
+      </div>
 
       <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="global-nav">
         <span></span><span></span><span></span>
@@ -170,10 +176,10 @@
     <!-- ============================== (0) リード・目次 ============================== -->
     <section class="section section-tight">
       <div class="container container-narrow">
-        <h2 class="section-title">申込前によくある5つの不安</h2>
+        <h2 class="section-title wipe">申込前によくある5つの不安</h2>
         <p class="section-lead">サービスの内容をご覧いただいたうえで、それでもお申込を迷われる方は少なくありません。<br>よくいただく不安は、以下の5つです。当てはまるものからご覧ください。</p>
 
-        <ol class="concern-index fade-in">
+        <ol class="concern-index rise">
           <li><a href="#concern-persuasion">親を説得できるか不安</a></li>
           <li><a href="#concern-price">料金を払い続けられるか不安</a></li>
           <li><a href="#concern-effect">効果があるのか分からない</a></li>
@@ -186,11 +192,11 @@
     <!-- ============================== (1) 親を説得できるか不安 ============================== -->
     <section class="section section-green" id="concern-persuasion" data-ga-section="concern_persuasion">
       <div class="container container-narrow concern-body">
-        <h2 class="section-title">1. 親を説得できるか不安</h2>
+        <h2 class="section-title wipe">1. 親を説得できるか不安</h2>
         <p>「まだ元気だから必要ない」と、親御さまに断られてしまいそう——そんな方は少なくありません。</p>
         <p>伝え方をすこし変えるだけで、受け止められ方が変わることがあります。</p>
 
-        <div class="hint-cards fade-in">
+        <div class="hint-cards rise">
           <div class="hint-card">
             <p class="hint-label">伝え方1：自分を主語にする</p>
             <p class="hint-quote">「離れて暮らす自分が安心したいから、受けてみてほしい」</p>
@@ -212,7 +218,7 @@
     <!-- ============================== (2) 料金を払い続けられるか不安 ============================== -->
     <section class="section" id="concern-price" data-ga-section="concern_price">
       <div class="container container-narrow concern-body">
-        <h2 class="section-title">2. 料金を払い続けられるか不安</h2>
+        <h2 class="section-title wipe">2. 料金を払い続けられるか不安</h2>
         <p>もしもしコールの月額は、<strong>ライトプラン 3,500円（税込・月2回のお電話）</strong>から。おすすめのスタンダードプランは<strong>7,500円（税込）</strong>で、週1回のお電話とご家族への週次レポートが付きます。</p>
         <p>また、いきなり月額のお支払いが始まることはありません。まずは<strong>1ヶ月、完全無料</strong>でお試しいただき、ご満足いただけた場合にのみ正式なお申込（登録料 8,000円・税込）に進む流れです。</p>
         <p>プラン変更もいつでも可能ですので、お気軽にお問い合わせください。</p>
@@ -225,7 +231,7 @@
     <!-- ============================== (3) 効果があるのか分からない ============================== -->
     <section class="section section-green" id="concern-effect" data-ga-section="concern_effect">
       <div class="container container-narrow concern-body">
-        <h2 class="section-title">3. 効果があるのか分からない</h2>
+        <h2 class="section-title wipe">3. 効果があるのか分からない</h2>
         <p>「電話だけで何が変わるの？」と思われるかもしれません。</p>
         <p>もしもしコールでは、通話のたびに「会話の様子」と「担当者からのひとこと」をレポートにしてご家族へお届けします。親御さまの声の調子や暮らしぶりの変化を、<strong>レポートで確かめながら</strong>続けられます。</p>
         <p>また、家族にはかえって話しにくい体調のことや悩みごとが、第三者との定期的な会話のなかで自然と出てくることもあります。</p>
@@ -236,7 +242,7 @@
     <!-- ============================== (4) 契約後にやめられないのではないか ============================== -->
     <section class="section" id="concern-cancel" data-ga-section="concern_cancel">
       <div class="container container-narrow concern-body">
-        <h2 class="section-title">4. 契約後にやめられないのではないか</h2>
+        <h2 class="section-title wipe">4. 契約後にやめられないのではないか</h2>
         <p>もしもしコールは<strong>1ヶ月単位でいつでも解約でき、解約金・違約金はありません</strong>。当月末日までにご連絡いただければ、その月の末日をもって解約となり、翌月分の料金はかかりません。</p>
         <p>そもそも最初の1ヶ月は無料のお試し期間ですので、「合わない」と感じたら正式なお申込に進まない、という選択も可能です。ご入院や長期ご旅行などの際は、解約ではなく一時休止として柔軟に対応することも可能です。</p>
         <p class="note-text">解約について詳しくは<a href="/moshimoshi-call/faq/">よくある質問</a>をご覧ください。</p>
@@ -246,9 +252,9 @@
     <!-- ============================== (5) 何から始めればいいか分からない ============================== -->
     <section class="section section-green" id="concern-start" data-ga-section="concern_start">
       <div class="container">
-        <h2 class="section-title">5. 何から始めればいいか分からない</h2>
+        <h2 class="section-title wipe">5. 何から始めればいいか分からない</h2>
         <p class="section-lead">最初の一歩は、LINE・お電話・メールフォームでの<strong>無料相談</strong>です。<br>「まだ迷っている」「話だけ聞きたい」という段階でも、お気軽にご相談ください。<br>お申込後は、次の流れでお電話が始まります。</p>
-        <ol class="flow-steps">
+        <ol class="flow-steps stagger">
           <li class="flow-step fade-in">
             <div class="flow-step-num">1</div>
             <h3>お申し込み</h3>
@@ -276,7 +282,7 @@
     <!-- ============================== (6) 利用者の声（抜粋） ============================== -->
     <section class="section voice" id="voice">
       <div class="container">
-        <h2 class="section-title">ご利用者様の声</h2>
+        <h2 class="section-title wipe">ご利用者様の声</h2>
         <p class="section-lead">実際にご利用いただいたご家族からいただいた声の一部をご紹介します。</p>
 
         <div class="voice-carousel-wrap fade-in">
@@ -315,9 +321,9 @@
     </section>
 
     <!-- ============================== (7) お試しのご案内 ============================== -->
-    <section class="section section-green" id="trial" data-ga-section="trial">
+    <section class="section section-green wave-to-dark" id="trial" data-ga-section="trial">
       <div class="container">
-        <h2 class="section-title">まずは無料のお試しから</h2>
+        <h2 class="section-title wipe">まずは無料のお試しから</h2>
         <p class="section-lead">ここまでお読みいただいた方は、大切なご家族の日常生活の質向上に大変ご興味があるのだと思います。<br>お試し期間は、正式なお申込が前提ではなく、このサービスが合うか合わないかのご判断をいただくためにご用意しております。<br>「ちょっと試してみるか」くらいの気持ちでお連絡いただいて構いませんので、もし迷っている場合はぜひご相談ください。</p>
 
         <div class="campaign-banner fade-in">
@@ -325,7 +331,7 @@
           <p class="campaign-banner-sub">1ヶ月目は完全無料。ご満足いただければ2ヶ月目も無料でご利用いただけます。</p>
         </div>
 
-        <ol class="trial-steps fade-in">
+        <ol class="trial-steps rise">
           <li class="trial-step">
             <div class="trial-step-num">1</div>
             <div class="trial-step-body">
@@ -354,9 +360,9 @@
     </section>
 
     <!-- ============================== (8) お問い合わせCTA ============================== -->
-    <section class="section section-green contact-cta" id="contact" data-ga-section="contact_cta">
+    <section class="section section-dark contact-cta" id="contact" data-ga-section="contact_cta">
       <div class="container container-narrow">
-        <h2 class="section-title">下記のボタンから相談可能です</h2>
+        <h2 class="section-title wipe">下記のボタンから相談可能です</h2>
         <p class="section-lead">お申込を決めていなくても構いませんし、いつでもやめられます。<br>とりあえず話を聞いてみたいという気持ちでご相談ください。</p>
         <div class="contact-buttons">
           <a href="https://lin.ee/S9PcDYm" target="_blank" rel="noopener" class="btn btn-line btn-large">LINEで無料相談</a>

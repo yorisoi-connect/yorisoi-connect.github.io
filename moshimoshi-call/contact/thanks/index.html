@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- html.js付与（JS動作時のみ出現アニメを有効化）＋文字サイズ設定（標準/大）の復元 -->
+  <script>(function(d){d.className+=" js";try{if(localStorage.getItem("mc-fs")==="lg")d.className+=" fs-lg"}catch(e){}})(document.documentElement)</script>
   <title>送信完了｜もしもしコール｜よりそいコネクト</title>
   <meta name="description" content="お問い合わせありがとうございました。内容を確認のうえ、担当者よりご連絡いたします。">
   <meta name="robots" content="noindex">
@@ -44,6 +46,13 @@
     <div class="header-inner">
       <a href="/moshimoshi-call/" class="site-logo">もしもし<span>コール</span></a>
 
+      <!-- 文字サイズ切り替え -->
+      <div class="fs-toggle" role="group" aria-label="文字サイズ変更">
+        <span class="fs-label">文字サイズ</span>
+        <button type="button" class="fs-btn is-active" data-fs="std" aria-pressed="true">標準</button>
+        <button type="button" class="fs-btn" data-fs="lg" aria-pressed="false">大</button>
+      </div>
+
       <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="global-nav">
         <span></span><span></span><span></span>
       </button>
@@ -83,7 +92,7 @@
     <!-- ============================== 送信完了メッセージ ============================== -->
     <section class="section section-tight">
       <div class="container container-narrow">
-        <h2 class="section-title">お問い合わせを受け付けました</h2>
+        <h2 class="section-title wipe">お問い合わせを受け付けました</h2>
         <p class="section-lead">
           内容を確認のうえ、担当者より順次ご連絡いたします。<br>
           今しばらくお待ちくださいませ。

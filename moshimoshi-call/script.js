@@ -7,6 +7,37 @@
 document.addEventListener('DOMContentLoaded', function () {
 
   /* ------------------------------------------------------------------
+     0. 文字サイズ切り替え（ヘッダーの「標準／大」ボタン）
+        html.fs-lg の付け外しと localStorage への保存のみ。
+        初期復元は各ページ冒頭のインラインスクリプトが行う
+     ------------------------------------------------------------------ */
+  var fsButtons = document.querySelectorAll('.fs-btn');
+
+  if (fsButtons.length > 0) {
+    var updateFsButtons = function () {
+      var isLarge = document.documentElement.classList.contains('fs-lg');
+      fsButtons.forEach(function (btn) {
+        var active = (btn.getAttribute('data-fs') === 'lg') === isLarge;
+        btn.classList.toggle('is-active', active);
+        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+    };
+
+    fsButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var large = btn.getAttribute('data-fs') === 'lg';
+        document.documentElement.classList.toggle('fs-lg', large);
+        try {
+          localStorage.setItem('mc-fs', large ? 'lg' : 'std');
+        } catch (e) { /* プライベートモード等で保存できなくても切り替え自体は動かす */ }
+        updateFsButtons();
+      });
+    });
+
+    updateFsButtons();
+  }
+
+  /* ------------------------------------------------------------------
      1. ヘッダー：スクロールで背景色を変える
      ------------------------------------------------------------------ */
   var header = document.getElementById('site-header');
@@ -76,9 +107,11 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /* ------------------------------------------------------------------
-     4. スクロールで要素をフェードイン表示（IntersectionObserver）
+     4. スクロールで要素を出現表示（IntersectionObserver）
+        .fade-in / .rise / .wipe いずれも .is-visible を付けるだけ。
+        見た目の違いはCSS側の定義で出し分ける
      ------------------------------------------------------------------ */
-  var fadeEls = document.querySelectorAll('.fade-in');
+  var fadeEls = document.querySelectorAll('.fade-in, .rise, .wipe');
 
   if ('IntersectionObserver' in window && fadeEls.length > 0) {
     var observer = new IntersectionObserver(

@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- html.js付与（JS動作時のみ出現アニメを有効化）＋文字サイズ設定（標準/大）の復元 -->
+  <script>(function(d){d.className+=" js";try{if(localStorage.getItem("mc-fs")==="lg")d.className+=" fs-lg"}catch(e){}})(document.documentElement)</script>
   <title>もしもしコール｜一人暮らしの親への定期電話・会話で見守るサービス｜よりそいコネクト</title>
   <meta name="description" content="一人暮らしの親御さんに、週1回・約15分の定期電話でお話し相手になるサービス。通話後にご家族へレポートをお送りするので、会話を通じたゆるやかな見守りとしてもご利用いただけます。孤独ケアに特化した『もしもしコール』。">
 
@@ -59,6 +61,13 @@
     <div class="header-inner">
       <a href="/moshimoshi-call/" class="site-logo">もしもし<span>コール</span></a>
 
+      <!-- 文字サイズ切り替え -->
+      <div class="fs-toggle" role="group" aria-label="文字サイズ変更">
+        <span class="fs-label">文字サイズ</span>
+        <button type="button" class="fs-btn is-active" data-fs="std" aria-pressed="true">標準</button>
+        <button type="button" class="fs-btn" data-fs="lg" aria-pressed="false">大</button>
+      </div>
+
       <!-- ハンバーガーボタン（モバイル用） -->
       <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="global-nav">
         <span></span><span></span><span></span>
@@ -104,7 +113,7 @@
     <!-- ============================== Section 2: 課題提起（共感） ============================== -->
     <section class="section worries" id="worries">
       <div class="container">
-        <h2 class="section-title">このようなお悩みはありませんか？</h2>
+        <h2 class="section-title wipe">このようなお悩みはありませんか？</h2>
 
         <!-- ① 感情的な共感：吹き出し（内なる声） -->
         <div class="worries-bubbles">
@@ -144,10 +153,10 @@
     <!-- ============================== Section 3: サービス紹介 ============================== -->
     <section class="section section-green features" id="features" data-ga-section="service_detail">
       <div class="container">
-        <h2 class="section-title">もしもしコールについて</h2>
+        <h2 class="section-title wipe">もしもしコールについて</h2>
         <p class="section-lead">もしもしコールは、一人暮らしの親御さまに、定期的に「人の声」と会話の時間を届けるサービスです。</p>
 
-        <div class="card-grid card-grid-2">
+        <div class="card-grid card-grid-2 stagger">
           <div class="feature-card fade-in">
             <div class="feature-icon-wrap">
               <img src="/moshimoshi-call/assets/icons/icon_calendar.png" alt="" width="40" height="40">
@@ -183,7 +192,7 @@
     <!-- ============================== Section 4: もしもしコールの価値 ============================== -->
     <section class="section value" id="value">
       <div class="container">
-        <h2 class="section-title">もしもしコールの価値</h2>
+        <h2 class="section-title wipe">もしもしコールの価値</h2>
         <div class="value-body fade-in">
           <p>一人暮らしの高齢者の多くが、誰とも話さない時間を毎日過ごしています。話し相手はテレビだけ、という日が続くことも珍しくありません。</p>
           <p>社会的な孤立や孤独感が心身に影響を与える可能性があることは、近年国内外の研究で広く指摘されています。特別なことではなく、「定期的に誰かと話す時間がある」というただそれだけのことが、生活のリズムや気持ちの安定につながりやすいと考えられています。</p>
@@ -195,9 +204,9 @@
     </section>
 
     <!-- ============================== Section 5: 他サービスとの比較 ============================== -->
-    <section class="section section-green comparison" id="comparison">
+    <section class="section section-green comparison wave-to-cream" id="comparison">
       <div class="container">
-        <h2 class="section-title">見守りサービスとの違い</h2>
+        <h2 class="section-title wipe">見守りサービスとの違い</h2>
 
         <!-- 一般的な見守りサービスの種類比較 -->
         <div class="table-scroll fade-in">
@@ -308,9 +317,9 @@
     </section>
 
     <!-- ============================== Section 6: レポート紹介 ============================== -->
-    <section class="section report" id="report" data-ga-section="report">
+    <section class="section section-cream wave-to-green report" id="report" data-ga-section="report">
       <div class="container container-narrow">
-        <h2 class="section-title">通話後、ご家族へレポートをお送りします</h2>
+        <h2 class="section-title wipe">通話後、ご家族へレポートをお送りします</h2>
         <p class="section-lead">離れていても、様子がわかる安心を。</p>
 
         <!-- レポートのモックアップ（サンプル） -->
@@ -346,14 +355,14 @@
     <!-- ============================== Section 8: 料金プラン（概要） ============================== -->
     <section class="section section-green price" id="price" data-ga-section="pricing">
       <div class="container">
-        <h2 class="section-title">料金プラン</h2>
+        <h2 class="section-title wipe">料金プラン</h2>
 
         <div class="campaign-banner fade-in">
           <p class="campaign-banner-title">2ヶ月お試しキャンペーン実施中！</p>
           <p class="campaign-banner-sub">1ヶ月目は完全無料。ご満足いただければ2ヶ月目も無料でご利用いただけます。</p>
         </div>
 
-        <div class="plan-cards">
+        <div class="plan-cards stagger">
           <!-- ライトプラン -->
           <div class="plan-card fade-in">
             <h3 class="plan-name">ライトプラン</h3>
@@ -392,7 +401,7 @@
         <p class="price-note">2か月目以降のご利用は正式にお申込が必要になります。（登録料 8,000円(税込)）<br>※ プランの変更は月単位でいつでも可能です。</p>
 
         <!-- 3ステップフロー -->
-        <ol class="trial-steps fade-in">
+        <ol class="trial-steps rise">
           <li class="trial-step">
             <div class="trial-step-num">1</div>
             <div class="trial-step-body">
@@ -428,8 +437,8 @@
     <!-- ============================== Section 9: ご利用の流れ ============================== -->
     <section class="section flow" id="flow">
       <div class="container">
-        <h2 class="section-title">ご利用までの流れ</h2>
-        <ol class="flow-steps">
+        <h2 class="section-title wipe">ご利用までの流れ</h2>
+        <ol class="flow-steps stagger">
           <li class="flow-step fade-in">
             <div class="flow-step-num">1</div>
             <h3>お申し込み</h3>
@@ -457,10 +466,10 @@
     <!-- ============================== Section 10: 利用者の声 ============================== -->
     <section class="section section-green voice" id="voice" data-ga-section="voice">
       <div class="container">
-        <h2 class="section-title">ご利用者様の声</h2>
+        <h2 class="section-title wipe">ご利用者様の声</h2>
         <p class="section-lead">実際にご利用いただいた方・ご家族からいただいた声の一部をご紹介します。</p>
 
-        <div class="voice-carousel-wrap fade-in">
+        <div class="voice-carousel-wrap rise">
           <button class="carousel-btn carousel-btn-prev" aria-label="前の声を見る">&#8249;</button>
           <div class="carousel-track-wrap">
             <ul class="carousel-track">
@@ -524,9 +533,9 @@
     </section>
 
     <!-- ============================== Section 11: よくある質問（抜粋） ============================== -->
-    <section class="section faq" id="faq">
+    <section class="section faq wave-to-dark" id="faq">
       <div class="container container-narrow">
-        <h2 class="section-title">よくあるご質問</h2>
+        <h2 class="section-title wipe">よくあるご質問</h2>
 
         <div class="faq-list">
           <div class="faq-item">
@@ -574,9 +583,9 @@
     </section>
 
     <!-- ============================== Section 12: お問い合わせCTA ============================== -->
-    <section class="section section-green contact-cta" id="contact" data-ga-section="contact_cta">
+    <section class="section section-dark contact-cta" id="contact" data-ga-section="contact_cta">
       <div class="container container-narrow">
-        <h2 class="section-title">まずはお気軽にご相談ください</h2>
+        <h2 class="section-title wipe">まずはお気軽にご相談ください</h2>
         <p class="section-lead">ご不明な点やご相談は、LINE・お電話・メールフォームよりお気軽にどうぞ。</p>
         <div class="contact-buttons">
           <a href="https://lin.ee/S9PcDYm" target="_blank" rel="noopener" class="btn btn-line btn-large">LINEで無料相談</a>

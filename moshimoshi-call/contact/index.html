@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- html.js付与（JS動作時のみ出現アニメを有効化）＋文字サイズ設定（標準/大）の復元 -->
+  <script>(function(d){d.className+=" js";try{if(localStorage.getItem("mc-fs")==="lg")d.className+=" fs-lg"}catch(e){}})(document.documentElement)</script>
   <title>お問い合わせ｜もしもしコール｜よりそいコネクト</title>
   <meta name="description" content="もしもしコールへのお問い合わせはこちら。LINE・お電話・メールフォームからお気軽にご相談ください。">
 
@@ -36,6 +38,13 @@
   <header class="site-header" id="site-header">
     <div class="header-inner">
       <a href="/moshimoshi-call/" class="site-logo">もしもし<span>コール</span></a>
+
+      <!-- 文字サイズ切り替え -->
+      <div class="fs-toggle" role="group" aria-label="文字サイズ変更">
+        <span class="fs-label">文字サイズ</span>
+        <button type="button" class="fs-btn is-active" data-fs="std" aria-pressed="true">標準</button>
+        <button type="button" class="fs-btn" data-fs="lg" aria-pressed="false">大</button>
+      </div>
 
       <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="global-nav">
         <span></span><span></span><span></span>
@@ -75,7 +84,7 @@
     <!-- ============================== LINE・電話での相談 ============================== -->
     <section class="section section-tight">
       <div class="container container-narrow">
-        <h2 class="section-title">お急ぎの方はこちら</h2>
+        <h2 class="section-title wipe">お急ぎの方はこちら</h2>
         <div class="contact-buttons">
           <a href="https://lin.ee/S9PcDYm" target="_blank" rel="noopener" class="btn btn-line btn-large">LINEで無料相談</a>
           <a href="tel:0368225257" class="btn btn-tel btn-large"><span aria-hidden="true"></span> 電話で相談：03-6822-5257</a>
@@ -87,7 +96,7 @@
     <!-- ============================== メールフォーム ============================== -->
     <section class="section section-green">
       <div class="container container-narrow">
-        <h2 class="section-title">メールフォーム</h2>
+        <h2 class="section-title wipe">メールフォーム</h2>
         <p class="section-lead">以下のフォームに必要事項をご入力のうえ、送信してください。</p>
 
         <div class="gform-wrap fade-in">

@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- html.js付与（JS動作時のみ出現アニメを有効化）＋文字サイズ設定（標準/大）の復元 -->
+  <script>(function(d){d.className+=" js";try{if(localStorage.getItem("mc-fs")==="lg")d.className+=" fs-lg"}catch(e){}})(document.documentElement)</script>
   <title>料金プラン｜もしもしコール｜よりそいコネクト</title>
   <meta name="description" content="もしもしコールの料金プラン。ライトプラン月3,500円〜。2ヶ月お試し制度で1ヶ月目完全無料。ご満足いただければ正式お申込（登録料8,000円）、2ヶ月目も月額無料でご利用いただけます。">
 
@@ -36,6 +38,13 @@
   <header class="site-header" id="site-header">
     <div class="header-inner">
       <a href="/moshimoshi-call/" class="site-logo">もしもし<span>コール</span></a>
+
+      <!-- 文字サイズ切り替え -->
+      <div class="fs-toggle" role="group" aria-label="文字サイズ変更">
+        <span class="fs-label">文字サイズ</span>
+        <button type="button" class="fs-btn is-active" data-fs="std" aria-pressed="true">標準</button>
+        <button type="button" class="fs-btn" data-fs="lg" aria-pressed="false">大</button>
+      </div>
 
       <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="global-nav">
         <span></span><span></span><span></span>
@@ -75,7 +84,7 @@
     <!-- ============================== 2ヶ月お試し制度 ============================== -->
     <section class="section section-tight" id="campaign" data-ga-section="campaign">
       <div class="container">
-        <h2 class="section-title">プランのご案内</h2>
+        <h2 class="section-title wipe">プランのご案内</h2>
 
         <div class="campaign-banner fade-in">
           <p class="campaign-banner-title">2ヶ月お試しキャンペーン実施中！</p>
@@ -83,7 +92,7 @@
         </div>
 
         <!-- プランカード -->
-        <div class="plan-cards">
+        <div class="plan-cards stagger">
           <!-- ライトプラン -->
           <div class="plan-card fade-in">
             <h3 class="plan-name">ライトプラン</h3>
@@ -122,7 +131,7 @@
         <p class="price-note">2か月目以降のご利用は正式にお申込が必要になります。（登録料 8,000円(税込)）<br>※ プランの変更は月単位でいつでも可能です。</p>
 
         <!-- 3ステップフロー -->
-        <ol class="trial-steps fade-in">
+        <ol class="trial-steps rise">
           <li class="trial-step">
             <div class="trial-step-num">1</div>
             <div class="trial-step-body">
@@ -157,9 +166,9 @@
     <!-- ============================== 料金詳細表 ============================== -->
     <section class="section section-green" id="price-detail" data-ga-section="pricing">
       <div class="container">
-        <h2 class="section-title">料金の詳細</h2>
+        <h2 class="section-title wipe">料金の詳細</h2>
 
-        <div class="table-scroll fade-in">
+        <div class="table-scroll rise">
           <table class="compare-table">
             <caption class="table-caption">プラン比較表</caption>
             <thead>
@@ -197,7 +206,7 @@
           </table>
         </div>
 
-        <div class="table-scroll fade-in">
+        <div class="table-scroll rise">
           <table class="compare-table">
             <caption class="table-caption">登録手数料</caption>
             <tbody>
@@ -213,7 +222,7 @@
           <li>※通話にかかる電話料金は当方で負担いたします。ご利用者様のご負担はありません。</li>
         </ul>
 
-        <h2 class="section-title" style="margin-top: 3rem;">ご解約・お休みについて</h2>
+        <h2 class="section-title wipe" style="margin-top: 3rem;">ご解約・お休みについて</h2>
         <ul class="price-notes-list">
           <li>※1ヶ月単位でご利用いただけます。最低利用期間の縛りや、解約金・違約金はありません。</li>
           <li>※解約をご希望の場合は、お電話・LINE・メールでご連絡ください。当月末日までのご連絡で、その月の末日をもって解約となります（翌月分の料金はかかりません）。</li>
@@ -225,9 +234,9 @@
     </section>
 
     <!-- ============================== 料金に関するFAQ ============================== -->
-    <section class="section" id="price-faq">
+    <section class="section wave-to-dark" id="price-faq">
       <div class="container container-narrow">
-        <h2 class="section-title">よくある料金に関する質問</h2>
+        <h2 class="section-title wipe">よくある料金に関する質問</h2>
 
         <div class="faq-list">
           <div class="faq-item">
@@ -275,9 +284,9 @@
     </section>
 
     <!-- ============================== CTA ============================== -->
-    <section class="section section-green contact-cta">
+    <section class="section section-dark contact-cta">
       <div class="container container-narrow">
-        <h2 class="section-title">まずはお気軽にご相談ください</h2>
+        <h2 class="section-title wipe">まずはお気軽にご相談ください</h2>
         <p class="section-lead">「どちらのプランが合うかわからない」という段階でも大丈夫です。お気軽にどうぞ。</p>
         <div class="contact-buttons">
           <a href="https://lin.ee/S9PcDYm" target="_blank" rel="noopener" class="btn btn-line btn-large">LINEで無料相談</a>
