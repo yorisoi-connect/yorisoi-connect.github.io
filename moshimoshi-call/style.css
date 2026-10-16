@@ -980,6 +980,14 @@ html.js .wipe.is-visible {
   border-radius: var(--radius-card);
 }
 
+/* PCでは文章の長さに合わせて広げ、各行を途中で折り返さない */
+@media (min-width: 769px) {
+  .campaign-banner {
+    width: fit-content;
+    max-width: 100%;
+  }
+}
+
 .campaign-banner-title {
   font-size: 19px;
   font-weight: 700;
@@ -1009,6 +1017,30 @@ html.js .wipe.is-visible {
   padding: 28px 20px;
   text-align: center;
   box-shadow: var(--shadow-card);
+}
+
+/* スポットプラン（定期プランの下に1枚だけ置く） */
+.plan-spot-heading {
+  margin: 48px auto 16px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+.plan-card-spot {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.plan-details li.plan-details-note {
+  padding-left: 0;
+  font-size: 14px;
+  color: var(--color-text-light);
+}
+
+.plan-details li.plan-details-note::before {
+  content: none;
 }
 
 /* おすすめプランの強調 */
