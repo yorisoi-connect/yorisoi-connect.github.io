@@ -5,14 +5,14 @@
   <!-- html.js付与（JS動作時のみ出現アニメを有効化）＋文字サイズ設定（標準/大）の復元 -->
   <script>(function(d){d.className+=" js";try{if(localStorage.getItem("mc-fs")==="lg")d.className+=" fs-lg"}catch(e){}})(document.documentElement)</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>よりそいコネクト | 定期電話サービス・エアコンクリーニング</title>
-  <meta name="description" content="よりそいコネクトは、高齢者向けの定期電話サービス「もしもしコール」と、エアコンクリーニング「みえる！おそうじ」を運営しています。">
+  <title>よりそいコネクト | 定期電話サービス・ハウスクリーニング</title>
+  <meta name="description" content="よりそいコネクトは、高齢者向けの定期電話サービス「もしもしコール」と、ハウスクリーニング「みえる！おそうじ」を運営しています。">
   <link rel="canonical" href="https://yorisoi-connect.com/">
 
   <!-- OGP -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="よりそいコネクト|定期電話サービス・エアコンクリーニング">
-  <meta property="og:description" content="高齢者向けの定期電話サービス「もしもしコール」と、エアコンクリーニング「みえる！おそうじ」を運営しています。">
+  <meta property="og:title" content="よりそいコネクト|定期電話サービス・ハウスクリーニング">
+  <meta property="og:description" content="高齢者向けの定期電話サービス「もしもしコール」と、ハウスクリーニング「みえる！おそうじ」を運営しています。">
   <meta property="og:url" content="https://yorisoi-connect.com/">
   <meta property="og:site_name" content="よりそいコネクト">
   <meta property="og:image" content="https://yorisoi-connect.com/assets/images/ogp.png">
@@ -34,7 +34,7 @@
     "name": "よりそいコネクト",
     "url": "https://yorisoi-connect.com/",
     "logo": "https://yorisoi-connect.com/icon-512.png",
-    "description": "高齢者向けの定期電話サービス「もしもしコール」と、エアコンクリーニング「みえる！おそうじ」を運営。",
+    "description": "高齢者向けの定期電話サービス「もしもしコール」と、ハウスクリーニング「みえる！おそうじ」を運営。",
     "email": "info@yorisoi-connect.com",
     "telephone": "+81-3-6822-5257",
     "founder": {"@type": "Person", "name": "戸梶 凌"},
@@ -74,12 +74,22 @@
       transform: translateY(10px);
       transition: opacity 0.45s ease, transform 0.45s ease;
     }
+    /* 左から右へ描かれる心拍のような線（小さな谷・大きな山・小さな谷） */
     .splash-line {
-      width: 0;
-      height: 3px;
-      border-radius: 2px;
-      background: var(--color-primary);
-      transition: width 0.6s var(--ease) 0.1s;
+      display: block;
+      width: 120px;
+      height: 36px;
+      overflow: visible;
+    }
+    .splash-line path {
+      fill: none;
+      stroke: var(--color-primary);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+      transition: stroke-dashoffset 0.8s ease-in-out 0.1s;
     }
     .splash-catch {
       font-family: 'Shippori Mincho', serif;
@@ -92,7 +102,7 @@
     }
     #splash-overlay.show .splash-logo,
     #splash-overlay.show .splash-catch { opacity: 1; transform: none; }
-    #splash-overlay.show .splash-line { width: 40px; }
+    #splash-overlay.show .splash-line path { stroke-dashoffset: 0; }
 
     /* ── ヒーロー ── */
     .hero {
@@ -489,7 +499,7 @@
   <!-- スプラッシュオーバーレイ -->
   <div id="splash-overlay" aria-hidden="true">
     <span class="splash-logo">よりそいコネクト</span>
-    <div class="splash-line"></div>
+    <svg class="splash-line" viewBox="0 0 120 36"><path pathLength="1" d="M2 22H39C42 22 43 29 45.5 29S49 22 52 22C54.5 22 54 5 60 5S65.5 22 68 22C71 22 72 29 74.5 29S78 22 81 22H118"/></svg>
     <span class="splash-catch">ひとりひとりに、まっすぐ寄り添う。</span>
   </div>
 
@@ -534,7 +544,7 @@
           </h1>
           <p class="hero-sub hero-anim" style="--d: 0.2s">
             高齢者向けの定期電話サービス<span class="nw">「もしもしコール」</span>と、<br>
-            壁掛けエアコンのクリーニング<span class="nw">「みえる！おそうじ」</span>を運営しています。
+            ハウスクリーニング<span class="nw">「みえる！おそうじ」</span>を運営しています。
           </p>
           <div class="hero-btns hero-anim" style="--d: 0.32s">
             <a href="/moshimoshi-call/" class="btn btn-large hero-btn">もしもしコール</a>
