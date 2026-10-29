@@ -5,14 +5,14 @@
   <!-- html.js付与（JS動作時のみ出現アニメを有効化）＋文字サイズ設定（標準/大）の復元 -->
   <script>(function(d){d.className+=" js";try{if(localStorage.getItem("mc-fs")==="lg")d.className+=" fs-lg"}catch(e){}})(document.documentElement)</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>よりそいコネクト | 高齢者向け孤独ケアサービス</title>
-  <meta name="description" content="よりそいコネクトは、高齢者の孤独ケアに取り組む会社です。会話でゆるやかに見守る定期電話サービス「もしもしコール」を運営しています。">
+  <title>よりそいコネクト | 定期電話サービス・エアコンクリーニング</title>
+  <meta name="description" content="よりそいコネクトは、高齢者向けの定期電話サービス「もしもしコール」と、エアコンクリーニング「みえる！おそうじ」を運営しています。">
   <link rel="canonical" href="https://yorisoi-connect.com/">
 
   <!-- OGP -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="よりそいコネクト|高齢者向け孤独ケアサービス">
-  <meta property="og:description" content="会話でゆるやかに見守る定期電話サービス「もしもしコール」を運営する、高齢者の孤独ケアの会社です。">
+  <meta property="og:title" content="よりそいコネクト|定期電話サービス・エアコンクリーニング">
+  <meta property="og:description" content="高齢者向けの定期電話サービス「もしもしコール」と、エアコンクリーニング「みえる！おそうじ」を運営しています。">
   <meta property="og:url" content="https://yorisoi-connect.com/">
   <meta property="og:site_name" content="よりそいコネクト">
   <meta property="og:image" content="https://yorisoi-connect.com/assets/images/ogp.png">
@@ -34,7 +34,7 @@
     "name": "よりそいコネクト",
     "url": "https://yorisoi-connect.com/",
     "logo": "https://yorisoi-connect.com/icon-512.png",
-    "description": "高齢者の孤独ケアに取り組む会社。会話でゆるやかに見守る定期電話サービス「もしもしコール」を運営。",
+    "description": "高齢者向けの定期電話サービス「もしもしコール」と、エアコンクリーニング「みえる！おそうじ」を運営。",
     "email": "info@yorisoi-connect.com",
     "telephone": "+81-3-6822-5257",
     "founder": {"@type": "Person", "name": "戸梶 凌"},
@@ -173,6 +173,12 @@
       line-height: 1.95;
       margin-bottom: 40px;
     }
+    .hero-sub .nw { display: inline-block; }
+    .hero-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
     /* 読み込み時（スプラッシュが消える頃）に上から順に浮かび上がる */
     html.js .hero-anim {
       animation: rise-in 0.9s var(--ease) both;
@@ -246,6 +252,36 @@
       line-height: 1.9;
       margin-bottom: 28px;
     }
+    /* 2事業を横に並べる（カードは画像を上、本文を下にした縦型） */
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .service-grid .service-card {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr;
+      max-width: none;
+      margin: 0;
+    }
+    .service-grid .service-card-img { aspect-ratio: 16 / 9; }
+    .service-grid .service-card-body {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 32px 32px 36px;
+    }
+    .service-grid .card-desc { flex-grow: 1; }
+    /* 写真がないサービス用の絵（写真ができたら <img> に差し替え） */
+    .service-card-pict {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+    .service-card-pict svg { width: 96px; height: 96px; }
 
     /* ── 代表メッセージ ── */
     .message-inner {
@@ -364,6 +400,20 @@
       font-weight: 400;
       color: rgba(234, 243, 236, 0.7);
     }
+    .contact-item-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .contact-line {
+      margin: 8px 0 4px;
+      background: #fff;
+      color: var(--color-deep);
+      --glow: rgba(0, 0, 0, 0.25);
+    }
+    .contact-line:hover { background: var(--color-bg-green); }
+    .contact-items + .contact-items { margin-top: 20px; }
+    .contact-items-single { grid-template-columns: minmax(0, 370px); justify-content: center; }
 
     @media (max-width: 768px) {
       .hero { padding-top: 72px; padding-bottom: calc(96px + 36px); }
@@ -374,11 +424,14 @@
       .service-card { grid-template-columns: 1fr; }
       .service-card-img { aspect-ratio: 16 / 9; }
       .service-card-body { padding: 28px 24px 32px; }
+      .service-grid { grid-template-columns: 1fr; max-width: 560px; }
+      .service-grid .service-card-body { padding: 28px 24px 32px; }
       .message-inner { grid-template-columns: 1fr; gap: 40px; text-align: center; }
       .message-photo { width: 160px; }
       .message .section-eyebrow { text-align: center; }
       .message-quote { text-align: left; }
       .contact-items { grid-template-columns: 1fr; }
+      .contact-items-single { grid-template-columns: 1fr; }
     }
     @media (max-width: 480px) {
       .hero-catch { font-size: 30px; }
@@ -431,7 +484,6 @@
           <li><a href="/#services">サービス</a></li>
           <li><a href="/#message">代表メッセージ</a></li>
           <li><a href="/company/">会社概要</a></li>
-          <li><a href="/blog/">ブログ</a></li>
           <li><a href="/#contact">お問い合わせ</a></li>
         </ul>
       </nav>
@@ -447,17 +499,17 @@
       <div class="hero-ring" aria-hidden="true"></div>
       <div class="container">
         <div class="hero-inner">
-          <p class="hero-eyebrow hero-anim">高齢者向け孤独ケアサービス</p>
+          <p class="hero-eyebrow hero-anim">定期電話サービス・エアコンクリーニング</p>
           <h1 class="hero-catch">
-            <span class="line hero-anim" style="--d: 0.08s">話すことが、</span>
-            <span class="line hero-anim" style="--d: 0.2s"><em>生きる力になる。</em></span>
+            <span class="line hero-anim" style="--d: 0.08s"><em>よりそいコネクト</em></span>
           </h1>
-          <p class="hero-sub hero-anim" style="--d: 0.32s">
-            よりそいコネクトは、孤独に寄り添う定期コミュニケーションサービスを提供しています。<br>
-            施設に入居されている方にも、ご自宅でお一人でお過ごしの方にも。
+          <p class="hero-sub hero-anim" style="--d: 0.2s">
+            高齢者向けの定期電話サービス<span class="nw">「もしもしコール」</span>と、<br>
+            壁掛けエアコンのクリーニング<span class="nw">「みえる！おそうじ」</span>を運営しています。
           </p>
-          <div class="hero-anim" style="--d: 0.44s">
-            <a href="./moshimoshi-call/" class="btn btn-primary btn-large btn-arrow">もしもしコール</a>
+          <div class="hero-btns hero-anim" style="--d: 0.32s">
+            <a href="/moshimoshi-call/" class="btn btn-primary btn-large btn-arrow">もしもしコール</a>
+            <a href="/mieru-osouji/" class="btn btn-primary btn-large btn-arrow">みえる！おそうじ</a>
           </div>
         </div>
       </div>
@@ -470,21 +522,37 @@
         <p class="section-eyebrow fade-in">OUR SERVICES</p>
         <h2 class="section-title wipe">サービスのご案内</h2>
         <p class="section-lead fade-in">
-          定期的なお電話で、<br>
-          ご高齢の方とご家族に寄り添います。
+          よりそいコネクトが運営している2つのサービスです。
         </p>
-        <a href="./moshimoshi-call/" class="service-card rise">
-          <div class="service-card-img">
-            <img src="/moshimoshi-call/assets/images/hero.png" alt="笑顔で電話をする高齢女性の写真" width="1537" height="1023" loading="lazy">
-          </div>
-          <div class="service-card-body">
-            <h3 class="card-name">もしもし<span>コール</span></h3>
-            <p class="card-desc">
-              一人暮らしのご高齢の親御様に、ご家族の代わりに定期的にお電話してお話しをするサービスです。離れて暮らすご家族の安心感にもつながります。
-            </p>
-            <span class="btn btn-outline btn-arrow">詳しく見る</span>
-          </div>
-        </a>
+        <div class="service-grid stagger">
+          <a href="/moshimoshi-call/" class="service-card rise">
+            <div class="service-card-img">
+              <img src="/moshimoshi-call/assets/images/hero.png" alt="笑顔で電話をする高齢女性の写真" width="1537" height="1023" loading="lazy">
+            </div>
+            <div class="service-card-body">
+              <h3 class="card-name">もしもし<span>コール</span></h3>
+              <p class="card-desc">
+                一人暮らしのご高齢の親御様に、ご家族の代わりに定期的にお電話してお話しをするサービスです。離れて暮らすご家族の安心感にもつながります。
+              </p>
+              <span class="btn btn-outline btn-arrow">詳しく見る</span>
+            </div>
+          </a>
+          <a href="/mieru-osouji/" class="service-card rise">
+            <div class="service-card-img">
+              <!-- TODO 画像：みえる！おそうじの写真ができたら <img> に差し替え -->
+              <div class="service-card-pict" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#7FA88F" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="8" rx="1.5"/><path d="M5 10.5h14M8 16v2M12 16v3M16 16v2"/></svg>
+              </div>
+            </div>
+            <div class="service-card-body">
+              <h3 class="card-name">みえる！<span>おそうじ</span></h3>
+              <p class="card-desc">
+                壁掛けエアコンのクリーニングサービスです。料金・作業・仕上がりを写真でお見せします。対応エリアは東京・千葉・埼玉・神奈川です。
+              </p>
+              <span class="btn btn-outline btn-arrow">詳しく見る</span>
+            </div>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -521,22 +589,37 @@
         <div class="contact-items stagger">
           <div class="contact-item rise">
             <span class="contact-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
             </span>
-            <span class="contact-item-label">MAIL</span>
+            <span class="contact-item-label">MOSHIMOSHI CALL</span>
+            <span class="contact-item-name">もしもしコール</span>
+            <a href="https://lin.ee/S9PcDYm" target="_blank" rel="noopener" class="btn contact-line">LINEで相談する</a>
             <span class="contact-item-value">
-              <a href="mailto:info@yorisoi-connect.com">info@yorisoi-connect.com</a>
+              <a href="tel:0368225257">03-6822-5257</a>
+              <span class="contact-item-note">※担当者直通</span>
+              <a href="tel:08029685824">080-2968-5824</a>
             </span>
           </div>
           <div class="contact-item rise">
             <span class="contact-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
             </span>
-            <span class="contact-item-label">TEL</span>
+            <span class="contact-item-label">MIERU OSOUJI</span>
+            <span class="contact-item-name">みえる！おそうじ</span>
+            <a href="[LINE_URL_CLEANING]" class="btn contact-line">LINEで相談する</a>
             <span class="contact-item-value">
-              <a href="tel:0368225257">03-6822-5257</a>
-              <span class="contact-item-note">※担当者直通</span>
-              <a href="tel:08029685824">080-2968-5824</a>
+              <a href="tel:[PHONE_CLEANING]">[PHONE_CLEANING]</a>
+            </span>
+          </div>
+        </div>
+        <div class="contact-items contact-items-single">
+          <div class="contact-item rise">
+            <span class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            </span>
+            <span class="contact-item-label">MAIL</span>
+            <span class="contact-item-value">
+              <a href="mailto:info@yorisoi-connect.com">info@yorisoi-connect.com</a>
             </span>
           </div>
         </div>
@@ -556,8 +639,8 @@
           <ul>
             <li><a href="/">トップ</a></li>
             <li><a href="/company/">会社概要</a></li>
-            <li><a href="/blog/">ブログ</a></li>
             <li><a href="/moshimoshi-call/">もしもしコール</a></li>
+            <li><a href="/mieru-osouji/">みえる！おそうじ</a></li>
             <li><a href="/#contact">お問い合わせ</a></li>
           </ul>
         </nav>
