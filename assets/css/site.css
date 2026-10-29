@@ -441,6 +441,19 @@ html.js .wipe.is-visible {
   margin-right: 20px;
 }
 
+/* PCではナビの右（ヘッダー右端）に置く */
+@media (min-width: 769px) {
+  .global-nav {
+    margin-left: auto;
+  }
+
+  .fs-toggle {
+    order: 1;
+    margin-left: 28px;
+    margin-right: 0;
+  }
+}
+
 .fs-label {
   font-size: 12px;
   font-weight: 700;
@@ -628,13 +641,6 @@ html.js .page-header > :nth-child(3) { animation-delay: 0.16s; }
 
 .company-table tr:hover td {
   background: #F8FAF8;
-}
-
-.service-btns {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  justify-content: center;
 }
 
 /* --------------------------------------------------------------------------

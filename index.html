@@ -165,7 +165,6 @@
     .hero-catch em {
       font-style: normal;
       color: var(--color-primary-dark);
-      background: linear-gradient(transparent 70%, rgba(210, 180, 140, 0.28) 70%);
     }
     .hero-sub {
       font-size: 17px;
@@ -179,6 +178,32 @@
       flex-wrap: wrap;
       gap: 12px;
     }
+    /* ホバーで左から色がスライドインする */
+    .hero-btn {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      background: #fff;
+      color: var(--color-primary-dark);
+      border-color: var(--color-primary-dark);
+      --glow: rgba(79, 122, 99, 0.4);
+      box-shadow: 0 4px 14px rgba(79, 122, 99, 0.18);
+      transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), color 0.45s var(--ease);
+    }
+    .hero-btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: var(--color-primary-dark);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 0.45s var(--ease);
+    }
+    .hero-btn:hover,
+    .hero-btn:focus-visible { color: #fff; }
+    .hero-btn:hover::before,
+    .hero-btn:focus-visible::before { transform: scaleX(1); }
     /* 読み込み時（スプラッシュが消える頃）に上から順に浮かび上がる */
     html.js .hero-anim {
       animation: rise-in 0.9s var(--ease) both;
@@ -246,7 +271,6 @@
       line-height: 1.4;
       margin-bottom: 14px;
     }
-    .card-name span { color: var(--color-primary); }
     .card-desc {
       color: var(--color-text-light);
       line-height: 1.9;
@@ -325,7 +349,11 @@
       line-height: 2;
       margin-bottom: 24px;
       padding-top: 28px;
+      font-feature-settings: "palt";
+      letter-spacing: 0.04em;
     }
+    /* 語句の途中で改行させない */
+    .message-quote .nw { display: inline-block; }
     /* 大きな引用符のアクセント */
     .message-quote::before {
       content: "\201C";
@@ -443,6 +471,7 @@
     @media (prefers-reduced-motion: reduce) {
       .hero-blob, .hero-ring, .message-photo::before, .scroll-cue::after,
       html.js .hero-anim { animation: none; }
+      .hero-btn::before { transition: none; }
     }
   </style>
   <!-- Google tag (gtag.js) -->
@@ -461,7 +490,7 @@
   <div id="splash-overlay" aria-hidden="true">
     <span class="splash-logo">よりそいコネクト</span>
     <div class="splash-line"></div>
-    <span class="splash-catch">話すことが、生きる力になる。</span>
+    <span class="splash-catch">ひとりひとりに、まっすぐ寄り添う。</span>
   </div>
 
   <!-- ヘッダー -->
@@ -499,7 +528,7 @@
       <div class="hero-ring" aria-hidden="true"></div>
       <div class="container">
         <div class="hero-inner">
-          <p class="hero-eyebrow hero-anim">定期電話サービス・エアコンクリーニング</p>
+          <p class="hero-eyebrow hero-anim">ひとりひとりに、まっすぐ寄り添う。</p>
           <h1 class="hero-catch">
             <span class="line hero-anim" style="--d: 0.08s"><em>よりそいコネクト</em></span>
           </h1>
@@ -508,8 +537,8 @@
             壁掛けエアコンのクリーニング<span class="nw">「みえる！おそうじ」</span>を運営しています。
           </p>
           <div class="hero-btns hero-anim" style="--d: 0.32s">
-            <a href="/moshimoshi-call/" class="btn btn-primary btn-large btn-arrow">もしもしコール</a>
-            <a href="/mieru-osouji/" class="btn btn-primary btn-large btn-arrow">みえる！おそうじ</a>
+            <a href="/moshimoshi-call/" class="btn btn-large hero-btn">もしもしコール</a>
+            <a href="/mieru-osouji/" class="btn btn-large hero-btn">みえる！おそうじ</a>
           </div>
         </div>
       </div>
@@ -521,16 +550,14 @@
       <div class="container">
         <p class="section-eyebrow fade-in">OUR SERVICES</p>
         <h2 class="section-title wipe">サービスのご案内</h2>
-        <p class="section-lead fade-in">
-          よりそいコネクトが運営している2つのサービスです。
-        </p>
         <div class="service-grid stagger">
           <a href="/moshimoshi-call/" class="service-card rise">
             <div class="service-card-img">
               <img src="/moshimoshi-call/assets/images/hero.png" alt="笑顔で電話をする高齢女性の写真" width="1537" height="1023" loading="lazy">
             </div>
             <div class="service-card-body">
-              <h3 class="card-name">もしもし<span>コール</span></h3>
+              <h3 class="card-name">もしもしコール</h3>
+              <!-- TODO 文言：説明文の表現をあとで見直す -->
               <p class="card-desc">
                 一人暮らしのご高齢の親御様に、ご家族の代わりに定期的にお電話してお話しをするサービスです。離れて暮らすご家族の安心感にもつながります。
               </p>
@@ -545,9 +572,9 @@
               </div>
             </div>
             <div class="service-card-body">
-              <h3 class="card-name">みえる！<span>おそうじ</span></h3>
+              <h3 class="card-name">みえる！おそうじ</h3>
               <p class="card-desc">
-                壁掛けエアコンのクリーニングサービスです。料金・作業・仕上がりを写真でお見せします。対応エリアは東京・千葉・埼玉・神奈川です。
+                葛飾区のハウスクリーニングサービスです。エアコンをはじめ、家のお掃除はなんでもお任せください。
               </p>
               <span class="btn btn-outline btn-arrow">詳しく見る</span>
             </div>
@@ -566,12 +593,11 @@
           <div class="fade-in">
             <p class="section-eyebrow">MESSAGE</p>
             <blockquote class="message-quote">
-              「電話一本から、誰かの毎日に楽しみを届けたい。
-              話すことが、その人の生きる力になると信じています。」
+              <span class="nw">暮らしの中の</span><span class="nw">『ちょっと困った』</span><span class="nw">『ちょっとさみしい』に、</span><span class="nw">いちばん近くで</span><span class="nw">寄り添える存在で</span><span class="nw">ありたいと思っています。</span>
             </blockquote>
             <div class="message-name">
-              <strong>戸梶 凌</strong>
               よりそいコネクト 代表
+              <strong>戸梶 凌</strong>
             </div>
           </div>
         </div>
@@ -589,26 +615,24 @@
         <div class="contact-items stagger">
           <div class="contact-item rise">
             <span class="contact-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/><path d="M17.5 10.5s-3.5-2.2-3.5-4.6a1.9 1.9 0 0 1 3.5-1 1.9 1.9 0 0 1 3.5 1c0 2.4-3.5 4.6-3.5 4.6z" fill="#fff" stroke="none"/></svg>
             </span>
             <span class="contact-item-label">MOSHIMOSHI CALL</span>
             <span class="contact-item-name">もしもしコール</span>
             <a href="https://lin.ee/S9PcDYm" target="_blank" rel="noopener" class="btn contact-line">LINEで相談する</a>
             <span class="contact-item-value">
               <a href="tel:0368225257">03-6822-5257</a>
-              <span class="contact-item-note">※担当者直通</span>
-              <a href="tel:08029685824">080-2968-5824</a>
             </span>
           </div>
           <div class="contact-item rise">
             <span class="contact-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+              <svg viewBox="0 0 24 24" fill="#fff" stroke="#4F7A63" stroke-width="0.8" stroke-linejoin="round"><g transform="translate(13 14.6) rotate(42) scale(0.9)"><rect x="-6.6" y="-5.4" width="2.8" height="7" rx="1.4" transform="rotate(-30 -5.2 1)"/><rect x="-4.8" y="-8.8" width="2.8" height="10" rx="1.4"/><rect x="-2.3" y="-10.2" width="2.8" height="11" rx="1.4"/><rect x="0.2" y="-9.6" width="2.8" height="11" rx="1.4"/><rect x="2.7" y="-7.8" width="2.8" height="9" rx="1.4"/><path d="M-3.4 4V8.6Q-3.4 10 -2 10H2Q3.4 10 3.4 8.6V4Z"/><path d="M-7.2-1.6Q-3.5-3 0-1.6T7-1.6L7.2 6Q3.6 7.6 0 6T-7.4 6Z"/></g><path stroke="none" d="M5.5 2c.4 2.1 1.2 2.9 3.3 3.3-2.1.4-2.9 1.2-3.3 3.3-.4-2.1-1.2-2.9-3.3-3.3 2.1-.4 2.9-1.2 3.3-3.3zM3 10.5c.2 1.1.6 1.5 1.7 1.7-1.1.2-1.5.6-1.7 1.7-.2-1.1-.6-1.5-1.7-1.7 1.1-.2 1.5-.6 1.7-1.7z"/></svg>
             </span>
             <span class="contact-item-label">MIERU OSOUJI</span>
             <span class="contact-item-name">みえる！おそうじ</span>
             <a href="[LINE_URL_CLEANING]" class="btn contact-line">LINEで相談する</a>
             <span class="contact-item-value">
-              <a href="tel:[PHONE_CLEANING]">[PHONE_CLEANING]</a>
+              <a href="tel:0368225257">03-6822-5257</a>
             </span>
           </div>
         </div>
@@ -633,7 +657,7 @@
       <div class="footer-main">
         <div class="footer-brand">
           <p class="footer-logo">よりそいコネクト</p>
-          <p class="footer-tagline">話すことが、生きる力になる。</p>
+          <p class="footer-tagline">ひとりひとりに、まっすぐ寄り添う。</p>
         </div>
         <nav class="footer-nav" aria-label="フッターナビゲーション">
           <ul>
