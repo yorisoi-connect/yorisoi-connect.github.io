@@ -1,7 +1,8 @@
 /* ==========================================================================
    みえる！おそうじ スタイルシート
    変数名・影・イージング・出現アニメは よりそいコネクト共通の /assets/css/site.css
-   と揃えている（配色も同じくすみ緑系）。ハンバーガー・出現アニメの動きは
+   と揃えている。配色だけは独自：パステルライムがベース、やわらかい緑がアクセントの
+   清潔感のある明るい系。ハンバーガー・出現アニメの動きは
    /assets/js/site.js をそのまま使うため、クラス名・ID もそちらに合わせている。
    構成：変数 / リセット / 共通部品 / 出現アニメ / ヘッダー / ファーストビュー /
         約束 / 料金 / 流れ / 作業事例 / 代表紹介 / 安心の情報 / そのほか /
@@ -12,15 +13,19 @@
    1. カスタムプロパティ（/assets/css/site.css と同じ値）
    -------------------------------------------------------------------------- */
 :root {
-  --color-primary: #7FA88F;        /* 装飾用（ライン・ドット・アイコン背景など） */
-  --color-primary-dark: #4F7A63;   /* 文字・ボタン用（白文字を乗せる面もこちら） */
+  --color-primary: #E3F4A6;        /* ベース：パステルライム（ボタン・ラベルなどの面）。白文字は読めないので上の文字は --color-deep */
+  --color-primary-hover: #D8EE8C;
+  --color-primary-line: #C6E26E;   /* 白地の上の細いライン用（パステルそのままだと白に溶ける） */
+  --color-accent: #9ACD8A;         /* アクセント：やわらかいリーフグリーン（枠線・点線） */
+  --color-accent-dark: #3F7F40;    /* 緑（濃）：リンク・小見出しなど白地の文字用（白地で 4.5:1 以上） */
+  --color-accent-light: #EEF6E8;   /* 緑（淡）：ラベル・バッジの面 */
   --color-bg: #FFFFFF;
-  --color-bg-green: #F2F6F3;
+  --color-bg-tint: #F9FCEF;        /* 背景：ごくうすいライム（背景リズム用） */
   --color-text: #333333;
   --color-text-light: #5F6661;
-  --color-border: #e0e8e2;
-  --color-deep: #33503F;
-  --color-deep-2: #2F4437;
+  --color-border: #E6EDD8;
+  --color-deep: #2E4A33;
+  --color-deep-2: #273F2C;
   --color-placeholder: #E4E7E5;    /* ダミー画像のグレー */
 
   --shadow-card: 0 1px 2px rgba(39, 56, 46, 0.05), 0 5px 16px rgba(39, 56, 46, 0.08);
@@ -29,7 +34,7 @@
 
   --radius-card: 16px;
   --radius-btn: 999px;
-  --header-height: 64px;
+  --header-height: 84px;           /* PCはメニュー2段ぶん。ハンバーガー幅では 64px に戻す */
   --cta-bar-height: 72px;
 }
 
@@ -66,7 +71,7 @@ img {
 }
 
 a {
-  color: var(--color-primary-dark);
+  color: var(--color-accent-dark);
 }
 
 ul,
@@ -96,7 +101,7 @@ button {
 }
 
 .section-green {
-  background: var(--color-bg-green);
+  background: var(--color-bg-tint);
 }
 
 .section-eyebrow {
@@ -104,7 +109,7 @@ button {
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.2em;
-  color: var(--color-primary-dark);
+  color: var(--color-accent-dark);
   margin-bottom: 10px;
 }
 
@@ -122,7 +127,7 @@ button {
   width: 56px;
   height: 4px;
   border-radius: 2px;
-  background: var(--color-primary);
+  background: var(--color-primary-line);
   margin: 16px auto 0;
 }
 
@@ -148,7 +153,7 @@ button {
   margin: 0 auto 40px;
   padding: 20px 24px;
   background: #fff;
-  border: 2px dashed var(--color-primary);
+  border: 2px dashed var(--color-accent);
   border-radius: var(--radius-card);
   text-align: center;
   font-weight: 500;
@@ -158,8 +163,8 @@ button {
   display: inline-block;
   padding: 2px 12px;
   border-radius: var(--radius-btn);
-  background: var(--color-bg-green);
-  color: var(--color-text-light);
+  background: var(--color-accent-light);
+  color: var(--color-accent-dark);
   font-size: 14px;
   font-weight: 700;
   white-space: nowrap;
@@ -220,31 +225,24 @@ button {
 }
 
 .btn-primary {
-  background: var(--color-primary-dark);
-  color: #fff;
-  --glow: rgba(79, 122, 99, 0.4);
-  box-shadow: 0 4px 14px rgba(79, 122, 99, 0.28);
+  background: var(--color-primary);
+  color: var(--color-deep);
+  --glow: rgba(140, 175, 60, 0.3);
+  box-shadow: 0 3px 10px rgba(140, 175, 60, 0.2);
 }
 
 .btn-primary:hover {
-  background: #436A55;
+  background: var(--color-primary-hover);
 }
 
 .btn-outline {
   background: #fff;
-  color: var(--color-primary-dark);
-  border-color: var(--color-primary);
+  color: var(--color-accent-dark);
+  border-color: var(--color-accent);
 }
 
 .btn-outline:hover {
-  background: var(--color-bg-green);
-}
-
-/* ダーク面の上で使う白ボタン */
-.btn-white {
-  background: #fff;
-  color: var(--color-deep);
-  --glow: rgba(0, 0, 0, 0.25);
+  background: var(--color-accent-light);
 }
 
 .btn-ghost {
@@ -342,24 +340,25 @@ html.js .rise.is-visible {
   white-space: nowrap;
 }
 
-.brand-operator {
-  font-size: 12px;
-  color: var(--color-text-light);
-  text-decoration: none;
-}
-
-.brand-operator:hover {
-  text-decoration: underline;
-}
-
+/* PCは2段：上段がサービス（大きめ）、下段がページ内の案内（小さめ・補助色） */
 .global-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
   margin-left: auto;
 }
 
 .global-nav ul {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 24px;
+}
+
+.global-nav .nav-sub a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-light);
 }
 
 .global-nav a {
@@ -380,14 +379,14 @@ html.js .rise.is-visible {
   bottom: -4px;
   height: 2px;
   border-radius: 1px;
-  background: var(--color-primary);
+  background: var(--color-primary-line);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s var(--ease);
 }
 
 .global-nav li:not(.nav-cta) a:hover {
-  color: var(--color-primary-dark);
+  color: var(--color-accent-dark);
 }
 
 .global-nav li:not(.nav-cta) a:hover::after {
@@ -395,7 +394,7 @@ html.js .rise.is-visible {
 }
 
 /* メニュー内の LINE・電話（モバイルのメニューを開いたときだけ表示） */
-.nav-cta {
+.global-nav .nav-cta-list {
   display: none;
 }
 
@@ -424,7 +423,7 @@ html.js .rise.is-visible {
   width: 100%;
   height: 3px;
   border-radius: 2px;
-  background: var(--color-primary-dark);
+  background: var(--color-deep);
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
@@ -443,61 +442,165 @@ html.js .rise.is-visible {
 /* --------------------------------------------------------------------------
    6. ファーストビュー
    -------------------------------------------------------------------------- */
+/* ヘッダーの下から画面の下端までちょうど埋める（スマホは下の固定CTAバーぶんも引く） */
 .hero {
-  padding: 72px 0 88px;
+  --hero-offset: var(--header-height);
+  display: flex;
+  align-items: center;
+  min-height: calc(100vh - var(--hero-offset));
+  min-height: calc(100svh - var(--hero-offset));
+  padding: 64px 0;
   background:
-    radial-gradient(circle, rgba(127, 168, 143, 0.16) 1.5px, transparent 1.5px) 0 0 / 28px 28px,
-    linear-gradient(180deg, #fff 0%, var(--color-bg-green) 100%);
+    radial-gradient(circle, rgba(160, 195, 80, 0.16) 1.5px, transparent 1.5px) 0 0 / 28px 28px,
+    linear-gradient(180deg, #fff 0%, var(--color-bg-tint) 100%);
 }
 
 .hero-inner {
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 56px;
-  align-items: center;
-}
-
-.hero-label {
-  display: inline-block;
-  margin-bottom: 16px;
-  padding: 4px 14px;
-  border-radius: var(--radius-btn);
-  background: #fff;
-  border: 1px solid var(--color-border);
-  color: var(--color-primary-dark);
-  font-size: 14px;
-  font-weight: 700;
+  width: 100%;
+  text-align: center;
 }
 
 .hero-title {
-  font-size: clamp(30px, 20px + 2.4vw, 46px);
+  position: relative;
+  font-size: clamp(28px, 18px + 2.8vw, 50px);
   font-weight: 700;
-  line-height: 1.45;
+  line-height: 1.5;
   color: var(--color-deep);
-  margin-bottom: 20px;
+  font-feature-settings: "palt";   /* 「」、の空きを詰める */
+  margin-bottom: 28px;
+}
+
+/* 最終形の「すべて」は少し大きく、下にパステルライムのマーカーが引いてある。
+   JSの演出中だけ等倍・マーカーなしに戻し、最後にトランジションで最終形へ */
+.hero-accent {
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+  font-size: 1.12em;
+  /* 最初ゆっくり→中間で速く→最後ゆっくり */
+  transition: font-size 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.hero-accent::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -0.06em;
+  right: -0.06em;
+  bottom: 0.2em;
+  height: 0.32em;
+  border-radius: 0.16em;
+  background: var(--color-primary);
+  transform-origin: left;
+  transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1) 0.15s;
+}
+
+/* ---------- 拭き取り演出（assets/js/hero.js） ----------
+   汚れはJSが作るので、JSなしなら最初からきれいな見出しのまま。
+   JSありでは汚れを載せるまで見出しを隠す（汚れのない文字が一瞬見えるのを防ぐ）。
+   JSが失敗しても 3 秒後には必ず表示する。 */
+html.js .hero-title {
+  visibility: hidden;
+  animation: hero-failsafe 0s linear 3s forwards;
+}
+
+html.js .hero-title.is-ready {
+  visibility: visible;
+  animation: none;
+}
+
+@keyframes hero-failsafe {
+  to { visibility: visible; }
+}
+
+/* 演出前の状態へはトランジションなしで切り替える（最後に is-intro を外したときだけ動かす） */
+html.js .hero-title.is-intro .hero-accent {
+  font-size: 1em;
+  transition: none;
+}
+
+html.js .hero-title.is-intro .hero-accent::after {
+  transform: scaleX(0);
+  transition: none;
+}
+
+.hero-title .dirty {
+  position: relative;
+  display: inline-block;
+}
+
+.dirt {
+  position: absolute;
+  pointer-events: none;
+}
+
+.dirt-blob {
+  position: absolute;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dirt-blob.is-wiped {
+  opacity: 0 !important;
+  transform: scale(0.85) !important;
+}
+
+/* 布巾を持った手。transform は JS が毎フレーム書き換える */
+.wiper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  width: 2.3em;
+  height: 2.3em;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(46, 74, 51, 0.12));
+}
+
+.wiper.is-on {
+  opacity: 1;
+}
+
+.wiper svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.sparkle {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  animation: sparkle 2s ease-in-out forwards;
+}
+
+.sparkle svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes sparkle {
+  0%   { opacity: 0; transform: scale(0.4) rotate(0deg); }
+  30%  { opacity: 1; transform: scale(1) rotate(15deg); }
+  55%  { opacity: 0.6; transform: scale(0.85) rotate(25deg); }
+  75%  { opacity: 1; transform: scale(1) rotate(35deg); }
+  100% { opacity: 0; transform: scale(0.6) rotate(45deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .hero-title {
+    visibility: visible;
+    animation: none;
+  }
 }
 
 .hero-text {
+  max-width: 40em;
+  margin: 0 auto;
   font-size: 17px;
-  margin-bottom: 32px;
-}
-
-.hero-btns {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 24px;
-}
-
-.hero-meta {
-  font-size: 14px;
-  color: var(--color-text-light);
-}
-
-.hero-visual .ph-img {
-  aspect-ratio: 5 / 4;
-  border-radius: 24px;
-  box-shadow: var(--shadow-card);
 }
 
 /* --------------------------------------------------------------------------
@@ -525,7 +628,7 @@ html.js .rise.is-visible {
   height: 64px;
   margin-bottom: 20px;
   border-radius: 50%;
-  background: var(--color-bg-green);
+  background: var(--color-primary);
 }
 
 .promise-icon svg {
@@ -568,8 +671,8 @@ html.js .rise.is-visible {
 }
 
 .price-table thead th {
-  background: var(--color-primary-dark);
-  color: #fff;
+  background: var(--color-primary);
+  color: var(--color-deep);
   font-size: 15px;
 }
 
@@ -640,8 +743,8 @@ html.js .rise.is-visible {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: var(--color-primary-dark);
-  color: #fff;
+  background: var(--color-primary);
+  color: var(--color-deep);
   font-size: 20px;
   font-weight: 700;
 }
@@ -718,14 +821,14 @@ html.js .rise.is-visible {
 .profile-career {
   margin-top: 24px;
   padding: 16px 20px;
-  background: var(--color-bg-green);
+  background: var(--color-bg-tint);
   border-radius: 12px;
 }
 
 .profile-career dt {
   font-size: 14px;
   font-weight: 700;
-  color: var(--color-primary-dark);
+  color: var(--color-accent-dark);
 }
 
 /* --------------------------------------------------------------------------
@@ -750,7 +853,7 @@ html.js .rise.is-visible {
   color: var(--color-deep);
   margin-bottom: 8px;
   padding-left: 14px;
-  border-left: 4px solid var(--color-primary);
+  border-left: 4px solid var(--color-primary-line);
   line-height: 1.5;
 }
 
@@ -828,7 +931,7 @@ html.js .rise.is-visible {
 .faq-item summary::before {
   content: "Q";
   top: 17px;
-  color: var(--color-primary-dark);
+  color: var(--color-accent-dark);
 }
 
 /* 開閉の＋／− */
@@ -839,8 +942,8 @@ html.js .rise.is-visible {
   right: 22px;
   width: 12px;
   height: 12px;
-  border-right: 2px solid var(--color-primary-dark);
-  border-bottom: 2px solid var(--color-primary-dark);
+  border-right: 2px solid var(--color-accent-dark);
+  border-bottom: 2px solid var(--color-accent-dark);
   transform: translateY(-70%) rotate(45deg);
   transition: transform 0.25s var(--ease);
 }
@@ -857,7 +960,7 @@ html.js .rise.is-visible {
 .faq-a::before {
   content: "A";
   top: -1px;
-  color: var(--color-primary);
+  color: var(--color-accent-dark);
 }
 
 /* --------------------------------------------------------------------------
@@ -869,7 +972,7 @@ html.js .rise.is-visible {
 }
 
 .section-dark .section-eyebrow {
-  color: #B9CFC1;
+  color: var(--color-primary);
 }
 
 .section-dark .section-title {
@@ -954,6 +1057,10 @@ html.js .rise.is-visible {
    -------------------------------------------------------------------------- */
 /* ヘッダーのメニューが入りきらない幅からハンバーガーに切り替える */
 @media (max-width: 1040px) {
+  :root {
+    --header-height: 64px;
+  }
+
   .hamburger {
     display: flex;
   }
@@ -969,6 +1076,9 @@ html.js .rise.is-visible {
     right: 0;
     max-height: calc(100vh - var(--header-height));
     overflow-y: auto;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px 0 20px;
     background: #fff;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     transform: translateY(-8px);
@@ -987,13 +1097,14 @@ html.js .rise.is-visible {
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    padding: 8px 0 20px;
   }
 
-  .global-nav li a {
+  .global-nav li:not(.nav-cta) a {
     display: block;
     padding: 16px 24px;
     font-size: 17px;
+    font-weight: 700;
+    color: var(--color-text);
     border-bottom: 1px solid var(--color-border);
   }
 
@@ -1001,42 +1112,32 @@ html.js .rise.is-visible {
     display: none;
   }
 
+  .global-nav .nav-cta-list {
+    display: flex;
+  }
+
   .nav-cta {
-    display: block;
     padding: 16px 24px 0;
   }
 
   .global-nav .nav-cta a {
     display: flex;
     padding: 12px 24px;
-    border-bottom: none;
+    font-size: 17px;
   }
 
   .global-nav .nav-cta .btn-primary {
-    color: #fff;
+    color: var(--color-deep);
   }
 
   .global-nav .nav-cta .btn-outline {
-    color: var(--color-primary-dark);
+    color: var(--color-accent-dark);
   }
 }
 
 @media (max-width: 900px) {
   .section {
     padding: 72px 0;
-  }
-
-  .hero {
-    padding: 40px 0 64px;
-  }
-
-  .hero-inner {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
-  .hero-visual {
-    order: 2;
   }
 
   .promise-list,
@@ -1075,12 +1176,14 @@ html.js .rise.is-visible {
     margin-bottom: 36px;
   }
 
-  .hero-btns {
-    flex-direction: column;
+  .hero {
+    --hero-offset: calc(var(--header-height) + var(--cta-bar-height) + env(safe-area-inset-bottom));
+    padding: 48px 0;
   }
 
-  .hero-btns .btn {
-    width: 100%;
+  .hero-text {
+    text-align: left;
+    font-size: 16px;
   }
 
   .promise-card {
