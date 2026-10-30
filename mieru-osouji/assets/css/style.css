@@ -5,7 +5,7 @@
    清潔感のある明るい系。ハンバーガー・出現アニメの動きは
    /assets/js/site.js をそのまま使うため、クラス名・ID もそちらに合わせている。
    構成：変数 / リセット / 共通部品 / 出現アニメ / ヘッダー / ファーストビュー /
-        約束 / 料金 / 流れ / 作業事例 / 代表紹介 / 安心の情報 / そのほか /
+        4つのみえる / 料金 / 流れ / 作業事例 / 代表紹介 / 安心の情報 / そのほか /
         よくある質問 / お問い合わせ / フッター / 固定CTAバー / レスポンシブ
    ========================================================================== */
 
@@ -63,6 +63,18 @@ body {
   color: var(--color-text);
   background: var(--color-bg);
   -webkit-font-smoothing: antialiased;
+}
+
+/* 見出しなど短い文だけ文節単位で改行する（言葉の途中で切れないように）。
+   本文は日本語の原則どおり文字単位で詰めて折り返す（文節改行だと長い語句の手前で行が短く切れて不自然になる）。
+   auto-phrase は Chrome 系のみ対応。ほかのブラウザでは普通の改行になる */
+h1,
+h2,
+h3,
+h4,
+dt,
+summary,
+figcaption {
   word-break: auto-phrase;
 }
 
@@ -142,6 +154,13 @@ button {
 /* 途中で改行させたくない語句（日本語の自動改行で語が割れるのを防ぐ） */
 .nw {
   display: inline-block;
+}
+
+/* PC（901px以上）のときだけ効かせる改行 */
+@media (max-width: 900px) {
+  .br-pc {
+    display: none;
+  }
 }
 
 .note {
@@ -752,42 +771,67 @@ html.js .hero-title.is-intro .hero-accent::after {
 }
 
 /* --------------------------------------------------------------------------
-   7. 「みえる」3つの約束
+   7. 4つの「みえる」
+   PC：2×2 で、カードはアイコンを左・文章を右に置く横長レイアウト。
+   タブレット：2×2 のまま、カードはアイコンを上に置く縦長レイアウト。
+   スマホ：1列で、横長レイアウトを小さくしたもの
    -------------------------------------------------------------------------- */
-.promise-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+.feature-lead {
+  max-width: 57em;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.promise-card {
-  padding: 36px 28px;
+.feature-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 20px;
+  align-items: start;
+  padding: 32px 28px;
   background: #fff;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
 }
 
-.promise-icon {
+.feature-icon {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 64px;
   height: 64px;
-  margin-bottom: 20px;
   border-radius: 50%;
   background: var(--color-primary);
 }
 
-.promise-icon svg {
+.feature-icon svg {
   width: 32px;
   height: 32px;
 }
 
-.promise-card h3 {
-  font-size: 22px;
+.feature-num {
+  font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+  margin-bottom: 6px;
+}
+
+.feature-card h3 {
+  font-size: 21px;
+  line-height: 1.5;
   color: var(--color-deep);
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 /* --------------------------------------------------------------------------
@@ -1292,11 +1336,16 @@ html.js .hero-title.is-intro .hero-accent::after {
     padding: 72px 0;
   }
 
-  .promise-list,
   .info-list {
     grid-template-columns: 1fr;
     max-width: 560px;
     margin: 0 auto;
+  }
+
+  .feature-card {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 28px 24px;
   }
 
   .case-grid {
@@ -1338,8 +1387,29 @@ html.js .hero-title.is-intro .hero-accent::after {
     font-size: 16px;
   }
 
-  .promise-card {
-    padding: 28px 22px;
+  .feature-list {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .feature-card {
+    grid-template-columns: 52px 1fr;
+    gap: 16px;
+    padding: 24px 20px;
+  }
+
+  .feature-icon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .feature-icon svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .feature-card h3 {
+    font-size: 19px;
   }
 
   .price-table th,
