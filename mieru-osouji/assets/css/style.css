@@ -19,6 +19,8 @@
   --color-accent: #9ACD8A;         /* アクセント：やわらかいリーフグリーン（枠線・点線） */
   --color-accent-dark: #3F7F40;    /* 緑（濃）：リンク・小見出しなど白地の文字用（白地で 4.5:1 以上） */
   --color-accent-light: #EEF6E8;   /* 緑（淡）：ラベル・バッジの面 */
+  --color-line: #3A9E64;           /* LINE ブランドカラー（#06C755）の彩度を落としたもの。原色だと目がちかちかするため */
+  --color-line-hover: #328A57;
   --color-bg: #FFFFFF;
   --color-bg-tint: #F9FCEF;        /* 背景：ごくうすいライム（背景リズム用） */
   --color-text: #333333;
@@ -235,6 +237,18 @@ button {
   background: var(--color-primary-hover);
 }
 
+/* LINE の緑のボタン */
+.btn-line {
+  background: var(--color-line);
+  color: #fff;
+  --glow: rgba(58, 158, 100, 0.3);
+  box-shadow: 0 3px 10px rgba(58, 158, 100, 0.18);
+}
+
+.btn-line:hover {
+  background: var(--color-line-hover);
+}
+
 .btn-outline {
   background: #fff;
   color: var(--color-accent-dark);
@@ -445,6 +459,8 @@ html.js .rise.is-visible {
 /* ヘッダーの下から画面の下端までちょうど埋める（スマホは下の固定CTAバーぶんも引く） */
 .hero {
   --hero-offset: var(--header-height);
+  position: relative;
+  overflow: hidden;
   display: flex;
   align-items: center;
   min-height: calc(100vh - var(--hero-offset));
@@ -456,29 +472,158 @@ html.js .rise.is-visible {
 }
 
 .hero-inner {
+  position: relative;
+  z-index: 1;
   width: 100%;
   text-align: center;
 }
 
+/* ---------- 作業前・作業後の写真と泡 ----------
+   見出しと説明文のあいだに、作業前 → 作業後 の順で矢印つきの横並びにする（全画面共通）。
+   写真の幅・矢印の幅・上下の余白は下の変数で決め、画面サイズごとの値はファイル末尾で上書きする */
+.hero-inner {
+  --hero-gap: clamp(28px, 4.5vh, 56px);   /* 見出し・写真・説明文のあいだの余白 */
+  --photo-w: clamp(220px, 34vh, 380px);   /* 写真カード1枚の幅（PCは画面の高さに合わせる） */
+  --photo-gap: 28px;                      /* 写真と矢印のあいだ */
+  --arrow-w: 48px;
+}
+
+.hero-photos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--photo-gap);
+  margin: 0 auto var(--hero-gap);
+  pointer-events: none;
+  animation: hero-deco-in 1s ease 0.3s both;
+}
+
+@keyframes hero-deco-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* 背景の泡（ヒーロー全体に散らす。文字のかたまりの後ろに来る） */
+.hero-bubbles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  animation: hero-deco-in 1s ease 0.3s both;
+}
+
+/* カードと、そのまわりの泡をひとまとめにする */
+.hero-deco-group {
+  position: relative;
+  width: var(--photo-w);
+  min-width: 0;
+}
+
+.hero-photo {
+  margin: 0;
+  padding: 10px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: var(--shadow-card);
+}
+
+.hero-photo .ph-img {
+  border-radius: 4px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.hero-deco-before .hero-photo {
+  transform: rotate(-4deg);
+}
+
+.hero-deco-after .hero-photo {
+  transform: rotate(4deg);
+}
+
+.hero-photos-arrow {
+  flex-shrink: 0;
+  width: var(--arrow-w);
+  color: var(--color-accent-dark);
+}
+
+.hero-photos-arrow svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* 泡。--x / --y はカードの左上を基準にした位置（カードの幅・高さに対する%） */
+.bubble {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: calc(var(--s) * var(--bubble-scale, 1));
+  height: calc(var(--s) * var(--bubble-scale, 1));
+  border: 2px solid var(--color-primary-line);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.75);
+  animation: bubble-float 7s ease-in-out var(--d) infinite;
+}
+
+/* 泡のつやの線 */
+.bubble:not(.bubble-dot)::after {
+  content: "";
+  position: absolute;
+  top: 18%;
+  left: 18%;
+  width: 36%;
+  height: 36%;
+  border-radius: 50%;
+  border-top: 2px solid var(--color-primary-line);
+  transform: rotate(-40deg);
+}
+
+.bubble-dot {
+  border: none;
+  background: var(--color-primary);
+}
+
+@keyframes bubble-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-photos,
+  .hero-bubbles,
+  .bubble {
+    animation: none;
+  }
+}
+
+/* 見出しは文字の幅ぴったりの箱にする（キラキラを文字のまわりに散らすため） */
 .hero-title {
   position: relative;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
   font-size: clamp(28px, 18px + 2.8vw, 50px);
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.5;
   color: var(--color-deep);
   font-feature-settings: "palt";   /* 「」、の空きを詰める */
-  margin-bottom: 28px;
+  margin-bottom: var(--hero-gap, 28px);
 }
 
-/* 最終形の「すべて」は少し大きく、下にパステルライムのマーカーが引いてある。
-   JSの演出中だけ等倍・マーカーなしに戻し、最後にトランジションで最終形へ */
+/* 見出しの「、」の後ろの空きを詰める（丸ゴシックの読み込み方では palt が効かないため個別に詰める）。
+   「、」自体に負の余白を付けると .nw の幅計算が合わず「、」だけ改行されるので、語句のまとまりごと詰める */
+.hero-title .tc {
+  margin-right: -0.4em;
+}
+
+/* 「すべて」は最初から少し大きく、下にパステルライムのマーカーが引いてある。
+   JSの演出中だけマーカーを消し、最後にトランジションで引く（大きさは動かさない） */
 .hero-accent {
   position: relative;
   z-index: 0;
   display: inline-block;
   font-size: 1.12em;
-  /* 最初ゆっくり→中間で速く→最後ゆっくり */
-  transition: font-size 0.8s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .hero-accent::after {
@@ -514,11 +659,6 @@ html.js .hero-title.is-ready {
 }
 
 /* 演出前の状態へはトランジションなしで切り替える（最後に is-intro を外したときだけ動かす） */
-html.js .hero-title.is-intro .hero-accent {
-  font-size: 1em;
-  transition: none;
-}
-
 html.js .hero-title.is-intro .hero-accent::after {
   transform: scaleX(0);
   transition: none;
@@ -598,9 +738,17 @@ html.js .hero-title.is-intro .hero-accent::after {
 }
 
 .hero-text {
-  max-width: 40em;
+  width: fit-content;
+  max-width: 46em;
   margin: 0 auto;
   font-size: 17px;
+}
+
+/* 説明文の冒頭のサービス名 */
+.hero-brand {
+  font-size: 1.15em;
+  font-weight: 700;
+  color: var(--color-accent-dark);
 }
 
 /* --------------------------------------------------------------------------
@@ -1130,6 +1278,10 @@ html.js .hero-title.is-intro .hero-accent::after {
     color: var(--color-deep);
   }
 
+  .global-nav .nav-cta .btn-line {
+    color: #fff;
+  }
+
   .global-nav .nav-cta .btn-outline {
     color: var(--color-accent-dark);
   }
@@ -1232,5 +1384,94 @@ html.js .hero-title.is-intro .hero-accent::after {
     min-height: 0;
     padding: 8px 12px;
     font-size: 16px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   19. ファーストビューの大きさ（画面サイズごと）
+   縦に長い画面で上下の余白が寂しくならないよう、写真と余白は画面の高さ（vh）に合わせて大きくする
+   -------------------------------------------------------------------------- */
+/* タブレット：文字と写真をひとまわり大きく */
+@media (min-width: 601px) and (max-width: 1239px) {
+  /* 写真の幅は「画面幅に2枚＋矢印が収まる幅（100px ＝ 矢印 44px ＋ すきま 28px × 2）」と
+     「画面の高さの32%」の小さいほう */
+  .hero-inner {
+    --photo-w: clamp(220px, min((100% - 100px) / 2, 32vh), 480px);
+    --hero-gap: clamp(32px, 6vh, 88px);
+    --arrow-w: 44px;
+  }
+
+  .hero-title {
+    font-size: clamp(40px, min(22px + 3.6vw, 5.2vh), 68px);
+  }
+
+  .hero-text {
+    font-size: clamp(19px, 1.6vh, 22px);
+  }
+
+  .hero-photo .ph-img {
+    font-size: 15px;
+  }
+}
+
+/* 縦向きのタブレット：写真を正方形にして高さを出す */
+@media (min-width: 601px) and (max-width: 1239px) and (orientation: portrait) {
+  .hero-photo .ph-img {
+    aspect-ratio: 1 / 1;
+  }
+}
+
+/* スマホ：写真2枚と矢印を画面幅いっぱいに並べる（44px ＝ 矢印 28px ＋ すきま 8px × 2） */
+@media (max-width: 600px) {
+  .hero-inner {
+    --photo-w: min(calc((100% - 44px) / 2), 190px);
+    --photo-gap: 8px;
+    --arrow-w: 28px;
+    --hero-gap: clamp(24px, 4.5vh, 48px);
+  }
+
+  /* 1行が約11.5文字ぶんの幅なので、画面幅（左右の余白 40px を除く）÷ 11.5 で2行に収める */
+  .hero-title {
+    font-size: clamp(26px, (100vw - 40px) / 11.5, 36px);
+  }
+
+  .hero-deco-group {
+    --bubble-scale: 0.7;
+  }
+
+  .hero-photo {
+    padding: 6px;
+  }
+
+  .hero-photo .ph-img {
+    padding: 4px;
+    font-size: 11px;
+  }
+}
+
+/* 縦に長いスマホ：写真を正方形にして高さを出し、余白と説明文も少し大きくする */
+@media (max-width: 600px) and (min-height: 820px) {
+  .hero-inner {
+    --hero-gap: clamp(28px, 6vh, 64px);
+  }
+
+  .hero-photo .ph-img {
+    aspect-ratio: 1 / 1;
+  }
+
+  .hero-text {
+    font-size: 17px;
+  }
+}
+
+/* 高さの低いスマホ（iPhone SE など）：写真と余白を小さくしてヒーローを画面内に収める */
+@media (max-width: 600px) and (max-height: 700px) {
+  .hero {
+    padding: 32px 0;
+  }
+
+  .hero-inner {
+    --hero-gap: 20px;
+    --photo-w: min(calc((100% - 44px) / 2), 130px);
   }
 }
