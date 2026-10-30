@@ -173,8 +173,27 @@
     }
     .hero-catch .line { display: block; }
     .hero-catch em {
+      position: relative;
+      z-index: 0;
+      display: inline-block;
       font-style: normal;
       color: var(--color-primary-dark);
+    }
+    /* スプラッシュの心電図の線を横長にして、社名の下端に重ねる */
+    .hero-catch em::after {
+      content: "";
+      position: absolute;
+      left: -2%;
+      right: -2%;
+      bottom: 0.06em;
+      height: 0.42em;
+      z-index: -1;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 48' preserveAspectRatio='none'%3E%3Cpath d='M2 26H430L453 34L490 6L521 44L551 18L570 26H998' fill='none' stroke='%23F4A86A' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+      opacity: 0.15;
+    }
+    html.js .hero-catch em::after {
+      animation: line-draw 1s var(--ease) both;
+      animation-delay: 1.5s;
     }
     .hero-sub {
       font-size: 17px;
@@ -240,6 +259,7 @@
       animation: cue 2s var(--ease) infinite;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes line-draw { from { clip-path: inset(0 100% 0 0); } }
     @keyframes cue {
       from { transform: translateY(-100%); }
       to   { transform: translateY(200%); }
@@ -413,7 +433,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--color-primary-dark);
+      background: rgba(255, 255, 255, 0.16);
       margin-bottom: 4px;
     }
     .contact-icon svg { width: 24px; height: 24px; }
@@ -421,7 +441,7 @@
       font-size: 13px;
       font-weight: 700;
       letter-spacing: 0.16em;
-      color: #C2E2CC;
+      color: #D3EEDC;
     }
     .contact-item-value {
       font-size: 20px;
@@ -480,7 +500,7 @@
     }
     @media (prefers-reduced-motion: reduce) {
       .hero-blob, .hero-ring, .message-photo::before, .scroll-cue::after,
-      html.js .hero-anim { animation: none; }
+      html.js .hero-anim, html.js .hero-catch em::after { animation: none; }
       .hero-btn::before { transition: none; }
     }
   </style>
@@ -567,9 +587,8 @@
             </div>
             <div class="service-card-body">
               <h3 class="card-name">もしもしコール</h3>
-              <!-- TODO 文言：説明文の表現をあとで見直す -->
               <p class="card-desc">
-                一人暮らしのご高齢の親御様に、ご家族の代わりに定期的にお電話してお話しをするサービスです。離れて暮らすご家族の安心感にもつながります。
+                一人暮らしのご高齢の親御様に、ご家族の代わりに定期的にお電話してお話しをするサービスです。
               </p>
               <span class="btn btn-outline btn-arrow">詳しく見る</span>
             </div>

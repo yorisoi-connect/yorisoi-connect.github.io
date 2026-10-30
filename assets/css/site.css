@@ -20,7 +20,7 @@
   --color-text: #333333;
   --color-text-light: #666666;
   --color-border: #e0e8e2;
-  --color-deep: #2A5A38;
+  --color-deep: #2F7444;
   --color-deep-2: #244E31;
 
   --shadow-card: 0 1px 2px rgba(39, 56, 46, 0.05), 0 5px 16px rgba(39, 56, 46, 0.08);
@@ -240,7 +240,7 @@ button {
 }
 
 .wave-to-dark::after {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 52' preserveAspectRatio='none'%3E%3Cpath d='M0,26 C480,52 960,0 1440,26 L1440,52 L0,52 Z' fill='%232A5A38'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 52' preserveAspectRatio='none'%3E%3Cpath d='M0,26 C480,52 960,0 1440,26 L1440,52 L0,52 Z' fill='%232F7444'/%3E%3C/svg%3E");
 }
 
 /* ドットパターン背景 */
@@ -251,12 +251,12 @@ button {
 
 /* ダーク締めセクション（最後のお問い合わせ用）。下端はフッターと同色で連続させる */
 .section-dark {
-  background: linear-gradient(170deg, var(--color-deep) 0%, var(--color-deep-2) 100%);
+  background: linear-gradient(170deg, var(--color-deep) 0%, #2C6D40 100%);
   color: #EAF3EC;
 }
 
 .section-dark .section-eyebrow {
-  color: #C2E2CC;
+  color: #D3EEDC;
 }
 
 .section-dark .section-title {
