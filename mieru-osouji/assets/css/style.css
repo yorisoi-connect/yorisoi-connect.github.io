@@ -1000,7 +1000,7 @@ html.js .hero-title.is-intro .hero-accent::after {
   flex-direction: column;
   align-items: center;
   overflow: hidden;
-  padding-bottom: 24px;
+  padding-bottom: 18px;
   background: #fff;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-card);
@@ -1010,16 +1010,22 @@ html.js .hero-title.is-intro .hero-accent::after {
 }
 
 /* カード上部いっぱいの写真。高さはカード全体の6割ほど。
-   カード幅と文字の量の兼ね合いで、PC・スマホは縦長 4:5、その間の幅は正方形に切り抜く */
+   カードが縦長になりすぎないよう、カード幅に応じて PC は 10:9、その間の幅は 3:2、スマホは 6:5 に切り抜く */
 .price-card-photo {
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 10 / 9;
   background: var(--color-placeholder);
 }
 
 @media (min-width: 601px) and (max-width: 1139px) {
   .price-card-photo {
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 3 / 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .price-card-photo {
+    aspect-ratio: 6 / 5;
   }
 }
 
@@ -1033,7 +1039,7 @@ html.js .hero-title.is-intro .hero-accent::after {
 }
 
 .price-card h3 {
-  margin: 18px 20px 10px;
+  margin: 14px 16px 4px;
   font-size: 18px;
   line-height: 1.4;
   color: var(--color-deep);
@@ -1061,7 +1067,9 @@ html.js .hero-title.is-intro .hero-accent::after {
 }
 
 .price-card-tax {
+  margin-left: 2px;
   font-size: 12px;
+  font-weight: 500;
   color: var(--color-text-light);
 }
 
@@ -1070,11 +1078,11 @@ html.js .hero-title.is-intro .hero-accent::after {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  margin-top: 14px;
-  padding: 6px 16px;
+  margin-top: 10px;
+  padding: 4px 14px;
   border: 1px solid var(--color-accent);
   border-radius: var(--radius-btn);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   color: var(--color-accent-dark);
   text-decoration: none;
