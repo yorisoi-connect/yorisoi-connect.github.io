@@ -64,9 +64,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-  <!-- 丸ゴシック（ヒーロー見出しと「4つのみえる」の番号用）。text= で使う文字だけ読み込んで軽くしている。
+  <!-- 丸ゴシック（ヒーロー見出しと「4つのみえる」「作業の流れ」の番号用）。text= で使う文字だけ読み込んで軽くしている。
        見出しの文言を変えたら、ここの text= も同じ文字にそろえること（ない文字だけ別の書体になる） -->
-  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&display=swap&text=料金、作業仕上がりすべてお見せします！01234" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&display=swap&text=料金、作業仕上がりすべてお見せします！0123456" rel="stylesheet">
   <link rel="stylesheet" href="/mieru-osouji/assets/css/style.css">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG9KYK977N"></script>
@@ -223,7 +223,7 @@
             <div class="feature-body">
               <p class="feature-num" aria-hidden="true">03</p>
               <h3>人がみえる</h3>
-              <p>どんな作業員が訪問するかが分かるように、作業前日に担当者の名前・顔写真・ひとことをLINEでお送りします。</p>
+              <p>どんな作業員が訪問するかが分かるように、作業前日までに担当者の名前・顔写真・ひとことをLINEでお送りします。</p>
             </div>
           </li>
           <li class="feature-card rise">
@@ -426,54 +426,48 @@
       <div class="container">
         <p class="section-eyebrow fade-in">FLOW</p>
         <h2 class="section-title fade-in">作業の流れ</h2>
-        <ol class="flow-list">
-          <li class="flow-item fade-in">
-            <span class="flow-num">1</span>
+        <!-- サービス共通の流れ（エアコンの分解・洗浄などの細かい工程は、各サービスの料金案内ページで説明する） -->
+        <ol class="flow-list stagger">
+          <li class="flow-item rise">
+            <span class="flow-num">01</span>
             <div class="flow-body">
               <h3>ご相談（LINE・電話）</h3>
-              <p>エアコンの台数・設置場所・型番がわかれば教えてください。わからなくても大丈夫です。</p>
+              <p>お掃除したい場所と気になっていることを教えてください。わからないことがあっても大丈夫です。丁寧にヒアリングさせていただきます。</p>
             </div>
           </li>
-          <li class="flow-item fade-in">
-            <span class="flow-num">2</span>
+          <li class="flow-item rise">
+            <span class="flow-num">02</span>
             <div class="flow-body">
               <h3>お見積り・日程調整</h3>
               <p>総額の目安と、追加料金がかかる条件をお伝えしてから、作業日を決めます。</p>
             </div>
           </li>
-          <li class="flow-item fade-in">
-            <span class="flow-num">3</span>
+          <li class="flow-item rise">
+            <span class="flow-num">03</span>
             <div class="flow-body">
-              <h3>養生</h3>
-              <p>壁や床、周りの家具が濡れたり汚れたりしないよう、シートで覆います。</p>
+              <h3>担当者のご紹介（作業前日まで）</h3>
+              <p>前日までに担当者の名前・顔写真・ひとことをLINEでお送りします。</p>
             </div>
           </li>
-          <li class="flow-item fade-in">
-            <span class="flow-num">4</span>
+          <li class="flow-item rise">
+            <span class="flow-num">04</span>
             <div class="flow-body">
-              <h3>分解</h3>
-              <p>カバーやフィルターなど、外せる部品を取り外します。</p>
+              <h3>状態の確認とご説明（作業当日）</h3>
+              <p>実際の状態を見て、作業内容をご説明します。追加の作業が必要なときは理由をお伝えしますが、無理におすすめすることはありませんのでご安心ください。</p>
             </div>
           </li>
-          <li class="flow-item fade-in">
-            <span class="flow-num">5</span>
+          <li class="flow-item rise">
+            <span class="flow-num">05</span>
             <div class="flow-body">
-              <h3>洗浄</h3>
-              <p>エアコン内部と外した部品を洗います。洗浄で出た水は、その場でご覧いただけます。</p>
+              <h3>作業</h3>
+              <p>まわりを汚さないよう養生してから作業します。工程ごとに写真を残します。</p>
             </div>
           </li>
-          <li class="flow-item fade-in">
-            <span class="flow-num">6</span>
+          <li class="flow-item rise">
+            <span class="flow-num">06</span>
             <div class="flow-body">
-              <h3>組立・動作確認</h3>
-              <p>部品を元に戻し、運転して正常に動くことを確認します。</p>
-            </div>
-          </li>
-          <li class="flow-item fade-in">
-            <span class="flow-num">7</span>
-            <div class="flow-body">
-              <h3>作業のご報告（写真）</h3>
-              <p>作業前・作業中・作業後の写真を見ていただきながら、作業内容をご説明します。</p>
+              <h3>仕上がりのご確認</h3>
+              <p>作業前・作業中・作業後の写真を見ていただきながら、一緒に仕上がりを確認します。</p>
             </div>
           </li>
         </ol>
