@@ -5,7 +5,7 @@
    清潔感のある明るい系。ハンバーガー・出現アニメの動きは
    /assets/js/site.js をそのまま使うため、クラス名・ID もそちらに合わせている。
    構成：変数 / リセット / 共通部品 / 出現アニメ / ヘッダー / ファーストビュー /
-        4つのみえる / 料金 / 流れ / 作業事例 / 代表紹介 / 安心の情報 / そのほか /
+        4つのみえる / できること / 料金 / 流れ / 作業事例 / 代表紹介 / 安心の情報 / そのほか /
         よくある質問 / お問い合わせ / フッター / 固定CTAバー / レスポンシブ
    ========================================================================== */
 
@@ -180,15 +180,13 @@ button {
   font-weight: 500;
 }
 
-.badge-pending {
-  display: inline-block;
-  padding: 2px 12px;
-  border-radius: var(--radius-btn);
-  background: var(--color-accent-light);
-  color: var(--color-accent-dark);
-  font-size: 14px;
-  font-weight: 700;
-  white-space: nowrap;
+/* アイコン置き場（<symbol> をまとめた SVG）。画面には出さない。
+   display: none にすると一部のブラウザで <use> が描かれないので、大きさ0で隠す */
+.icon-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
 }
 
 /* ダミー画像（ラベル付きのグレー枠）。写真が届いたら <img> に差し替える */
@@ -835,69 +833,352 @@ html.js .hero-title.is-intro .hero-accent::after {
 }
 
 /* --------------------------------------------------------------------------
-   8. 料金
+   7-2. できること（サービスメニュー）
+   PC：ハウスクリーニング（広い）と空室清掃（狭い）を横に並べる。
+   タブレット・スマホ：縦に並べる。対応できる場所はアイコンのタイルで一覧にする
    -------------------------------------------------------------------------- */
-.price-table {
-  width: 100%;
-  max-width: 760px;
-  margin: 0 auto 24px;
-  border-collapse: separate;
-  border-spacing: 0;
+.service-grid {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.service-card {
+  padding: 28px;
   background: #fff;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-card);
-  overflow: hidden;
+  box-shadow: var(--shadow-card);
 }
 
-.price-table th,
-.price-table td {
-  padding: 18px 20px;
-  text-align: left;
-  vertical-align: middle;
-  border-bottom: 1px solid var(--color-border);
+.service-card-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
 }
 
-.price-table tr:last-child th,
-.price-table tr:last-child td {
-  border-bottom: none;
-}
-
-.price-table thead th {
+.service-card-icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
   background: var(--color-primary);
+}
+
+.service-card-head h3 {
+  font-size: 21px;
+  line-height: 1.4;
   color: var(--color-deep);
-  font-size: 15px;
 }
 
-.price-table tbody th {
-  font-weight: 700;
+.service-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+  gap: 20px 12px;
 }
 
-.price-table tbody th small {
-  display: block;
+.service-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.service-item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  background: var(--color-accent-light);
+}
+
+.service-card-icon svg,
+.service-item-icon svg {
+  width: 30px;
+  height: 30px;
+  fill: none;
+  stroke: var(--color-accent-dark);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.service-item-label {
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--color-deep);
+  word-break: auto-phrase;
+}
+
+@media (max-width: 900px) {
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .service-card {
+    padding: 24px 18px;
+  }
+
+  .service-card-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .service-card-icon svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .service-items {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 18px 8px;
+  }
+
+  .service-item-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+  }
+
+  .service-item-label {
+    font-size: 13px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   8. 料金（カードのカルーセル）
+   一度に見える枚数は --per-view で決める（PC 4枚 → 3枚 → タブレット 2枚 → スマホ 1枚＋次を少し見せる）。
+   横スクロール＋scroll-snap で動くので、左右ボタン（price-carousel.js）がなくてもスワイプで見られる
+   -------------------------------------------------------------------------- */
+.price-carousel {
+  --per-view: 4;
+  --gap: 20px;
+  position: relative;
+  max-width: 1040px;
+  margin: 0 auto 24px;
+}
+
+.price-track {
+  display: flex;
+  gap: var(--gap);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  /* カードの影が切れないよう上下左右に少し余白を取り、その分を外側の負の余白で打ち消す */
+  padding: 8px 6px 20px;
+  margin: 0 -6px;
+  /* 吸着位置も左右の余白ぶんずらす（ずらさないと先頭で6pxスクロールした状態になり「前へ」が消えない） */
+  scroll-padding: 0 6px;
+}
+
+.price-track::-webkit-scrollbar {
+  display: none;
+}
+
+.price-track:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-card);
+}
+
+.price-card {
+  display: flex;
+  flex: 0 0 calc((100% - (var(--per-view) - 1) * var(--gap)) / var(--per-view));
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  padding-bottom: 24px;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  text-align: center;
+  scroll-snap-align: start;
+}
+
+/* カード上部いっぱいの写真。高さはカード全体の6割ほど。
+   カード幅と文字の量の兼ね合いで、PC・スマホは縦長 4:5、その間の幅は正方形に切り抜く */
+.price-card-photo {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background: var(--color-placeholder);
+}
+
+@media (min-width: 601px) and (max-width: 1139px) {
+  .price-card-photo {
+    aspect-ratio: 1 / 1;
+  }
+}
+
+.price-card-photo img,
+.price-card-photo .ph-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  object-fit: cover;
+  aspect-ratio: auto;
+}
+
+.price-card h3 {
+  margin: 18px 20px 10px;
+  font-size: 18px;
+  line-height: 1.4;
+  color: var(--color-deep);
+}
+
+.price-card h3 small {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
   color: var(--color-text-light);
 }
 
-.price-table td {
-  width: 40%;
-  text-align: right;
+.price-card-price {
+  margin-top: auto;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-deep);
 }
 
-.price-notes {
-  max-width: 760px;
-  margin: 0 auto;
+.price-card-num {
+  margin-right: 2px;
+  font-size: 32px;
+  color: var(--color-accent-dark);
 }
 
-.price-notes li {
-  position: relative;
-  padding-left: 1.2em;
+.price-card-tax {
+  font-size: 12px;
+  color: var(--color-text-light);
 }
 
-.price-notes li::before {
-  content: "※";
+/* 詳しい料金案内ページへのリンク（右向き矢印つき） */
+.price-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 14px;
+  padding: 6px 16px;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-btn);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-accent-dark);
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.price-card-link::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.price-card-link:hover {
+  background: var(--color-accent-light);
+}
+
+/* 左右ボタン（JSが動くときだけ出す） */
+.price-carousel-btn {
+  display: none;
   position: absolute;
-  left: 0;
+  top: calc(50% - 6px);
+  z-index: 1;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: opacity 0.2s ease;
+}
+
+html.js .price-carousel-btn {
+  display: flex;
+}
+
+.price-carousel-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--color-deep);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.price-carousel-btn:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.price-carousel-prev {
+  left: -22px;
+}
+
+.price-carousel-next {
+  right: -22px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .price-track {
+    scroll-behavior: auto;
+  }
+}
+
+@media (max-width: 1139px) {
+  .price-carousel {
+    --per-view: 3;
+  }
+
+  /* 画面の端に余白がないので、ボタンをカードの上に重ねる */
+  .price-carousel-prev {
+    left: -8px;
+  }
+
+  .price-carousel-next {
+    right: -8px;
+  }
+}
+
+@media (max-width: 900px) {
+  .price-carousel {
+    --per-view: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  /* 1枚＋次のカードの端を少し見せて、横に続くことを伝える */
+  .price-carousel {
+    --per-view: 1.3;
+    --gap: 14px;
+  }
+
+  .price-carousel-btn {
+    width: 38px;
+    height: 38px;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -1028,8 +1309,10 @@ html.js .hero-title.is-intro .hero-accent::after {
    -------------------------------------------------------------------------- */
 .info-list {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+  max-width: 860px;
+  margin: 0 auto;
 }
 
 .info-item {
@@ -1410,15 +1693,6 @@ html.js .hero-title.is-intro .hero-accent::after {
 
   .feature-card h3 {
     font-size: 19px;
-  }
-
-  .price-table th,
-  .price-table td {
-    padding: 14px 14px;
-  }
-
-  .price-table td {
-    width: auto;
   }
 
   .case-grid {

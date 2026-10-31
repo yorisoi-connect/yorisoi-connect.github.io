@@ -78,6 +78,24 @@
   </script>
 </head>
 <body>
+  <!-- アイコン置き場。各セクションから <svg><use href="#i-名前"/></svg> で呼び出す
+       （線の色・太さは呼び出し側の CSS で指定する） -->
+  <svg class="icon-sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-house" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-5h4v5"/></symbol>
+    <symbol id="i-aircon" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="8" rx="2"/><path d="M5.5 10.5h13"/><path d="M8 16v2.5M12 16v4M16 16v2.5"/></symbol>
+    <symbol id="i-kitchen" viewBox="0 0 24 24"><path d="M4 11h16v4a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M2 11h20"/><path d="M9 7.5c0-1.2 1.2-1.6 1.2-3M13.5 7.5c0-1.2 1.2-1.6 1.2-3"/></symbol>
+    <symbol id="i-hood" viewBox="0 0 24 24"><path d="M9.5 3h5v5.5l6 5.5h-17l6-5.5z"/><path d="M3.5 14v2h17v-2"/><path d="M8 19.5h.01M12 19.5h.01M16 19.5h.01"/></symbol>
+    <symbol id="i-bath" viewBox="0 0 24 24"><path d="M3 12h18v2a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5z"/><path d="M6 12V6.5a2.5 2.5 0 0 1 4.5-1.5"/><path d="M7 19l-1 2M17 19l1 2"/></symbol>
+    <symbol id="i-reheat" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 1-14 5.3"/><path d="M4 12a8 8 0 0 1 14-5.3"/><path d="M18 3v3.7h-3.7"/><path d="M6 21v-3.7h3.7"/><path d="M12 8.5c1.6 1.7 2.2 2.8 2.2 3.9a2.2 2.2 0 0 1-4.4 0c0-1.1.6-2.2 2.2-3.9z"/></symbol>
+    <symbol id="i-sink" viewBox="0 0 24 24"><path d="M3 12h18v1.5a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6z"/><path d="M12 12V6h4"/><path d="M9 12v-1.5"/></symbol>
+    <symbol id="i-toilet" viewBox="0 0 24 24"><rect x="6" y="3" width="8" height="6" rx="1"/><path d="M4 9h15a4 4 0 0 1-4 5H8a4 4 0 0 1-4-5z"/><path d="M8.5 14l-1 7h8l-1-7"/></symbol>
+    <symbol id="i-washer" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="13.5" r="4.5"/><path d="M7.5 6.5h.01M10.5 6.5h.01"/></symbol>
+    <symbol id="i-floor" viewBox="0 0 24 24"><path d="M2.5 18l4-11h15l-4 11z"/><path d="M8 18l4-11M13 18l4-11"/></symbol>
+    <symbol id="i-window" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M12 3v18M4 12h16"/></symbol>
+    <symbol id="i-balcony" viewBox="0 0 24 24"><path d="M3 10h18M3 20h18"/><path d="M5 10v10M9 10v10M13 10v10M17 10v10M21 10v10"/><path d="M16 6.5c0-2 1.5-3 3-3 0 2-1.5 3-3 3z"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="12" r="4"/><path d="M12 12h9M18 12v3M15 12v2"/></symbol>
+    <symbol id="i-room" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1.5"/><path d="M3 13h7v8"/><path d="M14 21a5 5 0 0 1 5-5"/><path d="M14 3v5"/></symbol>
+  </svg>
 
   <header class="site-header" id="site-header">
     <div class="header-inner">
@@ -94,8 +112,7 @@
       <nav class="global-nav" id="global-nav" aria-label="グローバルナビゲーション">
         <ul class="nav-main">
           <li><a href="#aircon">エアコンクリーニング</a></li>
-          <!-- TODO ハウスクリーニング：専用セクション／ページができたらリンク先を差し替え -->
-          <li><a href="#house-cleaning">ハウスクリーニング</a></li>
+          <li><a href="#service">ハウスクリーニング</a></li>
           <li><a href="#business">法人のお客様へ</a></li>
         </ul>
         <ul class="nav-sub">
@@ -224,53 +241,200 @@
       </div>
     </section>
 
+    <!-- できること（サービスメニュー）。対応できる場所をアイコンで一覧にする。
+         エアコンは今は壁掛けのみだが、将来ほかの型にも対応するため、ここでは「エアコン」とだけ書き、
+         型の確認は問い合わせのときに口頭・LINEで行う -->
+    <section class="section section-green" id="service" data-ga-section="service">
+      <div class="container">
+        <p class="section-eyebrow fade-in">SERVICE</p>
+        <h2 class="section-title fade-in">できること</h2>
+        <div class="service-grid stagger">
+          <div class="service-card rise">
+            <div class="service-card-head">
+              <span class="service-card-icon" aria-hidden="true">
+                <!-- 家 -->
+                <svg><use href="#i-house"/></svg>
+              </span>
+              <h3>ハウスクリーニング</h3>
+            </div>
+            <ul class="service-items">
+              <li class="service-item">
+                <span class="service-item-icon" aria-hidden="true"><svg><use href="#i-aircon"/></svg></span>
+                <span class="service-item-label">エアコン</span>
+              </li>
+              <li class="service-item">
+                <span class="service-item-icon" aria-hidden="true"><svg><use href="#i-kitchen"/></svg></span>
+                <span class="service-item-label">キッチン</span>
+              </li>
+              <li class="service-item">
+                <span class="service-item-icon" aria-hidden="true"><svg><use href="#i-hood"/></svg></span>
+                <span class="service-item-label">レンジフード</span>
+              </li>
+              <li class="service-item">
+                <span class="service-item-icon" aria-hidden="true"><svg><use href="#i-bath"/></svg></span>
+                <span class="service-item-label">浴室</span>
+              </li>
+              <li class="service-item">
+                <span class="service-item-icon" aria-hidden="true"><svg><use href="#i-reheat"/></svg></span>
+                <span class="service-item-label">追い焚き配管</span>
+              </li>
+              <li class="service-item">
+                <span class="service-item-icon" aria-hidden="true"><svg><use href="#i-sink"/></svg></span>
+                <span class="service-item-label">洗面台</span>
+              </li>
+              <li class="service-item">
+                <span class="service-item-icon" aria-hidden="true"><svg><use href="#i-toilet"/></svg></span>
+                <span class="service-item-label">トイレ</span>
+              </li>
+              <li class="service-item">
+                <span class="service-item-icon" aria-hidden="true"><svg><use href="#i-washer"/></svg></span>
+                <span class="service-item-label">洗濯機</span>
+              </li>
+              <li class="service-item">
+                <span class="service-item-icon" aria-hidden="true"><svg><use href="#i-floor"/></svg></span>
+                <span class="service-item-label">フロア</span>
+              </li>
+              <li class="service-item">
+                <span class="service-item-icon" aria-hidden="true"><svg><use href="#i-window"/></svg></span>
+                <span class="service-item-label">窓・サッシ</span>
+              </li>
+              <li class="service-item">
+                <span class="service-item-icon" aria-hidden="true"><svg><use href="#i-balcony"/></svg></span>
+                <span class="service-item-label">ベランダ・バルコニー</span>
+              </li>
+            </ul>
+          </div>
+          <div class="service-card rise">
+            <div class="service-card-head">
+              <span class="service-card-icon" aria-hidden="true">
+                <!-- 鍵 -->
+                <svg><use href="#i-key"/></svg>
+              </span>
+              <h3>空室清掃</h3>
+            </div>
+            <ul class="service-items">
+              <li class="service-item">
+                <!-- 間取り図 -->
+                <span class="service-item-icon" aria-hidden="true"><svg><use href="#i-room"/></svg></span>
+                <span class="service-item-label">1R〜</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- 料金 -->
-    <section class="section section-green" id="price" data-ga-section="price">
+    <section class="section" id="price" data-ga-section="price">
       <div class="container">
         <p class="section-eyebrow fade-in">PRICE</p>
         <h2 class="section-title fade-in">料金</h2>
-        <p class="notice fade-in">
-          現在、料金を準備中です。公開時に、基本料金・オプション・追加料金が出る条件をこのページに掲載します。
-        </p>
-        <!-- TODO 料金：確定したら「準備中」を金額（税込）に置き換える -->
-        <table class="price-table fade-in">
-          <thead>
-            <tr>
-              <th scope="col">メニュー</th>
-              <th scope="col">料金（税込）</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">壁掛けエアコン<small>標準タイプ</small></th>
-              <td><span class="badge-pending">準備中</span></td>
-            </tr>
-            <tr>
-              <th scope="row">壁掛けエアコン<small>お掃除機能付き</small></th>
-              <td><span class="badge-pending">対応可否は準備中</span></td>
-            </tr>
-            <tr>
-              <th scope="row">オプション</th>
-              <td><span class="badge-pending">準備中</span></td>
-            </tr>
-            <tr>
-              <th scope="row">複数台割引</th>
-              <td><span class="badge-pending">準備中</span></td>
-            </tr>
-            <tr>
-              <th scope="row">出張費・駐車場</th>
-              <td><span class="badge-pending">準備中</span></td>
-            </tr>
-          </tbody>
-        </table>
-        <ul class="price-notes note fade-in">
-          <li>天井埋込型エアコンは現在対応していません。</li>
-        </ul>
+        <!-- 料金カードのカルーセル（「できること」と同じ種類を並べる）。
+             画面幅に応じて一度に見える枚数が変わる（スマホ1枚＋次のカードを少し見せる／タブレット2枚／PC3〜4枚）。
+             左右ボタンは assets/js/price-carousel.js。JSがなくても横スクロール（スワイプ）で見られる。
+             TODO 料金：確定したら各カードの「○○」を金額に置き換える（税込）
+             TODO 料金ページ：「詳しく見る」のリンク先 /mieru-osouji/price/○○/ は未作成（今は404）
+             TODO 画像：各カードの .ph-img を <img src="/mieru-osouji/assets/img/price-○○.jpg" alt="" loading="lazy"> に差し替え
+             （名前は見出しで伝わるので alt は空。写真は画面幅に応じて縦長 4:5 か正方形に切り抜いて表示される） -->
+        <div class="price-carousel fade-in" data-carousel>
+          <ul class="price-track" data-carousel-track tabindex="0" aria-label="サービスごとの料金">
+            <li class="price-card">
+              <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
+              <h3>エアコン</h3>
+              <p class="price-card-price"><span class="price-card-num">○○</span>円〜</p>
+              <p class="price-card-tax">税込</p>
+              <a class="price-card-link" href="/mieru-osouji/price/aircon/" aria-label="エアコンの料金を詳しく見る">詳しく見る</a>
+            </li>
+            <li class="price-card">
+              <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
+              <h3>キッチン</h3>
+              <p class="price-card-price"><span class="price-card-num">○○</span>円〜</p>
+              <p class="price-card-tax">税込</p>
+              <a class="price-card-link" href="/mieru-osouji/price/kitchen/" aria-label="キッチンの料金を詳しく見る">詳しく見る</a>
+            </li>
+            <li class="price-card">
+              <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
+              <h3>レンジフード</h3>
+              <p class="price-card-price"><span class="price-card-num">○○</span>円〜</p>
+              <p class="price-card-tax">税込</p>
+              <a class="price-card-link" href="/mieru-osouji/price/range-hood/" aria-label="レンジフードの料金を詳しく見る">詳しく見る</a>
+            </li>
+            <li class="price-card">
+              <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
+              <h3>浴室</h3>
+              <p class="price-card-price"><span class="price-card-num">○○</span>円〜</p>
+              <p class="price-card-tax">税込</p>
+              <a class="price-card-link" href="/mieru-osouji/price/bathroom/" aria-label="浴室の料金を詳しく見る">詳しく見る</a>
+            </li>
+            <li class="price-card">
+              <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
+              <h3>追い焚き配管</h3>
+              <p class="price-card-price"><span class="price-card-num">○○</span>円〜</p>
+              <p class="price-card-tax">税込</p>
+              <a class="price-card-link" href="/mieru-osouji/price/bath-pipe/" aria-label="追い焚き配管の料金を詳しく見る">詳しく見る</a>
+            </li>
+            <li class="price-card">
+              <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
+              <h3>洗面台</h3>
+              <p class="price-card-price"><span class="price-card-num">○○</span>円〜</p>
+              <p class="price-card-tax">税込</p>
+              <a class="price-card-link" href="/mieru-osouji/price/washbasin/" aria-label="洗面台の料金を詳しく見る">詳しく見る</a>
+            </li>
+            <li class="price-card">
+              <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
+              <h3>トイレ</h3>
+              <p class="price-card-price"><span class="price-card-num">○○</span>円〜</p>
+              <p class="price-card-tax">税込</p>
+              <a class="price-card-link" href="/mieru-osouji/price/toilet/" aria-label="トイレの料金を詳しく見る">詳しく見る</a>
+            </li>
+            <li class="price-card">
+              <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
+              <h3>洗濯機</h3>
+              <p class="price-card-price"><span class="price-card-num">○○</span>円〜</p>
+              <p class="price-card-tax">税込</p>
+              <a class="price-card-link" href="/mieru-osouji/price/washing-machine/" aria-label="洗濯機の料金を詳しく見る">詳しく見る</a>
+            </li>
+            <li class="price-card">
+              <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
+              <h3>フロア</h3>
+              <p class="price-card-price"><span class="price-card-num">○○</span>円〜</p>
+              <p class="price-card-tax">税込</p>
+              <a class="price-card-link" href="/mieru-osouji/price/floor/" aria-label="フロアの料金を詳しく見る">詳しく見る</a>
+            </li>
+            <li class="price-card">
+              <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
+              <h3>窓・サッシ</h3>
+              <p class="price-card-price"><span class="price-card-num">○○</span>円〜</p>
+              <p class="price-card-tax">税込</p>
+              <a class="price-card-link" href="/mieru-osouji/price/window/" aria-label="窓・サッシの料金を詳しく見る">詳しく見る</a>
+            </li>
+            <li class="price-card">
+              <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
+              <h3>ベランダ・バルコニー</h3>
+              <p class="price-card-price"><span class="price-card-num">○○</span>円〜</p>
+              <p class="price-card-tax">税込</p>
+              <a class="price-card-link" href="/mieru-osouji/price/balcony/" aria-label="ベランダ・バルコニーの料金を詳しく見る">詳しく見る</a>
+            </li>
+            <li class="price-card">
+              <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
+              <h3>空室清掃<small>1R〜</small></h3>
+              <p class="price-card-price"><span class="price-card-num">○○</span>円〜</p>
+              <p class="price-card-tax">税込</p>
+              <a class="price-card-link" href="/mieru-osouji/price/vacant-room/" aria-label="空室清掃の料金を詳しく見る">詳しく見る</a>
+            </li>
+          </ul>
+          <button type="button" class="price-carousel-btn price-carousel-prev" data-carousel-prev aria-label="前の料金を見る">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+          </button>
+          <button type="button" class="price-carousel-btn price-carousel-next" data-carousel-next aria-label="次の料金を見る">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
       </div>
     </section>
 
     <!-- 作業の流れ -->
-    <section class="section" id="flow" data-ga-section="flow">
+    <section class="section section-green" id="flow" data-ga-section="flow">
       <div class="container">
         <p class="section-eyebrow fade-in">FLOW</p>
         <h2 class="section-title fade-in">作業の流れ</h2>
@@ -329,7 +493,7 @@
     </section>
 
     <!-- 作業事例 -->
-    <section class="section section-green" id="cases" data-ga-section="cases">
+    <section class="section" id="cases" data-ga-section="cases">
       <div class="container">
         <p class="section-eyebrow fade-in">CASES</p>
         <h2 class="section-title fade-in">作業事例</h2>
@@ -353,7 +517,7 @@
     </section>
 
     <!-- 代表紹介 -->
-    <section class="section" id="profile" data-ga-section="profile">
+    <section class="section section-green" id="profile" data-ga-section="profile">
       <div class="container">
         <p class="section-eyebrow fade-in">PROFILE</p>
         <h2 class="section-title fade-in">代表紹介</h2>
@@ -377,7 +541,7 @@
     </section>
 
     <!-- 安心の情報 -->
-    <section class="section section-green" id="info" data-ga-section="info">
+    <section class="section" id="info" data-ga-section="info">
       <div class="container">
         <p class="section-eyebrow fade-in">INFORMATION</p>
         <h2 class="section-title fade-in">ご利用の前に</h2>
@@ -385,10 +549,6 @@
           <div class="info-item rise">
             <dt>対応エリア・営業時間</dt>
             <dd>東京・千葉・埼玉・神奈川<br>9:00〜23:00</dd>
-          </div>
-          <div class="info-item rise">
-            <dt>お断りする場合</dt>
-            <dd>天井埋込型エアコンは現在対応していません。</dd>
           </div>
           <div class="info-item rise">
             <dt>その場でのご提案</dt>
@@ -400,7 +560,7 @@
     </section>
 
     <!-- そのほかのメニュー -->
-    <section class="section" id="business" data-ga-section="other_menu">
+    <section class="section section-green" id="business" data-ga-section="other_menu">
       <div class="container">
         <p class="section-eyebrow fade-in">OTHER MENU</p>
         <h2 class="section-title fade-in">そのほかのメニュー</h2>
@@ -411,7 +571,7 @@
             <!-- TODO 法人ページ：/mieru-osouji/business/ は未作成。ページを作るまでこのリンクは404になる -->
             <a href="/mieru-osouji/business/" class="btn btn-outline btn-small">法人のお客様向けページ</a>
           </div>
-          <div class="other-item rise" id="house-cleaning">
+          <div class="other-item rise">
             <h3>そのほかの清掃</h3>
             <p>エアコン以外の清掃も、内容によってはお受けできます。まずはご相談ください。</p>
             <a href="[LINE_URL_CLEANING]" class="btn btn-line btn-small">LINEで相談する</a>
@@ -421,7 +581,7 @@
     </section>
 
     <!-- よくある質問 -->
-    <section class="section section-green" id="faq" data-ga-section="faq">
+    <section class="section" id="faq" data-ga-section="faq">
       <div class="container">
         <p class="section-eyebrow fade-in">FAQ</p>
         <h2 class="section-title fade-in">よくある質問</h2>
@@ -449,10 +609,6 @@
           <details class="faq-item">
             <summary>電話がつながらないときは？</summary>
             <p class="faq-a">作業中は電話に出られない場合があります。その際は、作業の合間か終了後に折り返しお電話します。LINEなら、いつでもメッセージを送っていただけます。</p>
-          </details>
-          <details class="faq-item">
-            <summary>天井埋込型のエアコンもお願いできますか？</summary>
-            <p class="faq-a">天井埋込型エアコンは現在対応していません。壁掛けエアコンのみお受けしています。</p>
           </details>
         </div>
       </div>
@@ -506,6 +662,7 @@
 
   <script src="/assets/js/site.js" defer></script>
   <script src="/mieru-osouji/assets/js/hero.js" defer></script>
+  <script src="/mieru-osouji/assets/js/price-carousel.js" defer></script>
   <script src="/assets/js/analytics.js" defer></script>
 </body>
 </html>
