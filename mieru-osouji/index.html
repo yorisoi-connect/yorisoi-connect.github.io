@@ -20,7 +20,7 @@
   <script>(function(d){d.className+=" js"})(document.documentElement)</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>みえる！おそうじ｜エアコンクリーニング・ハウスクリーニング（東京・千葉・埼玉・神奈川）｜よりそいコネクト</title>
-  <meta name="description" content="みえる！おそうじ（みえるおそうじ）は、エアコンクリーニングをはじめとするハウスクリーニングサービスです。料金、作業、仕上がり、すべてお見せします。対応エリアは東京・千葉・埼玉・神奈川、営業時間は9:00〜23:00。ご相談はLINEまたはお電話で。">
+  <meta name="description" content="みえる！おそうじ（みえるおそうじ）は、エアコンクリーニングをはじめとするハウスクリーニングサービスです。料金、作業、仕上がり、すべてお見せします。対応エリアは東京・千葉・埼玉・神奈川、作業時間は9:00〜22:00。ご相談はLINEまたはお電話で。">
   <link rel="canonical" href="https://yorisoi-connect.com/mieru-osouji/">
 
   <!-- OGP -->
@@ -56,7 +56,7 @@
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
       "opens": "09:00",
-      "closes": "23:00"
+      "closes": "22:00"
     }
   }
   </script>
@@ -68,7 +68,7 @@
        見出しの文言を変えたら、ここの text= も同じ文字にそろえること（ない文字だけ別の書体になる） -->
   <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&display=swap&text=料金、作業仕上がりすべてお見せします！0123456" rel="stylesheet">
   <!-- ?v= はブラウザに古いCSSを使わせないための番号。style.css を変えたら日付などに書き換える -->
-  <link rel="stylesheet" href="/mieru-osouji/assets/css/style.css?v=20261103c">
+  <link rel="stylesheet" href="/mieru-osouji/assets/css/style.css?v=20261103g">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG9KYK977N"></script>
   <script>
@@ -480,6 +480,7 @@
       <div class="container">
         <p class="section-eyebrow fade-in">CASES</p>
         <h2 class="section-title fade-in">作業事例</h2>
+        <p class="section-lead fade-in">エアコンクリーニングの作業の様子を、作業前から洗浄後の水まで写真でご紹介します。</p>
         <!-- エアコンクリーニングの事例を1件だけ、工程順の写真5枚で見せる。ほかの事例は /mieru-osouji/cases/ で紹介する。
              TODO 画像：assets/img/case-before.jpg / case-masking.jpg / case-wash.jpg / case-after.jpg / case-water.jpg ができたら <img> に差し替え
              TODO 文言：写真の下のひとことは仮の文。実際の事例に合わせて書き換える -->
@@ -519,7 +520,52 @@
       </div>
     </section>
 
-    <!-- 代表紹介 -->
+    <!-- 安心の情報 -->
+    <section class="section section-green" id="info" data-ga-section="info">
+      <div class="container">
+        <p class="section-eyebrow fade-in">INFORMATION</p>
+        <h2 class="section-title fade-in">ご利用の前に</h2>
+        <!-- 時間を変えたら、お問い合わせ欄・FAQ・meta description・構造化データ（openingHoursSpecification）もそろえる -->
+        <dl class="info-list stagger">
+          <div class="info-item rise">
+            <dt>対応エリア</dt>
+            <dd>東京・千葉・埼玉・神奈川</dd>
+          </div>
+          <div class="info-item rise">
+            <dt>作業時間</dt>
+            <dd>9:00〜22:00</dd>
+          </div>
+          <div class="info-item info-item-wide rise">
+            <dt>ご相談の受付</dt>
+            <dd>LINE：いつでもお送りください。気づきしだいお返事します。お返事が遅くなるときは、9:00〜20:00のあいだにお送りします。<br>お電話：9:00〜19:00</dd>
+          </div>
+          <!-- 駐車料金は将来、料金に組み込む予定。組み込んだあとも「別途いただくことはありません」のままで合っている -->
+          <div class="info-item rise">
+            <dt>駐車場</dt>
+            <dd>駐車スペースがあればお借りします。ない場合は近くのコインパーキングを利用しますが、駐車料金を別途いただくことはありません。</dd>
+          </div>
+          <div class="info-item rise">
+            <dt>水道・電気</dt>
+            <dd>作業中は、お客様宅の水道・電気をお借りします。</dd>
+          </div>
+          <!-- TODO 損害保険：加入後に「損害保険」の項目をここに追加する（加入するまで表示しない） -->
+        </dl>
+      </div>
+    </section>
+
+    <!-- 法人のお客様へ（ヘッダーの「法人のお客様へ」からのリンク先） -->
+    <section class="section" id="business" data-ga-section="other_menu">
+      <div class="container">
+        <p class="section-eyebrow fade-in">FOR BUSINESS</p>
+        <h2 class="section-title fade-in">法人のお客様へ</h2>
+        <!-- TODO 法人メニュー：オフィス・店舗の清掃、定期清掃を始めたら、この説明文とヘッダーの文言に追加する -->
+        <p class="section-lead business-lead fade-in">不動産管理会社さま・オーナーさまからの、空室清掃のご依頼を承っています。<br class="br-pc">詳しい内容は、法人のお客様向けページでご案内します。</p>
+        <!-- TODO 法人ページ：/mieru-osouji/business/ は未作成。ページを作るまでこのリンクは404になる -->
+        <p class="business-cta fade-in"><a href="/mieru-osouji/business/" class="btn btn-outline btn-small">法人のお客様向けページ</a></p>
+      </div>
+    </section>
+
+    <!-- 代表紹介（サービスの条件をひととおり読んだあと、よくある質問・お問い合わせの前に人を見せる） -->
     <section class="section section-green" id="profile" data-ga-section="profile">
       <div class="container">
         <p class="section-eyebrow fade-in">PROFILE</p>
@@ -531,53 +577,10 @@
             <p class="profile-role">よりそいコネクト 代表</p>
           </div>
           <div class="profile-body fade-in">
-            <p>みえる！おそうじを担当する、よりそいコネクト代表の戸梶です。システムエンジニアとして約8年半働いたあと、よりそいコネクトを始めました。高齢者向けの定期電話サービス「もしもしコール」も運営しています。</p>
-            <p>エアコンクリーニングの実績は、まだ多くありません。そのため、料金・作業・仕上がりをすべてお見せすることにしました。作業の写真と洗浄後の水を見ていただければ、どんな作業をしたかを確認できます。</p>
+            <p>みえる！おそうじを運営する、よりそいコネクト代表の戸梶です。高齢者向けの定期電話サービス「もしもしコール」も運営しています。</p>
+            <p>掃除が好きで、汚れが落ちてきれいになっていくのを見ると、うれしくなります。その「きれいになった」を、お客様にも一緒に見て安心していただきたい。そう考えて、料金・作業・担当者・仕上がりをすべてお見せすることにしました。</p>
+            <p>まだ始めたばかりのサービスで、実績は多くありません。だからこそ、作業の写真や洗浄後の水で、どんな作業をしたかをご自身で確かめていただけるようにしています。</p>
             <p>わからないことや気になることは、作業の前でも後でも、LINEかお電話でお気軽にお聞きください。</p>
-            <dl class="profile-career">
-              <dt>経歴</dt>
-              <dd>システムエンジニア 約8年半</dd>
-            </dl>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 安心の情報 -->
-    <section class="section" id="info" data-ga-section="info">
-      <div class="container">
-        <p class="section-eyebrow fade-in">INFORMATION</p>
-        <h2 class="section-title fade-in">ご利用の前に</h2>
-        <dl class="info-list stagger">
-          <div class="info-item rise">
-            <dt>対応エリア・営業時間</dt>
-            <dd>東京・千葉・埼玉・神奈川<br>9:00〜23:00</dd>
-          </div>
-          <div class="info-item rise">
-            <dt>その場でのご提案</dt>
-            <dd>作業後に時間があれば、その場でご提案します。お客様の了承を得てから行います。</dd>
-          </div>
-          <!-- TODO 損害保険：加入後に「損害保険」の項目をここに追加する（加入するまで表示しない） -->
-        </dl>
-      </div>
-    </section>
-
-    <!-- そのほかのメニュー -->
-    <section class="section section-green" id="business" data-ga-section="other_menu">
-      <div class="container">
-        <p class="section-eyebrow fade-in">OTHER MENU</p>
-        <h2 class="section-title fade-in">そのほかのメニュー</h2>
-        <div class="other-list stagger">
-          <div class="other-item rise">
-            <h3>空室清掃（法人のお客様）</h3>
-            <p>空室清掃は、法人のお客様向けページでご案内します。</p>
-            <!-- TODO 法人ページ：/mieru-osouji/business/ は未作成。ページを作るまでこのリンクは404になる -->
-            <a href="/mieru-osouji/business/" class="btn btn-outline btn-small">法人のお客様向けページ</a>
-          </div>
-          <div class="other-item rise">
-            <h3>そのほかの清掃</h3>
-            <p>エアコン以外の清掃も、内容によってはお受けできます。まずはご相談ください。</p>
-            <a href="[LINE_URL_CLEANING]" class="btn btn-line btn-small">LINEで相談する</a>
           </div>
         </div>
       </div>
@@ -602,8 +605,8 @@
             <p class="faq-a">ご不安な気持ちはよくわかります。貴重品は、作業するお部屋とは別の場所に移しておいていただくと安心です。また、作業中の様子をスマートフォンなどで録画していただいても構いません。</p>
           </details>
           <details class="faq-item">
-            <summary>対応エリアはどこですか？</summary>
-            <p class="faq-a">東京都・千葉県・埼玉県・神奈川県です。</p>
+            <summary>ここに載っていない場所のお掃除も頼めますか？</summary>
+            <p class="faq-a">内容によってはお受けできます。まずはLINEかお電話でご相談ください。</p>
           </details>
           <details class="faq-item">
             <summary>支払い方法は何がありますか？</summary>
@@ -615,7 +618,7 @@
           </details>
           <details class="faq-item">
             <summary>電話がつながらないときは？</summary>
-            <p class="faq-a">作業中は電話に出られない場合があります。その際は、作業の合間か終了後に折り返しお電話します。LINEなら、いつでもメッセージを送っていただけます。</p>
+            <p class="faq-a">お電話の受付は9:00〜19:00です。作業中は電話に出られない場合があります。その際は、作業の合間か終了後に折り返しお電話します。LINEなら、いつでもメッセージを送っていただけます。</p>
           </details>
         </div>
       </div>
@@ -635,7 +638,7 @@
           </a>
         </div>
         <p class="contact-meta">
-          受付時間 9:00〜23:00<br>
+          お電話 9:00〜19:00／LINEはいつでも受け付けています<br>
           作業中は電話に出られない場合があります。その際は折り返しお電話します。
         </p>
       </div>

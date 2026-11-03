@@ -1341,10 +1341,10 @@ html.js .price-carousel-btn {
 /* --------------------------------------------------------------------------
    10. 作業事例
    -------------------------------------------------------------------------- */
-/* 工程順の写真5枚。PCは横1列、その間の幅は3枚＋2枚、スマホは2枚ずつ。端数の段は中央に寄せる */
+/* 工程順の写真5枚。PC・タブレットは3枚＋2枚（2段目は中央に寄せる）、スマホは縦1列 */
 .case-steps {
-  --per-row: 5;
-  --gap-x: 16px;
+  --per-row: 3;
+  --gap-x: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -1382,22 +1382,10 @@ html.js .price-carousel-btn {
   text-align: center;
 }
 
-@media (max-width: 1139px) {
-  .case-steps {
-    --per-row: 3;
-    --gap-x: 20px;
-  }
-}
-
 @media (max-width: 600px) {
   .case-steps {
-    --per-row: 2;
-    --gap-x: 12px;
-    row-gap: 24px;
-  }
-
-  .case-step figcaption {
-    font-size: 13px;
+    --per-row: 1;
+    row-gap: 32px;
   }
 }
 
@@ -1440,19 +1428,6 @@ html.js .price-carousel-btn {
   margin-top: 1em;
 }
 
-.profile-career {
-  margin-top: 24px;
-  padding: 16px 20px;
-  background: var(--color-bg-tint);
-  border-radius: 12px;
-}
-
-.profile-career dt {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--color-accent-dark);
-}
-
 /* --------------------------------------------------------------------------
    12. 安心の情報
    -------------------------------------------------------------------------- */
@@ -1471,6 +1446,11 @@ html.js .price-carousel-btn {
   border-radius: var(--radius-card);
 }
 
+/* 文が長い項目（ご相談の受付）は2列ぶんの幅を使う */
+.info-item-wide {
+  grid-column: 1 / -1;
+}
+
 .info-item dt {
   font-size: 18px;
   font-weight: 700;
@@ -1482,35 +1462,15 @@ html.js .price-carousel-btn {
 }
 
 /* --------------------------------------------------------------------------
-   13. そのほかのメニュー
+   13. 法人のお客様へ
    -------------------------------------------------------------------------- */
-.other-list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  max-width: 860px;
-  margin: 0 auto;
+/* 説明文のすぐ下にボタンを置くので、説明文の下の余白を詰める（スマホ用の .section-lead の指定より優先させる） */
+.section-lead.business-lead {
+  margin-bottom: 28px;
 }
 
-.other-item {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 28px 24px;
-  background: #fff;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-card);
-}
-
-.other-item h3 {
-  font-size: 19px;
-  color: var(--color-deep);
-}
-
-.other-item .btn {
-  align-self: flex-start;
-  margin-top: auto;
+.business-cta {
+  text-align: center;
 }
 
 /* --------------------------------------------------------------------------
@@ -1783,11 +1743,6 @@ html.js .price-carousel-btn {
   .profile {
     grid-template-columns: 1fr;
     gap: 24px;
-  }
-
-  .other-list {
-    grid-template-columns: 1fr;
-    max-width: 560px;
   }
 }
 
