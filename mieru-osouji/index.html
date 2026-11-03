@@ -67,7 +67,8 @@
   <!-- 丸ゴシック（ヒーロー見出しと「4つのみえる」「作業の流れ」の番号用）。text= で使う文字だけ読み込んで軽くしている。
        見出しの文言を変えたら、ここの text= も同じ文字にそろえること（ない文字だけ別の書体になる） -->
   <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&display=swap&text=料金、作業仕上がりすべてお見せします！0123456" rel="stylesheet">
-  <link rel="stylesheet" href="/mieru-osouji/assets/css/style.css">
+  <!-- ?v= はブラウザに古いCSSを使わせないための番号。style.css を変えたら日付などに書き換える -->
+  <link rel="stylesheet" href="/mieru-osouji/assets/css/style.css?v=20261103c">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG9KYK977N"></script>
   <script>
@@ -467,7 +468,7 @@
             <span class="flow-num">06</span>
             <div class="flow-body">
               <h3>仕上がりのご確認</h3>
-              <p>作業前・作業中・作業後の写真を見ていただきながら、一緒に仕上がりを確認します。</p>
+              <p>作業前と作業後の写真を見比べながら、一緒に仕上がりを確認します。作業中の写真もLINEでお送りしますので、あとからゆっくりご覧いただけます。</p>
             </div>
           </li>
         </ol>
@@ -479,22 +480,42 @@
       <div class="container">
         <p class="section-eyebrow fade-in">CASES</p>
         <h2 class="section-title fade-in">作業事例</h2>
-        <p class="notice fade-in">代表の自宅で実施した事例を、研修修了後に掲載します。</p>
-        <!-- TODO 画像：作業事例。assets/img/case-before.jpg / case-after.jpg / case-water.jpg ができたら <img> に差し替え -->
-        <div class="case-grid stagger">
-          <figure class="rise">
-            <div class="ph-img" role="img" aria-label="作業前の写真（準備中）">作業前（準備中）</div>
-            <figcaption>作業前</figcaption>
-          </figure>
-          <figure class="rise">
-            <div class="ph-img" role="img" aria-label="作業後の写真（準備中）">作業後（準備中）</div>
-            <figcaption>作業後</figcaption>
-          </figure>
-          <figure class="rise">
-            <div class="ph-img" role="img" aria-label="洗浄後の水の写真（準備中）">洗浄後の水（準備中）</div>
-            <figcaption>洗浄後の水</figcaption>
-          </figure>
-        </div>
+        <!-- エアコンクリーニングの事例を1件だけ、工程順の写真5枚で見せる。ほかの事例は /mieru-osouji/cases/ で紹介する。
+             TODO 画像：assets/img/case-before.jpg / case-masking.jpg / case-wash.jpg / case-after.jpg / case-water.jpg ができたら <img> に差し替え
+             TODO 文言：写真の下のひとことは仮の文。実際の事例に合わせて書き換える -->
+        <ol class="case-steps stagger">
+          <li class="case-step rise">
+            <figure>
+              <div class="ph-img" role="img" aria-label="作業前の写真（準備中）">作業前（準備中）</div>
+              <figcaption><span class="case-step-label">作業前</span>吹き出し口の奥に、黒いカビが見えます。</figcaption>
+            </figure>
+          </li>
+          <li class="case-step rise">
+            <figure>
+              <div class="ph-img" role="img" aria-label="養生の写真（準備中）">養生（準備中）</div>
+              <figcaption><span class="case-step-label">養生</span>壁や床が濡れないよう、シートで覆います。</figcaption>
+            </figure>
+          </li>
+          <li class="case-step rise">
+            <figure>
+              <div class="ph-img" role="img" aria-label="分解・洗浄の写真（準備中）">分解・洗浄（準備中）</div>
+              <figcaption><span class="case-step-label">分解・洗浄</span>専用の機材を使って洗浄します。</figcaption>
+            </figure>
+          </li>
+          <li class="case-step rise">
+            <figure>
+              <div class="ph-img" role="img" aria-label="作業後の写真（準備中）">作業後（準備中）</div>
+              <figcaption><span class="case-step-label">作業後</span>吹き出し口の奥まで、カビが落ちました。</figcaption>
+            </figure>
+          </li>
+          <li class="case-step rise">
+            <figure>
+              <div class="ph-img" role="img" aria-label="洗浄後の水の写真（準備中）">洗浄後の水（準備中）</div>
+              <figcaption><span class="case-step-label">洗浄後の水</span>エアコンから出てきた、汚れた水です。</figcaption>
+            </figure>
+          </li>
+        </ol>
+        <p class="case-more fade-in"><a class="btn btn-outline btn-small" href="/mieru-osouji/cases/">ほかの作業事例を見る</a></p>
       </div>
     </section>
 
@@ -574,7 +595,11 @@
           </details>
           <details class="faq-item">
             <summary>作業中は立ち会いが必要ですか？</summary>
-            <p class="faq-a">作業の開始時と終了時（動作確認・ご報告）は立ち会いをお願いしています。作業中は、ほかのお部屋でお過ごしいただいて構いません。</p>
+            <p class="faq-a">作業の開始時と終了時（仕上がりのご確認）は立ち会いをお願いしています。作業中は、ほかのお部屋でお過ごしいただいて構いません。気になる場合は、作業の様子をそばでご覧いただくこともできます。</p>
+          </details>
+          <details class="faq-item">
+            <summary>家に人を入れるのが少し不安です。</summary>
+            <p class="faq-a">ご不安な気持ちはよくわかります。貴重品は、作業するお部屋とは別の場所に移しておいていただくと安心です。また、作業中の様子をスマートフォンなどで録画していただいても構いません。</p>
           </details>
           <details class="faq-item">
             <summary>対応エリアはどこですか？</summary>

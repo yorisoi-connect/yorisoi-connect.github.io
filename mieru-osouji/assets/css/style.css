@@ -168,18 +168,6 @@ button {
   color: var(--color-text-light);
 }
 
-/* 「準備中」のお知らせ枠 */
-.notice {
-  max-width: 760px;
-  margin: 0 auto 40px;
-  padding: 20px 24px;
-  background: #fff;
-  border: 2px dashed var(--color-accent);
-  border-radius: var(--radius-card);
-  text-align: center;
-  font-weight: 500;
-}
-
 /* アイコン置き場（<symbol> をまとめた SVG）。画面には出さない。
    display: none にすると一部のブラウザで <use> が描かれないので、大きさ0で隠す */
 .icon-sprite {
@@ -1353,21 +1341,64 @@ html.js .price-carousel-btn {
 /* --------------------------------------------------------------------------
    10. 作業事例
    -------------------------------------------------------------------------- */
-.case-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+/* 工程順の写真5枚。PCは横1列、その間の幅は3枚＋2枚、スマホは2枚ずつ。端数の段は中央に寄せる */
+.case-steps {
+  --per-row: 5;
+  --gap-x: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 28px var(--gap-x);
+  list-style: none;
 }
 
-.case-grid figure {
+.case-step {
+  flex: 0 0 calc((100% - var(--gap-x) * (var(--per-row) - 1)) / var(--per-row));
+}
+
+.case-step figure {
   margin: 0;
 }
 
-.case-grid figcaption {
-  margin-top: 8px;
-  font-size: 15px;
+.case-step figcaption {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* 写真の名前（作業前・養生…）をライム色の札にする */
+.case-step-label {
+  display: table;
+  margin-bottom: 6px;
+  padding: 2px 12px;
+  border-radius: var(--radius-btn);
+  background: var(--color-primary);
+  color: var(--color-deep);
   font-weight: 700;
+}
+
+.case-more {
+  margin-top: 40px;
   text-align: center;
+}
+
+@media (max-width: 1139px) {
+  .case-steps {
+    --per-row: 3;
+    --gap-x: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .case-steps {
+    --per-row: 2;
+    --gap-x: 12px;
+    row-gap: 24px;
+  }
+
+  .case-step figcaption {
+    font-size: 13px;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -1749,10 +1780,6 @@ html.js .price-carousel-btn {
     padding: 28px 24px;
   }
 
-  .case-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .profile {
     grid-template-columns: 1fr;
     gap: 24px;
@@ -1811,10 +1838,6 @@ html.js .price-carousel-btn {
 
   .feature-card h3 {
     font-size: 19px;
-  }
-
-  .case-grid {
-    grid-template-columns: 1fr;
   }
 
   .contact-btns {
