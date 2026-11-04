@@ -70,7 +70,7 @@
        見出しの文言を変えたら、ここの text= も同じ文字にそろえること（ない文字だけ別の書体になる） -->
   <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&display=swap&text=料金、作業仕上がりすべてお見せします！0123456" rel="stylesheet">
   <!-- ?v= はブラウザに古いCSSを使わせないための番号。style.css を変えたら日付などに書き換える -->
-  <link rel="stylesheet" href="/mieru-osouji/assets/css/style.css?v=20261104d">
+  <link rel="stylesheet" href="/mieru-osouji/assets/css/style.css?v=20261105d">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG9KYK977N"></script>
   <script>
@@ -634,11 +634,12 @@
           </details>
           <details class="faq-item">
             <summary>型番がわからない、写真を送れないときは？</summary>
-            <p class="faq-a">お電話でお問い合わせいただいて大丈夫です。お買い上げの時期やメーカー、品名、調子の悪いところがないかをお伺いします。詳しい状況は当日に機器を確認して判断し、万が一作業ができなかった場合は出張料金（3,000円・税込）をいただく場合がございます。</p>
+            <p class="faq-a">お電話でお問い合わせいただいて大丈夫です。お買い上げの時期やメーカー、品名、調子の悪いところがないかをお伺いします。詳しい状況は当日に機器を確認して判断させていただきますが、万が一作業ができなかった場合は出張料金（3,000円・税込）をいただく場合がございます。</p>
           </details>
           <details class="faq-item">
             <summary>作業時間はどのくらいですか？</summary>
-            <p class="faq-a">壁掛けエアコン1台で、2時間前後が目安です。機種や汚れ具合によって前後します。お見積りのときに、作業予定時間もお伝えします。</p>
+            <p class="faq-a">例えば壁掛けエアコン1台で、2時間前後が目安です。機種や汚れ具合によって前後します。お見積りのときに、作業予定時間もお伝えします。</p>
+            <div class="faq-more"><a href="#price">お掃除箇所ごとの紹介はこちら</a></div>
           </details>
           <details class="faq-item">
             <summary>作業中は立ち会いが必要ですか？</summary>
@@ -654,7 +655,7 @@
           </details>
           <details class="faq-item">
             <summary>ここに載っていない場所のお掃除も頼めますか？</summary>
-            <p class="faq-a">内容によってはお受けできます。まずはLINEかお電話でご相談ください。</p>
+            <p class="faq-a">内容によってはお受けできる場合がございます。まずはLINEかお電話でご相談ください。</p>
           </details>
         </div>
       </div>
@@ -684,18 +685,30 @@
 
   <footer class="site-footer">
     <div class="container">
+      <!-- PCは 左：サービス名／中央：ページ内メニュー／右：運営 の3列（スマホは縦1列） -->
       <div class="footer-main">
-        <div>
+        <div class="footer-brand">
           <p class="footer-logo">みえる！おそうじ</p>
-          <p>運営：<a href="/company/">よりそいコネクト</a></p>
+          <p>東京・千葉・埼玉・神奈川</p>
         </div>
         <nav class="footer-nav" aria-label="フッターナビゲーション">
+          <ul>
+            <li><a href="#aircon">エアコンクリーニング</a></li>
+            <li><a href="#service">ハウスクリーニング</a></li>
+            <li><a href="#business">法人のお客様へ</a></li>
+            <li><a href="#price">料金プラン</a></li>
+            <li><a href="#cases">作業事例</a></li>
+            <li><a href="#faq">よくある質問</a></li>
+          </ul>
+        </nav>
+        <div class="footer-operator">
+          <p class="footer-operator-name">運営：<a href="/company/">よりそいコネクト</a></p>
           <ul>
             <li><a href="/company/">会社概要</a></li>
             <li><a href="/moshimoshi-call/">もしもしコール</a></li>
             <!-- TODO プライバシー：サイトにプライバシーポリシーのページがまだない。作成したらここにリンクを追加 -->
           </ul>
-        </nav>
+        </div>
       </div>
       <p class="footer-copy">© 2026 よりそいコネクト. All rights reserved.</p>
     </div>
