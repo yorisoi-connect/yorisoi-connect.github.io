@@ -1446,9 +1446,30 @@ html.js .price-carousel-btn {
   border-radius: var(--radius-card);
 }
 
-/* 文が長い項目（ご相談の受付）は2列ぶんの幅を使う */
-.info-item-wide {
-  grid-column: 1 / -1;
+/* カードの中の注意事項（行頭の点をぶら下げて、2行目以降の頭をそろえる） */
+.info-points {
+  list-style: none;
+  font-size: 15px;
+}
+
+.info-points li {
+  position: relative;
+  padding-left: 1em;
+}
+
+.info-points li::before {
+  content: "";
+  position: absolute;
+  top: 0.75em;
+  left: 0.1em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.info-points li + li {
+  margin-top: 8px;
 }
 
 .info-item dt {

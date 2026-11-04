@@ -13,6 +13,8 @@
         ファーストビュー → assets/img/hero.jpg（写真枠はいったん削除。写真ができたらヒーローに戻す）
         作業事例         → assets/img/case-*.jpg（今はグレーのダミー枠）
         OGP              → assets/img/ogp.png（今は会社サイトの /assets/images/ogp.png を仮使用）
+      TODO 士業の確認：ホームページが一通りできて見直すタイミングで、ページとサービスの中から
+        確認してもらうものをまとめて洗い出す（キャンセル料、注意事項、事例写真の掲載など）
     ======================================================================
   -->
   <!-- 公開時に削除：この1行を消すと検索エンジンに載るようになる -->
@@ -20,7 +22,7 @@
   <script>(function(d){d.className+=" js"})(document.documentElement)</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>みえる！おそうじ｜エアコンクリーニング・ハウスクリーニング（東京・千葉・埼玉・神奈川）｜よりそいコネクト</title>
-  <meta name="description" content="みえる！おそうじ（みえるおそうじ）は、エアコンクリーニングをはじめとするハウスクリーニングサービスです。料金、作業、仕上がり、すべてお見せします。対応エリアは東京・千葉・埼玉・神奈川、作業時間は9:00〜22:00。ご相談はLINEまたはお電話で。">
+  <meta name="description" content="みえる！おそうじ（みえるおそうじ）は、エアコンクリーニングをはじめとするハウスクリーニングサービスです。料金、作業、仕上がり、すべてお見せします。対応エリアは東京・千葉・埼玉・神奈川。ご相談はLINEまたはお電話で。">
   <link rel="canonical" href="https://yorisoi-connect.com/mieru-osouji/">
 
   <!-- OGP -->
@@ -68,7 +70,7 @@
        見出しの文言を変えたら、ここの text= も同じ文字にそろえること（ない文字だけ別の書体になる） -->
   <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&display=swap&text=料金、作業仕上がりすべてお見せします！0123456" rel="stylesheet">
   <!-- ?v= はブラウザに古いCSSを使わせないための番号。style.css を変えたら日付などに書き換える -->
-  <link rel="stylesheet" href="/mieru-osouji/assets/css/style.css?v=20261103g">
+  <link rel="stylesheet" href="/mieru-osouji/assets/css/style.css?v=20261104d">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG9KYK977N"></script>
   <script>
@@ -249,6 +251,7 @@
       <div class="container">
         <p class="section-eyebrow fade-in">SERVICE</p>
         <h2 class="section-title fade-in">できること</h2>
+        <p class="section-lead fade-in">東京・千葉・埼玉・神奈川でお伺いしています。<br class="br-pc">地域によっては、ご希望の日程でお伺いできない場合や、お受けできない場合がございます。</p>
         <div class="service-grid stagger">
           <div class="service-card rise">
             <div class="service-card-head">
@@ -330,6 +333,8 @@
       <div class="container">
         <p class="section-eyebrow fade-in">PRICE</p>
         <h2 class="section-title fade-in">料金</h2>
+        <!-- 出張費は通常料金に含める方針（金額を決めるときは少し多めに設定する）。当日作業できなかった場合の出張料金は「ご利用の前に」に記載 -->
+        <p class="section-lead fade-in">作業を行う場合、表示の料金のほかに出張料金をいただくことはありません。</p>
         <!-- 料金カードのカルーセル（「できること」と同じ種類を並べる）。
              画面幅に応じて一度に見える枚数が変わる（スマホ1枚＋次のカードを少し見せる／タブレット2枚／PC3〜4枚）。
              左右ボタンは assets/js/price-carousel.js。JSがなくても横スクロール（スワイプ）で見られる。
@@ -440,7 +445,7 @@
             <span class="flow-num">02</span>
             <div class="flow-body">
               <h3>お見積り・日程調整</h3>
-              <p>総額の目安と作業予定時間、追加料金がかかる条件などをお伝えしてから、作業日を決定します。</p>
+              <p>エアコンなどの機器は、型番と設置状況の写真をLINEでお送りいただきます。総額の目安と作業予定時間、追加料金がかかる条件などをお伝えしてから、作業日を決定します。</p>
             </div>
           </li>
           <li class="flow-item rise">
@@ -520,33 +525,54 @@
       </div>
     </section>
 
-    <!-- 安心の情報 -->
+    <!-- ご利用の前に（注意事項） -->
     <section class="section section-green" id="info" data-ga-section="info">
       <div class="container">
-        <p class="section-eyebrow fade-in">INFORMATION</p>
+        <p class="section-eyebrow fade-in">BEFORE USE</p>
         <h2 class="section-title fade-in">ご利用の前に</h2>
-        <!-- 時間を変えたら、お問い合わせ欄・FAQ・meta description・構造化データ（openingHoursSpecification）もそろえる -->
+        <!-- 注意事項を内容ごとに4枚のカードにまとめる。他社の文面はそのまま使わない。キャンセル料を変えたらFAQもそろえる -->
         <dl class="info-list stagger">
           <div class="info-item rise">
-            <dt>対応エリア</dt>
-            <dd>東京・千葉・埼玉・神奈川</dd>
+            <dt>お借りするもの・ご準備いただくこと</dt>
+            <dd>
+              <ul class="info-points">
+                <li>作業中、水道と電源をお借りさせていただきます。また、お風呂場などのスペースをお借りさせていただく場合がございます。</li>
+                <li>壊れやすい物や貴重品は、事前に移動をお願いいたします。</li>
+                <li>ペットはケージや別のお部屋に移動をお願いいたします。</li>
+              </ul>
+            </dd>
           </div>
           <div class="info-item rise">
-            <dt>作業時間</dt>
-            <dd>9:00〜22:00</dd>
+            <dt>お受けできない場合</dt>
+            <dd>
+              <!-- 出張料金はお客様のご事情で作業できないときだけいただく。当日キャンセル・不在はキャンセル料の扱い -->
+              <ul class="info-points">
+                <li>故障や不具合がある機器、分解が難しい機器、安全に作業できない高い場所は、お受けできない場合がございます。</li>
+                <li>部品の劣化が進み、作業によって状態が悪くなるおそれがある機器は、お受けできない場合がございます。</li>
+                <li>製造から10年以上たったエアコンや、部品の供給が終わった機器は、お受けできない場合がございます。</li>
+                <li>ご予約時にお伺いした内容と実際の状況が異なる場合や、作業スペース・水道・電源が確保できない場合など、お客様のご事情で作業できないときは、出張料金（3,000円・税込）をいただきます。</li>
+                <li>当店の判断で作業を行わなかった場合、料金はいただきません。</li>
+              </ul>
+            </dd>
           </div>
-          <div class="info-item info-item-wide rise">
-            <dt>ご相談の受付</dt>
-            <dd>LINE：いつでもお送りください。気づきしだいお返事します。お返事が遅くなるときは、9:00〜20:00のあいだにお送りします。<br>お電話：9:00〜19:00</dd>
-          </div>
-          <!-- 駐車料金は将来、料金に組み込む予定。組み込んだあとも「別途いただくことはありません」のままで合っている -->
           <div class="info-item rise">
-            <dt>駐車場</dt>
-            <dd>駐車スペースがあればお借りします。ない場合は近くのコインパーキングを利用しますが、駐車料金を別途いただくことはありません。</dd>
+            <dt>作業と仕上がり</dt>
+            <dd>
+              <ul class="info-points">
+                <li>機器の状態や設置場所によって、作業の時間や内容が変わる場合がございます。</li>
+                <li>汚れの状態によっては、すべてを取り除けない場合がございます。</li>
+                <li>作業の記録として、作業前・作業中・作業後の写真を撮影いたします。事例として掲載する場合は、事前にお客様の了承をいただきます。</li>
+              </ul>
+            </dd>
           </div>
           <div class="info-item rise">
-            <dt>水道・電気</dt>
-            <dd>作業中は、お客様宅の水道・電気をお借りします。</dd>
+            <dt>作業後・キャンセル</dt>
+            <dd>
+              <ul class="info-points">
+                <li>仕上がりや作業後の不具合は、作業日の翌日から7日以内にご連絡ください。状況を確認してご対応いたします。</li>
+                <li>キャンセル・日程変更は、作業日の3日前の23:59までのご連絡であれば無料です。それ以降は、お見積り金額（税込）に対して、2日前は30%、前日は50%、当日は100%を申し受けます。</li>
+              </ul>
+            </dd>
           </div>
           <!-- TODO 損害保険：加入後に「損害保険」の項目をここに追加する（加入するまで表示しない） -->
         </dl>
@@ -614,7 +640,7 @@
           </details>
           <details class="faq-item">
             <summary>キャンセルはできますか？</summary>
-            <p class="faq-a">キャンセル規定は現在準備中です。決まりしだい、このページに掲載します。</p>
+            <p class="faq-a">できます。作業日の3日前の23:59までのご連絡は無料です。それ以降は、お見積り金額（税込）に対して、2日前は30%、前日は50%、当日は100%を申し受けます。日程変更も同じ扱いです。</p>
           </details>
           <details class="faq-item">
             <summary>電話がつながらないときは？</summary>
@@ -638,7 +664,8 @@
           </a>
         </div>
         <p class="contact-meta">
-          お電話 9:00〜19:00／LINEはいつでも受け付けています<br>
+          LINE 24時間受付中／お電話 9:00〜19:00<br>
+          LINEでのお問い合わせは返信にお時間をいただく場合がございます。（翌営業日中にはご返信いたします）<br>
           作業中は電話に出られない場合があります。その際は折り返しお電話します。
         </p>
       </div>
