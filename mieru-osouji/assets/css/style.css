@@ -601,6 +601,32 @@ html.js .rise.is-visible {
   }
 }
 
+/* ---------- スクロールで動く背景の泡（assets/js/bubbles.js が作る） ----------
+   ヒーローの下からお問い合わせの上までの範囲。セクションの背景より手前、文字やカードより奥に置く */
+main {
+  position: relative;
+}
+
+.section > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.drift-bubbles {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.drift-bubble {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 /* 見出しは文字の幅ぴったりの箱にする（キラキラを文字のまわりに散らすため） */
 .hero-title {
   position: relative;
