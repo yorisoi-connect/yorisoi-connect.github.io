@@ -1420,6 +1420,82 @@ html:not(.js) .ac-panel + .ac-panel {
   content: " ›";
 }
 
+/* --- お支払い方法（料金の下に小さく1行） --- */
+.pay-mini {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  margin-top: 12px;
+}
+
+.pay-mini-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-deep);
+}
+
+.pay-mini ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0;
+  list-style: none;
+}
+
+.pay-mini li {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px 4px 8px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: #fff;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--color-deep);
+}
+
+.pay-mini svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: var(--color-accent-dark);
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* --- 計算例：内訳つき（横いっぱい） --- */
+.calc-item-wide {
+  grid-column: 1 / -1;
+}
+
+.calc-breakdown {
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.calc-breakdown div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 3px 0;
+  font-size: 14px;
+}
+
+.calc-breakdown dd {
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.calc-breakdown small {
+  display: block;
+  font-size: 12px;
+  color: var(--color-text-light);
+}
+
 /* --- クリーニング内容のタイル（カジタクの「サービス内容」を参考に） --- */
 .work-box {
   margin-top: 32px;
