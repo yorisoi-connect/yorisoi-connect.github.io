@@ -395,6 +395,27 @@
   margin-top: 8px;
 }
 
+/* 「・」で始まる短い列挙（チェックマークは使わない） */
+.cond-flow .cond-list {
+  margin: 8px 0;
+  padding: 0;
+  list-style: none;
+  font-size: 15px;
+}
+
+.cond-flow .cond-list li {
+  padding-left: 1em;
+  text-indent: -1em;
+}
+
+.cond-flow .cond-list li::before {
+  content: "・";
+}
+
+.cond-flow .cond-list + p {
+  margin-top: 8px;
+}
+
 /* 詳細ページの計算例セクションの注釈（カードの下） */
 .calc-note {
   margin-top: 16px;
@@ -759,11 +780,70 @@
   color: var(--color-deep);
 }
 
-.cancel-note {
+.cancel-text {
   max-width: 640px;
-  margin: 20px auto 0;
-  font-size: 14px;
+  margin: 0 auto 20px;
+  font-size: 15px;
+}
+
+.cancel-table + .cancel-text {
+  margin: 10px auto 0;
+}
+
+.cancel-text p + p {
+  margin-top: 8px;
+}
+
+.cancel-text .cancel-table-note {
+  font-size: 13px;
   color: var(--color-text-light);
+}
+
+/* お支払い方法：アイコンつきの枠を4つ並べる */
+.pay-methods {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.pay-methods li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  aspect-ratio: 1 / 1;
+  padding: 8px;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--color-deep);
+  text-align: center;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.pay-methods svg {
+  width: 44px;
+  height: 44px;
+  fill: none;
+  stroke: var(--color-accent-dark);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (max-width: 600px) {
+  .pay-methods {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 /* --------------------------------------------------------------------------

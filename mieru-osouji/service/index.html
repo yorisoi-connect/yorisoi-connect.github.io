@@ -11,7 +11,7 @@
       [CAMPAIGN_START]    : キャンペーン開始日（例：2026年12月1日。公開日に合わせる）
       [CAMPAIGN_END]      : キャンペーン終了日（例：2027年5月31日。開始から半年、開始時に確定する）
     公開前に決めること（料金ページ設計図 v1 2026-11-15 より）：
-      含まれる作業（grep "TODO 含まれる作業"）／支払い方法／高所作業料金の確認／
+      含まれる作業（grep "TODO 含まれる作業"）／支払い方法の詳細（ブランド・振込期限など）／高所作業料金の確認／
       窓の種類を混ぜたときの数え方／戸建ての空室清掃／
       通常価格が実際に売れる価格であることの確認（二重価格表示。専門家のチェックを推奨）
     ======================================================================
@@ -66,6 +66,10 @@
     <symbol id="i-window" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M12 3v18M4 12h16"/></symbol>
     <symbol id="i-balcony" viewBox="0 0 24 24"><path d="M3 10h18M3 20h18"/><path d="M5 10v10M9 10v10M13 10v10M17 10v10M21 10v10"/><path d="M16 6.5c0-2 1.5-3 3-3 0 2-1.5 3-3 3z"/></symbol>
     <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="12" r="4"/><path d="M12 12h9M18 12v3M15 12v2"/></symbol>
+    <symbol id="i-cash" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.8"/><path d="M6 9.5v5M18 9.5v5"/></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 9.5h19"/><path d="M6 15h4"/></symbol>
+    <symbol id="i-bank" viewBox="0 0 24 24"><path d="M3 9.5L12 4l9 5.5z"/><path d="M5.5 10v7M10 10v7M14 10v7M18.5 10v7"/><path d="M3 20h18"/></symbol>
+    <symbol id="i-qr" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="6.5" height="6.5" rx="1"/><rect x="14" y="3.5" width="6.5" height="6.5" rx="1"/><rect x="3.5" y="14" width="6.5" height="6.5" rx="1"/><path d="M14 14h2.5v2.5H14zM18 18h2.5v2.5H18zM18 14h2.5M14 20.5h2"/></symbol>
   </svg>
 
   <header class="site-header" id="site-header">
@@ -229,41 +233,73 @@
         <h2 class="section-title fade-in">追加料金とお受けできないものについて</h2>
         <div class="cond-flow fade-in">
           <h3>出張料金・駐車場</h3>
-          <p>出張料金は無料です。敷地内や近くに無料で停められる場所がない場合は、有料駐車場の実費をいただきます。</p>
+          <p>出張料金は無料です。</p>
+          <p>敷地内や近くに無料で停められる場所がない場合は、有料駐車場の実費を頂戴いたします。</p>
           <!-- TODO 高所作業料金：計算（50cmごと・切り上げ）とお断りする高さの上限は要確認（設計図 v1 では想定） -->
           <h3>高い場所の作業</h3>
-          <p>窓は床から窓の上端まで3m以下、エアコンは床から本体の上端まで2.5m以下が通常料金です。超える場合は、超えた高さ50cmごとに3,000円（1か所・1台あたり、端数は切り上げ）をいただきます。たとえば窓なら、3m超〜3.5mは3,000円、3.5m超〜4mは6,000円です。あまりに高い場所は、安全のためお受けできない場合がございます。</p>
+          <p>高所での作業は、高所作業料金をいただいています。</p>
+          <ul class="cond-list">
+            <li>エアコン：床からエアコン本体の上端までが2.5mを超える場合、50cmごとに3,000円を頂戴します。</li>
+            <li>窓：床から窓の上端までが3mを超える場合、50cmごとに3,000円を頂戴します。</li>
+          </ul>
+          <p>例えばエアコンなら、2.5m超〜3mは3,000円、3m超〜3.5mは6,000円です。</p>
+          <p>あまりにも高い場所は、安全のためお受けできない場合がございます。</p>
           <h3>料金を載せていないもの</h3>
-          <p>天吊りエアコン・天井埋め込みエアコン・業務用エアコンと、戸建ての空室清掃は、料金を載せていません。LINEかお電話でご相談ください。</p>
+          <p>天井埋め込みエアコンや業務用エアコン、戸建ての空室清掃などは、料金を載せていませんが対応できる場合がございます。</p>
+          <p>まずはお気軽にご相談ください。</p>
           <h3>お受けできないもの</h3>
-          <p>故障や不具合がある機器、分解が難しい機器、部品の劣化が進んだ機器は、作業によって状態が悪くなるおそれがあるため、お受けできない場合がございます。製造から10年以上たったエアコンなど部品の供給が終わった機器や、安全に作業できない高い場所も同様です。</p>
+          <p>故障や不具合がある機器、分解が難しい機器、部品の劣化が進んだ機器は、作業によって状態が悪くなるおそれがあるため、お受けできない場合がございます。</p>
+          <p>製造から10年以上たったエアコンなど部品の供給が終わった機器や、安全に作業できない高い場所も同様です。</p>
+          <p>これはどうかな？という場合でもお気軽にご相談ください。</p>
           <!-- TODO 士業の確認：当日作業できない場合を当日キャンセル扱い（100%）にする規定。
                消費者契約法9条（平均的な損害を超えるキャンセル料は無効）の観点で、公開前に専門家のチェックを受ける -->
           <h3>当日作業できないとき</h3>
-          <p>お伺いしたあと、お客様のご都合で作業できなかった場合（ご不在、事前にお伺いした内容と実際の機器・設置状況が異なる場合など）は、当日キャンセルの扱いとなり、お見積り金額（税込）の100%を申し受けます。当店の判断でお受けできないとお伝えする場合は、料金はいただきません。</p>
+          <p>お伺いしたあと、お客様のご都合で作業できなかった場合（ご不在、事前にお伺いした内容と実際の機器・設置状況が異なる場合など）は、当日キャンセルの扱いとなり、お見積り金額（税込）の100%を申し受けます。</p>
+          <p>当店の判断でお受けできないとお伝えする場合は、料金はいただきません。</p>
         </div>
       </div>
     </section>
 
-    <!-- キャンセル・支払い（設計図 ブロック9） -->
-    <section class="section section-green" id="cancel" data-ga-section="cancel">
+    <!-- お支払い（設計図 ブロック9。2026-11-17にキャンセルと分け、お支払いを先に）
+         ここは4つの枠だけにする（補足は書かない）。お支払いのタイミング（当日・作業後）と振込手数料（お客様負担）はトップページのFAQに書く。
+         TODO カードブランド・QR決済の種類：決まったらFAQに追記する -->
+    <section class="section section-green" id="payment" data-ga-section="payment">
       <div class="container container-narrow">
-        <p class="section-eyebrow fade-in">CANCEL / PAYMENT</p>
-        <h2 class="section-title fade-in">キャンセル・お支払い</h2>
-        <p class="section-lead fade-in">キャンセル・日程変更の料金は、ご連絡の時期で決まります。</p>
+        <p class="section-eyebrow fade-in">PAYMENT</p>
+        <h2 class="section-title fade-in">お支払い</h2>
+        <ul class="pay-methods fade-in">
+          <li><svg aria-hidden="true"><use href="#i-cash"/></svg>現金</li>
+          <li><svg aria-hidden="true"><use href="#i-card"/></svg>クレジットカード</li>
+          <li><svg aria-hidden="true"><use href="#i-bank"/></svg>銀行振込</li>
+          <li><svg aria-hidden="true"><use href="#i-qr"/></svg>QR決済</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- キャンセル・日程変更（設計図 ブロック9） -->
+    <section class="section" id="cancel" data-ga-section="cancel">
+      <div class="container container-narrow">
+        <p class="section-eyebrow fade-in">CANCEL</p>
+        <h2 class="section-title fade-in">キャンセル・日程変更</h2>
+        <div class="cancel-text fade-in">
+          <p>作業日の3日前までにご連絡いただければ、キャンセル・日程変更が可能です。</p>
+          <p>以降のご連絡は、原則として次の料金を頂戴いたします。</p>
+        </div>
         <table class="cancel-table fade-in">
           <thead>
             <tr><th scope="col">ご連絡の時期</th><th scope="col">キャンセル・日程変更料</th></tr>
           </thead>
           <tbody>
-            <tr><td>作業日の3日前の23:59まで</td><td>無料</td></tr>
-            <tr><td>作業日の2日前</td><td>お見積り金額（税込）の30%</td></tr>
-            <tr><td>作業日の前日</td><td>お見積り金額（税込）の50%</td></tr>
-            <tr><td>作業日の当日</td><td>お見積り金額（税込）の100%</td></tr>
+            <tr><td>作業日の3日前まで</td><td>無料</td></tr>
+            <tr><td>作業日の2日前</td><td>30%</td></tr>
+            <tr><td>作業日の前日</td><td>50%</td></tr>
+            <tr><td>作業日の当日</td><td>100%</td></tr>
           </tbody>
         </table>
-        <!-- TODO 支払い方法：決まったらここを書き換える（トップページのFAQもそろえる） -->
-        <p class="cancel-note fade-in">お支払い方法は、現在準備中です。決まりしだい、このページに掲載します。</p>
+        <div class="cancel-text fade-in">
+          <p class="cancel-table-note">※お見積り金額（税込）に対しての割合です。</p>
+          <p>ご都合が悪くなったときは、まずはお気軽にご相談ください。</p>
+        </div>
       </div>
     </section>
 
