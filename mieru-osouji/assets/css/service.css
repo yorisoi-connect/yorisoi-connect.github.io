@@ -950,3 +950,787 @@
     margin: -24px 0 48px;
   }
 }
+
+/* ==========================================================================
+   10. サービス詳細（エアコンで作った新しい形。ほかの詳細ページにも使う）
+   構成：写真の仮置き / ページの頭の説明 / 思い込み→実は / お掃除機能のちがい /
+        料金タブ / クリーニング内容のタイル / オプションのカード / 「料金を見る」固定ボタン
+   ========================================================================== */
+
+/* --- 写真の仮置き（.ph）。写真ができたら中身を <img> に置き換える --- */
+.ph {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 14px;
+  background:
+    repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0 10px, transparent 10px 20px),
+    var(--color-placeholder);
+  color: var(--color-text-light);
+}
+
+.ph > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ph-4x3 { aspect-ratio: 4 / 3; }
+.ph-3x2 { aspect-ratio: 3 / 2; }
+.ph-1x1 { aspect-ratio: 1 / 1; }
+
+.ph-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.ph-label svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.7;
+}
+
+/* --- ページの頭：説明文と、エアコンの中のつくり --- */
+.ac-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 40px;
+  align-items: center;
+  max-width: 1000px;
+  margin: 36px auto 0;
+}
+
+.ac-intro-text p {
+  font-size: 15.5px;
+  line-height: 1.95;
+}
+
+.ac-intro-text p + p {
+  margin-top: 10px;
+}
+
+/* 写真の上の部品名の札 */
+.ac-pin {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px 3px 8px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(39, 56, 46, 0.12);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--color-deep);
+  white-space: nowrap;
+}
+
+.ac-pin::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-accent-dark);
+}
+
+/* 手前から奥への部品の順番 */
+.ac-layers {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 4px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: layer;
+}
+
+.ac-layers li {
+  counter-increment: layer;
+  padding: 6px 2px 7px;
+  border-radius: 8px;
+  background: var(--color-accent-dark);
+  font-size: 11.5px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: center;
+  color: #fff;
+}
+
+.ac-layers li::before {
+  content: counter(layer);
+  display: block;
+  font-size: 10px;
+  opacity: 0.75;
+}
+
+.ac-layers li.is-self {
+  background: #fff;
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent-dark);
+}
+
+.ac-layers-key {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--color-text-light);
+}
+
+.ac-layers-key span::before,
+.work-key span::before,
+.work-key a::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 5px;
+  border-radius: 3px;
+  vertical-align: -1px;
+}
+
+.key-self::before {
+  background: #fff;
+  border: 1px solid var(--color-accent);
+}
+
+.key-pro::before {
+  background: var(--color-accent-dark);
+}
+
+.ac-intro-cta {
+  margin-top: 36px;
+  text-align: center;
+}
+
+/* --- 思い込み → ちょっと待って → 実は --- */
+.myth-list {
+  display: grid;
+  gap: 24px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.myth {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 28px;
+  align-items: center;
+  padding: 22px;
+  background: #fff;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+/* 写真を左右交互に置いて、単調にしない */
+.myth:nth-child(even) .myth-ph {
+  order: 2;
+}
+
+/* お客様のつぶやき（吹き出し） */
+.myth-say {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 10px 16px;
+  border-radius: 14px;
+  background: var(--color-bg-tint);
+  border: 1px solid var(--color-border);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+/* 吹き出しのしっぽ（左下） */
+.myth-say::after {
+  content: "";
+  position: absolute;
+  left: 26px;
+  bottom: -7px;
+  width: 12px;
+  height: 12px;
+  background: var(--color-bg-tint);
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  transform: rotate(45deg);
+}
+
+.myth-wait {
+  position: relative;
+  font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--color-accent-dark);
+}
+
+.myth h3 {
+  margin: 4px 0 8px;
+  font-size: 19px;
+  line-height: 1.5;
+  color: var(--color-deep);
+}
+
+.myth-body > p:last-child {
+  font-size: 15px;
+}
+
+/* --- お掃除機能なし／付きのちがい --- */
+.ac-types {
+  max-width: 960px;
+  margin: 48px auto 0;
+  padding: 36px 32px 30px;
+  background: #fff;
+  border: 2px solid var(--color-primary-line);
+  border-radius: var(--radius-card);
+}
+
+.ac-types-title {
+  font-size: clamp(19px, 15px + 1vw, 24px);
+  line-height: 1.5;
+  text-align: center;
+  color: var(--color-deep);
+}
+
+.ac-types-lead {
+  margin: 10px auto 24px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.ac-types-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.ac-type-name,
+.ac-price-name {
+  display: table;
+  margin: 14px 0 6px;
+  padding: 3px 14px;
+  border-radius: var(--radius-btn);
+  background: var(--color-accent-light);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-accent-dark);
+}
+
+/* 「付き」はライムの面で区別する */
+.ac-type-name-auto,
+.ac-price-name-auto {
+  background: var(--color-primary);
+  color: var(--color-deep);
+}
+
+.ac-type-point {
+  font-size: 14.5px;
+  line-height: 1.7;
+}
+
+.ac-types-note {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px dashed var(--color-border);
+  font-size: 14px;
+  text-align: center;
+  color: var(--color-text-light);
+}
+
+/* --- 料金：キャンペーンの条件（バナーの下の小さな注記） --- */
+.campaign-terms {
+  max-width: 720px;
+  margin: -18px auto 32px;
+  font-size: 13px;
+  text-align: center;
+  color: var(--color-text-light);
+}
+
+/* --- 料金タブ --- */
+.ac-tablist {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+  border-bottom: 3px solid var(--color-accent-dark);
+}
+
+/* JS が動かないときはタブを出さず、パネルを全部並べる */
+html:not(.js) .ac-tablist {
+  display: none;
+}
+
+html:not(.js) .ac-panel + .ac-panel {
+  margin-top: 32px;
+}
+
+.ac-tablist button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 4px 10px;
+  border: 1px solid var(--color-border);
+  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+  background: var(--color-bg-tint);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-text-light);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.ac-tablist button:hover {
+  background: var(--color-accent-light);
+  color: var(--color-accent-dark);
+}
+
+.ac-tablist button[aria-selected="true"] {
+  border-color: var(--color-accent-dark);
+  background: var(--color-accent-dark);
+  color: #fff;
+}
+
+.ac-tablist button:focus-visible {
+  outline: 3px solid var(--color-primary-line);
+  outline-offset: 2px;
+}
+
+.ac-tablist svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ac-panel {
+  padding-top: 24px;
+}
+
+/* --- 料金カード（写真つき） --- */
+.ac-price-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.ac-price-card {
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.ac-price-card .ph {
+  border-radius: 0;
+}
+
+.ac-price-body {
+  padding: 4px 20px 14px;
+}
+
+.ac-price-sub {
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: var(--color-text-light);
+}
+
+/* 天吊りなど1枚だけのときは、写真を左・料金を右に */
+.ac-price-card-wide {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  align-items: center;
+}
+
+.ac-price-card-wide .ac-price-body {
+  padding: 16px 22px;
+}
+
+.ac-price-note {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--color-text-light);
+}
+
+/* --- 別途かかる場合がある料金（料金カードのすぐ下） --- */
+.price-extra {
+  margin-top: 14px;
+  padding: 14px 18px 12px;
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-primary-line);
+  border-radius: 10px;
+  background: #fff;
+}
+
+.price-extra-title {
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-deep);
+}
+
+.price-extra dl div {
+  display: flex;
+  gap: 12px;
+  padding: 4px 0;
+  font-size: 14px;
+}
+
+.price-extra dt {
+  flex-shrink: 0;
+  min-width: 4.5em;
+  font-weight: 700;
+  color: var(--color-accent-dark);
+}
+
+.price-extra-link {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--color-accent-dark);
+}
+
+.price-extra-link::after {
+  content: " ›";
+}
+
+/* --- クリーニング内容のタイル（カジタクの「サービス内容」を参考に） --- */
+.work-box {
+  margin-top: 32px;
+  padding: 24px 22px 20px;
+  border-radius: var(--radius-card);
+  background: var(--color-bg-tint);
+}
+
+.work-title {
+  margin-bottom: 14px;
+  font-size: 17px;
+  color: var(--color-deep);
+}
+
+.work-tiles {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 8px;
+  padding: 0;
+  list-style: none;
+}
+
+.work-tiles li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  aspect-ratio: 1 / 1;
+  padding: 6px;
+  border-radius: 12px;
+  background: var(--color-accent-dark);
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;
+  color: #fff;
+}
+
+.work-tiles svg {
+  width: 34px;
+  height: 34px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* みえる！おそうじならではの作業はライムで目立たせる */
+.work-tiles li.is-feature {
+  background: var(--color-primary);
+  color: var(--color-deep);
+  box-shadow: inset 0 0 0 2px var(--color-primary-line);
+}
+
+/* オプションは含まれる作業の次の行から並べる */
+.work-tiles li.is-feature + li.is-option {
+  grid-column-start: 1;
+}
+
+/* 料金に含まれないもの（オプション）はグレー */
+.work-tiles li.is-option {
+  background: #E9ECE8;
+  color: #8E9790;
+}
+
+.work-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin-top: 12px;
+  font-size: 12.5px;
+  color: var(--color-text-light);
+}
+
+.key-in::before {
+  background: var(--color-accent-dark);
+}
+
+.work-key a {
+  color: var(--color-text-light);
+}
+
+.key-opt::before {
+  background: #E9ECE8;
+}
+
+/* --- オプションのカード（写真つき） --- */
+.opt-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  padding: 0;
+  list-style: none;
+}
+
+.opt-card {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  padding: 16px;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.opt-ph {
+  border-radius: 10px;
+}
+
+.opt-ph .ph-label {
+  font-size: 10.5px;
+}
+
+.opt-tag {
+  display: inline-block;
+  padding: 1px 10px;
+  border-radius: var(--radius-btn);
+  background: var(--color-accent-dark);
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.opt-card h3 {
+  margin-top: 6px;
+  font-size: 17px;
+  line-height: 1.4;
+  color: var(--color-deep);
+}
+
+.opt-price {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-accent-dark);
+}
+
+.opt-price small {
+  margin-left: 1px;
+  font-size: 13px;
+}
+
+.opt-text {
+  margin-top: 6px;
+  font-size: 13.5px;
+  line-height: 1.7;
+}
+
+/* --- 「料金を見る」固定ボタン（右下。スマホは下の LINE・電話バーの上） --- */
+.price-jump {
+  position: fixed;
+  right: 20px;
+  bottom: 24px;
+  z-index: 85;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 20px 12px 16px;
+  border-radius: var(--radius-btn);
+  background: var(--color-deep);
+  box-shadow: 0 6px 18px rgba(39, 56, 46, 0.28);
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s var(--ease);
+}
+
+.price-jump.is-shown {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.price-jump:hover {
+  background: var(--color-deep-2);
+}
+
+.price-jump svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+html:not(.js) .price-jump {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .ac-intro {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .myth {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .myth:nth-child(even) .myth-ph {
+    order: 0;
+  }
+
+  .opt-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .ac-pin {
+    font-size: 11px;
+    padding: 2px 8px 2px 6px;
+  }
+
+  .ac-layers {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .ac-layers li {
+    font-size: 12px;
+  }
+
+  /* 写真が縦に大きくなりすぎないよう、スマホでは横長にする */
+  .myth-ph,
+  .ac-price-card .ph {
+    aspect-ratio: 16 / 9;
+  }
+
+  .ac-types-note {
+    text-align: left;
+  }
+
+  .myth {
+    padding: 16px;
+  }
+
+  .myth h3 {
+    font-size: 17px;
+  }
+
+  .ac-types {
+    padding: 26px 16px 22px;
+  }
+
+  .ac-types-grid {
+    gap: 12px;
+  }
+
+  .ac-type-name {
+    font-size: 13px;
+    padding: 2px 10px;
+  }
+
+  .ac-type-point {
+    font-size: 13px;
+  }
+
+  .ac-tablist button {
+    font-size: 12px;
+    padding: 10px 2px 8px;
+  }
+
+  .ac-tablist svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .ac-price-grid,
+  .ac-price-card-wide {
+    grid-template-columns: 1fr;
+  }
+
+  .work-box {
+    padding: 20px 14px 16px;
+  }
+
+  .work-tiles {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .work-tiles li {
+    font-size: 10.5px;
+    gap: 4px;
+  }
+
+  .work-tiles svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .opt-card {
+    grid-template-columns: 92px minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .price-jump {
+    right: 12px;
+    bottom: calc(var(--cta-bar-height) + env(safe-area-inset-bottom) + 12px);
+    padding: 10px 16px 10px 12px;
+    font-size: 14px;
+  }
+}

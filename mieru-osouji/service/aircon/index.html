@@ -10,6 +10,7 @@
                             （tel: 側はハイフンなしの数字に置き換える）
       [CAMPAIGN_START]    : キャンペーン開始日（例：2026年12月1日。公開日に合わせる）
       [CAMPAIGN_END]      : キャンペーン終了日（例：2027年5月31日。開始から半年、開始時に確定する）
+      [PRICE_AC_HANG] [PRICE_AC_CEILING] [PRICE_AC_BIZ] : 天吊り・天井埋め込み・業務用エアコンの料金（このページだけ）
     公開前に決めること（料金ページ設計図 v1 2026-11-15 より）：
       含まれる作業（grep "TODO 含まれる作業"）／支払い方法の詳細（ブランド・振込期限など）／高所作業料金の確認／
       窓の種類を混ぜたときの数え方／戸建ての空室清掃／
@@ -38,9 +39,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&display=swap&text=キャンペーン実施中！ちょっと待って" rel="stylesheet">
   <!-- ?v= はブラウザに古いCSSを使わせないための番号。CSS を変えたら日付などに書き換える -->
   <link rel="stylesheet" href="/mieru-osouji/assets/css/style.css?v=20261116">
-  <link rel="stylesheet" href="/mieru-osouji/assets/css/service.css?v=20261116">
+  <link rel="stylesheet" href="/mieru-osouji/assets/css/service.css?v=20261117">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG9KYK977N"></script>
   <script>
@@ -54,6 +56,21 @@
   <!-- アイコン置き場。<svg><use href="#i-名前"/></svg> で呼び出す（トップページと同じ図形） -->
   <svg class="icon-sprite" aria-hidden="true" focusable="false">
     <symbol id="i-aircon" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="8" rx="2"/><path d="M5.5 10.5h13"/><path d="M8 16v2.5M12 16v4M16 16v2.5"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 7.5h3l1.6-2.5h6.8L17 7.5h3a1 1 0 0 1 1 1V18a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8.5a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.5"/></symbol>
+    <symbol id="i-ac-hang" viewBox="0 0 24 24"><path d="M2.5 4h19"/><path d="M6 4v3M18 4v3"/><rect x="3.5" y="7" width="17" height="7" rx="1.5"/><path d="M6.5 11.5h11"/><path d="M8 17v2M12 17v3M16 17v2"/></symbol>
+    <symbol id="i-ac-ceiling" viewBox="0 0 24 24"><path d="M2.5 6h19"/><rect x="5" y="6" width="14" height="10" rx="1"/><rect x="9" y="9" width="6" height="4" rx=".5"/><path d="M5 18.5l-1.5 2M19 18.5l1.5 2M12 18.5v2.5"/></symbol>
+    <symbol id="i-ac-biz" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="10" rx="2"/><path d="M6 10.5h12M6 7.5h4"/><path d="M5 17l-1 3M9.5 17l-.5 3M14.5 17l.5 3M19 17l1 3"/></symbol>
+    <symbol id="i-w-check" viewBox="0 0 24 24"><rect x="2.5" y="4" width="15" height="7" rx="1.5"/><path d="M5 8.5h10"/><circle cx="17" cy="16.5" r="4.5"/><path d="M15 16.5l1.5 1.5 2.5-3"/></symbol>
+    <symbol id="i-w-cover" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="6" rx="1.5"/><path d="M3 4v9l4 7h10l4-7V4" stroke-dasharray="2.2 2"/></symbol>
+    <symbol id="i-w-driver" viewBox="0 0 24 24"><path d="M14.5 3.5l6 6-2 2-6-6z"/><path d="M13.5 8.5L5 17"/><path d="M5 17l-1.5 3.5L7 19z"/></symbol>
+    <symbol id="i-w-parts" viewBox="0 0 24 24"><path d="M3 12h18l-1.5 6.5a2 2 0 0 1-2 1.5h-11a2 2 0 0 1-2-1.5z"/><rect x="7" y="6" width="10" height="6" rx="1"/><path d="M9 8.5h6"/><circle cx="5" cy="5" r="1.5"/><circle cx="19.5" cy="7" r="1"/></symbol>
+    <symbol id="i-w-spray" viewBox="0 0 24 24"><path d="M3 10h8l2 2h3"/><path d="M5 10l-1 9h4l1-6"/><path d="M11 10V7H6"/><path d="M18.5 9.5l2.5-1.5M19 12h3M18.5 14.5l2.5 1.5"/></symbol>
+    <symbol id="i-w-wind" viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="8" rx="2"/><path d="M5.5 9.5h13"/><path d="M6 15c1.5 0 1.5 2 3 2s1.5-2 3-2 1.5 2 3 2 1.5-2 3-2"/></symbol>
+    <symbol id="i-w-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-6.5 10-6.5S22 12 22 12s-3.5 6.5-10 6.5S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-w-outdoor" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="13" rx="1.5"/><circle cx="9.5" cy="11.5" r="4"/><path d="M9.5 9.5v4M7.5 11.5h4"/><path d="M16 8.5v6M18.5 8.5v6"/><path d="M5 18v2M19 18v2"/></symbol>
+    <symbol id="i-w-hose" viewBox="0 0 24 24"><path d="M4 3v6a4 4 0 0 0 4 4h8a4 4 0 0 1 4 4v1"/><path d="M20 21.5c-1 0-1.5-.8-1.5-1.5S20 18 20 18s1.5 1.3 1.5 2-.5 1.5-1.5 1.5z"/></symbol>
+    <symbol id="i-w-cap" viewBox="0 0 24 24"><path d="M3 7h10v6H3"/><path d="M13 6h4v8h-4z"/><path d="M17 8h3M17 10h3M17 12h3"/><path d="M8 18l-1.5 1.5M8 18l1.5 1.5M8 18v-2"/></symbol>
+    <symbol id="i-w-shield" viewBox="0 0 24 24"><path d="M12 3l7.5 3v5.5c0 4.5-3.2 8-7.5 9.5-4.3-1.5-7.5-5-7.5-9.5V6z"/><path d="M9 12l2 2 4-4"/></symbol>
   </svg>
 
   <header class="site-header" id="site-header">
@@ -91,98 +108,322 @@
   </header>
 
   <main class="price-page">
-    <!-- ページの頭：パンくず・見出し -->
+    <!-- ページの頭：パンくず・見出し・分解洗浄の説明（説明文はユーザー指定 2026-11-17） -->
     <div class="page-hero">
       <div class="container">
         <nav class="breadcrumb" aria-label="パンくずリスト">
           <ol><li><a href="/mieru-osouji/">みえる！おそうじ</a></li><li><a href="/mieru-osouji/service/">サービス一覧</a></li><li aria-current="page">エアコンクリーニング</li></ol>
         </nav>
         <h1 class="page-title">エアコンクリーニング</h1>
-        <!-- 更新日＝料金を確認した日。料金を見直したら、この日付も更新する -->
-        <p class="page-updated">料金の更新日：2026年11月15日</p>
-        <p class="page-lead">壁掛けエアコンを分解して、内部まで洗浄します。<br class="br-pc">料金はすべて税込の総額で、出張料金は無料です。</p>
+        <div class="ac-intro">
+          <div class="ac-intro-text fade-in">
+            <p>エアコンは前面パネルを開くとフィルター、ルーバー、本体カバー、熱交換器、送風ファン、ドレンパンの順番で取り付けられています。</p>
+            <p>一般的にはフィルターまではお客様の手でお掃除ができるように作られています。</p>
+            <p>エアコン分解洗浄は、本体カバーを外して熱交換器と送風ファンを露出させた状態で、エアコン内部を洗います。</p>
+            <p>そうすることで外からは見えないホコリや汚れを落とすことができ、エアコンの長持ち、病気リスクの軽減をすることができるとされています。</p>
+            <p>みえる！おそうじではエアコンを分解して内部まで洗浄したあと、作業前後のエアコンの状態をお見せして説明させていただきます。</p>
+          </div>
+          <!-- エアコンの中のつくり。写真の上に部品名の札を重ねる（札の位置は写真に合わせて --x / --y を調整する）
+               TODO 画像：本体カバーを外したエアコンの写真（横長 4:3） -->
+          <figure class="ac-parts fade-in">
+            <div class="ph ph-4x3">
+              <span class="ph-label"><svg aria-hidden="true"><use href="#i-camera"/></svg>写真：本体カバーを外したエアコン</span>
+              <span class="ac-pin" style="--x: 8%; --y: 12%;">本体カバー</span>
+              <span class="ac-pin" style="--x: 56%; --y: 26%;">フィルター</span>
+              <span class="ac-pin" style="--x: 10%; --y: 48%;">熱交換器</span>
+              <span class="ac-pin" style="--x: 52%; --y: 66%;">送風ファン</span>
+              <span class="ac-pin" style="--x: 14%; --y: 84%;">ドレンパン</span>
+            </div>
+            <!-- 手前から奥への順番。フィルターまではご自身で、本体カバーから奥は分解洗浄で洗う -->
+            <ol class="ac-layers" aria-label="前面パネルを開いたときの部品の順番（手前から奥へ）">
+              <li class="is-self">フィルター</li>
+              <li>ルーバー</li>
+              <li>本体カバー</li>
+              <li>熱交換器</li>
+              <li>送風ファン</li>
+              <li>ドレンパン</li>
+            </ol>
+            <div class="ac-layers-key">
+              <span class="key-self">ご自身でお掃除できる</span>
+              <span class="key-pro">分解洗浄で洗う</span>
+            </div>
+          </figure>
+        </div>
+        <p class="ac-intro-cta fade-in"><a href="#price" class="btn btn-primary">料金を見る</a></p>
       </div>
     </div>
 
-    <!-- 料金
-         TODO サービス詳細の拡充（内容が用意できたら追加する。カジタクのページ構成を参考程度に）：
-           ・作業範囲（含まれる場所の写真つきチェックリスト）
-           ・ビフォーアフター写真
-           ・サービスごとのよくある質問 -->
-    <section class="section" id="price" data-ga-section="price_detail">
-      <div class="container container-narrow">
-        <p class="section-eyebrow fade-in">PRICE</p>
-        <h2 class="section-title fade-in">料金</h2>
-          <!-- TODO キャンペーン：名前と開始日・終了日が決まったら [CAMPAIGN_START] [CAMPAIGN_END] を差し替える -->
-          <div class="campaign-note fade-in">
-            <p><strong>キャンペーン実施中</strong>（[CAMPAIGN_START] 〜 [CAMPAIGN_END]）<br>このサイト・LINE・お電話からのご依頼が対象です。マッチングサイト経由のご依頼は通常価格です。期間が終わったら、通常価格に戻ります。</p>
-          </div>
-        <div class="svc-card svc-card-detail fade-in">
-            <h4 class="svc-subhead">お掃除機能なし</h4>
-            <dl class="price-rows">
-              <div class="price-row"><dt>1台目</dt><dd><span class="price-now">8,000<small>円</small></span> <span class="price-was">通常 <s>10,000円</s></span></dd></div>
-              <div class="price-row"><dt>2台目以降（1台につき）</dt><dd><span class="price-now">7,000<small>円</small></span> <span class="price-was">通常 <s>9,000円</s></span></dd></div>
-            </dl>
-            <h4 class="svc-subhead">お掃除機能付き</h4>
-            <dl class="price-rows">
-              <div class="price-row"><dt>1台目</dt><dd><span class="price-now">13,000<small>円</small></span> <span class="price-was">通常 <s>15,000円</s></span></dd></div>
-              <div class="price-row"><dt>2台目以降（1台につき）</dt><dd><span class="price-now">12,000<small>円</small></span> <span class="price-was">通常 <s>14,000円</s></span></dd></div>
-            </dl>
-            <!-- TODO 含まれる作業：決まったら1行で書く（例：窓1か所＝窓2枚＋サッシ＋レール＋網戸） -->
-            <p class="svc-included svc-included-tbd">含まれる作業：準備中です（決まりしだい掲載します）</p>
-            <ul class="svc-notes">
-              <li>対象は壁掛けエアコン（分解洗浄）です。</li>
-              <li>2台目以降の料金は、エアコンの合計台数で数えます（お掃除機能の有無は問いません）。</li>
-              <li>お掃除機能付きかどうか分からないときは、お見積りのときにこちらで確認します。</li>
-            </ul>
+    <!-- 訴求：よくある思い込み → 実は。r-cleaning.com の「となりの花子さん」の流れ（つぶやき → ちょっと待って → 理由）を参考に、
+         キャラクターは使わず「お客様のつぶやき」の吹き出しで見せる。
+         TODO 画像：各項目の写真（汚れたファン、スプレー後の汚れ、ホコリでふさがった熱交換器、お掃除機能付きの内部） -->
+    <section class="section section-green" id="check" data-ga-section="check">
+      <div class="container">
+        <p class="section-eyebrow fade-in">CHECK</p>
+        <h2 class="section-title fade-in">そのエアコン、本当にきれいですか？</h2>
+        <div class="myth-list">
+          <article class="myth fade-in">
+            <div class="ph ph-4x3 myth-ph">
+              <span class="ph-label"><svg aria-hidden="true"><use href="#i-camera"/></svg>写真：黒いカビがついた送風ファン</span>
+            </div>
+            <div class="myth-body">
+              <p class="myth-say">フィルターはこまめに掃除しているから大丈夫</p>
+              <p class="myth-wait">ちょっと待って！</p>
+              <h3>フィルターの奥は、手が届きません</h3>
+              <p>フィルターの奥の熱交換器や送風ファンには、ホコリやカビがたまっていきます。においや、吹き出し口に発生する黒い点々は、ここが原因のことが多いです。</p>
+            </div>
+          </article>
+          <article class="myth fade-in">
+            <div class="ph ph-4x3 myth-ph">
+              <span class="ph-label"><svg aria-hidden="true"><use href="#i-camera"/></svg>写真：分解洗浄で出た黒い汚れの水</span>
+            </div>
+            <div class="myth-body">
+              <p class="myth-say">市販のスプレーで、自分で洗えば十分</p>
+              <p class="myth-wait">ちょっと待って！</p>
+              <h3>汚れを、落ちにくい汚れに変えてしまうことも</h3>
+              <p>スプレーでは奥の汚れを洗い流しきれません。流れきらなかった洗剤がホコリと混ざって固まり、カビのエサにもなって、こびりついた頑固な汚れに変わってしまいます。水漏れや故障につながることもあります。</p>
+            </div>
+          </article>
+          <article class="myth fade-in">
+            <div class="ph ph-4x3 myth-ph">
+              <span class="ph-label"><svg aria-hidden="true"><use href="#i-camera"/></svg>写真：ホコリでふさがった熱交換器</span>
+            </div>
+            <div class="myth-body">
+              <p class="myth-say">効きが悪いのは、エアコンが古くなってきたせいかな</p>
+              <p class="myth-wait">ちょっと待って！</p>
+              <h3>その原因、ホコリかもしれません</h3>
+              <p>年数がたつと、エアコンの効きは少しずつ落ちていきます。ただ、効きが悪いと感じる原因が、熱交換器をふさいだホコリということもよくあります。空気の通りが悪くなると、冷やしたり暖めたりするのに時間がかかり、電気も余計に使います。買い替えを考える前に、一度中をきれいにしてみませんか。</p>
+            </div>
+          </article>
         </div>
-        <!-- オプション（キャンペーン対象外・通常価格のまま） -->
-        <h3 class="price-subtitle fade-in" id="options">オプション</h3>
-        <p class="price-subtext fade-in">オプションはキャンペーンの対象外です。事前に金額をお伝えし、ご了承をいただいてから作業します。</p>
-        <div class="svc-card svc-card-detail fade-in">
-          <dl class="price-rows">
-            <div class="price-row"><dt>室外機洗浄</dt><dd><span class="price-now">4,000<small>円</small></span></dd></div>
-            <div class="price-row"><dt>ドレンホース洗浄</dt><dd><span class="price-now">2,500<small>円</small></span></dd></div>
-            <div class="price-row"><dt>防虫キャップ取付け</dt><dd><span class="price-now">1,500<small>円</small></span></dd></div>
-            <div class="price-row"><dt>防カビ・抗菌コート</dt><dd><span class="price-now">1,000<small>円</small></span></dd></div>
-          </dl>
+
+        <!-- お掃除機能なし／付きのちがい（料金カードの注記「分からないときはこちらで確認」はここに移した） -->
+        <div class="ac-types fade-in" id="types">
+          <h3 class="ac-types-title">「お掃除機能付き」でも、中は汚れます</h3>
+          <p class="ac-types-lead">お掃除機能は、フィルターのホコリを自動で取る機能です。熱交換器や送風ファンの汚れは取れません。</p>
+          <div class="ac-types-grid">
+            <div class="ac-type">
+              <div class="ph ph-4x3">
+                <span class="ph-label"><svg aria-hidden="true"><use href="#i-camera"/></svg>写真：前面パネルを開けたところ（機能なし）</span>
+              </div>
+              <p class="ac-type-name">お掃除機能なし</p>
+              <p class="ac-type-point">パネルを開けると、すぐにフィルターが見えます</p>
+            </div>
+            <div class="ac-type">
+              <div class="ph ph-4x3">
+                <span class="ph-label"><svg aria-hidden="true"><use href="#i-camera"/></svg>写真：前面パネルを開けたところ（機能付き）</span>
+              </div>
+              <p class="ac-type-name ac-type-name-auto">お掃除機能付き</p>
+              <p class="ac-type-point">フィルターの手前に、ブラシや小さな箱（ダストボックス）がついています</p>
+            </div>
+          </div>
+          <p class="ac-types-note">お掃除機能付きは部品が多く、分解と組み立てに専門的な技術が必要なため、料金が高くなります。<br class="br-pc">どちらか分からないときは、LINEで写真を送っていただければ、こちらで確認します。</p>
         </div>
       </div>
     </section>
 
-    <!-- 追加料金・注意・キャンセル（小見出し＋本文の形式。一覧ページとそろえる） -->
-    <section class="section section-green" id="conditions" data-ga-section="conditions">
-      <div class="container">
-        <p class="section-eyebrow fade-in">BEFORE USE</p>
-        <h2 class="section-title fade-in">ご利用にあたって</h2>
-        <div class="cond-flow fade-in">
-          <h3>出張料金・駐車場</h3>
-          <p>出張料金は無料です。</p>
-          <p>敷地内や近くに無料で停められる場所がない場合は、有料駐車場の実費を頂戴いたします。</p>
-          <!-- TODO 高所作業料金：計算（50cmごと・切り上げ）とお断りする高さの上限は要確認（設計図 v1 では想定） -->
-          <h3>高い場所の作業</h3>
-          <p>高所での作業は、高所作業料金をいただいています。床からエアコン本体の上端までが2.5mを超える場合、50cmごとに3,000円を頂戴します。</p>
-          <p>例えば、2.5m超〜3mは3,000円、3m超〜3.5mは6,000円です。</p>
-          <p>あまりにも高い場所は、安全のためお受けできない場合がございます。</p>
-          <h3>料金を載せていないもの（要相談）</h3>
-          <p>天井埋め込みエアコンや業務用エアコンなどは、料金を載せていませんが対応できる場合がございます。</p>
-          <p>まずはお気軽にご相談ください。</p>
-          <h3>お受けできない場合</h3>
-          <p>故障や不具合がある機器、分解が難しい機器、部品の劣化が進んだ機器は、作業によって状態が悪くなるおそれがあるため、お受けできない場合がございます。</p>
-          <p>製造から10年以上たったエアコンなど部品の供給が終わった機器や、安全に作業できない高い場所も同様です。</p>
-          <p>これはどうかな？という場合でもお気軽にご相談ください。</p>
-          <!-- TODO 士業の確認：当日作業できない場合を当日キャンセル扱い（100%）にする規定。
-               消費者契約法9条（平均的な損害を超えるキャンセル料は無効）の観点で、公開前に専門家のチェックを受ける -->
-          <h3>当日作業できないとき</h3>
-          <p>お伺いしたあと、お客様のご都合で作業できなかった場合（ご不在、事前にお伺いした内容と実際の機器・設置状況が異なる場合など）は、当日キャンセルの扱いとなり、お見積り金額（税込）の100%を申し受けます。</p>
-          <p>当店の判断でお受けできないとお伝えする場合は、料金はいただきません。</p>
-          <h3>キャンセル・日程変更</h3>
-          <p>作業日の3日前までにご連絡いただければ、キャンセル・日程変更が可能です。</p>
-          <p>以降のご連絡は、原則としてお見積り金額（税込）に対して、2日前は30%、前日は50%、当日は100%を頂戴いたします。</p>
-          <p>ご都合が悪くなったときは、まずはお気軽にご相談ください。</p>
+    <!-- 料金（タブ：壁掛け／天吊り／天井埋め込み／業務用）
+         TODO サービス詳細の拡充（内容が用意できたら追加する）：ビフォーアフター写真・サービスごとのよくある質問 -->
+    <section class="section" id="price" data-ga-section="price_detail">
+      <div class="container container-narrow">
+        <p class="section-eyebrow fade-in">PRICE</p>
+        <h2 class="section-title fade-in">料金</h2>
+        <!-- TODO キャンペーン：名前と開始日・終了日が決まったら [CAMPAIGN_START] [CAMPAIGN_END] を差し替える。
+             通常価格が実際に売れる価格であることを、公開前に確認する（二重価格表示。専門家のチェックを推奨） -->
+        <div class="campaign-banner fade-in">
+          <span class="bubble" style="--x: 3%; --y: 16%; --s: 30px; --d: 0s;" aria-hidden="true"></span>
+          <span class="bubble bubble-dot" style="--x: 12%; --y: 66%; --s: 12px; --d: -2.5s;" aria-hidden="true"></span>
+          <span class="bubble bubble-dot" style="--x: 86%; --y: 18%; --s: 11px; --d: -4s;" aria-hidden="true"></span>
+          <span class="bubble" style="--x: 92%; --y: 56%; --s: 24px; --d: -1.5s;" aria-hidden="true"></span>
+          <p class="cb-title">キャンペーン実施中！</p>
+          <p class="cb-period">[CAMPAIGN_END]まで！！</p>
         </div>
-        <p class="page-back fade-in"><a href="/mieru-osouji/service/#conditions">すべてのサービス共通の条件を、サービス一覧ページで見る</a></p>
-        <p class="page-back fade-in"><a href="/mieru-osouji/#flow">ご相談から仕上がりの確認までの流れを見る</a></p>
+        <p class="campaign-terms fade-in">期間：[CAMPAIGN_START]〜[CAMPAIGN_END]。このサイト・LINE・お電話からのご依頼が対象です。マッチングサイト経由のご依頼は通常価格です。</p>
+
+        <!-- タブ。JS が動かないときは4つのパネルを縦に全部表示する -->
+        <div class="ac-tabs fade-in" data-tabs>
+          <div class="ac-tablist" role="tablist" aria-label="エアコンの種類">
+            <button type="button" role="tab" id="tab-wall" aria-controls="panel-wall" aria-selected="true"><svg aria-hidden="true"><use href="#i-aircon"/></svg>壁掛け</button>
+            <button type="button" role="tab" id="tab-hang" aria-controls="panel-hang" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#i-ac-hang"/></svg>天吊り</button>
+            <button type="button" role="tab" id="tab-ceiling" aria-controls="panel-ceiling" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#i-ac-ceiling"/></svg>天井埋め込み</button>
+            <button type="button" role="tab" id="tab-biz" aria-controls="panel-biz" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#i-ac-biz"/></svg>業務用</button>
+          </div>
+
+          <!-- 壁掛けタイプ -->
+          <div class="ac-panel" role="tabpanel" id="panel-wall" aria-labelledby="tab-wall">
+            <div class="ac-price-grid">
+              <div class="ac-price-card">
+                <!-- TODO 画像：お掃除機能なしの壁掛けエアコン（正面） -->
+                <div class="ph ph-3x2">
+                  <span class="ph-label"><svg aria-hidden="true"><use href="#i-camera"/></svg>写真：お掃除機能なし</span>
+                </div>
+                <div class="ac-price-body">
+                  <p class="ac-price-name">お掃除機能なし</p>
+                  <dl class="price-rows">
+                    <div class="price-row"><dt>1台目</dt><dd><span class="price-now">8,000<small>円</small></span> <span class="price-was">通常 <s>10,000円</s></span></dd></div>
+                    <div class="price-row"><dt>2台目以降</dt><dd><span class="price-now">7,000<small>円</small></span> <span class="price-was">通常 <s>9,000円</s></span></dd></div>
+                  </dl>
+                </div>
+              </div>
+              <div class="ac-price-card">
+                <!-- TODO 画像：お掃除機能付きの壁掛けエアコン（正面） -->
+                <div class="ph ph-3x2">
+                  <span class="ph-label"><svg aria-hidden="true"><use href="#i-camera"/></svg>写真：お掃除機能付き</span>
+                </div>
+                <div class="ac-price-body">
+                  <p class="ac-price-name ac-price-name-auto">お掃除機能付き</p>
+                  <dl class="price-rows">
+                    <div class="price-row"><dt>1台目</dt><dd><span class="price-now">13,000<small>円</small></span> <span class="price-was">通常 <s>15,000円</s></span></dd></div>
+                    <div class="price-row"><dt>2台目以降</dt><dd><span class="price-now">12,000<small>円</small></span> <span class="price-was">通常 <s>14,000円</s></span></dd></div>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <p class="ac-price-note">※表示価格は税込みです。</p>
+            <!-- 別途かかる料金は、価格のすぐ近くに短く置く（打消し表示は強調表示の近くに。全文はサービス一覧の #conditions）。
+                 「ご利用にあたって」セクションは2026-11-18に廃止し、この形にした -->
+            <div class="price-extra">
+              <p class="price-extra-title">別途かかる場合がある料金</p>
+              <dl>
+                <div><dt>高い場所</dt><dd>床から本体の上端までが2.5mを超える場合、50cmごとに3,000円</dd></div>
+                <div><dt>駐車場</dt><dd>無料で停められる場所がない場合は、有料駐車場の実費</dd></div>
+              </dl>
+              <a href="/mieru-osouji/service/#conditions" class="price-extra-link">追加料金・キャンセルについて詳しく見る</a>
+            </div>
+
+            <!-- サービス内容（カジタクの「サービス内容」を参考に、含まれる作業を色つき、オプションをグレーで並べる）
+                 見出しは「サービス内容」（作業の手順ではなく、料金に含まれるものを見せる。2026-11-18 ユーザー確認済み） -->
+            <div class="work-box">
+              <h3 class="work-title">サービス内容</h3>
+              <ul class="work-tiles">
+                <li><svg aria-hidden="true"><use href="#i-w-check"/></svg>作業前の<br>動作確認</li>
+                <li><svg aria-hidden="true"><use href="#i-w-cover"/></svg>養生</li>
+                <li><svg aria-hidden="true"><use href="#i-w-driver"/></svg>分解</li>
+                <li><svg aria-hidden="true"><use href="#i-w-parts"/></svg>パーツ洗浄</li>
+                <li><svg aria-hidden="true"><use href="#i-w-spray"/></svg>内部の<br>高圧洗浄</li>
+                <li><svg aria-hidden="true"><use href="#i-w-wind"/></svg>組み立て・<br>動作確認</li>
+                <li class="is-feature"><svg aria-hidden="true"><use href="#i-w-eye"/></svg>作業前後の<br>ご説明</li>
+                <li class="is-option"><svg aria-hidden="true"><use href="#i-w-outdoor"/></svg>室外機洗浄</li>
+                <li class="is-option"><svg aria-hidden="true"><use href="#i-w-hose"/></svg>ドレン<br>ホース洗浄</li>
+                <li class="is-option"><svg aria-hidden="true"><use href="#i-w-cap"/></svg>防虫<br>キャップ</li>
+                <li class="is-option"><svg aria-hidden="true"><use href="#i-w-shield"/></svg>防カビ・<br>抗菌コート</li>
+              </ul>
+              <div class="work-key">
+                <span class="key-in">料金に含まれます</span>
+                <a href="#options" class="key-opt">オプション（別料金）</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 天吊りタイプ（壁掛けとは別料金。料金はユーザーが決める。2026-11 時点では自社で作業せず、受けた場合は他社に紹介する想定）
+               TODO 料金：[PRICE_AC_HANG] を差し替える。キャンペーン対象にするかも決める -->
+          <div class="ac-panel" role="tabpanel" id="panel-hang" aria-labelledby="tab-hang">
+            <div class="ac-price-card ac-price-card-wide">
+              <!-- TODO 画像：天吊りエアコン -->
+              <div class="ph ph-3x2">
+                <span class="ph-label"><svg aria-hidden="true"><use href="#i-camera"/></svg>写真：天吊りエアコン</span>
+              </div>
+              <div class="ac-price-body">
+                <p class="ac-price-name">天吊りエアコン</p>
+                <p class="ac-price-sub">天井から吊り下げるタイプ。お店や広いリビングに多い形です。</p>
+                <dl class="price-rows">
+                  <div class="price-row"><dt>1台</dt><dd><span class="price-now">[PRICE_AC_HANG]<small>円</small></span></dd></div>
+                </dl>
+              </div>
+            </div>
+          </div>
+
+          <!-- 天井埋め込みタイプ
+               TODO 料金：[PRICE_AC_CEILING] を差し替える（吹き出し口の数で分けるかも決める） -->
+          <div class="ac-panel" role="tabpanel" id="panel-ceiling" aria-labelledby="tab-ceiling">
+            <div class="ac-price-card ac-price-card-wide">
+              <!-- TODO 画像：天井埋め込みエアコン -->
+              <div class="ph ph-3x2">
+                <span class="ph-label"><svg aria-hidden="true"><use href="#i-camera"/></svg>写真：天井埋め込みエアコン</span>
+              </div>
+              <div class="ac-price-body">
+                <p class="ac-price-name">天井埋め込みエアコン</p>
+                <p class="ac-price-sub">本体が天井の中に入っていて、天井に四角い吹き出し口が見えるタイプです。</p>
+                <dl class="price-rows">
+                  <div class="price-row"><dt>1台</dt><dd><span class="price-now">[PRICE_AC_CEILING]<small>円</small></span></dd></div>
+                </dl>
+              </div>
+            </div>
+          </div>
+
+          <!-- 業務用エアコン
+               TODO 料金：[PRICE_AC_BIZ] を差し替える（形ごとに分けるかも決める） -->
+          <div class="ac-panel" role="tabpanel" id="panel-biz" aria-labelledby="tab-biz">
+            <div class="ac-price-card ac-price-card-wide">
+              <!-- TODO 画像：業務用エアコン（店舗・事務所） -->
+              <div class="ph ph-3x2">
+                <span class="ph-label"><svg aria-hidden="true"><use href="#i-camera"/></svg>写真：業務用エアコン</span>
+              </div>
+              <div class="ac-price-body">
+                <p class="ac-price-name">業務用エアコン</p>
+                <p class="ac-price-sub">お店や事務所に付いている大きなエアコンです。</p>
+                <dl class="price-rows">
+                  <div class="price-row"><dt>1台</dt><dd><span class="price-now">[PRICE_AC_BIZ]<small>円</small></span></dd></div>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- オプション（キャンペーン対象外・通常価格のまま）。r-cleaning.com のオプション欄を参考に、写真つきのカードにする
+         TODO 画像：各オプションの写真（説明文は2026-11-18にユーザー確認済み） -->
+    <section class="section section-green" id="options" data-ga-section="options">
+      <div class="container container-narrow">
+        <p class="section-eyebrow fade-in">OPTION</p>
+        <h2 class="section-title fade-in">オプション</h2>
+        <ul class="opt-cards stagger">
+          <li class="opt-card rise">
+            <div class="ph ph-1x1 opt-ph">
+              <span class="ph-label"><svg aria-hidden="true"><use href="#i-camera"/></svg>写真：室外機</span>
+            </div>
+            <div class="opt-body">
+              <p class="opt-tag">オプション</p>
+              <h3>室外機洗浄</h3>
+              <p class="opt-price">4,000<small>円</small></p>
+              <p class="opt-text">外に置いてある室外機のフィンやファンにたまったホコリ・汚れを洗います。</p>
+            </div>
+          </li>
+          <li class="opt-card rise">
+            <div class="ph ph-1x1 opt-ph">
+              <span class="ph-label"><svg aria-hidden="true"><use href="#i-camera"/></svg>写真：ドレンホースの洗浄</span>
+            </div>
+            <div class="opt-body">
+              <p class="opt-tag">オプション</p>
+              <h3>ドレンホース洗浄</h3>
+              <p class="opt-price">2,500<small>円</small></p>
+              <p class="opt-text">エアコンの水を外へ流すホースの詰まりを取り除き、洗浄します。水漏れや異臭が改善され、予防になります。</p>
+            </div>
+          </li>
+          <li class="opt-card rise">
+            <div class="ph ph-1x1 opt-ph">
+              <span class="ph-label"><svg aria-hidden="true"><use href="#i-camera"/></svg>写真：防虫キャップ</span>
+            </div>
+            <div class="opt-body">
+              <p class="opt-tag">オプション</p>
+              <h3>防虫キャップ取付け</h3>
+              <p class="opt-price">1,500<small>円</small></p>
+              <p class="opt-text">ドレンホースの先に虫やホコリが外から入りこむのを防ぐ専用キャップを取り付けます。室内と室外の気圧の差で生じる「ポコポコ」という異音も軽減可能です。</p>
+            </div>
+          </li>
+          <li class="opt-card rise">
+            <div class="ph ph-1x1 opt-ph">
+              <span class="ph-label"><svg aria-hidden="true"><use href="#i-camera"/></svg>写真：抗菌コートの吹き付け</span>
+            </div>
+            <div class="opt-body">
+              <p class="opt-tag">オプション</p>
+              <h3>防カビ・抗菌コート</h3>
+              <p class="opt-price">1,000<small>円</small></p>
+              <p class="opt-text">洗ったあとのエアコン内部に専用のコート剤を吹き付けて、カビが生えにくい状態にします。</p>
+            </div>
+          </li>
+        </ul>
+        <p class="ac-price-note fade-in">※オプションはキャンペーンの対象外です。表示価格は税込みです。</p>
       </div>
     </section>
 
@@ -191,7 +432,6 @@
       <div class="container">
         <p class="section-eyebrow fade-in">EXAMPLES</p>
         <h2 class="section-title fade-in">料金の計算例</h2>
-        <p class="section-lead fade-in">よくある組み合わせの合計です（税込）。</p>
         <ul class="calc-list stagger">
           <li class="calc-item rise">
             <h3>エアコン（お掃除機能なし）1台</h3>
@@ -281,6 +521,11 @@
     </div>
   </footer>
 
+  <!-- 「料金を見る」ボタン（画面の右下に固定。ページの頭を過ぎたら出し、料金とオプションが見えている間は隠す） -->
+  <a href="#price" class="price-jump" data-price-jump>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v13M6 12l6 6 6-6"/></svg>料金を見る
+  </a>
+
   <!-- スマホ用 固定CTAバー -->
   <div class="cta-bar">
     <a href="[LINE_URL_CLEANING]" class="btn btn-line">LINEで相談</a>
@@ -289,5 +534,6 @@
 
   <script src="/assets/js/site.js" defer></script>
   <script src="/assets/js/analytics.js" defer></script>
+  <script src="/mieru-osouji/assets/js/service-detail.js" defer></script>
 </body>
 </html>
