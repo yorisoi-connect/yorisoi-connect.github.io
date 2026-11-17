@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <!--
+    ======================================================================
+    プレースホルダー一覧（公開前にすべて置き換える。文字列で全体検索すること）
+      [LINE_URL_CLEANING] : みえる！おそうじ用 LINE の URL（例：https://lin.ee/xxxx）
+      [PHONE_CLEANING]    : 電話番号。表示用と tel: リンクの両方に使っている
+                            （tel: 側はハイフンなしの数字に置き換える）
+      [CAMPAIGN_START]    : キャンペーン開始日（例：2026年12月1日。公開日に合わせる）
+      [CAMPAIGN_END]      : キャンペーン終了日（例：2027年5月31日。開始から半年、開始時に確定する）
+    公開前に決めること（料金ページ設計図 v1 2026-11-15 より）：
+      含まれる作業（grep "TODO 含まれる作業"）／支払い方法／高所作業料金の確認／
+      窓の種類を混ぜたときの数え方／戸建ての空室清掃／
+      通常価格が実際に売れる価格であることの確認（二重価格表示。専門家のチェックを推奨）
+    ======================================================================
+  -->
+  <!-- 公開時に削除：この1行を消すと検索エンジンに載るようになる -->
+  <meta name="robots" content="noindex">
+  <script>(function(d){d.className+=" js"})(document.documentElement)</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>浴室クリーニング｜みえる！おそうじ（料金・サービス内容）</title>
+  <meta name="description" content="みえる！おそうじの浴室クリーニングの料金です。税込の総額で、出張料金は無料。追加料金が出る条件も、先にご案内します。">
+  <link rel="canonical" href="https://yorisoi-connect.com/mieru-osouji/service/bathroom/">
+
+  <!-- OGP -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="みえる！おそうじ">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="浴室クリーニング｜みえる！おそうじ（料金・サービス内容）">
+  <meta property="og:description" content="みえる！おそうじの浴室クリーニングの料金です。税込の総額で、出張料金は無料。追加料金が出る条件も、先にご案内します。">
+  <meta property="og:url" content="https://yorisoi-connect.com/mieru-osouji/service/bathroom/">
+  <!-- TODO 画像：OGP画像。専用画像ができたら差し替え（トップページと同じ仮画像） -->
+  <meta property="og:image" content="https://yorisoi-connect.com/assets/images/ogp.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- ?v= はブラウザに古いCSSを使わせないための番号。CSS を変えたら日付などに書き換える -->
+  <link rel="stylesheet" href="/mieru-osouji/assets/css/style.css?v=20261116">
+  <link rel="stylesheet" href="/mieru-osouji/assets/css/service.css?v=20261116">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG9KYK977N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TG9KYK977N');
+  </script>
+</head>
+<body>
+  <!-- アイコン置き場。<svg><use href="#i-名前"/></svg> で呼び出す（トップページと同じ図形） -->
+  <svg class="icon-sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-bath" viewBox="0 0 24 24"><path d="M3 12h18v2a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5z"/><path d="M6 12V6.5a2.5 2.5 0 0 1 4.5-1.5"/><path d="M7 19l-1 2M17 19l1 2"/></symbol>
+  </svg>
+
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <!-- TODO 画像：ロゴ。assets/img/logo.svg ができたら <img> に差し替え（トップページと同じ） -->
+        <a href="/mieru-osouji/" class="site-logo">みえる！おそうじ</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="global-nav">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="global-nav" id="global-nav" aria-label="グローバルナビゲーション">
+        <ul class="nav-main">
+          <li><a href="/mieru-osouji/service/">サービス一覧</a></li>
+          <li><a href="/mieru-osouji/#business">法人のお客様へ</a></li>
+        </ul>
+        <ul class="nav-sub">
+          <li><a href="/mieru-osouji/#price">料金プラン</a></li>
+          <li><a href="/mieru-osouji/#cases">作業事例</a></li>
+          <li><a href="/mieru-osouji/#faq">よくある質問</a></li>
+        </ul>
+        <ul class="nav-cta-list">
+          <li class="nav-cta"><a href="[LINE_URL_CLEANING]" class="btn btn-line">LINEで相談する</a></li>
+          <li class="nav-cta"><a href="tel:[PHONE_CLEANING]" class="btn btn-outline">電話する</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-cta">
+        <a href="[LINE_URL_CLEANING]" class="btn btn-line btn-small">LINEで相談</a>
+        <a href="tel:[PHONE_CLEANING]" class="btn btn-outline btn-small">電話する</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="price-page">
+    <!-- ページの頭：パンくず・見出し -->
+    <div class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="パンくずリスト">
+          <ol><li><a href="/mieru-osouji/">みえる！おそうじ</a></li><li><a href="/mieru-osouji/service/">サービス一覧</a></li><li aria-current="page">浴室クリーニング</li></ol>
+        </nav>
+        <h1 class="page-title">浴室クリーニング</h1>
+        <!-- 更新日＝料金を確認した日。料金を見直したら、この日付も更新する -->
+        <p class="page-updated">料金の更新日：2026年11月15日</p>
+        <p class="page-lead">浴室クリーニングのご案内です。<br class="br-pc">料金はすべて税込の総額で、出張料金は無料です。</p>
+      </div>
+    </div>
+
+    <!-- 料金
+         TODO サービス詳細の拡充（内容が用意できたら追加する。カジタクのページ構成を参考程度に）：
+           ・作業範囲（含まれる場所の写真つきチェックリスト）
+           ・ビフォーアフター写真
+           ・サービスごとのよくある質問 -->
+    <section class="section" id="price" data-ga-section="price_detail">
+      <div class="container container-narrow">
+        <p class="section-eyebrow fade-in">PRICE</p>
+        <h2 class="section-title fade-in">料金</h2>
+          <!-- TODO キャンペーン：名前と開始日・終了日が決まったら [CAMPAIGN_START] [CAMPAIGN_END] を差し替える -->
+          <div class="campaign-note fade-in">
+            <p><strong>キャンペーン実施中</strong>（[CAMPAIGN_START] 〜 [CAMPAIGN_END]）<br>このサイト・LINE・お電話からのご依頼が対象です。マッチングサイト経由のご依頼は通常価格です。期間が終わったら、通常価格に戻ります。</p>
+          </div>
+        <div class="svc-card svc-card-detail fade-in">
+            <dl class="price-rows">
+              <div class="price-row"><dt>1式</dt><dd><span class="price-now">14,000<small>円</small></span> <span class="price-was">通常 <s>16,000円</s></span></dd></div>
+            </dl>
+            <!-- TODO 含まれる作業：決まったら1行で書く（例：窓1か所＝窓2枚＋サッシ＋レール＋網戸） -->
+            <p class="svc-included svc-included-tbd">含まれる作業：準備中です（決まりしだい掲載します）</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 追加料金・注意・キャンセル（小見出し＋本文の形式。一覧ページとそろえる） -->
+    <section class="section section-green" id="conditions" data-ga-section="conditions">
+      <div class="container">
+        <p class="section-eyebrow fade-in">BEFORE USE</p>
+        <h2 class="section-title fade-in">ご利用にあたって</h2>
+        <div class="cond-flow fade-in">
+          <h3>出張料金・駐車場</h3>
+          <p>出張料金は無料です。敷地内や近くに無料で停められる場所がない場合は、有料駐車場の実費をいただきます。</p>
+          <h3>お受けできない場合</h3>
+          <p>破損のおそれがある素材・設備や、安全に作業できない場所は、お受けできない場合がございます。</p>
+          <!-- TODO 士業の確認：当日作業できない場合を当日キャンセル扱い（100%）にする規定。
+               消費者契約法9条（平均的な損害を超えるキャンセル料は無効）の観点で、公開前に専門家のチェックを受ける -->
+          <h3>当日作業できないとき</h3>
+          <p>お伺いしたあと、お客様のご都合で作業できなかった場合（ご不在、事前にお伺いした内容と実際の機器・設置状況が異なる場合など）は、当日キャンセルの扱いとなり、お見積り金額（税込）の100%を申し受けます。当店の判断でお受けできないとお伝えする場合は、料金はいただきません。</p>
+          <h3>キャンセル・日程変更</h3>
+          <p>作業日の3日前の23:59までのご連絡は無料です。それ以降は、お見積り金額（税込）に対して、2日前は30%、前日は50%、当日は100%を申し受けます。日程変更も同じ扱いです。</p>
+        </div>
+        <p class="page-back fade-in"><a href="/mieru-osouji/service/#conditions">すべてのサービス共通の条件を、サービス一覧ページで見る</a></p>
+        <p class="page-back fade-in"><a href="/mieru-osouji/#flow">ご相談から仕上がりの確認までの流れを見る</a></p>
+      </div>
+    </section>
+
+    <div class="container">
+      <p class="page-back page-back-standalone"><a href="/mieru-osouji/service/">← サービス一覧にもどる</a></p>
+    </div>
+
+    <!-- お問い合わせ -->
+    <section class="section section-dark" id="contact" data-ga-section="contact_cta">
+      <div class="container">
+        <p class="section-eyebrow fade-in">CONTACT</p>
+        <h2 class="section-title fade-in">ご相談・お見積り</h2>
+        <p class="section-lead fade-in">LINEまたはお電話で受け付けています。</p>
+        <div class="contact-btns fade-in">
+          <a href="[LINE_URL_CLEANING]" class="btn btn-line">LINEで相談する</a>
+          <a href="tel:[PHONE_CLEANING]" class="btn btn-ghost">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+            [PHONE_CLEANING]
+          </a>
+        </div>
+        <p class="contact-meta">
+          LINE 24時間受付中／お電話 9:00〜19:00<br>
+          LINEでのお問い合わせは返信にお時間をいただく場合がございます。（翌営業日中にはご返信いたします）<br>
+          作業中は電話に出られない場合があります。その際は折り返しお電話します。
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <p class="footer-logo">みえる！おそうじ</p>
+          <p>東京・千葉・埼玉・神奈川</p>
+        </div>
+        <nav class="footer-nav" aria-label="フッターナビゲーション">
+          <ul>
+            <li><a href="/mieru-osouji/service/">サービス一覧</a></li>
+            <li><a href="/mieru-osouji/#business">法人のお客様へ</a></li>
+            <li><a href="/mieru-osouji/#price">料金プラン</a></li>
+            <li><a href="/mieru-osouji/#cases">作業事例</a></li>
+            <li><a href="/mieru-osouji/#faq">よくある質問</a></li>
+          </ul>
+        </nav>
+        <div class="footer-operator">
+          <p class="footer-operator-name">運営：<a href="/company/">よりそいコネクト</a></p>
+          <ul>
+            <li><a href="/company/">会社概要</a></li>
+            <li><a href="/moshimoshi-call/">もしもしコール</a></li>
+            <!-- TODO プライバシー：サイトにプライバシーポリシーのページがまだない。作成したらここにリンクを追加 -->
+          </ul>
+        </div>
+      </div>
+      <p class="footer-copy">© 2026 よりそいコネクト. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- スマホ用 固定CTAバー -->
+  <div class="cta-bar">
+    <a href="[LINE_URL_CLEANING]" class="btn btn-line">LINEで相談</a>
+    <a href="tel:[PHONE_CLEANING]" class="btn btn-outline">電話する</a>
+  </div>
+
+  <script src="/assets/js/site.js" defer></script>
+  <script src="/assets/js/analytics.js" defer></script>
+</body>
+</html>

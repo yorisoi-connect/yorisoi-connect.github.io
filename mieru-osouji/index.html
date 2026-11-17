@@ -70,7 +70,7 @@
        見出しの文言を変えたら、ここの text= も同じ文字にそろえること（ない文字だけ別の書体になる） -->
   <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&display=swap&text=料金、作業仕上がりすべてお見せします！0123456" rel="stylesheet">
   <!-- ?v= はブラウザに古いCSSを使わせないための番号。style.css を変えたら日付などに書き換える -->
-  <link rel="stylesheet" href="/mieru-osouji/assets/css/style.css?v=20261105e">
+  <link rel="stylesheet" href="/mieru-osouji/assets/css/style.css?v=20261116">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG9KYK977N"></script>
   <script>
@@ -114,8 +114,7 @@
       <!-- PCではメニューを2段（上：サービス、下：ページ内の案内）、LINE・電話はその右に1段で置く -->
       <nav class="global-nav" id="global-nav" aria-label="グローバルナビゲーション">
         <ul class="nav-main">
-          <li><a href="#aircon">エアコンクリーニング</a></li>
-          <li><a href="#service">ハウスクリーニング</a></li>
+          <li><a href="/mieru-osouji/service/">サービス一覧</a></li>
           <li><a href="#business">法人のお客様へ</a></li>
         </ul>
         <ul class="nav-sub">
@@ -333,13 +332,13 @@
       <div class="container">
         <p class="section-eyebrow fade-in">PRICE</p>
         <h2 class="section-title fade-in">料金</h2>
-        <!-- 出張費は通常料金に含める方針（金額を決めるときは少し多めに設定する）。当日作業できなかった場合の出張料金は「ご利用の前に」に記載 -->
-        <p class="section-lead fade-in">作業を行う場合、表示の料金のほかに出張料金をいただくことはありません。</p>
+        <!-- 出張料金は無料（2026-11-15決定。作業できなかった場合も料金はいただかない） -->
+        <p class="section-lead fade-in">料金はすべて税込で、出張料金は無料です。追加料金が出る条件は、サービス一覧のページにまとめています。</p>
         <!-- 料金カードのカルーセル（「できること」と同じ種類を並べる）。
              画面幅に応じて一度に見える枚数が変わる（スマホ1枚＋次のカードを少し見せる／タブレット2枚／PC3〜4枚）。
              左右ボタンは assets/js/price-carousel.js。JSがなくても横スクロール（スワイプ）で見られる。
-             TODO 料金：確定したら各カードの「○○」を金額に置き換える（税込）
-             TODO 料金ページ：「詳しく見る」のリンク先 /mieru-osouji/price/○○/ は未作成（今は404）。追加料金がかかる場合（室外機、ドレンホース、付属品など）の説明も載せる
+             カードの金額は最低額のキャンペーン価格（2026-11-15の料金表）。料金を変えたら /mieru-osouji/service/ 以下もそろえる。
+             「詳しく見る」のリンク先は各サービスの詳細ページ（一覧は /mieru-osouji/service/）
              TODO 画像：各カードの .ph-img を <img src="/mieru-osouji/assets/img/price-○○.jpg" alt="" loading="lazy"> に差し替え
              （名前は見出しで伝わるので alt は空。写真は画面幅に応じて 10:9・3:2・6:5 のどれかに切り抜いて表示される） -->
         <div class="price-carousel fade-in" data-carousel>
@@ -347,74 +346,74 @@
             <li class="price-card">
               <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
               <h3>エアコン</h3>
-              <p class="price-card-price"><span class="price-card-num">○○</span>円〜<span class="price-card-tax">（税込）</span></p>
-              <a class="price-card-link" href="/mieru-osouji/price/aircon/" aria-label="エアコンの料金を詳しく見る">詳しく見る</a>
+              <p class="price-card-price"><span class="price-card-num">8,000</span>円〜<span class="price-card-tax">（キャンペーン価格・税込）</span></p>
+              <a class="price-card-link" href="/mieru-osouji/service/aircon/" aria-label="エアコンの料金を詳しく見る">詳しく見る</a>
             </li>
             <li class="price-card">
               <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
               <h3>キッチン</h3>
-              <p class="price-card-price"><span class="price-card-num">○○</span>円〜<span class="price-card-tax">（税込）</span></p>
-              <a class="price-card-link" href="/mieru-osouji/price/kitchen/" aria-label="キッチンの料金を詳しく見る">詳しく見る</a>
+              <p class="price-card-price"><span class="price-card-num">13,000</span>円<span class="price-card-tax">（キャンペーン価格・税込）</span></p>
+              <a class="price-card-link" href="/mieru-osouji/service/kitchen/" aria-label="キッチンの料金を詳しく見る">詳しく見る</a>
             </li>
             <li class="price-card">
               <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
               <h3>レンジフード</h3>
-              <p class="price-card-price"><span class="price-card-num">○○</span>円〜<span class="price-card-tax">（税込）</span></p>
-              <a class="price-card-link" href="/mieru-osouji/price/range-hood/" aria-label="レンジフードの料金を詳しく見る">詳しく見る</a>
+              <p class="price-card-price"><span class="price-card-num">12,000</span>円<span class="price-card-tax">（キャンペーン価格・税込）</span></p>
+              <a class="price-card-link" href="/mieru-osouji/service/range-hood/" aria-label="レンジフードの料金を詳しく見る">詳しく見る</a>
             </li>
             <li class="price-card">
               <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
               <h3>浴室</h3>
-              <p class="price-card-price"><span class="price-card-num">○○</span>円〜<span class="price-card-tax">（税込）</span></p>
-              <a class="price-card-link" href="/mieru-osouji/price/bathroom/" aria-label="浴室の料金を詳しく見る">詳しく見る</a>
+              <p class="price-card-price"><span class="price-card-num">14,000</span>円<span class="price-card-tax">（キャンペーン価格・税込）</span></p>
+              <a class="price-card-link" href="/mieru-osouji/service/bathroom/" aria-label="浴室の料金を詳しく見る">詳しく見る</a>
             </li>
             <li class="price-card">
               <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
               <h3>追い焚き配管</h3>
-              <p class="price-card-price"><span class="price-card-num">○○</span>円〜<span class="price-card-tax">（税込）</span></p>
-              <a class="price-card-link" href="/mieru-osouji/price/bath-pipe/" aria-label="追い焚き配管の料金を詳しく見る">詳しく見る</a>
+              <p class="price-card-price"><span class="price-card-num">18,000</span>円<span class="price-card-tax">（キャンペーン価格・税込）</span></p>
+              <a class="price-card-link" href="/mieru-osouji/service/bath-pipe/" aria-label="追い焚き配管の料金を詳しく見る">詳しく見る</a>
             </li>
             <li class="price-card">
               <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
               <h3>洗面台</h3>
-              <p class="price-card-price"><span class="price-card-num">○○</span>円〜<span class="price-card-tax">（税込）</span></p>
-              <a class="price-card-link" href="/mieru-osouji/price/washbasin/" aria-label="洗面台の料金を詳しく見る">詳しく見る</a>
+              <p class="price-card-price"><span class="price-card-num">7,000</span>円<span class="price-card-tax">（キャンペーン価格・税込）</span></p>
+              <a class="price-card-link" href="/mieru-osouji/service/washbasin/" aria-label="洗面台の料金を詳しく見る">詳しく見る</a>
             </li>
             <li class="price-card">
               <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
               <h3>トイレ</h3>
-              <p class="price-card-price"><span class="price-card-num">○○</span>円〜<span class="price-card-tax">（税込）</span></p>
-              <a class="price-card-link" href="/mieru-osouji/price/toilet/" aria-label="トイレの料金を詳しく見る">詳しく見る</a>
+              <p class="price-card-price"><span class="price-card-num">7,000</span>円<span class="price-card-tax">（キャンペーン価格・税込）</span></p>
+              <a class="price-card-link" href="/mieru-osouji/service/toilet/" aria-label="トイレの料金を詳しく見る">詳しく見る</a>
             </li>
             <li class="price-card">
               <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
               <h3>洗濯機</h3>
-              <p class="price-card-price"><span class="price-card-num">○○</span>円〜<span class="price-card-tax">（税込）</span></p>
-              <a class="price-card-link" href="/mieru-osouji/price/washing-machine/" aria-label="洗濯機の料金を詳しく見る">詳しく見る</a>
+              <p class="price-card-price"><span class="price-card-num">12,000</span>円〜<span class="price-card-tax">（税込）</span></p>
+              <a class="price-card-link" href="/mieru-osouji/service/washing-machine/" aria-label="洗濯機の料金を詳しく見る">詳しく見る</a>
             </li>
             <li class="price-card">
               <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
               <h3>フロア</h3>
-              <p class="price-card-price"><span class="price-card-num">○○</span>円〜<span class="price-card-tax">（税込）</span></p>
-              <a class="price-card-link" href="/mieru-osouji/price/floor/" aria-label="フロアの料金を詳しく見る">詳しく見る</a>
+              <p class="price-card-price"><span class="price-card-num">11,000</span>円<span class="price-card-tax">（キャンペーン価格・税込）</span></p>
+              <a class="price-card-link" href="/mieru-osouji/service/floor/" aria-label="フロアの料金を詳しく見る">詳しく見る</a>
             </li>
             <li class="price-card">
               <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
               <h3>窓・サッシ</h3>
-              <p class="price-card-price"><span class="price-card-num">○○</span>円〜<span class="price-card-tax">（税込）</span></p>
-              <a class="price-card-link" href="/mieru-osouji/price/window/" aria-label="窓・サッシの料金を詳しく見る">詳しく見る</a>
+              <p class="price-card-price"><span class="price-card-num">4,000</span>円〜<span class="price-card-tax">（キャンペーン価格・税込）</span></p>
+              <a class="price-card-link" href="/mieru-osouji/service/window/" aria-label="窓・サッシの料金を詳しく見る">詳しく見る</a>
             </li>
             <li class="price-card">
               <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
               <h3>ベランダ・バルコニー</h3>
-              <p class="price-card-price"><span class="price-card-num">○○</span>円〜<span class="price-card-tax">（税込）</span></p>
-              <a class="price-card-link" href="/mieru-osouji/price/balcony/" aria-label="ベランダ・バルコニーの料金を詳しく見る">詳しく見る</a>
+              <p class="price-card-price"><span class="price-card-num">15,000</span>円<span class="price-card-tax">（キャンペーン価格・税込）</span></p>
+              <a class="price-card-link" href="/mieru-osouji/service/balcony/" aria-label="ベランダ・バルコニーの料金を詳しく見る">詳しく見る</a>
             </li>
             <li class="price-card">
               <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
               <h3>空室清掃<small>1R〜</small></h3>
-              <p class="price-card-price"><span class="price-card-num">○○</span>円〜<span class="price-card-tax">（税込）</span></p>
-              <a class="price-card-link" href="/mieru-osouji/price/vacant-room/" aria-label="空室清掃の料金を詳しく見る">詳しく見る</a>
+              <p class="price-card-price"><span class="price-card-num">20,000</span>円〜<span class="price-card-tax">（税込）</span></p>
+              <a class="price-card-link" href="/mieru-osouji/service/vacant-room/" aria-label="空室清掃の料金を詳しく見る">詳しく見る</a>
             </li>
           </ul>
           <button type="button" class="price-carousel-btn price-carousel-prev" data-carousel-prev aria-label="前の料金を見る">
@@ -424,6 +423,7 @@
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
           </button>
         </div>
+        <p class="price-more fade-in"><a class="btn btn-outline btn-small" href="/mieru-osouji/service/">サービス一覧を見る</a></p>
       </div>
     </section>
 
@@ -545,12 +545,15 @@
           <div class="info-item rise">
             <dt>お受けできない場合</dt>
             <dd>
-              <!-- 出張料金をいただくかは当日その場で判断する（判断の中身は書かない）。当日キャンセル・不在はキャンセル料の扱い。金額を変えたらFAQもそろえる -->
+              <!-- 当日作業できない場合の扱い（2026-11-17決定）：お客様都合は当日キャンセル扱い（100%）、当店判断は無料。
+                   内容を変えたらFAQと /mieru-osouji/service/ 以下もそろえる。
+                   TODO 士業の確認：消費者契約法9条（平均的な損害）の観点で、公開前に専門家のチェックを受ける -->
               <ul class="info-points">
                 <li>故障や不具合がある機器、分解が難しい機器、安全に作業できない高い場所は、お受けできない場合がございます。</li>
                 <li>部品の劣化が進み、作業によって状態が悪くなるおそれがある機器は、お受けできない場合がございます。</li>
                 <li>製造から10年以上たったエアコンや、部品の供給が終わった機器は、お受けできない場合がございます。</li>
-                <li>当日の確認で作業できないと判断した場合は、出張料金（3,000円・税込）をいただく場合がございます。</li>
+                <li>お伺いしたあと、お客様のご都合で作業できなかった場合（ご不在、事前にお伺いした内容と実際の機器・設置状況が異なる場合など）は、当日キャンセルの扱いとなります。</li>
+                <li>当店の判断でお受けできないとお伝えする場合は、料金はいただきません。</li>
               </ul>
             </dd>
           </div>
@@ -623,6 +626,7 @@
           <details class="faq-item">
             <summary>追加料金はかかりますか？</summary>
             <p class="faq-a">お見積りの金額が基本ですが、例えばエアコンの場合は室外機やドレンホースの洗浄、付属品の取り付けなどで追加料金がかかる場合があります。追加の作業が必要なときは、作業の前に理由と金額をお伝えし、ご了承いただいてから行います。ご了承なく料金を追加することはありません。</p>
+            <div class="faq-more"><a href="/mieru-osouji/service/">料金と追加料金の条件はこちら</a></div>
           </details>
           <details class="faq-item">
             <summary>支払い方法は何がありますか？</summary>
@@ -634,7 +638,7 @@
           </details>
           <details class="faq-item">
             <summary>型番がわからない、写真を送れないときは？</summary>
-            <p class="faq-a">お電話でお問い合わせいただいて大丈夫です。お買い上げの時期やメーカー、品名、調子の悪いところがないかをお伺いします。詳しい状況は当日に機器を確認して判断させていただきますが、万が一作業ができなかった場合は出張料金（3,000円・税込）をいただく場合がございます。</p>
+            <p class="faq-a">お電話でお問い合わせいただいて大丈夫です。お買い上げの時期やメーカー、品名、調子の悪いところがないかをお伺いします。詳しい状況は当日に機器を確認して判断させていただきます。事前にお伺いした内容と実際の状況が異なり作業できなかった場合は、当日キャンセルの扱いとなりますので、分かる範囲で正確にお伝えください。当店の判断でお受けできないとお伝えする場合は、料金はいただきません。</p>
           </details>
           <details class="faq-item">
             <summary>作業時間はどのくらいですか？</summary>
@@ -693,8 +697,7 @@
         </div>
         <nav class="footer-nav" aria-label="フッターナビゲーション">
           <ul>
-            <li><a href="#aircon">エアコンクリーニング</a></li>
-            <li><a href="#service">ハウスクリーニング</a></li>
+            <li><a href="/mieru-osouji/service/">サービス一覧</a></li>
             <li><a href="#business">法人のお客様へ</a></li>
             <li><a href="#price">料金プラン</a></li>
             <li><a href="#cases">作業事例</a></li>
