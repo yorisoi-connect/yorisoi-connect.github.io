@@ -44,36 +44,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ------------------------------------------------------------------
      2. 「料金を見る」固定ボタン
-        ページの頭（.page-hero）が画面から消えたら出す。
-        料金（#price）かオプション（#options）が画面に入っている間は隠す
+        ページを開いたときから出しておき、料金（#price）かオプション（#options）が
+        画面に入っている間だけ隠す（2026-11-19：早く出すように変更）
      ------------------------------------------------------------------ */
   var jump = document.querySelector('[data-price-jump]');
-  var hero = document.querySelector('.page-hero');
   var targets = ['price', 'options']
     .map(function (id) { return document.getElementById(id); })
     .filter(Boolean);
 
-  if (jump && hero && 'IntersectionObserver' in window) {
-    var heroVisible = true;
-    var visible = {};   // 画面に入っている料金・オプションの id
+  if (jump) {
+    jump.classList.add('is-shown');
 
-    function update() {
-      var anyTarget = Object.keys(visible).some(function (k) { return visible[k]; });
-      jump.classList.toggle('is-shown', !heroVisible && !anyTarget);
+    if ('IntersectionObserver' in window) {
+      var visible = {};   // 画面に入っている料金・オプションの id
+
+      var targetObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          visible[entry.target.id] = entry.isIntersecting;
+        });
+        var anyTarget = Object.keys(visible).some(function (k) { return visible[k]; });
+        jump.classList.toggle('is-shown', !anyTarget);
+      }, { rootMargin: '-15% 0px -15% 0px' });
+
+      targets.forEach(function (t) { targetObserver.observe(t); });
     }
-
-    new IntersectionObserver(function (entries) {
-      heroVisible = entries[entries.length - 1].isIntersecting;
-      update();
-    }).observe(hero);
-
-    var targetObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        visible[entry.target.id] = entry.isIntersecting;
-      });
-      update();
-    }, { rootMargin: '-15% 0px -15% 0px' });
-
-    targets.forEach(function (t) { targetObserver.observe(t); });
   }
 });

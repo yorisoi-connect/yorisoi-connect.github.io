@@ -113,6 +113,14 @@
   color: var(--color-deep);
 }
 
+.cb-sub {
+  position: relative;
+  margin-top: 6px;
+  font-size: clamp(14px, 12px + 0.5vw, 17px);
+  font-weight: 700;
+  color: var(--color-deep);
+}
+
 /* 期間は白い札にして読みやすく */
 .cb-period {
   position: relative;
@@ -422,6 +430,14 @@
   text-align: center;
   font-size: 13px;
   color: var(--color-text-light);
+}
+
+/* 詳細ページの計算例の注記：カードの左端にそろえて左寄せ */
+.calc-note-left {
+  max-width: 920px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
 }
 
 .calc-fold .calc-list {
@@ -866,6 +882,25 @@
   margin: -40px 0 64px;
 }
 
+.page-back-standalone .btn {
+  text-decoration: none;
+}
+
+/* 戻るボタン：文字の右に左向きのUターン矢印 */
+.btn-back {
+  gap: 8px;
+}
+
+.btn-back svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 /* --------------------------------------------------------------------------
    9. レスポンシブ
    -------------------------------------------------------------------------- */
@@ -1056,7 +1091,7 @@
 /* 手前から奥への部品の順番 */
 .ac-layers {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 4px;
   margin: 14px 0 0;
   padding: 0;
@@ -1066,10 +1101,11 @@
 
 .ac-layers li {
   counter-increment: layer;
-  padding: 6px 2px 7px;
+  padding: 6px 1px 7px;
+  word-break: keep-all;
   border-radius: 8px;
   background: var(--color-accent-dark);
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 700;
   line-height: 1.3;
   text-align: center;
@@ -1083,6 +1119,23 @@
   opacity: 0.75;
 }
 
+/* お掃除ユニットは機能付きのみなので点線で */
+.ac-layers li.is-unit {
+  background: #fff;
+  border: 1.5px dashed var(--color-accent-dark);
+  color: var(--color-accent-dark);
+}
+
+.ac-pin-unit {
+  border-style: dashed;
+  border-color: var(--color-accent-dark);
+}
+
+.key-unit::before {
+  background: #fff;
+  border: 1.5px dashed var(--color-accent-dark);
+}
+
 .ac-layers li.is-self {
   background: #fff;
   border: 1px solid var(--color-accent);
@@ -1091,8 +1144,9 @@
 
 .ac-layers-key {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 16px;
+  gap: 4px 16px;
   margin-top: 8px;
   font-size: 12px;
   color: var(--color-text-light);
@@ -1117,11 +1171,6 @@
 
 .key-pro::before {
   background: var(--color-accent-dark);
-}
-
-.ac-intro-cta {
-  margin-top: 36px;
-  text-align: center;
 }
 
 /* --- 思い込み → ちょっと待って → 実は --- */
@@ -1253,15 +1302,6 @@
   padding-top: 18px;
   border-top: 1px dashed var(--color-border);
   font-size: 14px;
-  text-align: center;
-  color: var(--color-text-light);
-}
-
-/* --- 料金：キャンペーンの条件（バナーの下の小さな注記） --- */
-.campaign-terms {
-  max-width: 720px;
-  margin: -18px auto 32px;
-  font-size: 13px;
   text-align: center;
   color: var(--color-text-light);
 }
@@ -1425,12 +1465,13 @@ html:not(.js) .ac-panel + .ac-panel {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px 14px;
-  margin-top: 12px;
+  gap: 10px 16px;
+  max-width: 920px;
+  margin: 28px auto 0;
 }
 
 .pay-mini-title {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--color-deep);
 }
@@ -1438,7 +1479,7 @@ html:not(.js) .ac-panel + .ac-panel {
 .pay-mini ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px;
   padding: 0;
   list-style: none;
 }
@@ -1446,19 +1487,20 @@ html:not(.js) .ac-panel + .ac-panel {
 .pay-mini li {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 4px 10px 4px 8px;
+  gap: 7px;
+  padding: 8px 14px 8px 12px;
   border: 1px solid var(--color-border);
-  border-radius: 8px;
+  border-radius: 10px;
   background: #fff;
-  font-size: 12.5px;
+  box-shadow: var(--shadow-card);
+  font-size: 14px;
   font-weight: 700;
   color: var(--color-deep);
 }
 
 .pay-mini svg {
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
   fill: none;
   stroke: var(--color-accent-dark);
   stroke-width: 1.7;
@@ -1491,7 +1533,7 @@ html:not(.js) .ac-panel + .ac-panel {
 }
 
 .calc-breakdown small {
-  display: block;
+  margin-left: 4px;
   font-size: 12px;
   color: var(--color-text-light);
 }
@@ -1649,27 +1691,30 @@ html:not(.js) .ac-panel + .ac-panel {
   line-height: 1.7;
 }
 
-/* --- 「料金を見る」固定ボタン（右下。スマホは下の LINE・電話バーの上） --- */
+/* --- 「料金を見る」固定ボタン（右下の丸いバッジ。上の弧に「キャンペーン実施中！」、
+       まんなかに「料金を見る」、下に下向きの手。スマホは下の LINE・電話バーの上） --- */
 .price-jump {
   position: fixed;
   right: 20px;
   bottom: 24px;
   z-index: 85;
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 6px;
-  padding: 12px 20px 12px 16px;
-  border-radius: var(--radius-btn);
+  justify-content: center;
+  width: 128px;
+  height: 128px;
+  padding-top: 38px;
+  border: 3px solid #fff;
+  border-radius: 50%;
   background: var(--color-deep);
-  box-shadow: 0 6px 18px rgba(39, 56, 46, 0.28);
-  font-size: 15px;
-  font-weight: 700;
+  box-shadow: 0 8px 22px rgba(39, 56, 46, 0.32);
   color: #fff;
   text-decoration: none;
   opacity: 0;
-  transform: translateY(12px);
+  transform: translateY(12px) scale(0.92);
   pointer-events: none;
-  transition: opacity 0.25s ease, transform 0.25s var(--ease);
+  transition: opacity 0.25s ease, transform 0.25s var(--ease), background-color 0.2s ease;
 }
 
 .price-jump.is-shown {
@@ -1682,14 +1727,51 @@ html:not(.js) .ac-panel + .ac-panel {
   background: var(--color-deep-2);
 }
 
-.price-jump svg {
-  width: 18px;
-  height: 18px;
+.pj-arc {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.pj-arc text {
+  font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  fill: var(--color-primary);
+}
+
+.pj-label {
+  position: relative;
+  font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.pj-hand {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  margin-top: 4px;
   fill: none;
-  stroke: currentColor;
-  stroke-width: 2.4;
+  stroke: var(--color-primary);
+  stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
+  animation: pj-poke 1.4s ease-in-out infinite;
+}
+
+@keyframes pj-poke {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pj-hand {
+    animation: none;
+  }
 }
 
 html:not(.js) .price-jump {
@@ -1723,11 +1805,17 @@ html:not(.js) .price-jump {
   }
 
   .ac-layers {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .ac-layers li {
     font-size: 12px;
+  }
+
+  /* スマホでは通常価格を金額の下に */
+  .calc-breakdown small {
+    display: block;
+    margin-left: 0;
   }
 
   /* 写真が縦に大きくなりすぎないよう、スマホでは横長にする */
@@ -1805,9 +1893,19 @@ html:not(.js) .price-jump {
   }
 
   .price-jump {
-    right: 12px;
-    bottom: calc(var(--cta-bar-height) + env(safe-area-inset-bottom) + 12px);
-    padding: 10px 16px 10px 12px;
+    right: 10px;
+    bottom: calc(var(--cta-bar-height) + env(safe-area-inset-bottom) + 10px);
+    width: 112px;
+    height: 112px;
+    padding-top: 33px;
+  }
+
+  .pj-label {
     font-size: 14px;
+  }
+
+  .pj-hand {
+    width: 22px;
+    height: 22px;
   }
 }

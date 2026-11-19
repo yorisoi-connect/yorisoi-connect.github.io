@@ -39,10 +39,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&display=swap&text=キャンペーン実施中！ちょっと待って" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&display=swap&text=期間限定！お得なキャンペーン実施中ちょっと待って料金を見る" rel="stylesheet">
   <!-- ?v= はブラウザに古いCSSを使わせないための番号。CSS を変えたら日付などに書き換える -->
   <link rel="stylesheet" href="/mieru-osouji/assets/css/style.css?v=20261116">
-  <link rel="stylesheet" href="/mieru-osouji/assets/css/service.css?v=20261117">
+  <link rel="stylesheet" href="/mieru-osouji/assets/css/service.css?v=20261119">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG9KYK977N"></script>
   <script>
@@ -121,7 +121,8 @@
         <h1 class="page-title">エアコンクリーニング</h1>
         <div class="ac-intro">
           <div class="ac-intro-text fade-in">
-            <p>エアコンは前面パネルを開くとフィルター、ルーバー、本体カバー、熱交換器、送風ファン、ドレンパンの順番で取り付けられています。</p>
+            <p>エアコンは前面パネルを開くとフィルター、お掃除ユニット、ルーバー、本体カバー、熱交換器、送風ファン、ドレンパンの順番で取り付けられています。</p>
+            <p>お掃除ユニットは「お掃除機能付き」のエアコンだけについている部品で、ついていないエアコンもあります。</p>
             <p>一般的にはフィルターまではお客様の手でお掃除ができるように作られています。</p>
             <p>エアコン分解洗浄は、本体カバーを外して熱交換器と送風ファンを露出させた状態で、エアコン内部を洗います。</p>
             <p>そうすることで外からは見えないホコリや汚れを落とすことができ、エアコンの長持ち、病気リスクの軽減をすることができるとされています。</p>
@@ -134,13 +135,15 @@
               <span class="ph-label"><svg aria-hidden="true"><use href="#i-camera"/></svg>写真：本体カバーを外したエアコン</span>
               <span class="ac-pin" style="--x: 8%; --y: 12%;">本体カバー</span>
               <span class="ac-pin" style="--x: 56%; --y: 26%;">フィルター</span>
+              <span class="ac-pin ac-pin-unit" style="--x: 58%; --y: 44%;">お掃除ユニット</span>
               <span class="ac-pin" style="--x: 10%; --y: 48%;">熱交換器</span>
               <span class="ac-pin" style="--x: 52%; --y: 66%;">送風ファン</span>
               <span class="ac-pin" style="--x: 14%; --y: 84%;">ドレンパン</span>
             </div>
-            <!-- 手前から奥への順番。フィルターまではご自身で、本体カバーから奥は分解洗浄で洗う -->
+            <!-- 手前から奥への順番。フィルターまではご自身で、それより奥は分解洗浄で洗う。お掃除ユニットは機能付きのみ（点線） -->
             <ol class="ac-layers" aria-label="前面パネルを開いたときの部品の順番（手前から奥へ）">
               <li class="is-self">フィルター</li>
+              <li class="is-unit">お掃除<br>ユニット</li>
               <li>ルーバー</li>
               <li>本体カバー</li>
               <li>熱交換器</li>
@@ -150,10 +153,10 @@
             <div class="ac-layers-key">
               <span class="key-self">ご自身でお掃除できる</span>
               <span class="key-pro">分解洗浄で洗う</span>
+              <span class="key-unit">お掃除機能付きのみ</span>
             </div>
           </figure>
         </div>
-        <p class="ac-intro-cta fade-in"><a href="#price" class="btn btn-primary">料金を見る</a></p>
       </div>
     </div>
 
@@ -238,10 +241,12 @@
           <span class="bubble bubble-dot" style="--x: 12%; --y: 66%; --s: 12px; --d: -2.5s;" aria-hidden="true"></span>
           <span class="bubble bubble-dot" style="--x: 86%; --y: 18%; --s: 11px; --d: -4s;" aria-hidden="true"></span>
           <span class="bubble" style="--x: 92%; --y: 56%; --s: 24px; --d: -1.5s;" aria-hidden="true"></span>
-          <p class="cb-title">キャンペーン実施中！</p>
+          <p class="cb-title"><span class="nw">期間限定！</span><span class="nw">お得なキャンペーン実施中！</span></p>
+          <p class="cb-sub">LINE・お電話からご予約いただくとお得です！</p>
           <p class="cb-period">[CAMPAIGN_END]まで！！</p>
         </div>
-        <p class="campaign-terms fade-in">期間：[CAMPAIGN_START]〜[CAMPAIGN_END]。このサイト・LINE・お電話からのご依頼が対象です。マッチングサイト経由のご依頼は通常価格です。</p>
+        <!-- キャンペーンの対象はこのサイト・LINE・お電話からのご依頼（マッチングサイト経由は通常価格）。
+             ページにはバナーの文だけを書く（2026-11-19 ユーザー指示） -->
 
         <!-- タブ。JS が動かないときは4つのパネルを縦に全部表示する -->
         <div class="ac-tabs fade-in" data-tabs>
@@ -280,50 +285,6 @@
                     <div class="price-row"><dt>2台目以降</dt><dd><span class="price-now">12,000<small>円</small></span> <span class="price-was">通常 <s>14,000円</s></span></dd></div>
                   </dl>
                 </div>
-              </div>
-            </div>
-            <p class="ac-price-note">※表示価格は税込みです。</p>
-            <!-- 別途かかる料金は、価格のすぐ近くに短く置く（打消し表示は強調表示の近くに。全文はサービス一覧の #conditions）。
-                 「ご利用にあたって」セクションは2026-11-18に廃止し、この形にした -->
-            <div class="price-extra">
-              <p class="price-extra-title">別途かかる場合がある料金</p>
-              <dl>
-                <div><dt>高い場所</dt><dd>床から本体の上端までが2.5mを超える場合、50cmごとに3,000円</dd></div>
-                <div><dt>駐車場</dt><dd>無料で停められる場所がない場合は、有料駐車場の実費</dd></div>
-              </dl>
-              <a href="/mieru-osouji/service/#conditions" class="price-extra-link">追加料金・キャンセルについて詳しく見る</a>
-            </div>
-            <!-- お支払い方法（サービス一覧の「お支払い」と同じ4つを小さく1行で。補足はトップページのFAQ） -->
-            <div class="pay-mini">
-              <p class="pay-mini-title">お支払い方法</p>
-              <ul>
-                <li><svg aria-hidden="true"><use href="#i-cash"/></svg>現金</li>
-                <li><svg aria-hidden="true"><use href="#i-card"/></svg>クレジットカード</li>
-                <li><svg aria-hidden="true"><use href="#i-bank"/></svg>銀行振込</li>
-                <li><svg aria-hidden="true"><use href="#i-qr"/></svg>QR決済</li>
-              </ul>
-            </div>
-
-            <!-- サービス内容（カジタクの「サービス内容」を参考に、含まれる作業を色つき、オプションをグレーで並べる）
-                 見出しは「サービス内容」（作業の手順ではなく、料金に含まれるものを見せる。2026-11-18 ユーザー確認済み） -->
-            <div class="work-box">
-              <h3 class="work-title">サービス内容</h3>
-              <ul class="work-tiles">
-                <li><svg aria-hidden="true"><use href="#i-w-check"/></svg>作業前の<br>動作確認</li>
-                <li><svg aria-hidden="true"><use href="#i-w-cover"/></svg>養生</li>
-                <li><svg aria-hidden="true"><use href="#i-w-driver"/></svg>分解</li>
-                <li><svg aria-hidden="true"><use href="#i-w-parts"/></svg>パーツ洗浄</li>
-                <li><svg aria-hidden="true"><use href="#i-w-spray"/></svg>内部の<br>高圧洗浄</li>
-                <li><svg aria-hidden="true"><use href="#i-w-wind"/></svg>組み立て・<br>動作確認</li>
-                <li class="is-feature"><svg aria-hidden="true"><use href="#i-w-eye"/></svg>作業前後の<br>ご説明</li>
-                <li class="is-option"><svg aria-hidden="true"><use href="#i-w-outdoor"/></svg>室外機洗浄</li>
-                <li class="is-option"><svg aria-hidden="true"><use href="#i-w-hose"/></svg>ドレン<br>ホース洗浄</li>
-                <li class="is-option"><svg aria-hidden="true"><use href="#i-w-cap"/></svg>防虫<br>キャップ</li>
-                <li class="is-option"><svg aria-hidden="true"><use href="#i-w-shield"/></svg>防カビ・<br>抗菌コート</li>
-              </ul>
-              <div class="work-key">
-                <span class="key-in">料金に含まれます</span>
-                <a href="#options" class="key-opt">オプション（別料金）</a>
               </div>
             </div>
           </div>
@@ -379,6 +340,42 @@
                   <div class="price-row"><dt>1台</dt><dd><span class="price-now">[PRICE_AC_BIZ]<small>円</small></span></dd></div>
                 </dl>
               </div>
+            </div>
+          </div>
+
+          <p class="ac-price-note">※表示価格は税込みです。</p>
+          <!-- ここから下はタブ共通（どのタブを選んでも表示する。2026-11-19）。
+               別途かかる料金は、価格のすぐ近くに短く置く（打消し表示は強調表示の近くに。全文はサービス一覧の #conditions）。
+               「ご利用にあたって」セクションは2026-11-18に廃止し、この形にした -->
+          <div class="price-extra">
+            <p class="price-extra-title">別途かかる場合がある料金</p>
+            <dl>
+              <div><dt>高い場所</dt><dd>床から本体の上端までが2.5mを超える場合、50cmごとに3,000円</dd></div>
+              <div><dt>駐車場</dt><dd>無料で停められる場所がない場合は、有料駐車場の実費</dd></div>
+            </dl>
+            <a href="/mieru-osouji/service/#conditions" class="price-extra-link">追加料金・キャンセルについて詳しく見る</a>
+          </div>
+
+          <!-- サービス内容（カジタクの「サービス内容」を参考に、含まれる作業を色つき、オプションをグレーで並べる）
+               見出しは「サービス内容」（作業の手順ではなく、料金に含まれるものを見せる。2026-11-18 ユーザー確認済み） -->
+          <div class="work-box">
+            <h3 class="work-title">サービス内容</h3>
+            <ul class="work-tiles">
+              <li><svg aria-hidden="true"><use href="#i-w-check"/></svg>作業前の<br>動作確認</li>
+              <li><svg aria-hidden="true"><use href="#i-w-cover"/></svg>養生</li>
+              <li><svg aria-hidden="true"><use href="#i-w-driver"/></svg>分解</li>
+              <li><svg aria-hidden="true"><use href="#i-w-parts"/></svg>パーツ洗浄</li>
+              <li><svg aria-hidden="true"><use href="#i-w-spray"/></svg>内部の<br>高圧洗浄</li>
+              <li><svg aria-hidden="true"><use href="#i-w-wind"/></svg>組み立て・<br>動作確認</li>
+              <li class="is-feature"><svg aria-hidden="true"><use href="#i-w-eye"/></svg>作業前後の<br>ご説明</li>
+              <li class="is-option"><svg aria-hidden="true"><use href="#i-w-outdoor"/></svg>室外機洗浄</li>
+              <li class="is-option"><svg aria-hidden="true"><use href="#i-w-hose"/></svg>ドレン<br>ホース洗浄</li>
+              <li class="is-option"><svg aria-hidden="true"><use href="#i-w-cap"/></svg>防虫<br>キャップ</li>
+              <li class="is-option"><svg aria-hidden="true"><use href="#i-w-shield"/></svg>防カビ・<br>抗菌コート</li>
+            </ul>
+            <div class="work-key">
+              <span class="key-in">料金に含まれます</span>
+              <a href="#options" class="key-opt">オプション（別料金）</a>
             </div>
           </div>
         </div>
@@ -446,31 +443,53 @@
       <div class="container">
         <p class="section-eyebrow fade-in">EXAMPLES</p>
         <h2 class="section-title fade-in">料金の計算例</h2>
+        <!-- 計算例は全部「内訳 → キャンペーン価格・通常価格」の同じ形にそろえる（2026-11-19）。
+             小さいカード4枚（2×2）＋全オプションの横長1枚 -->
         <ul class="calc-list stagger">
           <li class="calc-item rise">
             <h3>エアコン（お掃除機能なし）1台</h3>
+            <dl class="calc-breakdown">
+              <div><dt>エアコン（お掃除機能なし）</dt><dd>8,000円<small>（通常 10,000円）</small></dd></div>
+            </dl>
             <dl>
               <div class="calc-row calc-camp"><dt>キャンペーン価格</dt><dd><strong>8,000円</strong></dd></div>
               <div class="calc-row"><dt>通常価格</dt><dd>10,000円</dd></div>
             </dl>
           </li>
           <li class="calc-item rise">
-            <h3>エアコン（お掃除機能なし）2台</h3>
+            <h3>エアコン（お掃除機能付き）1台</h3>
+            <dl class="calc-breakdown">
+              <div><dt>エアコン（お掃除機能付き）</dt><dd>13,000円<small>（通常 15,000円）</small></dd></div>
+            </dl>
             <dl>
-              <div class="calc-row calc-camp"><dt>キャンペーン価格</dt><dd><span class="calc-formula">8,000＋7,000＝</span><strong>15,000円</strong></dd></div>
-              <div class="calc-row"><dt>通常価格</dt><dd><span class="calc-formula">10,000＋9,000＝</span>19,000円</dd></div>
+              <div class="calc-row calc-camp"><dt>キャンペーン価格</dt><dd><strong>13,000円</strong></dd></div>
+              <div class="calc-row"><dt>通常価格</dt><dd>15,000円</dd></div>
             </dl>
           </li>
           <li class="calc-item rise">
-            <h3>エアコン（機能なし）1台＋室外機洗浄</h3>
+            <h3>エアコン（お掃除機能なし）2台</h3>
+            <dl class="calc-breakdown">
+              <div><dt>エアコン 1台目</dt><dd>8,000円<small>（通常 10,000円）</small></dd></div>
+              <div><dt>エアコン 2台目</dt><dd>7,000円<small>（通常 9,000円）</small></dd></div>
+            </dl>
             <dl>
-              <div class="calc-row calc-camp"><dt>キャンペーン価格</dt><dd><span class="calc-formula">8,000＋4,000＝</span><strong>12,000円</strong></dd></div>
-              <div class="calc-row"><dt>通常価格</dt><dd><span class="calc-formula">10,000＋4,000＝</span>14,000円</dd></div>
+              <div class="calc-row calc-camp"><dt>キャンペーン価格</dt><dd><strong>15,000円</strong></dd></div>
+              <div class="calc-row"><dt>通常価格</dt><dd>19,000円</dd></div>
             </dl>
           </li>
-          <!-- 全オプションの例は内訳を見せる（一覧ページは「全オプション」のままでよい。2026-11-18 ユーザー指示） -->
+          <li class="calc-item rise">
+            <h3>エアコン（お掃除機能なし）1台＋室外機洗浄</h3>
+            <dl class="calc-breakdown">
+              <div><dt>エアコン（お掃除機能なし）</dt><dd>8,000円<small>（通常 10,000円）</small></dd></div>
+              <div><dt>室外機洗浄</dt><dd>4,000円</dd></div>
+            </dl>
+            <dl>
+              <div class="calc-row calc-camp"><dt>キャンペーン価格</dt><dd><strong>12,000円</strong></dd></div>
+              <div class="calc-row"><dt>通常価格</dt><dd>14,000円</dd></div>
+            </dl>
+          </li>
           <li class="calc-item calc-item-wide rise">
-            <h3>エアコン（機能なし）1台＋オプション4つすべて</h3>
+            <h3>エアコン（お掃除機能なし）1台＋オプション4つすべて</h3>
             <dl class="calc-breakdown">
               <div><dt>エアコン（お掃除機能なし）</dt><dd>8,000円<small>（通常 10,000円）</small></dd></div>
               <div><dt>室外機洗浄</dt><dd>4,000円</dd></div>
@@ -484,12 +503,22 @@
             </dl>
           </li>
         </ul>
-        <p class="calc-note fade-in">※駐車場の実費は含みません。</p>
+        <p class="calc-note calc-note-left fade-in">※上記の料金に加え、有料駐車場を利用した場合は駐車料金を頂戴いたします。</p>
+          <!-- お支払い方法（サービス一覧の「お支払い」と同じ4つ。2026-11-19 に計算例の下へ移し、少し大きくした。補足はトップページのFAQ） -->
+          <div class="pay-mini fade-in">
+            <p class="pay-mini-title">お支払い方法</p>
+            <ul>
+              <li><svg aria-hidden="true"><use href="#i-cash"/></svg>現金</li>
+              <li><svg aria-hidden="true"><use href="#i-card"/></svg>クレジットカード</li>
+              <li><svg aria-hidden="true"><use href="#i-bank"/></svg>銀行振込</li>
+              <li><svg aria-hidden="true"><use href="#i-qr"/></svg>QR決済</li>
+            </ul>
+          </div>
       </div>
     </section>
 
     <div class="container">
-      <p class="page-back page-back-standalone"><a href="/mieru-osouji/service/">← サービス一覧にもどる</a></p>
+      <p class="page-back page-back-standalone"><a href="/mieru-osouji/service/" class="btn btn-outline btn-back">サービス一覧にもどる<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14L4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg></a></p>
     </div>
 
     <!-- お問い合わせ -->
@@ -543,9 +572,16 @@
     </div>
   </footer>
 
-  <!-- 「料金を見る」ボタン（画面の右下に固定。ページの頭を過ぎたら出し、料金とオプションが見えている間は隠す） -->
-  <a href="#price" class="price-jump" data-price-jump>
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v13M6 12l6 6 6-6"/></svg>料金を見る
+  <!-- 「料金を見る」ボタン（画面の右下に固定。開いたときから出し、料金とオプションが見えている間だけ隠す） -->
+  <a href="#price" class="price-jump" data-price-jump aria-label="料金を見る（キャンペーン実施中）">
+    <!-- 上の弧に沿って「キャンペーン実施中！」 -->
+    <svg class="pj-arc" viewBox="0 0 120 120" aria-hidden="true">
+      <path id="pj-arc-path" d="M 17 60 A 43 43 0 0 1 103 60" fill="none"/>
+      <text><textPath href="#pj-arc-path" startOffset="50%" text-anchor="middle">キャンペーン実施中！</textPath></text>
+    </svg>
+    <span class="pj-label">料金を見る</span>
+    <!-- 下向きの手（指さし。Lucide の pointer を180度回したもの・ISC ライセンス） -->
+    <svg class="pj-hand" viewBox="0 0 24 24" aria-hidden="true"><g transform="rotate(180 12 12)"><path d="M22 14a8 8 0 0 1-8 8"/><path d="M18 11v-1a2 2 0 0 0-4 0"/><path d="M14 10V9a2 2 0 0 0-4 0v1"/><path d="M10 9.5V4a2 2 0 0 0-4 0v10"/><path d="M18 11a2 2 0 1 1 4 0v3a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-6-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></g></svg>
   </a>
 
   <!-- スマホ用 固定CTAバー -->
@@ -556,6 +592,6 @@
 
   <script src="/assets/js/site.js" defer></script>
   <script src="/assets/js/analytics.js" defer></script>
-  <script src="/mieru-osouji/assets/js/service-detail.js" defer></script>
+  <script src="/mieru-osouji/assets/js/service-detail.js?v=20261119" defer></script>
 </body>
 </html>
