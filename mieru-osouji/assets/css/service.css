@@ -1565,12 +1565,13 @@ html:not(.js) .ac-panel + .ac-panel {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;   /* アイコンの高さをそろえる（文字が1行でも2行でも、アイコンは同じ位置） */
   gap: 6px;
   aspect-ratio: 1 / 1;
-  padding: 6px;
+  padding: 13% 6px 6px;
   border-radius: 12px;
-  background: var(--color-accent-dark);
+  --tile-bg: var(--color-accent-dark);   /* パーツ洗浄の洗い桶の塗りに使う */
+  background: var(--tile-bg);
   font-size: 12.5px;
   font-weight: 700;
   line-height: 1.35;
@@ -1590,7 +1591,8 @@ html:not(.js) .ac-panel + .ac-panel {
 
 /* みえる！おそうじならではの作業はライムで目立たせる */
 .work-tiles li.is-feature {
-  background: var(--color-primary);
+  --tile-bg: var(--color-primary);
+  background: var(--tile-bg);
   color: var(--color-deep);
   box-shadow: inset 0 0 0 2px var(--color-primary-line);
 }
@@ -1602,7 +1604,8 @@ html:not(.js) .ac-panel + .ac-panel {
 
 /* 料金に含まれないもの（オプション）はグレー */
 .work-tiles li.is-option {
-  background: #E9ECE8;
+  --tile-bg: #E9ECE8;
+  background: var(--tile-bg);
   color: #8E9790;
 }
 
