@@ -2058,3 +2058,227 @@ html:not(.js) .price-jump {
     transform: scale(0.8) rotate(-3deg);
   }
 }
+
+/* ==========================================================================
+   11. 場所ごとの料金とパック（キッチンで作った形。2026-11-20）
+   ========================================================================== */
+/* 場所ごとの料金：1枚のカードに2列（左の列から順に上から下へ）で並べる */
+.kc-items {
+  margin-top: 20px;
+  padding: 10px 24px;
+}
+
+.kc-item-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(5, auto);
+  grid-auto-flow: column;
+  column-gap: 40px;
+}
+
+.kc-item-list .price-row:nth-child(6) {
+  border-top: none;
+}
+
+.kc-item-list .price-row dt {
+  font-size: 14px;
+}
+
+.kc-item-list .price-now {
+  font-size: 19px;
+}
+
+/* スマホだけで改行する */
+.br-sp {
+  display: none;
+}
+
+/* すべてのパックに共通のこと（説明付き・追加できる）を、パックの上に目印として並べる */
+.pack-perks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pack-perks li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: inset 0 0 0 1.5px var(--color-accent-dark);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--color-accent-dark);
+}
+
+.pack-perks svg {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* パック：2列のカード。おすすめは紺の枠＋からし色の札 */
+.pack-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px 16px;
+  margin-top: 30px;
+  padding: 0;
+  list-style: none;
+}
+
+.pack-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 22px 22px 18px;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.pack-card.is-recommended {
+  border: 2px solid var(--color-accent-dark);
+}
+
+.pack-badge {
+  position: absolute;
+  top: -13px;
+  left: 18px;
+  padding: 3px 14px;
+  border-radius: var(--radius-btn);
+  background: var(--color-primary);
+  font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--color-deep);
+  box-shadow: 0 2px 6px rgba(28, 52, 70, 0.15);
+}
+
+.pack-card h4 {
+  font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--color-deep);
+}
+
+/* 中身の場所を小さな札で並べる */
+.pack-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 12px 0 14px;
+  padding: 0;
+  list-style: none;
+}
+
+.pack-chips li {
+  padding: 3px 10px;
+  border-radius: 8px;
+  background: var(--color-accent-light);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--color-accent-dark);
+}
+
+/* みえる！おそうじならではの「作業前後のご説明」は白地＋紺の枠（サービス内容のタイルとそろえる） */
+.pack-chips li.is-feature {
+  background: #fff;
+  box-shadow: inset 0 0 0 1.5px var(--color-accent-dark);
+}
+
+.pack-text {
+  margin: 10px 0 14px;
+  font-size: 14px;
+}
+
+.pack-price {
+  margin-top: auto;
+}
+
+.pack-price .price-now {
+  font-size: 26px;
+}
+
+.pack-price-label {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-accent-dark);
+}
+
+.pack-save {
+  margin-top: 6px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--color-border);
+  font-size: 13px;
+  color: var(--color-text-light);
+}
+
+.pack-save strong {
+  color: var(--color-number);
+  font-size: 14px;
+}
+
+/* 目印が1つだけのときは中央に */
+.pack-perks-single {
+  grid-template-columns: minmax(0, 420px);
+  justify-content: center;
+}
+
+/* 計算例の下の「別途かかる料金」は、計算例と同じ幅に */
+#examples .price-extra {
+  max-width: 920px;
+  margin: 24px auto 0;
+}
+
+/* オプションの注記は、中央の1枚にそろえて中央寄せ */
+.opt-note-center {
+  text-align: center;
+}
+
+/* オプションが1つだけのときは中央に1枚 */
+.opt-cards-single {
+  grid-template-columns: minmax(0, 520px);
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .pack-cards,
+  .pack-perks {
+    grid-template-columns: 1fr;
+  }
+
+  .kc-items {
+    padding: 6px 18px;
+  }
+
+  .kc-item-list {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    grid-auto-flow: row;
+  }
+
+  .kc-item-list .price-row:nth-child(6) {
+    border-top: 1px dashed var(--color-border);
+  }
+
+  .br-sp {
+    display: inline;
+  }
+
+  .pack-cards {
+    gap: 22px;
+  }
+}
