@@ -969,6 +969,11 @@
     padding: 24px 16px 20px;
   }
 
+  /* 「お得なキャンペーン実施中！」が1行に収まる大きさに */
+  .cb-title {
+    font-size: 22px;
+  }
+
   /* 屋根のひさしを少し小さくする */
   .house-body {
     margin: 0 14px;
@@ -1336,7 +1341,7 @@
 /* --- 料金タブ --- */
 .ac-tablist {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 6px;
   border-bottom: 3px solid var(--color-accent-dark);
 }
@@ -1432,7 +1437,19 @@ html:not(.js) .ac-panel + .ac-panel {
 .ac-price-card-wide {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-  align-items: center;
+  align-items: stretch;
+}
+
+/* 写真は料金の欄と同じ高さいっぱいに */
+.ac-price-card-wide .ph {
+  aspect-ratio: auto;
+  height: 100%;
+  min-height: 220px;
+}
+
+.ac-price-limit {
+  margin-top: 10px;
+  font-size: 13px;
 }
 
 .ac-price-card-wide .ac-price-body {
@@ -1990,6 +2007,12 @@ html:not(.js) .price-jump {
   .ac-price-grid,
   .ac-price-card-wide {
     grid-template-columns: 1fr;
+  }
+
+  .ac-price-card-wide .ph {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
   }
 
   .work-box {

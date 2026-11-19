@@ -10,7 +10,6 @@
                             （tel: 側はハイフンなしの数字に置き換える）
       [CAMPAIGN_START]    : キャンペーン開始日（例：2026年12月1日。公開日に合わせる）
       [CAMPAIGN_END]      : キャンペーン終了日（例：2027年5月31日。開始から半年、開始時に確定する）
-      [PRICE_AC_HANG] [PRICE_AC_CEILING] [PRICE_AC_BIZ] : 天吊り・天井埋め込み・業務用エアコンの料金（このページだけ）
     公開前に決めること（料金ページ設計図 v1 2026-11-15 より）：
       含まれる作業（grep "TODO 含まれる作業"）／支払い方法の詳細（ブランド・振込期限など）／高所作業料金の確認／
       窓の種類を混ぜたときの数え方／戸建ての空室清掃／
@@ -42,7 +41,7 @@
   <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&display=swap" rel="stylesheet">
   <!-- ?v= はブラウザに古いCSSを使わせないための番号。CSS を変えたら日付などに書き換える -->
   <link rel="stylesheet" href="/mieru-osouji/assets/css/style.css?v=20261119h">
-  <link rel="stylesheet" href="/mieru-osouji/assets/css/service.css?v=20261119k">
+  <link rel="stylesheet" href="/mieru-osouji/assets/css/service.css?v=20261119o">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG9KYK977N"></script>
   <script>
@@ -63,7 +62,6 @@
     <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 7.5h3l1.6-2.5h6.8L17 7.5h3a1 1 0 0 1 1 1V18a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8.5a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.5"/></symbol>
     <symbol id="i-ac-hang" viewBox="0 0 24 24"><path d="M2.5 4h19"/><path d="M6 4v3M18 4v3"/><rect x="3.5" y="7" width="17" height="7" rx="1.5"/><path d="M6.5 11.5h11"/><path d="M8 17v2M12 17v3M16 17v2"/></symbol>
     <symbol id="i-ac-ceiling" viewBox="0 0 24 24"><path d="M2.5 6h19"/><rect x="5" y="6" width="14" height="10" rx="1"/><rect x="9" y="9" width="6" height="4" rx=".5"/><path d="M5 18.5l-1.5 2M19 18.5l1.5 2M12 18.5v2.5"/></symbol>
-    <symbol id="i-ac-biz" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="10" rx="2"/><path d="M6 10.5h12M6 7.5h4"/><path d="M5 17l-1 3M9.5 17l-.5 3M14.5 17l.5 3M19 17l1 3"/></symbol>
     <symbol id="i-w-check" viewBox="0 0 24 24"><rect x="2.5" y="4" width="15" height="7" rx="1.5"/><path d="M5 8.5h10"/><circle cx="17" cy="16.5" r="4.5"/><path d="M15 16.5l1.5 1.5 2.5-3"/></symbol>
     <symbol id="i-w-cover" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="4.6" rx="1.2"/><path d="M7.5 5h9"/><path d="M12 8.2c-.9 1.2-1.3 1.9-1.3 2.5a1.3 1.3 0 0 0 2.6 0c0-.6-.4-1.3-1.3-2.5z"/><path d="M2.5 15.5h19"/><path d="M4 15.5l-1.5 6h19l-1.5-6"/><path d="M8 18.5h8"/></symbol>
     <symbol id="i-w-driver" viewBox="0 0 24 24"><rect x="2" y="2.5" width="11.5" height="4.5" rx="1"/><rect x="4" y="9" width="11.5" height="4.5" rx="1"/><path d="M4 11.25h11.5M7.8 9v4.5M11.6 9v4.5"/><rect x="6" y="15.5" width="11.5" height="5.5" rx="1"/><path d="M8.5 15.5v5.5M11 15.5v5.5M13.5 15.5v5.5M16 15.5v5.5"/><rect x="18.5" y="2" width="3.5" height="6.5" rx="1.2"/><path d="M20.25 8.5v7"/><path d="M19.4 15.5h1.7l-.85 2.4z"/></symbol>
@@ -254,7 +252,6 @@
             <button type="button" role="tab" id="tab-wall" aria-controls="panel-wall" aria-selected="true"><svg aria-hidden="true"><use href="#i-aircon"/></svg>壁掛け</button>
             <button type="button" role="tab" id="tab-hang" aria-controls="panel-hang" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#i-ac-hang"/></svg>天吊り</button>
             <button type="button" role="tab" id="tab-ceiling" aria-controls="panel-ceiling" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#i-ac-ceiling"/></svg>天井埋め込み</button>
-            <button type="button" role="tab" id="tab-biz" aria-controls="panel-biz" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#i-ac-biz"/></svg>業務用</button>
           </div>
 
           <!-- 壁掛けタイプ -->
@@ -289,8 +286,7 @@
             </div>
           </div>
 
-          <!-- 天吊りタイプ（壁掛けとは別料金。料金はユーザーが決める。2026-11 時点では自社で作業せず、受けた場合は他社に紹介する想定）
-               TODO 料金：[PRICE_AC_HANG] を差し替える。キャンペーン対象にするかも決める -->
+          <!-- 天吊りタイプ（料金は天井埋め込み4方向と同じ。2026-11-19 決定） -->
           <div class="ac-panel" role="tabpanel" id="panel-hang" aria-labelledby="tab-hang">
             <div class="ac-price-card ac-price-card-wide">
               <!-- TODO 画像：天吊りエアコン -->
@@ -299,16 +295,16 @@
               </div>
               <div class="ac-price-body">
                 <p class="ac-price-name">天吊りエアコン</p>
-                <p class="ac-price-sub">天井から吊り下げるタイプ。お店や広いリビングに多い形です。</p>
+                <p class="ac-price-sub">天井から吊り下げるタイプです。主にお店や事務所の業務用エアコンで使われています。</p>
                 <dl class="price-rows">
-                  <div class="price-row"><dt>1台</dt><dd><span class="price-now">[PRICE_AC_HANG]<small>円</small></span></dd></div>
+                  <div class="price-row"><dt>1台</dt><dd><span class="price-now">28,000<small>円</small></span> <span class="price-was">通常 <s>30,000円</s></span></dd></div>
                 </dl>
               </div>
             </div>
           </div>
 
           <!-- 天井埋め込みタイプ
-               TODO 料金：[PRICE_AC_CEILING] を差し替える（吹き出し口の数で分けるかも決める） -->
+               料金は2026-11-19 決定：1・2方向 18,000円（通常20,000円）、4方向 28,000円（通常30,000円）、お掃除機能付きは＋3,000円（キャンペーン対象外の加算） -->
           <div class="ac-panel" role="tabpanel" id="panel-ceiling" aria-labelledby="tab-ceiling">
             <div class="ac-price-card ac-price-card-wide">
               <!-- TODO 画像：天井埋め込みエアコン -->
@@ -317,29 +313,17 @@
               </div>
               <div class="ac-price-body">
                 <p class="ac-price-name">天井埋め込みエアコン</p>
-                <p class="ac-price-sub">本体が天井の中に入っていて、天井に四角い吹き出し口が見えるタイプです。</p>
+                <p class="ac-price-sub">本体が天井の中に入っていて、天井に四角い吹き出し口が見えるタイプです。お店や事務所のほか、住宅のリビングにもあります。</p>
                 <dl class="price-rows">
-                  <div class="price-row"><dt>1台</dt><dd><span class="price-now">[PRICE_AC_CEILING]<small>円</small></span></dd></div>
+                  <div class="price-row"><dt>1・2方向</dt><dd><span class="price-now">18,000<small>円</small></span> <span class="price-was">通常 <s>20,000円</s></span></dd></div>
+                  <div class="price-row"><dt>4方向</dt><dd><span class="price-now">28,000<small>円</small></span> <span class="price-was">通常 <s>30,000円</s></span></dd></div>
+                  <div class="price-row"><dt>お掃除機能付きの場合</dt><dd><span class="price-now">＋3,000<small>円</small></span></dd></div>
                 </dl>
+                <p class="ac-price-sub ac-price-limit">床から天井までの高さが3m以上の場所は、<span class="nw">お受けできません。</span></p>
               </div>
             </div>
           </div>
 
-          <!-- 業務用エアコン
-               TODO 料金：[PRICE_AC_BIZ] を差し替える（形ごとに分けるかも決める） -->
-          <div class="ac-panel" role="tabpanel" id="panel-biz" aria-labelledby="tab-biz">
-            <div class="ac-price-card ac-price-card-wide">
-              <!-- TODO 画像：業務用エアコン（店舗・事務所） -->
-              <div class="ph ph-3x2">
-                <span class="ph-label"><svg aria-hidden="true"><use href="#i-camera"/></svg>写真：業務用エアコン</span>
-              </div>
-              <div class="ac-price-body">
-                <p class="ac-price-name">業務用エアコン</p>
-                <p class="ac-price-sub">お店や事務所に付いている大きなエアコンです。</p>
-                <dl class="price-rows">
-                  <div class="price-row"><dt>1台</dt><dd><span class="price-now">[PRICE_AC_BIZ]<small>円</small></span></dd></div>
-                </dl>
-              </div>
             </div>
           </div>
 
