@@ -68,5 +68,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
       targets.forEach(function (t) { targetObserver.observe(t); });
     }
+
+    // 料金（#price）より下までスクロールしたら、手を上向きにする
+    var price = document.getElementById('price');
+    if (price) {
+      var updateDirection = function () {
+        jump.classList.toggle('is-up', price.getBoundingClientRect().top < 0);
+      };
+      window.addEventListener('scroll', updateDirection, { passive: true });
+      updateDirection();
+    }
   }
 });
