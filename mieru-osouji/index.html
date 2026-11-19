@@ -66,11 +66,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&display=swap" rel="stylesheet">
   <!-- 丸ゴシック（ヒーロー見出しと「4つのみえる」「作業の流れ」の番号用）。text= で使う文字だけ読み込んで軽くしている。
        見出しの文言を変えたら、ここの text= も同じ文字にそろえること（ない文字だけ別の書体になる） -->
-  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&display=swap&text=料金、作業仕上がりすべてお見せします！0123456" rel="stylesheet">
   <!-- ?v= はブラウザに古いCSSを使わせないための番号。style.css を変えたら日付などに書き換える -->
-  <link rel="stylesheet" href="/mieru-osouji/assets/css/style.css?v=20261119c">
+  <link rel="stylesheet" href="/mieru-osouji/assets/css/style.css?v=20261119h">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG9KYK977N"></script>
   <script>
@@ -192,7 +192,7 @@
     <section class="section" id="aircon" data-ga-section="features">
       <div class="container">
         <p class="section-eyebrow fade-in">FEATURES</p>
-        <h2 class="section-title fade-in">4つの「みえる」</h2>
+        <h2 class="section-title wipe">4つの「みえる」</h2>
         <p class="section-lead feature-lead fade-in">お掃除を頼むとき、「最終的にいくらかかるんだろう」や「どんな人が家に来るんだろう」という不安はありませんか？<br>私たちは料金プランはもちろん、作業内容やビフォーアフターを目に見えるようにすることで、<br class="br-pc">お客様に安心してご依頼していただけるよう心がけています。</p>
         <ol class="feature-list stagger">
           <li class="feature-card rise">
@@ -249,7 +249,7 @@
     <section class="section section-green" id="service" data-ga-section="service">
       <div class="container">
         <p class="section-eyebrow fade-in">SERVICE</p>
-        <h2 class="section-title fade-in">できること</h2>
+        <h2 class="section-title wipe">できること</h2>
         <p class="section-lead fade-in">東京・千葉・埼玉・神奈川でお伺いしています。<br class="br-pc">地域によっては、ご希望の日程でお伺いできない場合や、お受けできない場合がございます。</p>
         <div class="service-grid stagger">
           <div class="service-card rise">
@@ -331,7 +331,7 @@
     <section class="section" id="price" data-ga-section="price">
       <div class="container">
         <p class="section-eyebrow fade-in">PRICE</p>
-        <h2 class="section-title fade-in">料金</h2>
+        <h2 class="section-title wipe">料金</h2>
         <!-- 出張料金は無料（2026-11-15決定。作業できなかった場合も料金はいただかない） -->
         <p class="section-lead fade-in">料金はすべて税込で、出張料金は無料です。追加料金が出る条件は、サービス一覧のページにまとめています。</p>
         <!-- 料金カードのカルーセル（「できること」と同じ種類を並べる）。
@@ -431,7 +431,7 @@
     <section class="section section-green" id="flow" data-ga-section="flow">
       <div class="container">
         <p class="section-eyebrow fade-in">FLOW</p>
-        <h2 class="section-title fade-in">作業の流れ</h2>
+        <h2 class="section-title wipe">作業の流れ</h2>
         <!-- サービス共通の流れ（エアコンの分解・洗浄などの細かい工程は、各サービスの料金案内ページで説明する） -->
         <ol class="flow-list stagger">
           <li class="flow-item rise">
@@ -484,7 +484,7 @@
     <section class="section" id="cases" data-ga-section="cases">
       <div class="container">
         <p class="section-eyebrow fade-in">CASES</p>
-        <h2 class="section-title fade-in">作業事例</h2>
+        <h2 class="section-title wipe">作業事例</h2>
         <p class="section-lead fade-in">エアコンクリーニングの作業の様子を、作業前から洗浄後の水まで写真でご紹介します。</p>
         <!-- エアコンクリーニングの事例を1件だけ、工程順の写真5枚で見せる。ほかの事例は /mieru-osouji/cases/ で紹介する。
              TODO 画像：assets/img/case-before.jpg / case-masking.jpg / case-wash.jpg / case-after.jpg / case-water.jpg ができたら <img> に差し替え
@@ -529,7 +529,7 @@
     <section class="section section-green" id="info" data-ga-section="info">
       <div class="container">
         <p class="section-eyebrow fade-in">BEFORE USE</p>
-        <h2 class="section-title fade-in">ご利用の前に</h2>
+        <h2 class="section-title wipe">ご利用の前に</h2>
         <!-- 注意事項を内容ごとに4枚のカードにまとめる。他社の文面はそのまま使わない。キャンセル料を変えたらFAQもそろえる -->
         <dl class="info-list stagger">
           <div class="info-item rise">
@@ -585,7 +585,7 @@
     <section class="section" id="business" data-ga-section="other_menu">
       <div class="container">
         <p class="section-eyebrow fade-in">FOR BUSINESS</p>
-        <h2 class="section-title fade-in">法人のお客様へ</h2>
+        <h2 class="section-title wipe">法人のお客様へ</h2>
         <!-- TODO 法人メニュー：オフィス・店舗の清掃、定期清掃を始めたら、この説明文とヘッダーの文言に追加する -->
         <p class="section-lead business-lead fade-in">不動産管理会社さま・オーナーさまからの、空室清掃のご依頼を承っています。<br class="br-pc">詳しい内容は、法人のお客様向けページでご案内します。</p>
         <!-- TODO 法人ページ：/mieru-osouji/business/ は未作成。ページを作るまでこのリンクは404になる -->
@@ -597,7 +597,7 @@
     <section class="section section-green" id="profile" data-ga-section="profile">
       <div class="container">
         <p class="section-eyebrow fade-in">PROFILE</p>
-        <h2 class="section-title fade-in">代表紹介</h2>
+        <h2 class="section-title wipe">代表紹介</h2>
         <div class="profile">
           <div class="profile-photo rise">
             <img src="/assets/images/daihyo.png" alt="よりそいコネクト 代表 戸梶 凌" width="200" height="200" loading="lazy">
@@ -618,7 +618,7 @@
     <section class="section" id="faq" data-ga-section="faq">
       <div class="container">
         <p class="section-eyebrow fade-in">FAQ</p>
-        <h2 class="section-title fade-in">よくある質問</h2>
+        <h2 class="section-title wipe">よくある質問</h2>
         <div class="faq-list fade-in">
           <!-- キャンセル料や出張料金を変えたら「ご利用の前に」もそろえる
                TODO 支払い方法：カードブランド・QR決済の種類が決まったら回答に追記する（/service/ のお支払いは枠だけ）
@@ -669,7 +669,7 @@
     <section class="section section-dark" id="contact" data-ga-section="contact_cta">
       <div class="container">
         <p class="section-eyebrow fade-in">CONTACT</p>
-        <h2 class="section-title fade-in">ご相談・お見積り</h2>
+        <h2 class="section-title wipe">ご相談・お見積り</h2>
         <p class="section-lead fade-in">LINEまたはお電話で受け付けています。</p>
         <div class="contact-btns fade-in">
           <a href="[LINE_URL_CLEANING]" class="btn btn-line">LINEで相談する</a>
@@ -724,6 +724,7 @@
   </div>
 
   <script src="/assets/js/site.js" defer></script>
+  <script src="/mieru-osouji/assets/js/header.js?v=20261119" defer></script>
   <script src="/mieru-osouji/assets/js/hero.js" defer></script>
   <script src="/mieru-osouji/assets/js/price-carousel.js" defer></script>
   <script src="/mieru-osouji/assets/js/bubbles.js?v=20261105b" defer></script>

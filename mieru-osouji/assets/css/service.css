@@ -47,8 +47,9 @@
 }
 
 .page-title {
+  font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
   font-size: clamp(26px, 18px + 1.6vw, 38px);
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.4;
   text-align: center;
   color: var(--color-deep);
@@ -62,6 +63,19 @@
   border-radius: 2px;
   background: var(--color-primary-line);
   margin: 16px auto 0;
+  transform-origin: left center;
+  animation: underline-draw 0.7s cubic-bezier(0.6, 0.05, 0.3, 1) 0.3s both;   /* ページを開いたら下線を左から右へ引く */
+}
+
+@keyframes underline-draw {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-title::after {
+    animation: none;
+  }
 }
 
 /* 更新日（料金を確認した日）。ページ上部に小さな札で置く */
@@ -102,6 +116,19 @@
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
   text-align: center;
+}
+
+/* 黄色のバナーの上の泡は白（水色の輪だと黄色とぶつかるため） */
+.campaign-banner .bubble {
+  border-color: #fff;
+}
+
+.campaign-banner .bubble:not(.bubble-dot)::after {
+  border-top-color: #fff;
+}
+
+.campaign-banner .bubble-dot {
+  background: rgba(255, 255, 255, 0.85);
 }
 
 .cb-title {
@@ -1579,6 +1606,10 @@ html:not(.js) .ac-panel + .ac-panel {
   color: #fff;
 }
 
+.work-tiles svg * {
+  vector-effect: non-scaling-stroke;   /* 大きさをそろえるために拡大したアイコンも、線の太さは同じに */
+}
+
 .work-tiles svg {
   width: 34px;
   height: 34px;
@@ -1591,10 +1622,12 @@ html:not(.js) .ac-panel + .ac-panel {
 
 /* みえる！おそうじならではの作業はライムで目立たせる */
 .work-tiles li.is-feature {
-  --tile-bg: var(--color-primary);       /* みえる！おそうじならではの作業は黄色で目立たせる */
+  /* みえる！おそうじならではの作業は白地に紺の枠で目立たせる
+     （黄色の面に細い線・小さい文字は乗せないルールのため、2026-11-19 に黄色から変更） */
+  --tile-bg: #fff;
   background: var(--tile-bg);
-  color: var(--color-deep);
-  box-shadow: inset 0 0 0 2px var(--color-primary-line);
+  color: var(--color-accent-dark);
+  box-shadow: inset 0 0 0 2px var(--color-accent-dark);
 }
 
 /* オプションは含まれる作業の次の行から並べる */

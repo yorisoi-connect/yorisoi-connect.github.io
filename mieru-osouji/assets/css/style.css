@@ -32,6 +32,7 @@
   --color-deep-2: #1A3A55;
   /* 色の役割（2026-11-19）：白・うすい青＝地、紺＝主役、からし色＝目印（キャンペーン・ボタン・番号・見出しの下線だけ）。
      からし色の面に細い線や小さい文字は乗せない */
+  --color-primary-soft: #FBE3A6;   /* 黄色（淡）：フッター直前の「ご相談・お見積り」の面 */
   --color-number: #D9A42E;         /* 番号（01〜）：からし色を少し濃くして白地でも読めるように */
   --color-bubble: #BCD4E8;         /* 泡の輪：水色（黄色の輪はシミに見えるため） */
   --color-bubble-dot: #D3E4F1;
@@ -135,8 +136,9 @@ button {
 }
 
 .section-title {
+  font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;   /* 名刺と同じ系統の丸ゴシック（2026-11-19） */
   font-size: clamp(24px, 17px + 1.4vw, 34px);
-  font-weight: 700;
+  font-weight: 800;
   text-align: center;
   line-height: 1.5;
   margin-bottom: 24px;
@@ -150,6 +152,25 @@ button {
   border-radius: 2px;
   background: var(--color-primary-line);
   margin: 16px auto 0;
+}
+
+/* 見出しの下線は、画面に入ったら左から右へ線を引くように伸びる（2026-11-19。見出しの文字は動かさない）。
+   h2 の .wipe は site.js が親要素の上端で判定して .is-visible を付ける */
+html.js .section-title.wipe::after {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.7s cubic-bezier(0.6, 0.05, 0.3, 1) 0.2s;
+}
+
+html.js .section-title.wipe.is-visible::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .section-title.wipe::after {
+    transform: none;
+    transition: none;
+  }
 }
 
 .section-lead {
@@ -326,18 +347,64 @@ html.js .rise.is-visible {
 /* --------------------------------------------------------------------------
    5. ヘッダー・ナビゲーション
    -------------------------------------------------------------------------- */
+/* ヘッダー（2026-11-19）：ページの一番上は名刺の黄色の帯（下の縁を拭き跡の形に切り抜き、少し下に垂らす）。
+   スクロールで帯が見えなくなったら、header.js が .is-floating を付けて、白いヘッダーを画面の上に固定し、
+   上からスッと出す */
 .site-header {
-  position: sticky;
-  top: 0;
+  --header-wipe: clamp(18px, 3vw, 34px);
+  position: relative;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(10px);
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.site-header.is-scrolled {
-  background: #fff;
+.site-header::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: calc(-1 * var(--header-wipe));
+  background: var(--color-primary);
+  -webkit-mask: linear-gradient(#000 0 0) 0 0 / 100% calc(100% - var(--header-wipe)) no-repeat,
+                url(../images/deco/wipe-edge-top.png) 0 100% / 100% var(--header-wipe) no-repeat;
+  mask: linear-gradient(#000 0 0) 0 0 / 100% calc(100% - var(--header-wipe)) no-repeat,
+        url(../images/deco/wipe-edge-top.png) 0 100% / 100% var(--header-wipe) no-repeat;
+  pointer-events: none;
+}
+
+.site-header.is-floating {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  animation: header-drop 0.35s var(--ease) both;
+}
+
+.site-header.is-floating::before {
+  display: none;
+}
+
+/* 固定にしたぶん、本文が上に詰まらないよう余白を足す */
+body.header-floating {
+  padding-top: var(--header-height);
+}
+
+@keyframes header-drop {
+  from { transform: translateY(-100%); }
+  to { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header.is-floating {
+    animation: none;
+  }
+}
+
+.site-header.is-floating .global-nav li:not(.nav-cta) a::after {
+  background: var(--color-primary-line);
 }
 
 .header-inner {
@@ -405,7 +472,7 @@ html.js .rise.is-visible {
   bottom: -4px;
   height: 2px;
   border-radius: 1px;
-  background: var(--color-primary-line);
+  background: var(--color-deep);   /* 黄色のヘッダーの上では紺（白いヘッダーのときは下で黄色に） */
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s var(--ease);
@@ -1643,21 +1710,30 @@ html.js .price-carousel-btn {
 /* --------------------------------------------------------------------------
    15. お問い合わせ（ダーク締めセクション）
    -------------------------------------------------------------------------- */
+/* 締めのセクション（ご相談・お見積り）はフッターより少し薄い黄色（2026-11-19。それまでは紺のグラデーション）。
+   すぐ下のフッターが黄色で、上の縁の拭き跡がこのセクションに食い込む */
 .section-dark {
-  background: linear-gradient(170deg, var(--color-deep) 0%, var(--color-deep-2) 100%);
-  color: #EAF2F8;
+  background: var(--color-primary-soft);
+  color: var(--color-text);
 }
 
-.section-dark .section-eyebrow {
-  color: var(--color-primary);
-}
-
+.section-dark .section-eyebrow,
 .section-dark .section-title {
-  color: #fff;
+  color: var(--color-deep);
 }
 
 .section-dark .section-lead {
-  color: rgba(234, 242, 248, 0.85);
+  color: var(--color-text);
+}
+
+.section-dark .btn-ghost {
+  background: #fff;
+  color: var(--color-deep);
+  border-color: var(--color-deep);
+}
+
+.section-dark .btn-ghost:hover {
+  background: var(--color-accent-light);
 }
 
 .contact-btns {
@@ -1676,17 +1752,33 @@ html.js .price-carousel-btn {
 .contact-meta {
   text-align: center;
   font-size: 15px;
-  color: rgba(234, 242, 248, 0.85);
+  color: var(--color-text);
 }
 
 /* --------------------------------------------------------------------------
    16. フッター
    -------------------------------------------------------------------------- */
+/* フッターは黄色の帯（2026-11-19。それまでは紺）。上の縁を拭き跡の形にして、すぐ上の
+   「ご相談・お見積り」（少し薄い黄色）に食い込ませる。波の形はフッターだけに描く */
 .site-footer {
+  position: relative;
   padding: 56px 0 28px;
-  background: var(--color-deep-2);
-  color: rgba(234, 242, 248, 0.85);
+  background: var(--color-primary);
+  color: var(--color-text);
   font-size: 14px;
+}
+
+.site-footer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(100% - 1px);
+  height: clamp(24px, 4vw, 48px);
+  background: var(--color-primary);
+  -webkit-mask: url(../images/deco/wipe-edge-bottom.png) 0 100% / 100% 100% no-repeat;
+  mask: url(../images/deco/wipe-edge-bottom.png) 0 100% / 100% 100% no-repeat;
+  pointer-events: none;
 }
 
 /* 3列（左：サービス名／中央：メニュー／右：運営） */
@@ -1696,7 +1788,7 @@ html.js .price-carousel-btn {
   grid-template-areas: "brand nav operator";
   gap: 32px 48px;
   padding-bottom: 40px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(34, 72, 104, 0.18);
 }
 
 .footer-brand {
@@ -1707,7 +1799,7 @@ html.js .price-carousel-btn {
   margin-bottom: 10px;
   font-size: 20px;
   font-weight: 700;
-  color: #fff;
+  color: var(--color-deep);
 }
 
 /* メニューはヘッダーと同じ2つのまとまりを、縦3行×2列で並べる */
@@ -1731,7 +1823,7 @@ html.js .price-carousel-btn {
 .footer-operator-name {
   margin-bottom: 10px;
   font-weight: 700;
-  color: #fff;
+  color: var(--color-deep);
 }
 
 .footer-operator li + li {
@@ -1739,17 +1831,17 @@ html.js .price-carousel-btn {
 }
 
 .site-footer a {
-  color: rgba(234, 242, 248, 0.9);
+  color: var(--color-deep);
   text-decoration: none;
 }
 
 .site-footer a:hover {
-  color: #fff;
+  color: var(--color-deep-2);
   text-decoration: underline;
 }
 
 .footer-operator-name a {
-  color: #fff;
+  color: var(--color-deep);
 }
 
 .footer-copy {
