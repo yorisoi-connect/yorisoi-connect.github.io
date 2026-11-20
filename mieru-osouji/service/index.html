@@ -4,44 +4,43 @@
   <meta charset="UTF-8">
   <!--
     ======================================================================
-    プレースホルダー一覧（公開前にすべて置き換える。文字列で全体検索すること）
-      [LINE_URL_CLEANING] : みえる！おそうじ用 LINE の URL（例：https://lin.ee/xxxx）
-      [PHONE_CLEANING]    : 電話番号。表示用と tel: リンクの両方に使っている
-                            （tel: 側はハイフンなしの数字に置き換える）
-      [CAMPAIGN_START]    : キャンペーン開始日（例：2026年12月1日。公開日に合わせる）
-      [CAMPAIGN_END]      : キャンペーン終了日（例：2027年5月31日。開始から半年、開始時に確定する）
-    公開前に決めること（料金ページ設計図 v1 2026-11-15 より）：
-      含まれる作業（grep "TODO 含まれる作業"）／支払い方法の詳細（ブランド・振込期限など）／高所作業料金の確認／
-      窓の種類を混ぜたときの数え方／戸建ての空室清掃／
-      通常価格が実際に売れる価格であることの確認（二重価格表示。専門家のチェックを推奨）
+    準備中ページ（2026-11-21）
+      LINE のリッチメニューのリンク先。中身ができるまで準備中の表示にしている。
+      作りは /mieru-osouji/ の準備中トップと同じ（見た目は assets/css/coming-soon.css）
+      作り途中のサービス一覧は service/_list/index.html に移した（先頭が _ のフォルダは GitHub Pages で公開されない）。
+      本公開のとき：git mv mieru-osouji/service/_list/index.html mieru-osouji/service/index.html（この準備中ページは消す）
     ======================================================================
   -->
   <!-- 公開時に削除：この1行を消すと検索エンジンに載るようになる -->
   <meta name="robots" content="noindex">
   <script>(function(d){d.className+=" js"})(document.documentElement)</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>サービス一覧・料金｜みえる！おそうじ（エアコンクリーニング・ハウスクリーニング）</title>
-  <meta name="description" content="みえる！おそうじのサービス一覧と料金です。すべて税込の総額で、出張料金は無料。追加料金が出る条件も、このページに先にまとめています。">
+  <title>サービス一覧（準備中）｜みえる！おそうじ｜よりそいコネクト</title>
+  <meta name="description" content="みえる！おそうじのサービス一覧のページは、ただいま準備中です。エアコン・浴室・トイレ・キッチン・レンジフードのお掃除を受け付けています。ご相談・お見積りはお電話で。">
   <link rel="canonical" href="https://yorisoi-connect.com/mieru-osouji/service/">
 
   <!-- OGP -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="みえる！おそうじ">
   <meta property="og:locale" content="ja_JP">
-  <meta property="og:title" content="サービス一覧・料金｜みえる！おそうじ（エアコンクリーニング・ハウスクリーニング）">
-  <meta property="og:description" content="みえる！おそうじのサービス一覧と料金です。すべて税込の総額で、出張料金は無料。追加料金が出る条件も、このページに先にまとめています。">
+  <meta property="og:title" content="サービス一覧（準備中）｜みえる！おそうじ">
+  <meta property="og:description" content="みえる！おそうじのサービス一覧のページは、ただいま準備中です。エアコン・浴室・トイレ・キッチン・レンジフードのお掃除を受け付けています。ご相談・お見積りはお電話で。">
   <meta property="og:url" content="https://yorisoi-connect.com/mieru-osouji/service/">
-  <!-- TODO 画像：OGP画像。専用画像ができたら差し替え（トップページと同じ仮画像） -->
+  <!-- TODO 画像：OGP画像。専用画像ができたら https://yorisoi-connect.com/mieru-osouji/assets/img/ogp.png に差し替え -->
   <meta property="og:image" content="https://yorisoi-connect.com/assets/images/ogp.png">
   <meta name="twitter:card" content="summary_large_image">
+
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&display=swap" rel="stylesheet">
-  <!-- ?v= はブラウザに古いCSSを使わせないための番号。CSS を変えたら日付などに書き換える -->
+  <!-- 丸ゴシック（ヒーロー見出しと「4つのみえる」「作業の流れ」の番号用）。text= で使う文字だけ読み込んで軽くしている。
+       見出しの文言を変えたら、ここの text= も同じ文字にそろえること（ない文字だけ別の書体になる） -->
+  <!-- ?v= はブラウザに古いCSSを使わせないための番号。style.css を変えたら日付などに書き換える -->
   <link rel="stylesheet" href="/mieru-osouji/assets/css/style.css?v=20261119h">
   <link rel="stylesheet" href="/mieru-osouji/assets/css/service.css?v=20261120n">
+  <link rel="stylesheet" href="/mieru-osouji/assets/css/coming-soon.css?v=20261121b">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG9KYK977N"></script>
   <script>
@@ -52,8 +51,10 @@
   </script>
 </head>
 <body>
-  <!-- アイコン置き場。<svg><use href="#i-名前"/></svg> で呼び出す（トップページと同じ図形） -->
+  <!-- アイコン置き場。各セクションから <svg><use href="#i-名前"/></svg> で呼び出す
+       （線の色・太さは呼び出し側の CSS で指定する） -->
   <svg class="icon-sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-house" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-5h4v5"/></symbol>
     <symbol id="i-aircon" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="8" rx="2"/><path d="M5.5 10.5h13"/><path d="M8 16v2.5M12 16v4M16 16v2.5"/></symbol>
     <symbol id="i-kitchen" viewBox="0 0 24 24"><path d="M4 11h16v4a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M2 11h20"/><path d="M9 7.5c0-1.2 1.2-1.6 1.2-3M13.5 7.5c0-1.2 1.2-1.6 1.2-3"/></symbol>
     <symbol id="i-hood" viewBox="0 0 24 24"><path d="M9.5 3h5v5.5l6 5.5h-17l6-5.5z"/><path d="M3.5 14v2h17v-2"/><path d="M8 19.5h.01M12 19.5h.01M16 19.5h.01"/></symbol>
@@ -65,259 +66,96 @@
     <symbol id="i-window" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M12 3v18M4 12h16"/></symbol>
     <symbol id="i-balcony" viewBox="0 0 24 24"><path d="M3 10h18M3 20h18"/><path d="M5 10v10M9 10v10M13 10v10M17 10v10M21 10v10"/><path d="M16 6.5c0-2 1.5-3 3-3 0 2-1.5 3-3 3z"/></symbol>
     <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="12" r="4"/><path d="M12 12h9M18 12v3M15 12v2"/></symbol>
+    <symbol id="i-room" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1.5"/><path d="M3 13h7v8"/><path d="M14 21a5 5 0 0 1 5-5"/><path d="M14 3v5"/></symbol>
     <symbol id="i-cash" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.8"/><path d="M6 9.5v5M18 9.5v5"/></symbol>
-    <symbol id="i-card" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 9.5h19"/><path d="M6 15h4"/></symbol>
-    <symbol id="i-bank" viewBox="0 0 24 24"><path d="M3 9.5L12 4l9 5.5z"/><path d="M5.5 10v7M10 10v7M14 10v7M18.5 10v7"/><path d="M3 20h18"/></symbol>
-    <symbol id="i-qr" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="6.5" height="6.5" rx="1"/><rect x="14" y="3.5" width="6.5" height="6.5" rx="1"/><rect x="3.5" y="14" width="6.5" height="6.5" rx="1"/><path d="M14 14h2.5v2.5H14zM18 18h2.5v2.5H18zM18 14h2.5M14 20.5h2"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M4 16.5V12l2-5h12l2 5v4.5z"/><path d="M4 12h16"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></symbol>
+    <symbol id="i-tel" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 7.5h3l1.6-2.5h6.8L17 7.5h3a1 1 0 0 1 1 1V18a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8.5a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.5"/></symbol>
   </svg>
 
-  <header class="site-header" id="site-header">
+  <!-- ヘッダー：準備中はメニューを置かず、ロゴと電話だけ -->
+  <header class="site-header cs-header" id="site-header">
     <div class="header-inner">
       <div class="brand">
-        <!-- TODO 画像：ロゴ。assets/img/logo.svg ができたら <img> に差し替え（トップページと同じ） -->
         <a href="/mieru-osouji/" class="site-logo">みえる！おそうじ</a>
       </div>
-
-      <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="global-nav">
-        <span></span><span></span><span></span>
-      </button>
-
-      <nav class="global-nav" id="global-nav" aria-label="グローバルナビゲーション">
-        <ul class="nav-main">
-          <li><a href="/mieru-osouji/service/">サービス一覧</a></li>
-          <li><a href="/mieru-osouji/#business">法人のお客様へ</a></li>
-        </ul>
-        <ul class="nav-sub">
-          <li><a href="/mieru-osouji/#price">料金プラン</a></li>
-          <li><a href="/mieru-osouji/#cases">作業事例</a></li>
-          <li><a href="/mieru-osouji/#faq">よくある質問</a></li>
-        </ul>
-        <ul class="nav-cta-list">
-          <li class="nav-cta"><a href="[LINE_URL_CLEANING]" class="btn btn-line">LINEで相談する</a></li>
-          <li class="nav-cta"><a href="tel:[PHONE_CLEANING]" class="btn btn-outline">電話する</a></li>
-        </ul>
-      </nav>
-
       <div class="header-cta">
-        <a href="[LINE_URL_CLEANING]" class="btn btn-line btn-small">LINEで相談</a>
-        <a href="tel:[PHONE_CLEANING]" class="btn btn-outline btn-small">電話する</a>
+        <a href="tel:08029685824" class="btn btn-outline btn-small">電話する</a>
       </div>
     </div>
   </header>
 
   <main class="price-page">
-    <!-- サービスと料金（設計図 ブロック3 料金早見表のかわり）。
-         家の図（屋根＋煙突つき）の中に、頼める場所をタイルで並べて、ひとめで分かるようにする。
-         タイルの金額は最低額。上段がキャンペーン価格（大）、下段が通常価格（取り消し線）。
-         洗濯機と空室清掃はキャンペーンがないので1段だけ。
-         単位・くわしい料金・条件は各サービスの詳細ページで案内する -->
-    <section class="section section-green" id="list" data-ga-section="price_list">
+    <div class="page-hero cs-sub-hero">
       <div class="container">
         <nav class="breadcrumb" aria-label="パンくずリスト">
           <ol><li><a href="/mieru-osouji/">みえる！おそうじ</a></li><li aria-current="page">サービス一覧</li></ol>
         </nav>
-        <p class="section-eyebrow fade-in">SERVICE</p>
-        <h1 class="section-title wipe">サービス一覧</h1>
-        <!-- TODO キャンペーン：名前と終了日が決まったら [CAMPAIGN_END] を差し替える。
-             通常価格が実際に売れる価格であることを、公開前に確認する（二重価格表示。専門家のチェックを推奨） -->
-        <div class="campaign-banner fade-in">
-          <span class="bubble" style="--x: 3%; --y: 16%; --s: 30px; --d: 0s;" aria-hidden="true"></span>
-          <span class="bubble bubble-dot" style="--x: 12%; --y: 66%; --s: 12px; --d: -2.5s;" aria-hidden="true"></span>
-          <span class="bubble bubble-dot" style="--x: 86%; --y: 18%; --s: 11px; --d: -4s;" aria-hidden="true"></span>
-          <span class="bubble" style="--x: 92%; --y: 56%; --s: 24px; --d: -1.5s;" aria-hidden="true"></span>
-          <p class="cb-title">キャンペーン実施中！</p>
-          <!-- 期間は終了日だけを見せる（例：2027年5月31日まで！！）。開始日は詳細ページの注記に書いてある -->
-          <p class="cb-period">[CAMPAIGN_END]まで！！</p>
+        <p class="cs-badge">ただいま準備中です</p>
+        <h1 class="page-title">サービス一覧</h1>
+        <div class="cs-sub-text">
+          <p>サービスごとの料金やお掃除の内容をまとめたページを、ただいま準備しています。</p>
+          <p>いまは、こちらのお掃除を受け付けています。</p>
         </div>
-        <div class="house-wrap fade-in">
-          <div class="house">
-            <!-- 屋根は本体より左右に広く（本体側に余白を取る）、右に煙突の長方形を立てて家に見せる -->
-            <svg class="house-roof" viewBox="0 0 100 18" preserveAspectRatio="none" aria-hidden="true"><rect x="72" y="1" width="7" height="10"/><polygon points="0,18 50,2 100,18"/></svg>
-            <div class="house-body">
-              <ul class="house-tiles">
-              <li><a href="/mieru-osouji/service/aircon/"><svg aria-hidden="true"><use href="#i-aircon"/></svg><span class="ht-name">エアコン</span><span class="ht-camp">8,000円〜</span><span class="ht-normal"><s>10,000円〜</s></span></a></li>
-              <li><a href="/mieru-osouji/service/kitchen/"><svg aria-hidden="true"><use href="#i-kitchen"/></svg><span class="ht-name">キッチン</span><span class="ht-camp">13,500円〜</span><span class="ht-normal"><s>16,000円〜</s></span></a></li>
-              <li><a href="/mieru-osouji/service/range-hood/"><svg aria-hidden="true"><use href="#i-hood"/></svg><span class="ht-name">レンジフード</span><span class="ht-camp">12,000円</span><span class="ht-normal"><s>14,000円</s></span></a></li>
-              <li><a href="/mieru-osouji/service/bathroom/"><svg aria-hidden="true"><use href="#i-bath"/></svg><span class="ht-name">浴室</span><span class="ht-camp">14,000円</span><span class="ht-normal"><s>16,000円</s></span></a></li>
-              <li><a href="/mieru-osouji/service/washbasin/"><svg aria-hidden="true"><use href="#i-sink"/></svg><span class="ht-name">洗面台</span><span class="ht-camp">7,000円</span><span class="ht-normal"><s>8,000円</s></span></a></li>
-              <li><a href="/mieru-osouji/service/toilet/"><svg aria-hidden="true"><use href="#i-toilet"/></svg><span class="ht-name">トイレ</span><span class="ht-camp">7,000円</span><span class="ht-normal"><s>9,000円</s></span></a></li>
-              <li><a href="/mieru-osouji/service/washing-machine/"><svg aria-hidden="true"><use href="#i-washer"/></svg><span class="ht-name">洗濯機</span><span class="ht-camp">12,000円〜</span></a></li>
-              <li><a href="/mieru-osouji/service/floor/"><svg aria-hidden="true"><use href="#i-floor"/></svg><span class="ht-name">フロア</span><span class="ht-camp">11,000円</span><span class="ht-normal"><s>12,000円</s></span></a></li>
-              <li><a href="/mieru-osouji/service/window/"><svg aria-hidden="true"><use href="#i-window"/></svg><span class="ht-name">窓・サッシ</span><span class="ht-camp">4,000円〜</span><span class="ht-normal"><s>5,000円〜</s></span></a></li>
-              <li><a href="/mieru-osouji/service/balcony/"><svg aria-hidden="true"><use href="#i-balcony"/></svg><span class="ht-name">ベランダ・バルコニー</span><span class="ht-camp">15,000円</span><span class="ht-normal"><s>17,000円</s></span></a></li>
-              </ul>
+        <ul class="cs-menu stagger">
+          <li class="rise">
+            <!-- TODO 画像：エアコンの写真 -->
+            <div class="cs-ph"><svg aria-hidden="true"><use href="#i-camera"/></svg>写真（準備中）</div>
+            <div class="cs-menu-body">
+              <h3><svg aria-hidden="true"><use href="#i-aircon"/></svg>エアコン</h3>
+              <p class="cs-price">8,000<small>円〜</small></p>
+              <p>分解して、内部まで高圧洗浄します。お掃除機能付きや天井埋め込みも対応します。</p>
             </div>
-          </div>
-          <!-- 空室清掃は「お部屋まるごと」なので家のタイルに入れず、家の下に横長カードで置く -->
-          <div class="vacant-card">
-            <a href="/mieru-osouji/service/vacant-room/">
-              <span class="vc-icon" aria-hidden="true"><svg><use href="#i-key"/></svg></span>
-              <span class="vc-name">空室清掃</span>
-              <span class="vc-note">1R〜3LDK（マンション・アパート）</span>
-              <span class="ht-camp vc-price">20,000円〜</span>
-            </a>
-          </div>
-        </div>
-        <p class="house-note fade-in">※表示価格は税込み金額です。</p>
-        <details class="calc-fold fade-in" id="examples">
-          <summary>料金の計算例を見る（よくある組み合わせ・税込）</summary>
-          <ul class="calc-list">
-          <li class="calc-item rise">
-            <h3>エアコン（お掃除機能なし）1台</h3>
-            <dl>
-              <div class="calc-row calc-camp"><dt>キャンペーン価格</dt><dd><strong>8,000円</strong></dd></div>
-              <div class="calc-row"><dt>通常価格</dt><dd>10,000円</dd></div>
-            </dl>
           </li>
-          <li class="calc-item rise">
-            <h3>エアコン（お掃除機能なし）2台</h3>
-            <dl>
-              <div class="calc-row calc-camp"><dt>キャンペーン価格</dt><dd><span class="calc-formula">8,000＋7,000＝</span><strong>15,000円</strong></dd></div>
-              <div class="calc-row"><dt>通常価格</dt><dd><span class="calc-formula">10,000＋9,000＝</span>19,000円</dd></div>
-            </dl>
+          <li class="rise">
+            <!-- TODO 画像：浴室の写真 -->
+            <div class="cs-ph"><svg aria-hidden="true"><use href="#i-camera"/></svg>写真（準備中）</div>
+            <div class="cs-menu-body">
+              <h3><svg aria-hidden="true"><use href="#i-bath"/></svg>浴室</h3>
+              <p class="cs-price">14,000<small>円〜</small></p>
+              <p>浴槽、壁・天井、床、鏡、排水口まで、浴室をまるごとお掃除します。</p>
+            </div>
           </li>
-          <li class="calc-item rise">
-            <h3>エアコン（機能なし）1台＋室外機洗浄</h3>
-            <dl>
-              <div class="calc-row calc-camp"><dt>キャンペーン価格</dt><dd><span class="calc-formula">8,000＋4,000＝</span><strong>12,000円</strong></dd></div>
-              <div class="calc-row"><dt>通常価格</dt><dd><span class="calc-formula">10,000＋4,000＝</span>14,000円</dd></div>
-            </dl>
+          <li class="rise">
+            <!-- TODO 画像：トイレの写真 -->
+            <div class="cs-ph"><svg aria-hidden="true"><use href="#i-camera"/></svg>写真（準備中）</div>
+            <div class="cs-menu-body">
+              <h3><svg aria-hidden="true"><use href="#i-toilet"/></svg>トイレ</h3>
+              <p class="cs-price">7,000<small>円〜</small></p>
+              <p>便器から床・壁まで、トイレをまるごとお掃除します。</p>
+            </div>
           </li>
-          <li class="calc-item rise">
-            <h3>エアコン（機能なし）1台＋全オプション</h3>
-            <dl>
-              <div class="calc-row calc-camp"><dt>キャンペーン価格</dt><dd><span class="calc-formula">8,000＋4,000＋2,500＋1,500＋1,000＝</span><strong>17,000円</strong></dd></div>
-              <div class="calc-row"><dt>通常価格</dt><dd><span class="calc-formula">10,000＋4,000＋2,500＋1,500＋1,000＝</span>19,000円</dd></div>
-            </dl>
+          <li class="rise">
+            <!-- TODO 画像：キッチンの写真 -->
+            <div class="cs-ph"><svg aria-hidden="true"><use href="#i-camera"/></svg>写真（準備中）</div>
+            <div class="cs-menu-body">
+              <h3><svg aria-hidden="true"><use href="#i-kitchen"/></svg>キッチン・レンジフード</h3>
+              <p class="cs-price"><span class="cs-price-label">キッチン</span>13,500<small>円〜</small></p>
+              <p class="cs-price"><span class="cs-price-label">レンジフード</span>12,000<small>円〜</small></p>
+              <p>こびりついた油汚れも、素材に合わせた洗剤で落とします。</p>
+            </div>
           </li>
-          <li class="calc-item rise">
-            <h3>トイレ＋洗面台＋浴室</h3>
-            <dl>
-              <div class="calc-row calc-camp"><dt>キャンペーン価格</dt><dd><span class="calc-formula">7,000＋7,000＋14,000＝</span><strong>28,000円</strong></dd></div>
-              <div class="calc-row"><dt>通常価格</dt><dd><span class="calc-formula">9,000＋8,000＋16,000＝</span>33,000円</dd></div>
-            </dl>
-          </li>
-          <li class="calc-item rise">
-            <h3>キッチン基本パック＋レンジフード</h3>
-            <dl>
-              <div class="calc-row calc-camp"><dt>キャンペーン価格</dt><dd><span class="calc-formula">13,500＋12,000＝</span><strong>25,500円</strong></dd></div>
-              <div class="calc-row"><dt>通常価格</dt><dd><span class="calc-formula">16,000＋14,000＝</span>30,000円</dd></div>
-            </dl>
-          </li>
-          <li class="calc-item rise">
-            <h3>腰高窓2か所</h3>
-            <dl>
-              <div class="calc-row calc-camp"><dt>キャンペーン価格</dt><dd><span class="calc-formula">7,000＋6,000＝</span><strong>13,000円</strong></dd></div>
-              <div class="calc-row"><dt>通常価格</dt><dd><span class="calc-formula">8,000＋7,000＝</span>15,000円</dd></div>
-            </dl>
-          </li>
-          <li class="calc-item rise">
-            <h3>空室清掃（1LDK）</h3>
-            <dl>
-              <div class="calc-row"><dt>料金</dt><dd><strong>36,000円</strong><small>（キャンペーン対象外）</small></dd></div>
-            </dl>
-          </li>
-          </ul>
-          <p class="calc-fold-note">※駐車場の実費は含みません。</p>
-        </details>
-      </div>
-    </section>
-
-    <!-- お支払い（設計図 ブロック9。2026-11-17にキャンセルと分け、2026-11-18に料金のすぐ後ろへ移した）
-         ここは4つの枠だけにする（補足は書かない）。お支払いのタイミング（当日・作業後）と振込手数料（お客様負担）はトップページのFAQに書く。
-         TODO カードブランド・QR決済の種類：決まったらFAQに追記する -->
-    <section class="section" id="payment" data-ga-section="payment">
-      <div class="container container-narrow">
-        <p class="section-eyebrow fade-in">PAYMENT</p>
-        <h2 class="section-title wipe">お支払い</h2>
-        <ul class="pay-methods fade-in">
-          <li><svg aria-hidden="true"><use href="#i-cash"/></svg>現金</li>
-          <li><svg aria-hidden="true"><use href="#i-card"/></svg>クレジットカード</li>
-          <li><svg aria-hidden="true"><use href="#i-bank"/></svg>銀行振込</li>
-          <li><svg aria-hidden="true"><use href="#i-qr"/></svg>QR決済</li>
         </ul>
+        <p class="cs-note">※料金は税込みの目安です。機種や汚れの状態によって変わりますので、お電話でお見積りします。</p>
+        <p class="cs-more">洗面台など、このほかのお掃除もお気軽にご相談ください。</p>
+        <p class="cs-back"><a href="/mieru-osouji/" class="btn btn-outline btn-back">みえる！おそうじのトップへ<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14L4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg></a></p>
       </div>
-    </section>
+    </div>
 
-    <!-- 追加料金とお受けできないもの（設計図 ブロック7）。
-         カード＋箇条書きはやめて、小見出し＋本文で流す（案B。2026-11-17の指示） -->
-    <section class="section section-green" id="conditions" data-ga-section="conditions">
-      <div class="container">
-        <p class="section-eyebrow fade-in">CONDITIONS</p>
-        <h2 class="section-title wipe">追加料金とお受けできないものについて</h2>
-        <div class="cond-flow fade-in">
-          <h3>出張料金・駐車場</h3>
-          <p>出張料金は無料です。</p>
-          <p>敷地内や近くに無料で停められる場所がない場合は、有料駐車場の実費を頂戴いたします。</p>
-          <!-- TODO 高所作業料金：計算（50cmごと・切り上げ）とお断りする高さの上限は要確認（設計図 v1 では想定） -->
-          <h3>高い場所の作業</h3>
-          <p>高所での作業は、高所作業料金をいただいています。</p>
-          <ul class="cond-list">
-            <li>エアコン：床からエアコン本体の上端までが2.5mを超える場合、50cmごとに3,000円を頂戴します。</li>
-            <li>窓：床から窓の上端までが3mを超える場合、50cmごとに3,000円を頂戴します。</li>
-          </ul>
-          <p>例えばエアコンなら、2.5m超〜3mは3,000円、3m超〜3.5mは6,000円です。</p>
-          <p>あまりにも高い場所は、安全のためお受けできない場合がございます。</p>
-          <p>天井埋め込みエアコンは、床から天井までの高さが3m以上の場所はお受けできません。</p>
-          <h3>料金を載せていないもの</h3>
-          <p>天吊りエアコンや業務用エアコン、戸建ての空室清掃などは、料金を載せていませんが対応できる場合がございます。</p>
-          <p>まずはお気軽にご相談ください。</p>
-          <h3>お受けできないもの</h3>
-          <p>故障や不具合がある機器、分解が難しい機器、部品の劣化が進んだ機器は、作業によって状態が悪くなるおそれがあるため、お受けできない場合がございます。</p>
-          <p>製造から10年以上たったエアコンなど部品の供給が終わった機器や、安全に作業できない高い場所も同様です。</p>
-          <p>これはどうかな？という場合でもお気軽にご相談ください。</p>
-          <!-- TODO 士業の確認：当日作業できない場合を当日キャンセル扱い（100%）にする規定。
-               消費者契約法9条（平均的な損害を超えるキャンセル料は無効）の観点で、公開前に専門家のチェックを受ける -->
-          <h3>当日作業できないとき</h3>
-          <p>お伺いしたあと、お客様のご都合で作業できなかった場合（ご不在、事前にお伺いした内容と実際の機器・設置状況が異なる場合など）は、当日キャンセルの扱いとなり、お見積り金額（税込）の100%を申し受けます。</p>
-          <p>当店の判断でお受けできないとお伝えする場合は、料金はいただきません。</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- キャンセル・日程変更（設計図 ブロック9） -->
-    <section class="section" id="cancel" data-ga-section="cancel">
-      <div class="container container-narrow">
-        <p class="section-eyebrow fade-in">CANCEL</p>
-        <h2 class="section-title wipe">キャンセル・日程変更</h2>
-        <div class="cancel-text fade-in">
-          <p>作業日の3日前までにご連絡いただければ、キャンセル・日程変更が可能です。</p>
-          <p>以降のご連絡は、原則として次の料金を頂戴いたします。</p>
-        </div>
-        <table class="cancel-table fade-in">
-          <thead>
-            <tr><th scope="col">ご連絡の時期</th><th scope="col">キャンセル・日程変更料</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>作業日の3日前まで</td><td>無料</td></tr>
-            <tr><td>作業日の2日前</td><td>30%</td></tr>
-            <tr><td>作業日の前日</td><td>50%</td></tr>
-            <tr><td>作業日の当日</td><td>100%</td></tr>
-          </tbody>
-        </table>
-        <div class="cancel-text fade-in">
-          <p class="cancel-table-note">※お見積り金額（税込）に対しての割合です。</p>
-          <p>ご都合が悪くなったときは、まずはお気軽にご相談ください。</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- お問い合わせ -->
+    <!-- お問い合わせ（準備中は電話のみ。もしもしコールの担当者直通の携帯を仮で使う） -->
     <section class="section section-dark" id="contact" data-ga-section="contact_cta">
       <div class="container">
         <p class="section-eyebrow fade-in">CONTACT</p>
         <h2 class="section-title wipe">ご相談・お見積り</h2>
-        <p class="section-lead fade-in">LINEまたはお電話で受け付けています。</p>
-        <div class="contact-btns fade-in">
-          <a href="[LINE_URL_CLEANING]" class="btn btn-line">LINEで相談する</a>
-          <a href="tel:[PHONE_CLEANING]" class="btn btn-ghost">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
-            [PHONE_CLEANING]
+        <p class="section-lead fade-in">ホームページの公開前でも、お電話でご相談・ご依頼を受け付けています。</p>
+        <div class="contact-btns cs-contact-btns fade-in">
+          <a href="tel:08029685824" class="btn btn-primary cs-tel">
+            <svg aria-hidden="true"><use href="#i-tel"/></svg>080-2968-5824
           </a>
         </div>
         <p class="contact-meta">
-          LINE 24時間受付中／お電話 9:00〜19:00<br>
-          LINEでのお問い合わせは返信にお時間をいただく場合がございます。（翌営業日中にはご返信いたします）<br>
+          お電話 9:00〜19:00<br>
           作業中は電話に出られない場合があります。その際は折り返しお電話します。
         </p>
       </div>
@@ -331,21 +169,11 @@
           <p class="footer-logo">みえる！おそうじ</p>
           <p>東京・千葉・埼玉・神奈川</p>
         </div>
-        <nav class="footer-nav" aria-label="フッターナビゲーション">
-          <ul>
-            <li><a href="/mieru-osouji/service/">サービス一覧</a></li>
-            <li><a href="/mieru-osouji/#business">法人のお客様へ</a></li>
-            <li><a href="/mieru-osouji/#price">料金プラン</a></li>
-            <li><a href="/mieru-osouji/#cases">作業事例</a></li>
-            <li><a href="/mieru-osouji/#faq">よくある質問</a></li>
-          </ul>
-        </nav>
         <div class="footer-operator">
           <p class="footer-operator-name">運営：<a href="/company/">よりそいコネクト</a></p>
           <ul>
             <li><a href="/company/">会社概要</a></li>
             <li><a href="/moshimoshi-call/">もしもしコール</a></li>
-            <!-- TODO プライバシー：サイトにプライバシーポリシーのページがまだない。作成したらここにリンクを追加 -->
           </ul>
         </div>
       </div>
@@ -353,14 +181,14 @@
     </div>
   </footer>
 
-  <!-- スマホ用 固定CTAバー -->
-  <div class="cta-bar">
-    <a href="[LINE_URL_CLEANING]" class="btn btn-line">LINEで相談</a>
-    <a href="tel:[PHONE_CLEANING]" class="btn btn-outline">電話する</a>
+  <!-- スマホ用 固定CTAバー（準備中は電話だけ） -->
+  <div class="cta-bar cs-cta-bar">
+    <a href="tel:08029685824" class="btn btn-primary">電話で相談する</a>
   </div>
 
   <script src="/assets/js/site.js" defer></script>
   <script src="/mieru-osouji/assets/js/header.js?v=20261119" defer></script>
+  <script src="/mieru-osouji/assets/js/bubbles.js?v=20261105b" defer></script>
   <script src="/assets/js/analytics.js" defer></script>
 </body>
 </html>

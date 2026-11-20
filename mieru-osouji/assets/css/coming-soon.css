@@ -256,3 +256,40 @@
 .cs-contact-btns {
   grid-template-columns: minmax(0, 360px);
 }
+
+/* --- 準備中の下層ページ（campaign / tips / service。2026-11-21） --- */
+.cs-sub-hero {
+  text-align: center;
+}
+
+.cs-sub-hero .breadcrumb {
+  text-align: left;
+}
+
+.cs-sub-text {
+  max-width: 640px;
+  margin: 28px auto 0;
+}
+
+.cs-sub-text p + p {
+  margin-top: 8px;
+}
+
+.cs-sub-hero .cs-menu {
+  margin-top: 32px;
+  text-align: left;
+}
+
+.cs-sub-hero .cs-note {
+  text-align: left;
+}
+
+.cs-back {
+  margin-top: 36px;
+}
+
+@media (max-width: 600px) {
+  .cs-sub-text {
+    text-align: left;
+  }
+}
