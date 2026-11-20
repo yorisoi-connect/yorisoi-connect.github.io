@@ -4,64 +4,35 @@
   <meta charset="UTF-8">
   <!--
     ======================================================================
-    プレースホルダー一覧（公開前にすべて置き換える。文字列で全体検索すること）
-      [LINE_URL_CLEANING] : みえる！おそうじ用 LINE の URL（例：https://lin.ee/xxxx）
-      [PHONE_CLEANING]    : 電話番号。表示用と tel: リンクの両方に使っている
-                            （tel: 側はハイフンなしの数字に置き換える）
-      画像（grep "TODO 画像"）：
-        ロゴ             → assets/img/logo.svg（今はテキスト）
-        ファーストビュー → assets/img/hero.jpg（写真枠はいったん削除。写真ができたらヒーローに戻す）
-        作業事例         → assets/img/case-*.jpg（今はグレーのダミー枠）
-        OGP              → assets/img/ogp.png（今は会社サイトの /assets/images/ogp.png を仮使用）
-      TODO 士業の確認：ホームページが一通りできて見直すタイミングで、ページとサービスの中から
-        確認してもらうものをまとめて洗い出す（キャンセル料、注意事項、事例写真の掲載など）
+    準備中ページ（2026-11-21）
+      名刺のQRから作りかけのページを見られないように、トップを一時的に「ホームページ準備中」にしている。
+      LINEは未完成なので導線を消し、電話はもしもしコールの担当者直通の携帯（080-2968-5824）を仮で使用。
+      サービス一覧・詳細ページ（/mieru-osouji/service/）へのリンクも置いていない。
+      元のトップページに戻すとき：
+        git show ad5727c:mieru-osouji/index.html > mieru-osouji/index.html
+        （ad5727c 以降にトップページを直していたら、その分も反映すること）
+      準備中ページ専用の見た目は assets/css/coming-soon.css（元に戻したら読み込まれなくなる）
     ======================================================================
   -->
   <!-- 公開時に削除：この1行を消すと検索エンジンに載るようになる -->
   <meta name="robots" content="noindex">
   <script>(function(d){d.className+=" js"})(document.documentElement)</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>みえる！おそうじ｜エアコンクリーニング・ハウスクリーニング（東京・千葉・埼玉・神奈川）｜よりそいコネクト</title>
-  <meta name="description" content="みえる！おそうじ（みえるおそうじ）は、エアコンクリーニングをはじめとするハウスクリーニングサービスです。料金、作業、仕上がり、すべてお見せします。対応エリアは東京・千葉・埼玉・神奈川。ご相談はLINEまたはお電話で。">
+  <title>みえる！おそうじ｜ホームページ準備中｜よりそいコネクト</title>
+  <meta name="description" content="みえる！おそうじは、エアコンクリーニングをはじめとするハウスクリーニングサービスです。ただいまホームページを準備中です。ご相談・お見積りはお電話で受け付けています。">
   <link rel="canonical" href="https://yorisoi-connect.com/mieru-osouji/">
 
   <!-- OGP -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="みえる！おそうじ">
   <meta property="og:locale" content="ja_JP">
-  <meta property="og:title" content="みえる！おそうじ｜エアコンクリーニング・ハウスクリーニング（東京・千葉・埼玉・神奈川）">
-  <meta property="og:description" content="料金、作業、仕上がり、すべてお見せします！エアコンクリーニングをはじめとするハウスクリーニングサービス。対応エリアは東京・千葉・埼玉・神奈川。">
+  <meta property="og:title" content="みえる！おそうじ｜ホームページ準備中">
+  <meta property="og:description" content="みえる！おそうじは、エアコンクリーニングをはじめとするハウスクリーニングサービスです。ただいまホームページを準備中です。ご相談・お見積りはお電話で受け付けています。">
   <meta property="og:url" content="https://yorisoi-connect.com/mieru-osouji/">
   <!-- TODO 画像：OGP画像。専用画像ができたら https://yorisoi-connect.com/mieru-osouji/assets/img/ogp.png に差し替え -->
   <meta property="og:image" content="https://yorisoi-connect.com/assets/images/ogp.png">
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- 構造化データ：確定している項目だけ。電話番号・レビュー・価格は確定するまで入れない -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "みえる！おそうじ",
-    "url": "https://yorisoi-connect.com/mieru-osouji/",
-    "parentOrganization": {
-      "@type": "Organization",
-      "name": "よりそいコネクト",
-      "url": "https://yorisoi-connect.com/"
-    },
-    "areaServed": [
-      { "@type": "AdministrativeArea", "name": "東京都" },
-      { "@type": "AdministrativeArea", "name": "千葉県" },
-      { "@type": "AdministrativeArea", "name": "埼玉県" },
-      { "@type": "AdministrativeArea", "name": "神奈川県" }
-    ],
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-      "opens": "09:00",
-      "closes": "22:00"
-    }
-  }
-  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,6 +42,7 @@
        見出しの文言を変えたら、ここの text= も同じ文字にそろえること（ない文字だけ別の書体になる） -->
   <!-- ?v= はブラウザに古いCSSを使わせないための番号。style.css を変えたら日付などに書き換える -->
   <link rel="stylesheet" href="/mieru-osouji/assets/css/style.css?v=20261119h">
+  <link rel="stylesheet" href="/mieru-osouji/assets/css/coming-soon.css?v=20261121a">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG9KYK977N"></script>
   <script>
@@ -97,45 +69,26 @@
     <symbol id="i-balcony" viewBox="0 0 24 24"><path d="M3 10h18M3 20h18"/><path d="M5 10v10M9 10v10M13 10v10M17 10v10M21 10v10"/><path d="M16 6.5c0-2 1.5-3 3-3 0 2-1.5 3-3 3z"/></symbol>
     <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="12" r="4"/><path d="M12 12h9M18 12v3M15 12v2"/></symbol>
     <symbol id="i-room" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1.5"/><path d="M3 13h7v8"/><path d="M14 21a5 5 0 0 1 5-5"/><path d="M14 3v5"/></symbol>
+    <symbol id="i-cash" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.8"/><path d="M6 9.5v5M18 9.5v5"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M4 16.5V12l2-5h12l2 5v4.5z"/><path d="M4 12h16"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></symbol>
+    <symbol id="i-tel" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 7.5h3l1.6-2.5h6.8L17 7.5h3a1 1 0 0 1 1 1V18a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8.5a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.5"/></symbol>
   </svg>
 
-  <header class="site-header" id="site-header">
+  <!-- ヘッダー：準備中はメニューを置かず、ロゴと電話だけ -->
+  <header class="site-header cs-header" id="site-header">
     <div class="header-inner">
       <div class="brand">
-        <!-- TODO 画像：ロゴ。assets/img/logo.svg ができたら <img src="/mieru-osouji/assets/img/logo.svg" alt="みえる！おそうじ"> に差し替え -->
         <a href="/mieru-osouji/" class="site-logo">みえる！おそうじ</a>
       </div>
-
-      <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="global-nav">
-        <span></span><span></span><span></span>
-      </button>
-
-      <!-- PCではメニューを2段（上：サービス、下：ページ内の案内）、LINE・電話はその右に1段で置く -->
-      <nav class="global-nav" id="global-nav" aria-label="グローバルナビゲーション">
-        <ul class="nav-main">
-          <li><a href="/mieru-osouji/service/">サービス一覧</a></li>
-          <li><a href="#business">法人のお客様へ</a></li>
-        </ul>
-        <ul class="nav-sub">
-          <li><a href="#price">料金プラン</a></li>
-          <li><a href="#cases">作業事例</a></li>
-          <li><a href="#faq">よくある質問</a></li>
-        </ul>
-        <ul class="nav-cta-list">
-          <li class="nav-cta"><a href="[LINE_URL_CLEANING]" class="btn btn-line">LINEで相談する</a></li>
-          <li class="nav-cta"><a href="tel:[PHONE_CLEANING]" class="btn btn-outline">電話する</a></li>
-        </ul>
-      </nav>
-
       <div class="header-cta">
-        <a href="[LINE_URL_CLEANING]" class="btn btn-line btn-small">LINEで相談</a>
-        <a href="tel:[PHONE_CLEANING]" class="btn btn-outline btn-small">電話する</a>
+        <a href="tel:08029685824" class="btn btn-outline btn-small">電話する</a>
       </div>
     </div>
   </header>
 
   <main>
-    <!-- ファーストビュー -->
     <section class="hero">
       <!-- 背景の泡。ヒーロー全体に対する位置（%）で、上下の帯と左右の端に散らす（文字の後ろに入っても読める薄さ） -->
       <div class="hero-bubbles" aria-hidden="true">
@@ -156,6 +109,7 @@
       </div>
       <div class="container hero-inner">
         <!-- 「料金」「作業」「仕上がり」は最初汚れで隠れていて、手が拭き取る演出（assets/js/hero.js）。JSが動かなくても普通に読める -->
+        <p class="cs-badge">ただいま、ホームページ準備中です</p>
         <h1 class="hero-title" id="hero-title"><span class="nw tc"><span class="dirty">料金</span>、</span><span class="nw tc"><span class="dirty">作業</span>、</span><span class="nw tc"><span class="dirty">仕上がり</span>、</span><br><span class="hero-accent">すべて</span>お見せします！</h1>
 
         <!-- 作業前 → 作業後 の写真を矢印つきで横に並べる（全画面共通）。
@@ -183,7 +137,8 @@
           </div>
         </div>
 
-        <p class="hero-text"><span class="hero-brand">みえる！おそうじ</span>は、エアコンクリーニングをはじめとするハウスクリーニングサービスです。<br>家のお掃除に関することは何でもおまかせください！<br>すべてのお客様にご安心いただけるようなサービスを心がけています。</p>
+        <p class="hero-text"><span class="hero-brand">みえる！おそうじ</span>は、エアコンクリーニングをはじめとするハウスクリーニングサービスです。<br>ホームページの公開まで、もうしばらくお待ちください。<br>公開前でも、お電話でご相談・ご依頼を受け付けています。</p>
+        <p class="cs-hero-cta"><a href="tel:08029685824" class="btn btn-primary"><svg aria-hidden="true"><use href="#i-tel"/></svg>お電話でのご相談はこちら</a></p>
       </div>
     </section>
 
@@ -224,7 +179,7 @@
             <div class="feature-body">
               <p class="feature-num" aria-hidden="true">03</p>
               <h3>人がみえる</h3>
-              <p>どんな作業員が訪問するかが分かるように、作業前日までに担当者の名前・顔写真・ひとことをLINEでお送りします。</p>
+              <p>どんな作業員が訪問するかが分かるように、作業の前日までに担当者をご紹介します。</p>
             </div>
           </li>
           <li class="feature-card rise">
@@ -242,434 +197,83 @@
       </div>
     </section>
 
-    <!-- できること（サービスメニュー）。対応できる場所をアイコンで一覧にする。
-         エアコンは今は壁掛けのみだが、将来ほかの型にも対応するため、ここでは「エアコン」とだけ書き、
-         型の確認は問い合わせのときに口頭・LINEで行う -->
+    <!-- できること・料金の目安（準備中はおおまかに。料金は /service/ のキャンペーン価格の最低額。2026-11-21） -->
     <section class="section section-green" id="service" data-ga-section="service">
       <div class="container">
         <p class="section-eyebrow fade-in">SERVICE</p>
         <h2 class="section-title wipe">できること</h2>
-        <p class="section-lead fade-in">東京・千葉・埼玉・神奈川でお伺いしています。<br class="br-pc">地域によっては、ご希望の日程でお伺いできない場合や、お受けできない場合がございます。</p>
-        <div class="service-grid stagger">
-          <div class="service-card rise">
-            <div class="service-card-head">
-              <span class="service-card-icon" aria-hidden="true">
-                <!-- 家 -->
-                <svg><use href="#i-house"/></svg>
-              </span>
-              <h3>ハウスクリーニング</h3>
+        <p class="section-lead fade-in">いまはこちらのお掃除を受け付けています。</p>
+        <ul class="cs-menu stagger">
+          <li class="rise">
+            <!-- TODO 画像：エアコンの写真 -->
+            <div class="cs-ph"><svg aria-hidden="true"><use href="#i-camera"/></svg>写真（準備中）</div>
+            <div class="cs-menu-body">
+              <h3><svg aria-hidden="true"><use href="#i-aircon"/></svg>エアコン</h3>
+              <p class="cs-price">8,000<small>円〜</small></p>
+              <p>分解して、内部まで高圧洗浄します。お掃除機能付きや天井埋め込みも対応します。</p>
             </div>
-            <ul class="service-items">
-              <li class="service-item">
-                <span class="service-item-icon" aria-hidden="true"><svg><use href="#i-aircon"/></svg></span>
-                <span class="service-item-label">エアコン</span>
-              </li>
-              <li class="service-item">
-                <span class="service-item-icon" aria-hidden="true"><svg><use href="#i-kitchen"/></svg></span>
-                <span class="service-item-label">キッチン</span>
-              </li>
-              <li class="service-item">
-                <span class="service-item-icon" aria-hidden="true"><svg><use href="#i-hood"/></svg></span>
-                <span class="service-item-label">レンジフード</span>
-              </li>
-              <li class="service-item">
-                <span class="service-item-icon" aria-hidden="true"><svg><use href="#i-bath"/></svg></span>
-                <span class="service-item-label">浴室</span>
-              </li>
-              <li class="service-item">
-                <span class="service-item-icon" aria-hidden="true"><svg><use href="#i-sink"/></svg></span>
-                <span class="service-item-label">洗面台</span>
-              </li>
-              <li class="service-item">
-                <span class="service-item-icon" aria-hidden="true"><svg><use href="#i-toilet"/></svg></span>
-                <span class="service-item-label">トイレ</span>
-              </li>
-              <li class="service-item">
-                <span class="service-item-icon" aria-hidden="true"><svg><use href="#i-washer"/></svg></span>
-                <span class="service-item-label">洗濯機</span>
-              </li>
-              <li class="service-item">
-                <span class="service-item-icon" aria-hidden="true"><svg><use href="#i-floor"/></svg></span>
-                <span class="service-item-label">フロア</span>
-              </li>
-              <li class="service-item">
-                <span class="service-item-icon" aria-hidden="true"><svg><use href="#i-window"/></svg></span>
-                <span class="service-item-label">窓・サッシ</span>
-              </li>
-              <li class="service-item">
-                <span class="service-item-icon" aria-hidden="true"><svg><use href="#i-balcony"/></svg></span>
-                <span class="service-item-label">ベランダ・バルコニー</span>
-              </li>
-            </ul>
-          </div>
-          <div class="service-card rise">
-            <div class="service-card-head">
-              <span class="service-card-icon" aria-hidden="true">
-                <!-- 鍵 -->
-                <svg><use href="#i-key"/></svg>
-              </span>
-              <h3>空室清掃</h3>
+          </li>
+          <li class="rise">
+            <!-- TODO 画像：浴室の写真 -->
+            <div class="cs-ph"><svg aria-hidden="true"><use href="#i-camera"/></svg>写真（準備中）</div>
+            <div class="cs-menu-body">
+              <h3><svg aria-hidden="true"><use href="#i-bath"/></svg>浴室</h3>
+              <p class="cs-price">14,000<small>円〜</small></p>
+              <p>浴槽、壁・天井、床、鏡、排水口まで、浴室をまるごとお掃除します。</p>
             </div>
-            <ul class="service-items">
-              <li class="service-item">
-                <!-- 間取り図 -->
-                <span class="service-item-icon" aria-hidden="true"><svg><use href="#i-room"/></svg></span>
-                <span class="service-item-label">1R〜</span>
-              </li>
-            </ul>
-          </div>
-        </div>
+          </li>
+          <li class="rise">
+            <!-- TODO 画像：トイレの写真 -->
+            <div class="cs-ph"><svg aria-hidden="true"><use href="#i-camera"/></svg>写真（準備中）</div>
+            <div class="cs-menu-body">
+              <h3><svg aria-hidden="true"><use href="#i-toilet"/></svg>トイレ</h3>
+              <p class="cs-price">7,000<small>円〜</small></p>
+              <p>便器から床・壁まで、トイレをまるごとお掃除します。</p>
+            </div>
+          </li>
+          <li class="rise">
+            <!-- TODO 画像：キッチンの写真 -->
+            <div class="cs-ph"><svg aria-hidden="true"><use href="#i-camera"/></svg>写真（準備中）</div>
+            <div class="cs-menu-body">
+              <h3><svg aria-hidden="true"><use href="#i-kitchen"/></svg>キッチン・レンジフード</h3>
+              <p class="cs-price"><span class="cs-price-label">キッチン</span>13,500<small>円〜</small></p>
+              <p class="cs-price"><span class="cs-price-label">レンジフード</span>12,000<small>円〜</small></p>
+              <p>こびりついた油汚れも、素材に合わせた洗剤で落とします。</p>
+            </div>
+          </li>
+        </ul>
+        <p class="cs-note fade-in">※料金は税込みの目安です。機種や汚れの状態によって変わりますので、お電話でお見積りします。</p>
+        <p class="cs-more fade-in">洗面台など、このほかのお掃除もお気軽にご相談ください。</p>
       </div>
     </section>
 
-    <!-- 料金 -->
-    <section class="section" id="price" data-ga-section="price">
+    <!-- ご利用について：お支払い・出張料金・エリア -->
+    <section class="section" id="info" data-ga-section="info">
       <div class="container">
-        <p class="section-eyebrow fade-in">PRICE</p>
-        <h2 class="section-title wipe">料金</h2>
-        <!-- 出張料金は無料（2026-11-15決定。作業できなかった場合も料金はいただかない） -->
-        <p class="section-lead fade-in">料金はすべて税込で、出張料金は無料です。追加料金が出る条件は、サービス一覧のページにまとめています。</p>
-        <!-- 料金カードのカルーセル（「できること」と同じ種類を並べる）。
-             画面幅に応じて一度に見える枚数が変わる（スマホ1枚＋次のカードを少し見せる／タブレット2枚／PC3〜4枚）。
-             左右ボタンは assets/js/price-carousel.js。JSがなくても横スクロール（スワイプ）で見られる。
-             カードの金額は最低額のキャンペーン価格（2026-11-15の料金表）。料金を変えたら /mieru-osouji/service/ 以下もそろえる。
-             「詳しく見る」のリンク先は各サービスの詳細ページ（一覧は /mieru-osouji/service/）
-             TODO 画像：各カードの .ph-img を <img src="/mieru-osouji/assets/img/price-○○.jpg" alt="" loading="lazy"> に差し替え
-             （名前は見出しで伝わるので alt は空。写真は画面幅に応じて 10:9・3:2・6:5 のどれかに切り抜いて表示される） -->
-        <div class="price-carousel fade-in" data-carousel>
-          <ul class="price-track" data-carousel-track tabindex="0" aria-label="サービスごとの料金">
-            <li class="price-card">
-              <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
-              <h3>エアコン</h3>
-              <p class="price-card-price"><span class="price-card-num">8,000</span>円〜<span class="price-card-tax">（キャンペーン価格・税込）</span></p>
-              <a class="price-card-link" href="/mieru-osouji/service/aircon/" aria-label="エアコンの料金を詳しく見る">詳しく見る</a>
-            </li>
-            <li class="price-card">
-              <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
-              <h3>キッチン</h3>
-              <p class="price-card-price"><span class="price-card-num">13,500</span>円〜<span class="price-card-tax">（キャンペーン価格・税込）</span></p>
-              <a class="price-card-link" href="/mieru-osouji/service/kitchen/" aria-label="キッチンの料金を詳しく見る">詳しく見る</a>
-            </li>
-            <li class="price-card">
-              <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
-              <h3>レンジフード</h3>
-              <p class="price-card-price"><span class="price-card-num">12,000</span>円<span class="price-card-tax">（キャンペーン価格・税込）</span></p>
-              <a class="price-card-link" href="/mieru-osouji/service/range-hood/" aria-label="レンジフードの料金を詳しく見る">詳しく見る</a>
-            </li>
-            <li class="price-card">
-              <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
-              <h3>浴室</h3>
-              <p class="price-card-price"><span class="price-card-num">14,000</span>円<span class="price-card-tax">（キャンペーン価格・税込）</span></p>
-              <a class="price-card-link" href="/mieru-osouji/service/bathroom/" aria-label="浴室の料金を詳しく見る">詳しく見る</a>
-            </li>
-            <li class="price-card">
-              <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
-              <h3>洗面台</h3>
-              <p class="price-card-price"><span class="price-card-num">7,000</span>円<span class="price-card-tax">（キャンペーン価格・税込）</span></p>
-              <a class="price-card-link" href="/mieru-osouji/service/washbasin/" aria-label="洗面台の料金を詳しく見る">詳しく見る</a>
-            </li>
-            <li class="price-card">
-              <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
-              <h3>トイレ</h3>
-              <p class="price-card-price"><span class="price-card-num">7,000</span>円<span class="price-card-tax">（キャンペーン価格・税込）</span></p>
-              <a class="price-card-link" href="/mieru-osouji/service/toilet/" aria-label="トイレの料金を詳しく見る">詳しく見る</a>
-            </li>
-            <li class="price-card">
-              <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
-              <h3>洗濯機</h3>
-              <p class="price-card-price"><span class="price-card-num">12,000</span>円〜<span class="price-card-tax">（税込）</span></p>
-              <a class="price-card-link" href="/mieru-osouji/service/washing-machine/" aria-label="洗濯機の料金を詳しく見る">詳しく見る</a>
-            </li>
-            <li class="price-card">
-              <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
-              <h3>フロア</h3>
-              <p class="price-card-price"><span class="price-card-num">11,000</span>円<span class="price-card-tax">（キャンペーン価格・税込）</span></p>
-              <a class="price-card-link" href="/mieru-osouji/service/floor/" aria-label="フロアの料金を詳しく見る">詳しく見る</a>
-            </li>
-            <li class="price-card">
-              <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
-              <h3>窓・サッシ</h3>
-              <p class="price-card-price"><span class="price-card-num">4,000</span>円〜<span class="price-card-tax">（キャンペーン価格・税込）</span></p>
-              <a class="price-card-link" href="/mieru-osouji/service/window/" aria-label="窓・サッシの料金を詳しく見る">詳しく見る</a>
-            </li>
-            <li class="price-card">
-              <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
-              <h3>ベランダ・バルコニー</h3>
-              <p class="price-card-price"><span class="price-card-num">15,000</span>円<span class="price-card-tax">（キャンペーン価格・税込）</span></p>
-              <a class="price-card-link" href="/mieru-osouji/service/balcony/" aria-label="ベランダ・バルコニーの料金を詳しく見る">詳しく見る</a>
-            </li>
-            <li class="price-card">
-              <div class="price-card-photo"><div class="ph-img" role="img" aria-label="写真（準備中）">写真（準備中）</div></div>
-              <h3>空室清掃<small>1R〜</small></h3>
-              <p class="price-card-price"><span class="price-card-num">20,000</span>円〜<span class="price-card-tax">（税込）</span></p>
-              <a class="price-card-link" href="/mieru-osouji/service/vacant-room/" aria-label="空室清掃の料金を詳しく見る">詳しく見る</a>
-            </li>
-          </ul>
-          <button type="button" class="price-carousel-btn price-carousel-prev" data-carousel-prev aria-label="前の料金を見る">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
-          </button>
-          <button type="button" class="price-carousel-btn price-carousel-next" data-carousel-next aria-label="次の料金を見る">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
-          </button>
-        </div>
-        <p class="price-more fade-in"><a class="btn btn-outline btn-small" href="/mieru-osouji/service/">サービス一覧を見る</a></p>
+        <p class="section-eyebrow fade-in">INFORMATION</p>
+        <h2 class="section-title wipe">ご利用について</h2>
+        <ul class="cs-info stagger">
+          <li class="rise"><svg aria-hidden="true"><use href="#i-cash"/></svg><p class="cs-info-name">お支払い</p><p>現金のみ</p></li>
+          <li class="rise"><svg aria-hidden="true"><use href="#i-car"/></svg><p class="cs-info-name">出張料金</p><p>無料</p></li>
+          <li class="rise"><svg aria-hidden="true"><use href="#i-pin"/></svg><p class="cs-info-name">対応エリア</p><p>東京・千葉・<br>埼玉・神奈川</p></li>
+        </ul>
+        <p class="cs-note cs-note-center fade-in">※地域によっては、ご希望の日程でお伺いできない場合があります。</p>
       </div>
     </section>
 
-    <!-- 作業の流れ -->
-    <section class="section section-green" id="flow" data-ga-section="flow">
-      <div class="container">
-        <p class="section-eyebrow fade-in">FLOW</p>
-        <h2 class="section-title wipe">作業の流れ</h2>
-        <!-- サービス共通の流れ（エアコンの分解・洗浄などの細かい工程は、各サービスの料金案内ページで説明する） -->
-        <ol class="flow-list stagger">
-          <li class="flow-item rise">
-            <span class="flow-num">01</span>
-            <div class="flow-body">
-              <h3>ご相談（LINE・電話）</h3>
-              <p>お掃除したい場所と気になっていることを教えてください。わからないことがあっても大丈夫です。丁寧にヒアリングさせていただきます。</p>
-            </div>
-          </li>
-          <li class="flow-item rise">
-            <span class="flow-num">02</span>
-            <div class="flow-body">
-              <h3>お見積り・日程調整</h3>
-              <p>エアコンなどの機器の状態を、LINEの写真かお電話で確認します。総額の目安と作業予定時間、追加料金がかかる条件などをお伝えしてから、作業日を決定します。</p>
-            </div>
-          </li>
-          <li class="flow-item rise">
-            <span class="flow-num">03</span>
-            <div class="flow-body">
-              <h3>担当者のご紹介（作業前日まで）</h3>
-              <p>どんな作業員がくるかわからないのは不安なものです。みえる！おそうじではお客様にご安心いただくために担当者の名前・写真・ひとことをLINEでお送りします。</p>
-            </div>
-          </li>
-          <li class="flow-item rise">
-            <span class="flow-num">04</span>
-            <div class="flow-body">
-              <h3>状態の確認とご説明（作業当日）</h3>
-              <p>実際の状態を見て、作業内容をご説明します。追加の作業が必要なときは理由をお伝えしますが、無理におすすめすることはありませんのでご安心ください。</p>
-            </div>
-          </li>
-          <li class="flow-item rise">
-            <span class="flow-num">05</span>
-            <div class="flow-body">
-              <h3>作業</h3>
-              <p>まわりを汚さないよう養生してから作業します。お客様に満足いただけるよう丁寧に仕上げます。また工程ごとに写真を残します。</p>
-            </div>
-          </li>
-          <li class="flow-item rise">
-            <span class="flow-num">06</span>
-            <div class="flow-body">
-              <h3>仕上がりのご確認</h3>
-              <p>作業前と作業後の写真を見比べながら、一緒に仕上がりを確認します。作業中の写真もLINEでお送りしますので、あとからゆっくりご覧いただけます。</p>
-            </div>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- 作業事例 -->
-    <section class="section" id="cases" data-ga-section="cases">
-      <div class="container">
-        <p class="section-eyebrow fade-in">CASES</p>
-        <h2 class="section-title wipe">作業事例</h2>
-        <p class="section-lead fade-in">エアコンクリーニングの作業の様子を、作業前から洗浄後の水まで写真でご紹介します。</p>
-        <!-- エアコンクリーニングの事例を1件だけ、工程順の写真5枚で見せる。ほかの事例は /mieru-osouji/cases/ で紹介する。
-             TODO 画像：assets/img/case-before.jpg / case-masking.jpg / case-wash.jpg / case-after.jpg / case-water.jpg ができたら <img> に差し替え
-             TODO 文言：写真の下のひとことは仮の文。実際の事例に合わせて書き換える -->
-        <ol class="case-steps stagger">
-          <li class="case-step rise">
-            <figure>
-              <div class="ph-img" role="img" aria-label="作業前の写真（準備中）">作業前（準備中）</div>
-              <figcaption><span class="case-step-label">作業前</span>吹き出し口の奥に、黒いカビが見えます。</figcaption>
-            </figure>
-          </li>
-          <li class="case-step rise">
-            <figure>
-              <div class="ph-img" role="img" aria-label="養生の写真（準備中）">養生（準備中）</div>
-              <figcaption><span class="case-step-label">養生</span>壁や床が濡れないよう、シートで覆います。</figcaption>
-            </figure>
-          </li>
-          <li class="case-step rise">
-            <figure>
-              <div class="ph-img" role="img" aria-label="分解・洗浄の写真（準備中）">分解・洗浄（準備中）</div>
-              <figcaption><span class="case-step-label">分解・洗浄</span>専用の機材を使って洗浄します。</figcaption>
-            </figure>
-          </li>
-          <li class="case-step rise">
-            <figure>
-              <div class="ph-img" role="img" aria-label="作業後の写真（準備中）">作業後（準備中）</div>
-              <figcaption><span class="case-step-label">作業後</span>吹き出し口の奥まで、カビが落ちました。</figcaption>
-            </figure>
-          </li>
-          <li class="case-step rise">
-            <figure>
-              <div class="ph-img" role="img" aria-label="洗浄後の水の写真（準備中）">洗浄後の水（準備中）</div>
-              <figcaption><span class="case-step-label">洗浄後の水</span>エアコンから出てきた、汚れた水です。</figcaption>
-            </figure>
-          </li>
-        </ol>
-        <p class="case-more fade-in"><a class="btn btn-outline btn-small" href="/mieru-osouji/cases/">ほかの作業事例を見る</a></p>
-      </div>
-    </section>
-
-    <!-- ご利用の前に（注意事項） -->
-    <section class="section section-green" id="info" data-ga-section="info">
-      <div class="container">
-        <p class="section-eyebrow fade-in">BEFORE USE</p>
-        <h2 class="section-title wipe">ご利用の前に</h2>
-        <!-- 注意事項を内容ごとに4枚のカードにまとめる。他社の文面はそのまま使わない。キャンセル料を変えたらFAQもそろえる -->
-        <dl class="info-list stagger">
-          <div class="info-item rise">
-            <dt>お借りするもの・ご準備いただくこと</dt>
-            <dd>
-              <ul class="info-points">
-                <li>作業中、水道と電源をお借りさせていただきます。また、お風呂場などのスペースをお借りさせていただく場合がございます。</li>
-                <li>壊れやすい物や貴重品は、事前に移動をお願いいたします。</li>
-                <li>ペットはケージや別のお部屋に移動をお願いいたします。</li>
-              </ul>
-            </dd>
-          </div>
-          <div class="info-item rise">
-            <dt>お受けできない場合</dt>
-            <dd>
-              <!-- 当日作業できない場合の扱い（2026-11-17決定）：お客様都合は当日キャンセル扱い（100%）、当店判断は無料。
-                   内容を変えたらFAQと /mieru-osouji/service/ 以下もそろえる。
-                   TODO 士業の確認：消費者契約法9条（平均的な損害）の観点で、公開前に専門家のチェックを受ける -->
-              <ul class="info-points">
-                <li>故障や不具合がある機器、分解が難しい機器、安全に作業できない高い場所は、お受けできない場合がございます。</li>
-                <li>部品の劣化が進み、作業によって状態が悪くなるおそれがある機器は、お受けできない場合がございます。</li>
-                <li>製造から10年以上たったエアコンや、部品の供給が終わった機器は、お受けできない場合がございます。</li>
-                <li>お伺いしたあと、お客様のご都合で作業できなかった場合（ご不在、事前にお伺いした内容と実際の機器・設置状況が異なる場合など）は、当日キャンセルの扱いとなります。</li>
-                <li>当店の判断でお受けできないとお伝えする場合は、料金はいただきません。</li>
-              </ul>
-            </dd>
-          </div>
-          <div class="info-item rise">
-            <dt>作業と仕上がり</dt>
-            <dd>
-              <ul class="info-points">
-                <li>機器の状態や設置場所によって、作業の時間や内容が変わる場合がございます。</li>
-                <li>汚れの状態によっては、すべてを取り除けない場合がございます。</li>
-                <li>作業の記録として、作業前・作業中・作業後の写真を撮影いたします。事例として掲載する場合は、事前にお客様の了承をいただきます。</li>
-              </ul>
-            </dd>
-          </div>
-          <div class="info-item rise">
-            <dt>作業後・キャンセル</dt>
-            <dd>
-              <ul class="info-points">
-                <li>仕上がりや作業後の不具合は、作業日の翌日から7日以内にご連絡ください。状況を確認してご対応いたします。</li>
-                <li>キャンセル・日程変更は、作業日の3日前の23:59までのご連絡であれば無料です。それ以降は、お見積り金額（税込）に対して、2日前は30%、前日は50%、当日は100%を申し受けます。</li>
-              </ul>
-            </dd>
-          </div>
-          <!-- TODO 損害保険：加入後に「損害保険」の項目をここに追加する（加入するまで表示しない） -->
-        </dl>
-      </div>
-    </section>
-
-    <!-- 法人のお客様へ（ヘッダーの「法人のお客様へ」からのリンク先） -->
-    <section class="section" id="business" data-ga-section="other_menu">
-      <div class="container">
-        <p class="section-eyebrow fade-in">FOR BUSINESS</p>
-        <h2 class="section-title wipe">法人のお客様へ</h2>
-        <!-- TODO 法人メニュー：オフィス・店舗の清掃、定期清掃を始めたら、この説明文とヘッダーの文言に追加する -->
-        <p class="section-lead business-lead fade-in">不動産管理会社さま・オーナーさまからの、空室清掃のご依頼を承っています。<br class="br-pc">詳しい内容は、法人のお客様向けページでご案内します。</p>
-        <!-- TODO 法人ページ：/mieru-osouji/business/ は未作成。ページを作るまでこのリンクは404になる -->
-        <p class="business-cta fade-in"><a href="/mieru-osouji/business/" class="btn btn-outline btn-small">法人のお客様向けページ</a></p>
-      </div>
-    </section>
-
-    <!-- 代表紹介（サービスの条件をひととおり読んだあと、よくある質問・お問い合わせの前に人を見せる） -->
-    <section class="section section-green" id="profile" data-ga-section="profile">
-      <div class="container">
-        <p class="section-eyebrow fade-in">PROFILE</p>
-        <h2 class="section-title wipe">代表紹介</h2>
-        <div class="profile">
-          <div class="profile-photo rise">
-            <img src="/assets/images/daihyo.png" alt="よりそいコネクト 代表 戸梶 凌" width="200" height="200" loading="lazy">
-            <p class="profile-name">戸梶 凌</p>
-            <p class="profile-role">よりそいコネクト 代表</p>
-          </div>
-          <div class="profile-body fade-in">
-            <p>みえる！おそうじを運営する、よりそいコネクト代表の戸梶です。高齢者向けの定期電話サービス「もしもしコール」も運営しています。</p>
-            <p>掃除が好きで、汚れが落ちてきれいになっていくのを見ると、うれしくなります。その「きれいになった」を、お客様にも一緒に見て安心していただきたい。そう考えて、料金・作業・担当者・仕上がりをすべてお見せすることにしました。</p>
-            <p>まだ始めたばかりのサービスで、実績は多くありません。だからこそ、作業の写真や洗浄後の水で、どんな作業をしたかをご自身で確かめていただけるようにしています。</p>
-            <p>わからないことや気になることは、作業の前でも後でも、LINEかお電話でお気軽にお聞きください。</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- よくある質問 -->
-    <section class="section" id="faq" data-ga-section="faq">
-      <div class="container">
-        <p class="section-eyebrow fade-in">FAQ</p>
-        <h2 class="section-title wipe">よくある質問</h2>
-        <div class="faq-list fade-in">
-          <!-- キャンセル料や出張料金を変えたら「ご利用の前に」もそろえる
-               TODO 支払い方法：カードブランド・QR決済の種類が決まったら回答に追記する（/service/ のお支払いは枠だけ）
-               TODO 損害保険：加入後に「作業中に壊れた場合」の質問を追加する（加入するまで表示しない） -->
-          <details class="faq-item">
-            <summary>追加料金はかかりますか？</summary>
-            <p class="faq-a">お見積りの金額が基本ですが、例えばエアコンの場合は室外機やドレンホースの洗浄、付属品の取り付けなどで追加料金がかかる場合があります。追加の作業が必要なときは、作業の前に理由と金額をお伝えし、ご了承いただいてから行います。ご了承なく料金を追加することはありません。</p>
-            <div class="faq-more"><a href="/mieru-osouji/service/">料金と追加料金の条件はこちら</a></div>
-          </details>
-          <details class="faq-item">
-            <summary>支払い方法は何がありますか？</summary>
-            <p class="faq-a">現金、クレジットカード、銀行振込、QR決済に対応しています。お支払いは作業当日、基本的に作業が終わったあとにお願いしています。銀行振込の振込手数料は、お客様のご負担となります。</p>
-          </details>
-          <details class="faq-item">
-            <summary>キャンセルはできますか？</summary>
-            <p class="faq-a">できます。作業日の3日前の23:59までのご連絡は無料です。それ以降は、お見積り金額（税込）に対して、2日前は30%、前日は50%、当日は100%を申し受けます。日程変更も同じ扱いです。</p>
-          </details>
-          <details class="faq-item">
-            <summary>型番がわからない、写真を送れないときは？</summary>
-            <p class="faq-a">お電話でお問い合わせいただいて大丈夫です。お買い上げの時期やメーカー、品名、調子の悪いところがないかをお伺いします。詳しい状況は当日に機器を確認して判断させていただきます。事前にお伺いした内容と実際の状況が異なり作業できなかった場合は、当日キャンセルの扱いとなりますので、分かる範囲で正確にお伝えください。当店の判断でお受けできないとお伝えする場合は、料金はいただきません。</p>
-          </details>
-          <details class="faq-item">
-            <summary>作業時間はどのくらいですか？</summary>
-            <p class="faq-a">例えば壁掛けエアコン1台で、2時間前後が目安です。機種や汚れ具合によって前後します。お見積りのときに、作業予定時間もお伝えします。</p>
-            <div class="faq-more"><a href="#price">お掃除箇所ごとの紹介はこちら</a></div>
-          </details>
-          <details class="faq-item">
-            <summary>作業中は立ち会いが必要ですか？</summary>
-            <p class="faq-a">作業の開始時と終了時（仕上がりのご確認）は立ち会いをお願いしています。作業中は、ほかのお部屋でお過ごしいただいて構いません。気になる場合は、作業の様子をそばでご覧いただくこともできます。</p>
-          </details>
-          <details class="faq-item">
-            <summary>家に人を入れるのが少し不安です。</summary>
-            <p class="faq-a">ご不安な気持ちはよくわかります。作業の前日までに、担当者の名前・写真・ひとことをLINEでお送りします。貴重品は別のお部屋に移しておいていただくと安心です。作業の様子をスマートフォンなどで録画していただいても構いません。</p>
-          </details>
-          <details class="faq-item">
-            <summary>土日祝日も作業できますか？</summary>
-            <p class="faq-a">はい、土日祝日もお伺いできます。ご希望の日程をLINEかお電話でお知らせください。</p>
-          </details>
-          <details class="faq-item">
-            <summary>ここに載っていない場所のお掃除も頼めますか？</summary>
-            <p class="faq-a">内容によってはお受けできる場合がございます。まずはLINEかお電話でご相談ください。</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- お問い合わせ -->
+    <!-- お問い合わせ（準備中は電話のみ。もしもしコールの担当者直通の携帯を仮で使う） -->
     <section class="section section-dark" id="contact" data-ga-section="contact_cta">
       <div class="container">
         <p class="section-eyebrow fade-in">CONTACT</p>
         <h2 class="section-title wipe">ご相談・お見積り</h2>
-        <p class="section-lead fade-in">LINEまたはお電話で受け付けています。</p>
-        <div class="contact-btns fade-in">
-          <a href="[LINE_URL_CLEANING]" class="btn btn-line">LINEで相談する</a>
-          <a href="tel:[PHONE_CLEANING]" class="btn btn-ghost">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
-            [PHONE_CLEANING]
+        <p class="section-lead fade-in">ホームページの公開前でも、お電話でご相談・ご依頼を受け付けています。</p>
+        <div class="contact-btns cs-contact-btns fade-in">
+          <a href="tel:08029685824" class="btn btn-primary cs-tel">
+            <svg aria-hidden="true"><use href="#i-tel"/></svg>080-2968-5824
           </a>
         </div>
         <p class="contact-meta">
-          LINE 24時間受付中／お電話 9:00〜19:00<br>
-          LINEでのお問い合わせは返信にお時間をいただく場合がございます。（翌営業日中にはご返信いたします）<br>
+          お電話 9:00〜19:00<br>
           作業中は電話に出られない場合があります。その際は折り返しお電話します。
         </p>
       </div>
@@ -678,27 +282,16 @@
 
   <footer class="site-footer">
     <div class="container">
-      <!-- PCは 左：サービス名／中央：ページ内メニュー／右：運営 の3列（スマホは縦1列） -->
       <div class="footer-main">
         <div class="footer-brand">
           <p class="footer-logo">みえる！おそうじ</p>
           <p>東京・千葉・埼玉・神奈川</p>
         </div>
-        <nav class="footer-nav" aria-label="フッターナビゲーション">
-          <ul>
-            <li><a href="/mieru-osouji/service/">サービス一覧</a></li>
-            <li><a href="#business">法人のお客様へ</a></li>
-            <li><a href="#price">料金プラン</a></li>
-            <li><a href="#cases">作業事例</a></li>
-            <li><a href="#faq">よくある質問</a></li>
-          </ul>
-        </nav>
         <div class="footer-operator">
           <p class="footer-operator-name">運営：<a href="/company/">よりそいコネクト</a></p>
           <ul>
             <li><a href="/company/">会社概要</a></li>
             <li><a href="/moshimoshi-call/">もしもしコール</a></li>
-            <!-- TODO プライバシー：サイトにプライバシーポリシーのページがまだない。作成したらここにリンクを追加 -->
           </ul>
         </div>
       </div>
@@ -706,16 +299,14 @@
     </div>
   </footer>
 
-  <!-- スマホ用 固定CTAバー -->
-  <div class="cta-bar">
-    <a href="[LINE_URL_CLEANING]" class="btn btn-line">LINEで相談</a>
-    <a href="tel:[PHONE_CLEANING]" class="btn btn-outline">電話する</a>
+  <!-- スマホ用 固定CTAバー（準備中は電話だけ） -->
+  <div class="cta-bar cs-cta-bar">
+    <a href="tel:08029685824" class="btn btn-primary">電話で相談する</a>
   </div>
 
   <script src="/assets/js/site.js" defer></script>
   <script src="/mieru-osouji/assets/js/header.js?v=20261119" defer></script>
   <script src="/mieru-osouji/assets/js/hero.js" defer></script>
-  <script src="/mieru-osouji/assets/js/price-carousel.js" defer></script>
   <script src="/mieru-osouji/assets/js/bubbles.js?v=20261105b" defer></script>
   <script src="/assets/js/analytics.js" defer></script>
 </body>
