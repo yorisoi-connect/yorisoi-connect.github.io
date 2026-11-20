@@ -1598,31 +1598,41 @@ html:not(.js) .ac-panel + .ac-panel {
 
 .work-tiles {
   display: grid;
-  grid-auto-rows: 1fr;              /* どの行も同じ高さ（文字が長いタイルに合わせて全部そろう） */
   grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 8px;
   padding: 0;
   list-style: none;
 }
 
+/* タイルは正方形。アイコンと文字は位置を決めて置く（文字が1行でも2行でも、アイコンの位置とタイルの大きさは変わらない） */
 .work-tiles li {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;   /* アイコンの高さをそろえる（文字が1行でも2行でも、アイコンは同じ位置） */
-  align-self: stretch;           /* 文字が長いタイルがあっても、同じ行のタイルは同じ大きさに */
-  gap: 6px;
   aspect-ratio: 1 / 1;
-  padding: 13% 6px 6px;
+  min-height: 0;
+  overflow: hidden;
   border-radius: 12px;
   --tile-bg: var(--color-accent-dark);   /* 青地に白（黄色地は2026-11-19に試して青に戻した）。パーツ洗浄の洗い桶の塗りにも使う */
   background: var(--tile-bg);
-  font-size: 12.5px;
+  font-size: 12px;
+  letter-spacing: -0.02em;        /* 8列でも「コンロ・五徳」などが1行に収まるように */
   font-weight: 700;
   line-height: 1.35;
   text-align: center;
   color: #fff;
+}
+
+.work-tiles li > svg {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.work-tiles .wt-label {
+  position: absolute;
+  top: 58%;
+  left: 2px;
+  right: 2px;
 }
 
 .work-tiles svg * {
@@ -1746,7 +1756,8 @@ html:not(.js) .ac-panel + .ac-panel {
   line-height: 1.7;
 }
 
-/* サービス内容のタイルが8枚のとき（レンジフード：作業前・作業後のご説明を分けた） */
+/* サービス内容のタイルは、どのページも8列（＝同じ大きさ）にそろえる。
+   浴室（10枚）は作業8枚が1段目、ご説明2枚が2段目になる */
 .work-tiles.work-tiles-8 {
   grid-template-columns: repeat(8, minmax(0, 1fr));
 }
@@ -2039,7 +2050,6 @@ html:not(.js) .price-jump {
 
   .work-tiles li {
     font-size: 10.5px;
-    gap: 4px;
   }
 
   .work-tiles svg {
@@ -2437,3 +2447,4 @@ html:not(.js) .price-jump {
     font-size: 14px;
   }
 }
+
