@@ -1598,6 +1598,7 @@ html:not(.js) .ac-panel + .ac-panel {
 
 .work-tiles {
   display: grid;
+  grid-auto-rows: 1fr;              /* どの行も同じ高さ（文字が長いタイルに合わせて全部そろう） */
   grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 8px;
   padding: 0;
@@ -1610,6 +1611,7 @@ html:not(.js) .ac-panel + .ac-panel {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;   /* アイコンの高さをそろえる（文字が1行でも2行でも、アイコンは同じ位置） */
+  align-self: stretch;           /* 文字が長いタイルがあっても、同じ行のタイルは同じ大きさに */
   gap: 6px;
   aspect-ratio: 1 / 1;
   padding: 13% 6px 6px;
@@ -1742,6 +1744,17 @@ html:not(.js) .ac-panel + .ac-panel {
   margin-top: 6px;
   font-size: 13.5px;
   line-height: 1.7;
+}
+
+/* サービス内容のタイルが8枚のとき（レンジフード：作業前・作業後のご説明を分けた） */
+.work-tiles.work-tiles-8 {
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+}
+
+@media (max-width: 600px) {
+  .work-tiles.work-tiles-8 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 /* --- 「料金を見る」固定ボタン（右下。コテコテ版：ギザギザのシール＋ずらした黒い影、
@@ -2306,7 +2319,7 @@ html:not(.js) .price-jump {
 
 /* 基本パックのサービス内容（6枚）は、PCでは6列 */
 .kc-work-tiles {
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(7, minmax(0, 1fr));
 }
 
 /* 追加できる箇所：点線の枠＋右上の「＋」。下に料金 */
@@ -2408,7 +2421,7 @@ html:not(.js) .price-jump {
 
 @media (max-width: 600px) {
   .kc-work-tiles {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .add-tiles {
