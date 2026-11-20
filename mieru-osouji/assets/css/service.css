@@ -2282,3 +2282,145 @@ html:not(.js) .price-jump {
     gap: 22px;
   }
 }
+
+/* ==========================================================================
+   12. 基本パック＋追加できる箇所／カスタムパック（キッチンで作った形。2026-11-20）
+   ========================================================================== */
+/* タブは2つ。下に小さな説明を添える */
+.kc-tablist {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.kc-tablist button {
+  padding: 14px 6px 12px;
+  font-size: 16px;
+}
+
+.kc-tablist button small {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+/* 基本パックのサービス内容（6枚）は、PCでは6列 */
+.kc-work-tiles {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+/* 追加できる箇所：点線の枠＋右上の「＋」。下に料金 */
+.add-box {
+  margin-top: 20px;
+  padding: 24px 22px 22px;
+  border-radius: var(--radius-card);
+  background: var(--color-bg-tint);
+}
+
+.add-lead {
+  margin: -6px 0 14px;
+  font-size: 14px;
+  color: var(--color-text-light);
+}
+
+.add-tiles {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  padding: 0;
+  list-style: none;
+}
+
+.add-tiles li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 6px 12px;
+  border: 1.5px dashed var(--color-accent);
+  border-radius: 12px;
+  background: #fff;
+  text-align: center;
+}
+
+.add-tiles svg {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 2px;
+  fill: none;
+  stroke: var(--color-accent-dark);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.add-mark {
+  position: absolute;
+  top: -9px;
+  right: -9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-accent-dark);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+}
+
+.add-name {
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--color-deep);
+}
+
+.add-name small {
+  font-size: 10.5px;
+  font-weight: 500;
+}
+
+.add-price {
+  margin-top: auto;
+  padding-top: 4px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-accent-dark);
+}
+
+.add-price small {
+  font-size: 11px;
+}
+
+.add-was {
+  font-size: 10.5px;
+  color: var(--color-text-light);
+}
+
+/* 基本パックのお得の一言（料金カードの中） */
+.ac-price-body .pack-save {
+  margin-top: 4px;
+}
+
+@media (max-width: 600px) {
+  .kc-work-tiles {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .add-tiles {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px 8px;
+  }
+
+  .add-box {
+    padding: 20px 14px 16px;
+  }
+
+  .kc-tablist button {
+    font-size: 14px;
+  }
+}
