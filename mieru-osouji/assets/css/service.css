@@ -2637,3 +2637,10 @@ html:not(.js) .price-jump {
     aspect-ratio: 1 / 1;
   }
 }
+
+/* サービス内容のタイルの下の小さな注記（フロアの「ワックスがけは洗浄＋ワックスのときだけ」など。2026-11-21） */
+.work-note-small {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--color-text-light);
+}
