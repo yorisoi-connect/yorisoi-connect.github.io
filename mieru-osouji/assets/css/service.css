@@ -1093,6 +1093,20 @@
   margin-top: 10px;
 }
 
+/* 注釈（※1）。本文の番号は小さく上に、注釈は段落の下に小さく（2026-11-21 トイレで追加） */
+.fn-ref {
+  font-size: 0.7em;
+  vertical-align: super;
+  line-height: 0;
+  margin-left: 1px;
+}
+
+.ac-intro-text .fn-note {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--color-text-light);
+}
+
 /* 写真の上の部品名の札 */
 .ac-pin {
   position: absolute;
@@ -2455,6 +2469,7 @@ html:not(.js) .price-jump {
    ========================================================================== */
 .reset-lead,
 .reset-after {
+  word-break: auto-phrase;   /* 「できま／す。」のような折り返しを防ぐ（対応ブラウザのみ） */
   max-width: 720px;
   margin: 0 auto;
   text-align: center;
