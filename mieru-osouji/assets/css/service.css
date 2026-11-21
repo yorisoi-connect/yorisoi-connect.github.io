@@ -2644,3 +2644,101 @@ html:not(.js) .price-jump {
   font-size: 13px;
   color: var(--color-text-light);
 }
+
+/* オプションの料金の単位（窓の雨戸「／1枚」など。2026-11-21） */
+.opt-price .opt-unit {
+  margin-left: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-light);
+}
+
+/* --- 2か所目からの割引カード（窓で作った形。2026-11-21）
+   からし色は目印なので、面には大きい文字だけを置く（細い線・小さい文字は白い側に） --- */
+.deal-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 22px;
+  max-width: 780px;
+  margin: 20px auto 0;
+  padding: 16px 22px 16px 16px;
+  background: #fff;
+  border: 2px solid var(--color-accent-dark);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.deal-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: var(--color-deep);
+  font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
+  font-weight: 800;
+  line-height: 1.15;
+  transform: rotate(-6deg);
+}
+
+.deal-badge-top,
+.deal-badge-bottom {
+  font-size: 17px;
+}
+
+.deal-badge-num {
+  font-size: 34px;
+  letter-spacing: -0.02em;
+}
+
+.deal-badge-num small {
+  font-size: 18px;
+}
+
+.deal-title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.55;
+  color: var(--color-deep);
+}
+
+.deal-example {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--color-text);
+}
+
+.deal-was {
+  text-decoration: line-through;
+  color: var(--color-text-light);
+}
+
+.deal-arrow {
+  margin: 0 8px;
+  color: var(--color-accent-dark);
+  font-weight: 700;
+}
+
+.deal-example strong {
+  font-size: 22px;
+  color: var(--color-accent-dark);
+}
+
+@media (max-width: 600px) {
+  .deal-card {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 14px;
+    padding: 20px 16px;
+    text-align: center;
+  }
+
+  .deal-title {
+    font-size: 16px;
+  }
+}
