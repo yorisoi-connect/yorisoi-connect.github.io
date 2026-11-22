@@ -2742,3 +2742,14 @@ html:not(.js) .price-jump {
     font-size: 16px;
   }
 }
+
+/* 別料金のカードの「〇〇の料金を見る」リンク（空室清掃。2026-11-22） */
+.opt-link {
+  margin: 2px 0 4px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.opt-link a {
+  color: var(--color-accent-dark);
+}
