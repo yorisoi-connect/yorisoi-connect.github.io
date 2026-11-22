@@ -78,25 +78,6 @@
   }
 }
 
-/* 更新日（料金を確認した日）。ページ上部に小さな札で置く */
-.page-updated {
-  display: table;
-  margin: 20px auto 0;
-  padding: 3px 16px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-btn);
-  background: #fff;
-  font-size: 13px;
-  color: var(--color-text-light);
-}
-
-.page-lead {
-  max-width: 44em;
-  margin: 20px auto 0;
-  text-align: center;
-  color: var(--color-text-light);
-}
-
 /* --------------------------------------------------------------------------
    2. キャンペーンバナー（サービス一覧の家の上。大きく目立たせる）
    泡（.bubble）は style.css のものを使う
@@ -159,23 +140,6 @@
   font-size: 15px;
   font-weight: 700;
   color: var(--color-deep);
-}
-
-/* --------------------------------------------------------------------------
-   3. キャンペーンのお知らせ（小さな注記。一覧・詳細ページ共通）
-   -------------------------------------------------------------------------- */
-.campaign-note {
-  max-width: 720px;
-  margin: 0 auto 20px;
-  padding: 14px 20px;
-  border-radius: 12px;
-  background: var(--color-accent-light);
-  font-size: 14px;
-  color: var(--color-text);
-}
-
-.campaign-note strong {
-  color: var(--color-accent-dark);
 }
 
 /* --------------------------------------------------------------------------
@@ -451,87 +415,8 @@
   margin-top: 8px;
 }
 
-/* 詳細ページの計算例セクションの注釈（カードの下） */
-.calc-note {
-  margin-top: 16px;
-  text-align: center;
-  font-size: 13px;
-  color: var(--color-text-light);
-}
-
-/* 詳細ページの計算例の注記：カードの左端にそろえて左寄せ */
-.calc-note-left {
-  max-width: 920px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: left;
-}
-
 .calc-fold .calc-list {
   padding: 12px 16px 16px;
-}
-
-/* --------------------------------------------------------------------------
-   4. 料金カード（詳細ページ）
-   -------------------------------------------------------------------------- */
-.svc-card {
-  padding: 24px 24px 22px;
-  background: #fff;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-card);
-}
-
-/* 詳細ページでは1枚だけを中央に置く */
-.svc-card-detail {
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-.svc-head {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.svc-icon {
-  display: flex;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
-  background: var(--color-accent-light);
-}
-
-.svc-icon svg {
-  width: 26px;
-  height: 26px;
-  fill: none;
-  stroke: var(--color-accent-dark);
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.svc-head h3 {
-  font-size: 18px;
-  line-height: 1.4;
-  color: var(--color-deep);
-}
-
-/* エアコンの「お掃除機能なし／付き」などの小見出し */
-.svc-subhead {
-  display: table;
-  margin: 14px 0 6px;
-  padding: 2px 12px;
-  border-radius: var(--radius-btn);
-  background: var(--color-accent-light);
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--color-accent-dark);
 }
 
 /* 単位（左）と価格（右）の行 */
@@ -578,140 +463,6 @@
 .price-was {
   margin-left: 6px;
   font-size: 12px;
-  color: var(--color-text-light);
-}
-
-/* 含まれる作業（価格の下に1行） */
-.svc-included {
-  margin-top: 14px;
-  padding: 8px 14px;
-  border-radius: 10px;
-  background: var(--color-bg-tint);
-  font-size: 13px;
-  color: var(--color-text);
-}
-
-/* 準備中のあいだは文字を薄くしておく（公開前に必ず書き換える） */
-.svc-included-tbd {
-  color: var(--color-text-light);
-}
-
-/* カードの中の注意書き */
-.svc-notes {
-  margin-top: 10px;
-  font-size: 13px;
-  color: var(--color-text-light);
-}
-
-.svc-notes li {
-  position: relative;
-  padding-left: 1em;
-}
-
-.svc-notes li::before {
-  content: "";
-  position: absolute;
-  top: 0.75em;
-  left: 0.1em;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--color-accent);
-}
-
-.svc-notes li + li {
-  margin-top: 4px;
-}
-
-/* 詳細ページへのリンク（カードの右下） */
-.svc-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  margin-top: 14px;
-  padding: 5px 16px;
-  border: 1px solid var(--color-accent);
-  border-radius: var(--radius-btn);
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--color-accent-dark);
-  text-decoration: none;
-  transition: background-color 0.2s ease;
-}
-
-.svc-link::after {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-top: 2px solid currentColor;
-  border-right: 2px solid currentColor;
-  transform: rotate(45deg);
-}
-
-.svc-link:hover {
-  background: var(--color-accent-light);
-}
-
-/* 詳細ページの「オプション」などの小さな見出しと説明 */
-.price-subtitle {
-  margin-top: 48px;
-  font-size: 20px;
-  font-weight: 700;
-  text-align: center;
-  color: var(--color-deep);
-}
-
-.price-subtext {
-  margin: 8px auto 20px;
-  max-width: 36em;
-  text-align: center;
-  font-size: 14px;
-  color: var(--color-text-light);
-}
-
-/* --------------------------------------------------------------------------
-   5. 窓の種類（図解つきのカード）
-   -------------------------------------------------------------------------- */
-.wtype-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-bottom: 20px;
-}
-
-.wtype-card {
-  padding: 24px 22px;
-  background: #fff;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-card);
-}
-
-/* 窓の線画（床の線＋窓の枠）。色は緑（濃） */
-.wtype-fig-wrap {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 12px;
-  padding: 10px 0;
-  border-radius: 12px;
-  background: var(--color-bg-tint);
-  color: var(--color-accent-dark);
-}
-
-.wtype-fig {
-  width: 96px;
-  height: auto;
-}
-
-.wtype-card h3 {
-  font-size: 17px;
-  line-height: 1.4;
-  color: var(--color-deep);
-}
-
-.wtype-desc {
-  margin-bottom: 8px;
-  font-size: 13px;
   color: var(--color-text-light);
 }
 
@@ -940,11 +691,7 @@
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .wtype-grid {
-    grid-template-columns: 1fr;
-    max-width: 560px;
-    margin: 0 auto 20px;
-  }
+  
 
   .calc-list {
     grid-template-columns: 1fr;
@@ -957,9 +704,7 @@
     padding: 28px 0 48px;
   }
 
-  .page-lead {
-    text-align: left;
-  }
+  
 
   .house-tiles {
     grid-template-columns: repeat(2, 1fr);
@@ -987,9 +732,7 @@
     font-size: 11px;
   }
 
-  .svc-card {
-    padding: 20px 18px;
-  }
+  
 
   /* スマホでは単位と価格を上下に分け、価格を右にそろえる */
   .price-row {
@@ -2096,165 +1839,6 @@ html:not(.js) .price-jump {
   }
 }
 
-/* ==========================================================================
-   11. 場所ごとの料金とパック（キッチンで作った形。2026-11-20）
-   ========================================================================== */
-/* 場所ごとの料金：1枚のカードに2列（左の列から順に上から下へ）で並べる */
-.kc-items {
-  margin-top: 20px;
-  padding: 10px 24px;
-}
-
-.kc-item-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-template-rows: repeat(5, auto);
-  grid-auto-flow: column;
-  column-gap: 40px;
-}
-
-.kc-item-list .price-row:nth-child(6) {
-  border-top: none;
-}
-
-.kc-item-list .price-row dt {
-  font-size: 14px;
-}
-
-.kc-item-list .price-now {
-  font-size: 19px;
-}
-
-/* スマホだけで改行する */
-.br-sp {
-  display: none;
-}
-
-/* すべてのパックに共通のこと（説明付き・追加できる）を、パックの上に目印として並べる */
-.pack-perks {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-  margin: 18px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.pack-perks li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  border-radius: 12px;
-  background: #fff;
-  box-shadow: inset 0 0 0 1.5px var(--color-accent-dark);
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.5;
-  color: var(--color-accent-dark);
-}
-
-.pack-perks svg {
-  flex-shrink: 0;
-  width: 30px;
-  height: 30px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-/* パック：2列のカード。おすすめは紺の枠＋からし色の札 */
-.pack-cards {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 26px 16px;
-  margin-top: 30px;
-  padding: 0;
-  list-style: none;
-}
-
-.pack-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  padding: 22px 22px 18px;
-  background: #fff;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-card);
-}
-
-.pack-card.is-recommended {
-  border: 2px solid var(--color-accent-dark);
-}
-
-.pack-badge {
-  position: absolute;
-  top: -13px;
-  left: 18px;
-  padding: 3px 14px;
-  border-radius: var(--radius-btn);
-  background: var(--color-primary);
-  font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
-  font-size: 13px;
-  font-weight: 800;
-  color: var(--color-deep);
-  box-shadow: 0 2px 6px rgba(28, 52, 70, 0.15);
-}
-
-.pack-card h4 {
-  font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
-  font-size: 19px;
-  font-weight: 800;
-  color: var(--color-deep);
-}
-
-/* 中身の場所を小さな札で並べる */
-.pack-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin: 12px 0 14px;
-  padding: 0;
-  list-style: none;
-}
-
-.pack-chips li {
-  padding: 3px 10px;
-  border-radius: 8px;
-  background: var(--color-accent-light);
-  font-size: 12.5px;
-  font-weight: 700;
-  color: var(--color-accent-dark);
-}
-
-/* みえる！おそうじならではの「作業前後のご説明」は白地＋紺の枠（サービス内容のタイルとそろえる） */
-.pack-chips li.is-feature {
-  background: #fff;
-  box-shadow: inset 0 0 0 1.5px var(--color-accent-dark);
-}
-
-.pack-text {
-  margin: 10px 0 14px;
-  font-size: 14px;
-}
-
-.pack-price {
-  margin-top: auto;
-}
-
-.pack-price .price-now {
-  font-size: 26px;
-}
-
-.pack-price-label {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--color-accent-dark);
-}
-
 .pack-save {
   margin-top: 6px;
   padding-top: 8px;
@@ -2266,12 +1850,6 @@ html:not(.js) .price-jump {
 .pack-save strong {
   color: var(--color-number);
   font-size: 14px;
-}
-
-/* 目印が1つだけのときは中央に */
-.pack-perks-single {
-  grid-template-columns: minmax(0, 420px);
-  justify-content: center;
 }
 
 /* 計算例の下の「別途かかる料金」は、計算例と同じ幅に */
@@ -2289,35 +1867,6 @@ html:not(.js) .price-jump {
 .opt-cards-single {
   grid-template-columns: minmax(0, 520px);
   justify-content: center;
-}
-
-@media (max-width: 600px) {
-  .pack-cards,
-  .pack-perks {
-    grid-template-columns: 1fr;
-  }
-
-  .kc-items {
-    padding: 6px 18px;
-  }
-
-  .kc-item-list {
-    grid-template-columns: 1fr;
-    grid-template-rows: none;
-    grid-auto-flow: row;
-  }
-
-  .kc-item-list .price-row:nth-child(6) {
-    border-top: 1px dashed var(--color-border);
-  }
-
-  .br-sp {
-    display: inline;
-  }
-
-  .pack-cards {
-    gap: 22px;
-  }
 }
 
 /* ==========================================================================
@@ -2339,11 +1888,6 @@ html:not(.js) .price-jump {
   font-size: 12px;
   font-weight: 500;
   opacity: 0.85;
-}
-
-/* 基本パックのサービス内容（6枚）は、PCでは6列 */
-.kc-work-tiles {
-  grid-template-columns: repeat(7, minmax(0, 1fr));
 }
 
 /* 追加できる箇所：点線の枠＋右上の「＋」。下に料金 */
@@ -2444,9 +1988,7 @@ html:not(.js) .price-jump {
 }
 
 @media (max-width: 600px) {
-  .kc-work-tiles {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
+  
 
   .add-tiles {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -2461,7 +2003,6 @@ html:not(.js) .price-jump {
     font-size: 14px;
   }
 }
-
 
 /* ==========================================================================
    13. 年に1回のリセット（洗面台で作った形。2026-11-20）
