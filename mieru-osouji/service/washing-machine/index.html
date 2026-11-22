@@ -5,9 +5,6 @@
   <!--
     ======================================================================
     プレースホルダー一覧（公開前にすべて置き換える。文字列で全体検索すること）
-      [LINE_URL_CLEANING] : みえる！おそうじ用 LINE の URL（例：https://lin.ee/xxxx）
-      [PHONE_CLEANING]    : 電話番号。表示用と tel: リンクの両方に使っている
-                            （tel: 側はハイフンなしの数字に置き換える）
       [CAMPAIGN_START]    : キャンペーン開始日（例：2026年12月1日。公開日に合わせる）
       [CAMPAIGN_END]      : キャンペーン終了日（例：2027年5月31日。開始から半年、開始時に確定する）
     公開前に決めること・確かめること（2026-11-22 時点）：
@@ -40,7 +37,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&display=swap" rel="stylesheet">
   <!-- ?v= はブラウザに古いCSSを使わせないための番号。CSS を変えたら日付などに書き換える -->
-  <link rel="stylesheet" href="/mieru-osouji/assets/css/style.css?v=20261119h">
+  <link rel="stylesheet" href="/mieru-osouji/assets/css/style.css?v=20261123f">
   <link rel="stylesheet" href="/mieru-osouji/assets/css/service.css?v=20261122a">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG9KYK977N"></script>
@@ -94,14 +91,14 @@
           <li><a href="/mieru-osouji/#faq">よくある質問</a></li>
         </ul>
         <ul class="nav-cta-list">
-          <li class="nav-cta"><a href="[LINE_URL_CLEANING]" class="btn btn-line">LINEで相談する</a></li>
-          <li class="nav-cta"><a href="tel:[PHONE_CLEANING]" class="btn btn-outline">電話する</a></li>
+          <li class="nav-cta"><a href="https://lin.ee/X21988f" target="_blank" rel="noopener" class="btn btn-line">LINEで相談する</a></li>
+          <li class="nav-cta"><a href="tel:08029685824" class="btn btn-outline">電話する</a></li>
         </ul>
       </nav>
 
       <div class="header-cta">
-        <a href="[LINE_URL_CLEANING]" class="btn btn-line btn-small">LINEで相談</a>
-        <a href="tel:[PHONE_CLEANING]" class="btn btn-outline btn-small">電話する</a>
+        <a href="https://lin.ee/X21988f" target="_blank" rel="noopener" class="btn btn-line btn-small">LINEで相談</a>
+        <a href="tel:08029685824" class="btn btn-outline btn-small">電話する</a>
       </div>
     </div>
   </header>
@@ -173,7 +170,16 @@
           <span class="bubble" style="--x: 92%; --y: 56%; --s: 24px; --d: -1.5s;" aria-hidden="true"></span>
           <p class="cb-title"><span class="nw">期間限定！</span><span class="nw">お得なキャンペーン実施中！</span></p>
           <p class="cb-sub">LINE・お電話からご予約いただくとお得です！</p>
-          <p class="cb-period">[CAMPAIGN_END]まで！！</p>
+        </div>
+        <!-- LINE予約の500円OFFクーポン（キャンペーンと併用可。2026-11-22 ユーザー決定）。
+             からし色の面には大きい文字だけを置く。LINEのお友だちなら何回でも・全サービス対象・最低金額なし（2026-11-22 ユーザー決定） -->
+        <div class="coupon-card fade-in">
+          <p class="coupon-stub"><span class="coupon-stub-top">LINE予約で</span><span class="coupon-stub-num">500<small>円</small></span><span class="coupon-stub-bottom">OFF</span></p>
+          <div class="coupon-body">
+            <p class="coupon-title">LINEからのご予約で、500円OFFクーポンをお使いいただけます</p>
+            <p class="coupon-text">※LINE友達限定で、すべてのサービスで何度でもご利用いただけます。<br>※他キャンペーンと併用可</p>
+            <a href="https://lin.ee/X21988f" target="_blank" rel="noopener" class="btn btn-line btn-small coupon-btn">LINEで予約する</a>
+          </div>
         </div>
         <!-- キャンペーンの対象はこのサイト・LINE・お電話からのご依頼（マッチングサイト経由は通常価格）。
              ページにはバナーの文だけを書く（2026-11-19 ユーザー指示） -->
@@ -326,11 +332,10 @@
         <h2 class="section-title wipe">ご相談・お見積り</h2>
         <p class="section-lead fade-in">LINEまたはお電話で受け付けています。</p>
         <div class="contact-btns fade-in">
-          <a href="[LINE_URL_CLEANING]" class="btn btn-line">LINEで相談する</a>
-          <a href="tel:[PHONE_CLEANING]" class="btn btn-ghost">
+          <a href="https://lin.ee/X21988f" target="_blank" rel="noopener" class="btn btn-line">LINEで相談する</a>
+          <a href="tel:08029685824" class="btn btn-ghost">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
-            [PHONE_CLEANING]
-          </a>
+                </a>
         </div>
         <p class="contact-meta">
           LINE 24時間受付中／お電話 9:00〜19:00<br>
@@ -394,8 +399,8 @@
 
   <!-- スマホ用 固定CTAバー -->
   <div class="cta-bar">
-    <a href="[LINE_URL_CLEANING]" class="btn btn-line">LINEで相談</a>
-    <a href="tel:[PHONE_CLEANING]" class="btn btn-outline">電話する</a>
+    <a href="https://lin.ee/X21988f" target="_blank" rel="noopener" class="btn btn-line">LINEで相談</a>
+    <a href="tel:08029685824" class="btn btn-outline">電話する</a>
   </div>
 
   <script src="/assets/js/site.js" defer></script>

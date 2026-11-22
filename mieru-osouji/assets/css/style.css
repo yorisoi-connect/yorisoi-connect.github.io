@@ -2158,3 +2158,162 @@ html.js .price-carousel-btn {
     --photo-w: min(calc((100% - 44px) / 2), 130px);
   }
 }
+
+/* --------------------------------------------------------------------------
+   LINE予約の500円OFFクーポン（トップ・サービス一覧・詳細ページ共通。2026-11-22）
+   切り取り線のチケット風。からし色の面には大きい文字だけを置く
+   -------------------------------------------------------------------------- */
+.coupon-card {
+  --notch-bg: #fff;   /* 半円の切り欠きは、置いた場所の背景色で塗る */
+  position: relative;
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  max-width: 720px;
+  margin: 20px auto 28px;
+  background: #fff;
+  border: 2px solid var(--color-accent-dark);
+  border-radius: var(--radius-card);
+}
+
+/* 左右の縦線の真ん中に半円の切り欠き（チケットの形）。
+   円は枠線の上に重ねて、半円の部分の枠線は円の地の色で消す */
+.coupon-card::before,
+.coupon-card::after,
+.coupon-stub::before,
+.coupon-stub::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 24px;
+  height: 24px;
+  margin-top: -14px;
+  border: 2px solid var(--color-accent-dark);
+  border-radius: 50%;
+  background: var(--notch-bg);
+  z-index: 2;   /* 黄色の面より上に重ねる */
+}
+
+.coupon-card::before,
+.coupon-stub::before {
+  left: -15px;
+  clip-path: inset(0 0 0 13px);
+}
+
+.coupon-card::after,
+.coupon-stub::after {
+  right: -15px;
+  clip-path: inset(0 13px 0 0);
+}
+
+/* スマホ用の切り欠き（区切りの点線の両端）は、PCでは出さない */
+.coupon-stub::before,
+.coupon-stub::after {
+  display: none;
+}
+
+.section-green .coupon-card {
+  --notch-bg: var(--color-bg-tint);
+}
+
+.coupon-stub {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 8px;
+  background: var(--color-primary);
+  border-right: 3px dotted var(--color-accent-dark);
+  border-radius: calc(var(--radius-card) - 2px) 0 0 calc(var(--radius-card) - 2px);
+  color: var(--color-deep);
+  font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
+  font-weight: 800;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.coupon-stub-top,
+.coupon-stub-bottom {
+  font-size: 16px;
+}
+
+.coupon-stub-num {
+  font-size: 36px;
+  letter-spacing: -0.02em;
+}
+
+.coupon-stub-num small {
+  font-size: 18px;
+}
+
+.coupon-body {
+  padding: 16px 20px;
+  text-align: left;
+}
+
+.coupon-title {
+  word-break: auto-phrase;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.55;
+  color: var(--color-deep);
+}
+
+.coupon-text {
+  margin-top: 4px;
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+.coupon-btn {
+  margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+  .coupon-card {
+    grid-template-columns: 1fr;
+  }
+
+  /* スマホは区切りの点線（横）の両端に切り欠きを置く */
+  .coupon-card::before,
+  .coupon-card::after {
+    display: none;
+  }
+
+  .coupon-stub::before,
+  .coupon-stub::after {
+    display: block;
+    top: auto;
+    bottom: -15.5px;
+    margin-top: 0;
+  }
+
+  .coupon-stub::before {
+    left: -15px;
+  }
+
+  .coupon-stub::after {
+    right: -15px;
+  }
+
+  .coupon-stub {
+    flex-direction: row;
+    gap: 6px;
+    align-items: baseline;
+    border-right: 0;
+    border-bottom: 3px dotted var(--color-accent-dark);
+    border-radius: calc(var(--radius-card) - 2px) calc(var(--radius-card) - 2px) 0 0;
+  }
+
+  .coupon-stub-num {
+    font-size: 30px;
+  }
+
+  .coupon-body {
+    padding: 14px 16px 16px;
+  }
+
+  .coupon-title {
+    font-size: 16px;
+  }
+}
