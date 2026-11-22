@@ -10,10 +10,10 @@
                             （tel: 側はハイフンなしの数字に置き換える）
       [CAMPAIGN_START]    : キャンペーン開始日（例：2026年12月1日。公開日に合わせる）
       [CAMPAIGN_END]      : キャンペーン終了日（例：2027年5月31日。開始から半年、開始時に確定する）
-    公開前に決めること（料金ページ設計図 v1 2026-11-15 より）：
-      含まれる作業（grep "TODO 含まれる作業"）／支払い方法の詳細（ブランド・振込期限など）／高所作業料金の確認／
-      窓の種類を混ぜたときの数え方／戸建ての空室清掃／
-      通常価格が実際に売れる価格であることの確認（二重価格表示。専門家のチェックを推奨）
+    公開前に決めること・確かめること（2026-11-22 時点）：
+      支払い方法の詳細（カードブランド・QR決済の種類）／
+      通常価格が実際に売れる価格であることの確認（二重価格表示。専門家のチェックを推奨）／
+      当日キャンセル100%の規定（消費者契約法9条。専門家のチェック）／写真・説明文の TODO（grep "TODO"）
     ======================================================================
   -->
   <!-- 公開時に削除：この1行を消すと検索エンジンに載るようになる -->
@@ -68,6 +68,7 @@
     <symbol id="i-n-out" viewBox="0 0 24 24"><defs><mask id="m-n-out" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"><rect width="24" height="24" fill="#fff"/><g transform="translate(15 15.5) scale(.85) rotate(45) scale(-1 1) translate(-12.5 -13)" fill="#000" stroke="#000" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"><path style="vector-effect:none" d="M3 10h8l2 2h3"/><path style="vector-effect:none" d="M5 10l-1 9h4l1-6"/><path style="vector-effect:none" d="M11 10V7H6"/><path style="vector-effect:none" d="M18.5 9.5l2.5-1.5M19 12h3M18.5 14.5l2.5 1.5"/></g></mask></defs><g mask="url(#m-n-out)"><rect x="2.5" y="2.5" width="14" height="17" rx="1"/><path d="M9.5 2.5v17"/></g><g transform="translate(15 15.5) scale(.85) rotate(45) scale(-1 1) translate(-12.5 -13)"><path d="M3 10h8l2 2h3"/><path d="M5 10l-1 9h4l1-6"/><path d="M11 10V7H6"/><path d="M18.5 9.5l2.5-1.5M19 12h3M18.5 14.5l2.5 1.5"/></g></symbol>
     <symbol id="i-n-frame" viewBox="0 0 24 24"><rect x="3.5" y="3" width="17" height="18" rx="1"/><rect x="6.5" y="6" width="11" height="12" rx=".5"/><path d="M12 6v12"/></symbol>
     <symbol id="i-n-screen" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M5 7.5h14M5 12h14M5 16.5h14M9.7 3v18M14.3 3v18"/></symbol>
+    <symbol id="i-o-shutter" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M4 7h16M4 10.5h16M4 14h16M4 17.5h16"/></symbol>
   </svg>
 
   <header class="site-header" id="site-header">
@@ -224,8 +225,12 @@
         <div class="work-box fade-in">
           <h3 class="work-title">サービス内容</h3>
           <ul class="work-tiles work-tiles-8">
-            <li><svg aria-hidden="true"><use href="#i-n-cover"/></svg><span class="wt-label">養生</span></li><li><svg aria-hidden="true"><use href="#i-n-in"/></svg><span class="wt-label">ガラスの<br>内側</span></li><li><svg aria-hidden="true"><use href="#i-n-out"/></svg><span class="wt-label">ガラスの<br>外側</span></li><li><svg aria-hidden="true"><use href="#i-n-frame"/></svg><span class="wt-label">窓枠<br>（サッシ）</span></li><li><svg aria-hidden="true"><use href="#i-n-screen"/></svg><span class="wt-label">網戸</span></li><li class="is-feature"><svg aria-hidden="true"><use href="#i-w-explain"/></svg><span class="wt-label">作業前の<br>ご説明</span></li><li class="is-feature"><svg aria-hidden="true"><use href="#i-w-explain"/></svg><span class="wt-label">作業後の<br>ご説明</span></li>
+            <li><svg aria-hidden="true"><use href="#i-n-cover"/></svg><span class="wt-label">養生</span></li><li><svg aria-hidden="true"><use href="#i-n-in"/></svg><span class="wt-label">ガラスの<br>内側</span></li><li><svg aria-hidden="true"><use href="#i-n-out"/></svg><span class="wt-label">ガラスの<br>外側</span></li><li><svg aria-hidden="true"><use href="#i-n-frame"/></svg><span class="wt-label">窓枠<br>（サッシ）</span></li><li><svg aria-hidden="true"><use href="#i-n-screen"/></svg><span class="wt-label">網戸</span></li><li class="is-feature"><svg aria-hidden="true"><use href="#i-w-explain"/></svg><span class="wt-label">作業前の<br>ご説明</span></li><li class="is-feature"><svg aria-hidden="true"><use href="#i-w-explain"/></svg><span class="wt-label">作業後の<br>ご説明</span></li><li class="is-option"><svg aria-hidden="true"><use href="#i-o-shutter"/></svg><span class="wt-label">雨戸</span></li>
           </ul>
+          <div class="work-key">
+            <span class="key-in">料金に含まれます</span>
+            <a href="#options" class="key-opt">オプション（別料金）</a>
+          </div>
         </div>
       </div>
     </section>

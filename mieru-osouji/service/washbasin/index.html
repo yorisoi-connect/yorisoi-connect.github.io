@@ -10,10 +10,10 @@
                             （tel: 側はハイフンなしの数字に置き換える）
       [CAMPAIGN_START]    : キャンペーン開始日（例：2026年12月1日。公開日に合わせる）
       [CAMPAIGN_END]      : キャンペーン終了日（例：2027年5月31日。開始から半年、開始時に確定する）
-    公開前に決めること（料金ページ設計図 v1 2026-11-15 より）：
-      含まれる作業（grep "TODO 含まれる作業"）／支払い方法の詳細（ブランド・振込期限など）／高所作業料金の確認／
-      窓の種類を混ぜたときの数え方／戸建ての空室清掃／
-      通常価格が実際に売れる価格であることの確認（二重価格表示。専門家のチェックを推奨）
+    公開前に決めること・確かめること（2026-11-22 時点）：
+      支払い方法の詳細（カードブランド・QR決済の種類）／
+      通常価格が実際に売れる価格であることの確認（二重価格表示。専門家のチェックを推奨）／
+      当日キャンセル100%の規定（消費者契約法9条。専門家のチェック）／写真・説明文の TODO（grep "TODO"）
     ======================================================================
   -->
   <!-- 公開時に削除：この1行を消すと検索エンジンに載るようになる -->
@@ -66,6 +66,10 @@
     <symbol id="i-s-faucet" viewBox="0 0 24 24"><path d="M5.5 21V11.5a4 4 0 0 1 4-4H18v4h-3"/><path d="M8.5 3.5h6M11.5 3.5v4"/><path d="M16.5 15l1 1.8a1.2 1.2 0 1 1-2 0z"/><path d="M3 21h6"/></symbol>
     <symbol id="i-s-drain" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><path d="M12 8v8M8 12h8"/></symbol>
     <symbol id="i-s-cabinet" viewBox="0 0 24 24"><rect x="4.5" y="4.5" width="15" height="15" rx="1.5"/><path d="M12 4.5v15"/><path d="M10 10.5v3M14 10.5v3"/></symbol>
+    <symbol id="i-o-cabinet" viewBox="0 0 24 24"><rect x="3.5" y="3" width="11" height="18" rx="1"/><path d="M3.5 9h11M3.5 15h11"/><path d="M14.5 3l6 2v14l-6 2"/></symbol>
+    <symbol id="i-o-fan" viewBox="0 0 24 24"><rect x="2.5" y="3" width="13" height="13" rx="2"/><path d="M5 7h8M5 9.5h8M5 12h8"/><rect x="17.5" y="14" width="3.5" height="7" rx="1"/><path d="M19.25 8v6"/></symbol>
+    <symbol id="i-o-mirror" viewBox="0 0 24 24"><rect x="4" y="3" width="12" height="13" rx="2"/><path d="M7 9l3-3M7.5 12.5l5-5"/><path d="M3 20h14"/><path d="M19.5 2.5v4M17.5 4.5h4"/></symbol>
+    <symbol id="i-o-shield" viewBox="0 0 24 24"><path d="M12 3l7.5 3v5.5c0 4.5-3.2 8-7.5 9.5-4.3-1.5-7.5-5-7.5-9.5V6z"/><path d="M9 12l2 2 4-4"/></symbol>
   </svg>
 
   <header class="site-header" id="site-header">
@@ -226,8 +230,12 @@
         <div class="work-box fade-in">
           <h3 class="work-title">サービス内容</h3>
           <ul class="work-tiles work-tiles-8">
-            <li><svg aria-hidden="true"><use href="#i-s-light"/></svg><span class="wt-label">照明</span></li><li><svg aria-hidden="true"><use href="#i-s-mirror"/></svg><span class="wt-label">鏡</span></li><li><svg aria-hidden="true"><use href="#i-s-bowl"/></svg><span class="wt-label">洗面ボウル</span></li><li><svg aria-hidden="true"><use href="#i-s-faucet"/></svg><span class="wt-label">蛇口</span></li><li><svg aria-hidden="true"><use href="#i-s-drain"/></svg><span class="wt-label">排水口</span></li><li><svg aria-hidden="true"><use href="#i-s-cabinet"/></svg><span class="wt-label">収納扉の<br>表面</span></li><li class="is-feature"><svg aria-hidden="true"><use href="#i-w-explain"/></svg><span class="wt-label">作業前の<br>ご説明</span></li><li class="is-feature"><svg aria-hidden="true"><use href="#i-w-explain"/></svg><span class="wt-label">作業後の<br>ご説明</span></li>
+            <li><svg aria-hidden="true"><use href="#i-s-light"/></svg><span class="wt-label">照明</span></li><li><svg aria-hidden="true"><use href="#i-s-mirror"/></svg><span class="wt-label">鏡</span></li><li><svg aria-hidden="true"><use href="#i-s-bowl"/></svg><span class="wt-label">洗面ボウル</span></li><li><svg aria-hidden="true"><use href="#i-s-faucet"/></svg><span class="wt-label">蛇口</span></li><li><svg aria-hidden="true"><use href="#i-s-drain"/></svg><span class="wt-label">排水口</span></li><li><svg aria-hidden="true"><use href="#i-s-cabinet"/></svg><span class="wt-label">収納扉の<br>表面</span></li><li class="is-feature"><svg aria-hidden="true"><use href="#i-w-explain"/></svg><span class="wt-label">作業前の<br>ご説明</span></li><li class="is-feature"><svg aria-hidden="true"><use href="#i-w-explain"/></svg><span class="wt-label">作業後の<br>ご説明</span></li><li class="is-option"><svg aria-hidden="true"><use href="#i-o-mirror"/></svg><span class="wt-label">鏡の<br>ウロコ取り</span></li><li class="is-option"><svg aria-hidden="true"><use href="#i-o-cabinet"/></svg><span class="wt-label">収納の中</span></li><li class="is-option"><svg aria-hidden="true"><use href="#i-o-fan"/></svg><span class="wt-label">洗面所の<br>換気扇</span></li><li class="is-option"><svg aria-hidden="true"><use href="#i-o-shield"/></svg><span class="wt-label">洗面ボウルの<br>防汚コート</span></li>
           </ul>
+          <div class="work-key">
+            <span class="key-in">料金に含まれます</span>
+            <a href="#options" class="key-opt">オプション（別料金）</a>
+          </div>
         </div>
       </div>
     </section>

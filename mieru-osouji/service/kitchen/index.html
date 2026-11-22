@@ -10,10 +10,10 @@
                             （tel: 側はハイフンなしの数字に置き換える）
       [CAMPAIGN_START]    : キャンペーン開始日（例：2026年12月1日。公開日に合わせる）
       [CAMPAIGN_END]      : キャンペーン終了日（例：2027年5月31日。開始から半年、開始時に確定する）
-    公開前に決めること（料金ページ設計図 v1 2026-11-15 より）：
-      含まれる作業（grep "TODO 含まれる作業"）／支払い方法の詳細（ブランド・振込期限など）／高所作業料金の確認／
-      窓の種類を混ぜたときの数え方／戸建ての空室清掃／
-      通常価格が実際に売れる価格であることの確認（二重価格表示。専門家のチェックを推奨）
+    公開前に決めること・確かめること（2026-11-22 時点）：
+      支払い方法の詳細（カードブランド・QR決済の種類）／
+      通常価格が実際に売れる価格であることの確認（二重価格表示。専門家のチェックを推奨）／
+      当日キャンセル100%の規定（消費者契約法9条。専門家のチェック）／写真・説明文の TODO（grep "TODO"）
     ======================================================================
   -->
   <!-- 公開時に削除：この1行を消すと検索エンジンに載るようになる -->
@@ -72,6 +72,7 @@
     <symbol id="i-card" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 9.5h19"/><path d="M6 15h4"/></symbol>
     <symbol id="i-bank" viewBox="0 0 24 24"><path d="M3 9.5L12 4l9 5.5z"/><path d="M5.5 10v7M10 10v7M14 10v7M18.5 10v7"/><path d="M3 20h18"/></symbol>
     <symbol id="i-qr" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="6.5" height="6.5" rx="1"/><rect x="14" y="3.5" width="6.5" height="6.5" rx="1"/><rect x="3.5" y="14" width="6.5" height="6.5" rx="1"/><path d="M14 14h2.5v2.5H14zM18 18h2.5v2.5H18zM18 14h2.5M14 20.5h2"/></symbol>
+    <symbol id="i-o-sink" viewBox="0 0 24 24"><path d="M3 11h18v1.5a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6z"/><path d="M12 11V6h4"/><path d="M19.5 2.5v4M17.5 4.5h4"/></symbol>
   </svg>
 
   <header class="site-header" id="site-header">
@@ -221,8 +222,12 @@
               <h3 class="work-title">サービス内容</h3>
               <ul class="work-tiles work-tiles-8">
                 <li><svg aria-hidden="true"><use href="#i-k-stove"/></svg><span class="wt-label">コンロ・五徳</span></li><li><svg aria-hidden="true"><use href="#i-k-sink"/></svg><span class="wt-label">シンク・蛇口<br>排水口</span></li><li><svg aria-hidden="true"><use href="#i-k-counter"/></svg><span class="wt-label">作業台</span></li><li><svg aria-hidden="true"><use href="#i-k-wall"/></svg><span class="wt-label">コンロ<br>まわりの壁</span></li><li><svg aria-hidden="true"><use href="#i-k-cabinet"/></svg><span class="wt-label">吊戸棚・<br>棚の表面</span></li>
-                <li class="is-feature"><svg aria-hidden="true"><use href="#i-w-explain"/></svg><span class="wt-label">作業前の<br>ご説明</span></li><li class="is-feature"><svg aria-hidden="true"><use href="#i-w-explain"/></svg><span class="wt-label">作業後の<br>ご説明</span></li>
+                <li class="is-feature"><svg aria-hidden="true"><use href="#i-w-explain"/></svg><span class="wt-label">作業前の<br>ご説明</span></li><li class="is-feature"><svg aria-hidden="true"><use href="#i-w-explain"/></svg><span class="wt-label">作業後の<br>ご説明</span></li><li class="is-option"><svg aria-hidden="true"><use href="#i-o-sink"/></svg><span class="wt-label">シンク研磨・<br>撥水コート</span></li>
               </ul>
+              <div class="work-key">
+                <span class="key-in">料金に含まれます</span>
+                <a href="#options" class="key-opt">オプション（別料金）</a>
+              </div>
             </div>
 
             <div class="add-box">
