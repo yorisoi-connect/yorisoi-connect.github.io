@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <!--
+    ======================================================================
+    プレースホルダー一覧（公開前にすべて置き換える。文字列で全体検索すること）
+      [CAMPAIGN_START]    : キャンペーン開始日（例：2026年12月1日。公開日に合わせる）
+      [CAMPAIGN_END]      : キャンペーン終了日（例：2027年5月31日。開始から半年、開始時に確定する）
+    公開前に決めること・確かめること（2026-11-22 時点）：
+      支払い方法の詳細（カードブランド・QR決済の種類）／
+      通常価格が実際に売れる価格であることの確認（二重価格表示。専門家のチェックを推奨）／
+      当日キャンセル100%の規定（消費者契約法9条。専門家のチェック）／写真・説明文の TODO（grep "TODO"）
+    ======================================================================
+  -->
+  <!-- 公開時に削除：この1行を消すと検索エンジンに載るようになる -->
+  <meta name="robots" content="noindex">
+  <script>(function(d){d.className+=" js"})(document.documentElement)</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>法人のお客様へ（空室清掃）｜みえる！おそうじ（料金・サービス内容）</title>
+  <meta name="description" content="みえる！おそうじは、不動産管理会社さま・オーナーさまからの空室清掃を承っています。内見で目に入る水まわり・床・窓・建具を中心に仕上げます。広さ（㎡）ごとの税込料金、仕上がりは立ち会いか写真で確認できます。">
+  <link rel="canonical" href="https://yorisoi-connect.com/mieru-osouji/business/">
+
+  <!-- OGP -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="みえる！おそうじ">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="法人のお客様へ（空室清掃）｜みえる！おそうじ（料金・サービス内容）">
+  <meta property="og:description" content="みえる！おそうじは、不動産管理会社さま・オーナーさまからの空室清掃を承っています。内見で目に入る水まわり・床・窓・建具を中心に仕上げます。広さ（㎡）ごとの税込料金、仕上がりは立ち会いか写真で確認できます。">
+  <meta property="og:url" content="https://yorisoi-connect.com/mieru-osouji/business/">
+  <!-- TODO 画像：OGP画像。専用画像ができたら差し替え（トップページと同じ仮画像） -->
+  <meta property="og:image" content="https://yorisoi-connect.com/assets/images/ogp.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&display=swap" rel="stylesheet">
+  <!-- ?v= はブラウザに古いCSSを使わせないための番号。CSS を変えたら日付などに書き換える -->
+  <link rel="stylesheet" href="/mieru-osouji/assets/css/style.css?v=20261123n">
+  <link rel="stylesheet" href="/mieru-osouji/assets/css/service.css?v=20261124a">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG9KYK977N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TG9KYK977N');
+  </script>
+</head>
+<body>
+  <!-- アイコン置き場。<svg><use href="#i-名前"/></svg> で呼び出す（トップページと同じ図形） -->
+  <svg class="icon-sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 7.5h3l1.6-2.5h6.8L17 7.5h3a1 1 0 0 1 1 1V18a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8.5a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.5"/></symbol>
+    <symbol id="i-cash" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.8"/><path d="M6 9.5v5M18 9.5v5"/></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 9.5h19"/><path d="M6 15h4"/></symbol>
+    <symbol id="i-bank" viewBox="0 0 24 24"><path d="M3 9.5L12 4l9 5.5z"/><path d="M5.5 10v7M10 10v7M14 10v7M18.5 10v7"/><path d="M3 20h18"/></symbol>
+    <symbol id="i-qr" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="6.5" height="6.5" rx="1"/><rect x="14" y="3.5" width="6.5" height="6.5" rx="1"/><rect x="3.5" y="14" width="6.5" height="6.5" rx="1"/><path d="M14 14h2.5v2.5H14zM18 18h2.5v2.5H18zM18 14h2.5M14 20.5h2"/></symbol>
+    <symbol id="i-w-explain" viewBox="0 0 24 24"><circle cx="8" cy="11" r="3.6"/><path d="M1.5 22v-.8a6.5 6.5 0 0 1 13 0v.8"/><path d="M13.5 2.5h7.5a1.5 1.5 0 0 1 1.5 1.5v4.5a1.5 1.5 0 0 1-1.5 1.5h-4.2l-2.8 2.3V10h-.5A1.5 1.5 0 0 1 12 8.5V4a1.5 1.5 0 0 1 1.5-1.5z"/><path d="M15 6.3l1.4 1.4 3-3"/></symbol>
+    <symbol id="i-room" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1.5"/><path d="M3 13h7v8"/><path d="M14 21a5 5 0 0 1 5-5"/><path d="M14 3v5"/></symbol>
+    <symbol id="i-bath" viewBox="0 0 24 24"><path d="M3 12h18v2a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5z"/><path d="M6 12V6.5a2.5 2.5 0 0 1 4.5-1.5"/><path d="M7 19l-1 2M17 19l1 2"/></symbol>
+    <symbol id="i-sink" viewBox="0 0 24 24"><path d="M3 12h18v1.5a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6z"/><path d="M12 12V6h4"/><path d="M9 12v-1.5"/></symbol>
+    <symbol id="i-toilet" viewBox="0 0 24 24"><rect x="8" y="3" width="8" height="6" rx="1"/><path d="M4 9h16a4 4 0 0 1-4 5H8a4 4 0 0 1-4-5z"/><path d="M9 14l-1 7h8l-1-7"/></symbol>
+    <symbol id="i-r-window" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M12 3v18"/><path d="M14 10.5v3"/></symbol>
+    <symbol id="i-r-stove" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="13" rx="2"/><circle cx="8" cy="12.5" r="3"/><circle cx="16" cy="12.5" r="3"/><path d="M8 8.5v1M8 15.5v1M4 12.5h1M11 12.5h1M16 8.5v1M16 15.5v1M12 12.5h1M19 12.5h1"/></symbol>
+    <symbol id="i-r-balcony" viewBox="0 0 24 24"><rect x="2" y="5.5" width="20" height="2" rx="1"/><path d="M4.5 7.5v8.5M9 7.5v8.5M15 7.5v8.5M19.5 7.5v8.5"/><path d="M2 16h20M2 19h20"/></symbol>
+    <symbol id="i-r-door" viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="16" rx="1"/><path d="M15 11h.01"/><path d="M4 21.5h16l-1.5-3h-13z"/></symbol>
+    <symbol id="i-r-closet" viewBox="0 0 24 24"><rect x="4" y="2.5" width="16" height="19" rx="1"/><path d="M12 2.5v19M4 9h16"/><path d="M10 14v2M14 14v2"/></symbol>
+    <symbol id="i-r-light" viewBox="0 0 24 24"><path d="M9 15.5a5.5 5.5 0 1 1 6 0V18H9z"/><path d="M9.5 20.5h5"/><rect x="16.5" y="13.5" width="5" height="8" rx="1"/><path d="M19 16v3"/></symbol>
+    <symbol id="i-o-aircon" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="8" rx="2"/><path d="M5.5 10.5h13"/><path d="M8 16v2.5M12 16v4M16 16v2.5"/></symbol>
+    <symbol id="i-o-apron" viewBox="0 0 24 24"><path d="M2.5 9h13v4.5a5 5 0 0 1-5 5h-3a5 5 0 0 1-5-5z"/><path d="M5 18.5l-1 2M13 18.5l1 2"/><rect x="17" y="8" width="4.5" height="12" rx="1"/></symbol>
+    <symbol id="i-o-hood" viewBox="0 0 24 24"><path d="M9.5 3h5v5.5l6 5.5h-17l6-5.5z"/><path d="M3.5 14v2h17v-2"/><path d="M8 19.5h.01M12 19.5h.01M16 19.5h.01"/></symbol>
+    <symbol id="i-o-wax" viewBox="0 0 24 24"><path d="M2.5 21l3.5-8h12l3.5 8z"/><path d="M8.5 13l-1.5 8M12 13v8M15.5 13l1.5 8M4.3 17h15.4"/><path d="M12 2v6M9 5h6"/><path d="M18.5 7v3M17 8.5h3"/></symbol>
+    <symbol id="i-aircon" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="8" rx="2"/><path d="M5.5 10.5h13"/><path d="M8 16v2.5M12 16v4M16 16v2.5"/></symbol>
+    <symbol id="i-hood" viewBox="0 0 24 24"><path d="M9.5 3h5v5.5l6 5.5h-17l6-5.5z"/><path d="M3.5 14v2h17v-2"/><path d="M8 19.5h.01M12 19.5h.01M16 19.5h.01"/></symbol>
+    <symbol id="i-floor" viewBox="0 0 24 24"><path d="M2.5 18l4-11h15l-4 11z"/><path d="M8 18l4-11M13 18l4-11"/></symbol>
+    <symbol id="i-z-wall" viewBox="0 0 24 24"><rect x="2.5" y="3" width="11" height="18" rx="1"/><path d="M21 21l-4.5-5.5"/><path d="M16.5 15.5c-2.6.6-5-1-4.6-3.6.4-2.4 3.4-3.6 5.2-2 1.8 1.5 1.6 4.8-.6 5.6z"/></symbol>
+    <symbol id="i-z-person" viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="3.5"/><path d="M5 20.5c0-3.9 3.1-6.5 7-6.5s7 2.6 7 6.5"/></symbol>
+    <symbol id="i-z-photo" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7l1.5-3h5L16 7"/><circle cx="12" cy="13.5" r="3.5"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6l8.5 7 8.5-7"/></symbol>
+  </svg>
+
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <!-- TODO 画像：ロゴ。assets/img/logo.svg ができたら <img> に差し替え（トップページと同じ） -->
+        <a href="/mieru-osouji/" class="site-logo">みえる！おそうじ</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="global-nav">
+        <svg class="hamburger-icon" viewBox="0 0 28 19" aria-hidden="true"><rect x="0" y="0" width="28" height="3" rx="1.5"/><rect x="0" y="8" width="28" height="3" rx="1.5"/><rect x="0" y="16" width="28" height="3" rx="1.5"/></svg>
+      </button>
+
+      <nav class="global-nav" id="global-nav" aria-label="グローバルナビゲーション">
+        <ul class="nav-main">
+          <li><a href="/mieru-osouji/service/">サービス一覧</a></li>
+          <li><a href="/mieru-osouji/business/">法人のお客様へ</a></li>
+        </ul>
+        <ul class="nav-sub">
+          <li><a href="/mieru-osouji/#price">料金プラン</a></li>
+          <li><a href="/mieru-osouji/#cases">作業事例</a></li>
+          <li><a href="/mieru-osouji/#faq">よくある質問</a></li>
+        </ul>
+        <ul class="nav-cta-list">
+          <li class="nav-cta"><a href="https://lin.ee/X21988f" target="_blank" rel="noopener" class="btn btn-line">LINEで相談する</a></li>
+          <li class="nav-cta"><a href="tel:08029685824" class="btn btn-outline">電話する</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-cta">
+        <a href="https://lin.ee/X21988f" target="_blank" rel="noopener" class="btn btn-line btn-small">LINEで相談</a>
+        <a href="tel:08029685824" class="btn btn-outline btn-small">電話する</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="price-page biz-page">
+    <!-- 法人のお客様向けページ（2026-11-24 作成）。空室清掃が中心。
+         作業範囲はアールクリーニングの空室クリーニングと同じ形にそろえた（他社名・元請け関係はページに書かない）。
+         「選ばれる理由」のセクションは作らない（保険・キーボックスはアピールにならない、とユーザー）
+         TODO 説明文：仮の文（2026-11-24）。ユーザー確認待ち -->
+    <div class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="パンくずリスト">
+          <ol><li><a href="/mieru-osouji/">みえる！おそうじ</a></li><li aria-current="page">法人のお客様へ</li></ol>
+        </nav>
+        <h1 class="page-title">法人のお客様へ</h1>
+        <div class="ac-intro">
+          <div class="ac-intro-text fade-in">
+            <p>みえる！おそうじでは、不動産管理会社さま・オーナーさまからの空室清掃を承っています。</p>
+            <p>退去後のお部屋を、内見で目に入る水まわり・床・窓・建具を中心に、次の方が気持ちよく住めるように仕上げます。</p>
+            <p>料金は広さ（㎡）ごとにこのページに載せておりますので、お見積りの前でもおおよその金額がわかるかと思います。</p>
+          </div>
+          <!-- TODO 画像：清掃後の空室（横長 4:3） -->
+          <figure class="ac-parts fade-in">
+            <div class="ph ph-4x3">
+              <span class="ph-label"><svg aria-hidden="true"><use href="#i-camera"/></svg>写真：清掃後の空室</span>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <!-- 作業範囲 -->
+    <section class="section" id="scope" data-ga-section="biz_scope">
+      <div class="container container-narrow">
+        <p class="section-eyebrow fade-in">SCOPE</p>
+        <h2 class="section-title wipe">空室清掃の作業範囲</h2>
+        <div class="work-box fade-in">
+          <h3 class="work-title">料金に含まれるもの</h3>
+          <ul class="work-tiles work-tiles-8">
+            <li><svg aria-hidden="true"><use href="#i-r-stove"/></svg><span class="wt-label">キッチン</span></li><li><svg aria-hidden="true"><use href="#i-hood"/></svg><span class="wt-label">レンジフード</span></li><li><svg aria-hidden="true"><use href="#i-bath"/></svg><span class="wt-label">浴室</span></li><li><svg aria-hidden="true"><use href="#i-sink"/></svg><span class="wt-label">洗面台</span></li><li><svg aria-hidden="true"><use href="#i-toilet"/></svg><span class="wt-label">トイレ</span></li><li><svg aria-hidden="true"><use href="#i-r-window"/></svg><span class="wt-label">窓・サッシ・<br>網戸</span></li><li><svg aria-hidden="true"><use href="#i-r-balcony"/></svg><span class="wt-label">ベランダ<br>（掃き掃除）</span></li><li><svg aria-hidden="true"><use href="#i-aircon"/></svg><span class="wt-label">エアコン<br>（表面）</span></li><li><svg aria-hidden="true"><use href="#i-r-closet"/></svg><span class="wt-label">建具・扉・<br>収納</span></li><li><svg aria-hidden="true"><use href="#i-r-light"/></svg><span class="wt-label">照明・<br>スイッチ</span></li><li><svg aria-hidden="true"><use href="#i-z-wall"/></svg><span class="wt-label">壁<br>（ほこり払い）</span></li><li><svg aria-hidden="true"><use href="#i-floor"/></svg><span class="wt-label">床</span></li><li><svg aria-hidden="true"><use href="#i-r-door"/></svg><span class="wt-label">玄関</span></li>
+          </ul>
+          <p class="work-note-small">※レンジフードはファンまで外して内側も洗います。エアコンは表面とフィルター、建具・扉・収納は外側と内側のお掃除です。<br>※家具・家電・残置物は、簡単に動かせるものは動かして作業し、そうでないものはそのままで作業します。残置物の処分は承っていません。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 料金（㎡単位。2026-11-24 ユーザー決定。キャンペーンなし） -->
+    <section class="section section-green" id="price" data-ga-section="biz_price">
+      <div class="container container-narrow">
+        <p class="section-eyebrow fade-in">PRICE</p>
+        <h2 class="section-title wipe">料金</h2>
+        <div class="ac-price-card ac-price-card-wide fade-in">
+          <!-- TODO 画像：清掃後のキッチンや浴室など -->
+          <div class="ph ph-3x2">
+            <span class="ph-label"><svg aria-hidden="true"><use href="#i-camera"/></svg>写真：空室のお部屋</span>
+          </div>
+          <div class="ac-price-body">
+            <p class="ac-price-name">空室清掃（マンション・アパート）</p>
+            <p class="ac-price-sub">広さ（㎡）ごとの料金です。間取りは目安です。</p>
+            <dl class="price-rows">
+              <div class="price-row"><dt>20㎡以内<small class="biz-madori">1R・1K</small></dt><dd><span class="price-now">25,000<small>円</small></span></dd></div>
+              <div class="price-row"><dt>30㎡以内<small class="biz-madori">1K・1DK</small></dt><dd><span class="price-now">30,000<small>円</small></span></dd></div>
+              <div class="price-row"><dt>40㎡以内<small class="biz-madori">1DK・1LDK</small></dt><dd><span class="price-now">35,000<small>円</small></span></dd></div>
+              <div class="price-row"><dt>60㎡以内<small class="biz-madori">1LDK・2LDK</small></dt><dd><span class="price-now">45,000<small>円</small></span></dd></div>
+              <div class="price-row"><dt>80㎡以内<small class="biz-madori">2LDK・3LDK</small></dt><dd><span class="price-now">55,000<small>円</small></span></dd></div>
+              <div class="price-row"><dt>100㎡未満<small class="biz-madori">3LDK・4LDK</small></dt><dd><span class="price-now">65,000<small>円</small></span></dd></div>
+              <div class="price-row"><dt>100㎡以上</dt><dd><span class="biz-consult">ご相談ください</span></dd></div>
+            </dl>
+          </div>
+        </div>
+        <p class="ac-price-note fade-in">※表示価格は税込みです。<br>※戸建ては、ご相談ください。</p>
+
+        <div class="biz-opt fade-in">
+          <h3 class="work-title">オプション</h3>
+          <p class="biz-opt-lead">空室清掃と一緒に、ハウスクリーニングの各サービスも承ります。</p>
+          <dl class="price-rows">
+              <div class="price-row"><dt>エアコンの分解洗浄</dt><dd><span class="price-now">8,000<small>円〜</small></span></dd></div>
+              <div class="price-row"><dt>浴室のエプロン内部</dt><dd><span class="price-now">3,500<small>円</small></span></dd></div>
+              <div class="price-row"><dt>鏡のウロコ取り</dt><dd><span class="price-now">3,000<small>円</small></span></dd></div>
+              <div class="price-row"><dt>浴室乾燥機</dt><dd><span class="price-now">5,000<small>円</small></span></dd></div>
+              <div class="price-row"><dt>追い焚き配管</dt><dd><span class="price-now">18,000<small>円</small></span></dd></div>
+              <div class="price-row"><dt>食洗機の中</dt><dd><span class="price-now">5,000<small>円</small></span></dd></div>
+              <div class="price-row"><dt>床のワックスがけ（〜6帖）</dt><dd><span class="price-now">10,000<small>円〜</small></span></dd></div>
+              <div class="price-row"><dt>防カビコート（浴室）</dt><dd><span class="price-now">2,500<small>円</small></span></dd></div>
+          </dl>
+          <p class="work-note-small">※エアコンは、お掃除機能なしの壁掛け1台目の料金です。くわしい料金は<a href="/mieru-osouji/service/">サービス一覧</a>の各ページをご覧ください。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 仕上がりの確認（立ち会いか写真か、選べる。2026-11-24） -->
+    <section class="section" id="check" data-ga-section="biz_check">
+      <div class="container container-narrow">
+        <p class="section-eyebrow fade-in">CHECK</p>
+        <h2 class="section-title wipe">仕上がりのご確認</h2>
+        <p class="section-lead fade-in">作業が終わったあとの確認方法を、2つからお選びいただけます。</p>
+        <ul class="biz-check stagger">
+          <li class="rise">
+            <span class="biz-check-icon" aria-hidden="true"><svg><use href="#i-z-person"/></svg></span>
+            <h3>立ち会いでのご確認</h3>
+            <p>作業後に現地で、仕上がりを一緒にご確認いただきます。作業中の立ち会いは必要ありません。</p>
+          </li>
+          <li class="rise">
+            <span class="biz-check-icon" aria-hidden="true"><svg><use href="#i-z-photo"/></svg></span>
+            <h3>写真でのご報告</h3>
+            <p>現地に来られない場合は、作業前と作業後の写真をLINEまたはメールでお送りします。</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ご依頼の流れ（作業の流れと同じ部品。番号と点線は motion.js で順番に出る） -->
+    <section class="section section-green" id="flow" data-ga-section="biz_flow">
+      <div class="container">
+        <p class="section-eyebrow fade-in">FLOW</p>
+        <h2 class="section-title wipe">ご依頼の流れ</h2>
+        <ol class="flow-list stagger">
+          <li class="flow-item rise">
+            <span class="flow-num">01</span>
+            <div class="flow-body">
+              <h3>お問い合わせ</h3>
+              <p>お電話・LINE・メールで、物件の場所、広さ（㎡）または間取り、ご希望の日程をお知らせください。</p>
+            </div>
+          </li>
+          <li class="flow-item rise">
+            <span class="flow-num">02</span>
+            <div class="flow-body">
+              <h3>お見積り・日程調整</h3>
+              <p>広さとオプションの有無から料金をお伝えし、作業日を決めます。</p>
+            </div>
+          </li>
+          <li class="flow-item rise">
+            <span class="flow-num">03</span>
+            <div class="flow-body">
+              <h3>鍵のお受け取り</h3>
+              <p>キーボックスなどで事前にお受け取りします。難しい場合は、作業当日にお受け取りします。</p>
+            </div>
+          </li>
+          <li class="flow-item rise">
+            <span class="flow-num">04</span>
+            <div class="flow-body">
+              <h3>作業</h3>
+              <p>内見で目に入る水まわり・床・窓・建具を中心に、お部屋をまるごとお掃除します。</p>
+            </div>
+          </li>
+          <li class="flow-item rise">
+            <span class="flow-num">05</span>
+            <div class="flow-body">
+              <h3>仕上がりのご確認</h3>
+              <p>立ち会いでのご確認か、作業前後の写真でのご報告か、お選びいただけます。</p>
+            </div>
+          </li>
+          <li class="flow-item rise">
+            <span class="flow-num">06</span>
+            <div class="flow-body">
+              <h3>お支払い</h3>
+              <p>作業当日にお支払いをお願いしています。</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ご利用について -->
+    <section class="section" id="info" data-ga-section="biz_info">
+      <div class="container container-narrow">
+        <p class="section-eyebrow fade-in">INFORMATION</p>
+        <h2 class="section-title wipe">ご利用について</h2>
+        <div class="cond-flow fade-in">
+          <h3>鍵のお受け渡し</h3>
+          <p>キーボックスなどで、事前にお受け取りします。難しい場合は、作業当日にお受け取りします。</p>
+          <h3>お支払い</h3>
+          <p>作業当日に、現金・クレジットカード・銀行振込・QR決済でお支払いをお願いしています。</p>
+          <p>継続してご依頼いただける場合は、お支払いの方法についてもご相談ください。</p>
+          <h3>保険</h3>
+          <p>損害賠償保険に加入しています。</p>
+          <h3>お借りするもの</h3>
+          <p>作業中は、水道と電気をお借りします。使えない場合は、事前にお知らせください。</p>
+          <h3>対応エリア</h3>
+          <p>東京・千葉・埼玉・神奈川でお伺いしています。地域や日程によっては、お受けできない場合がございます。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- お問い合わせ -->
+    <section class="section section-dark" id="contact" data-ga-section="contact_cta">
+      <div class="container">
+        <p class="section-eyebrow fade-in">CONTACT</p>
+        <h2 class="section-title wipe">ご相談・お見積り</h2>
+        <p class="section-lead fade-in">お電話・LINE・メールで受け付けています。</p>
+        <div class="contact-btns fade-in">
+          <a href="https://lin.ee/X21988f" target="_blank" rel="noopener" class="btn btn-line">LINEで相談する</a>
+          <a href="tel:08029685824" class="btn btn-ghost">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+            080-2968-5824
+          </a>
+        </div>
+        <p class="contact-mail fade-in"><a href="mailto:mieru-osouji@yorisoi-connect.com"><svg aria-hidden="true"><use href="#i-mail"/></svg>mieru-osouji@yorisoi-connect.com</a></p>
+        <p class="contact-meta">
+          LINE 24時間受付中／お電話 9:00〜19:00<br>
+          LINEでのお問い合わせは返信にお時間をいただく場合がございます。（翌営業日中にはご返信いたします）<br>
+          作業中は電話に出られない場合があります。その際は折り返しお電話します。
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <p class="footer-logo">みえる！おそうじ</p>
+          <p>東京・千葉・埼玉・神奈川</p>
+        </div>
+        <nav class="footer-nav" aria-label="フッターナビゲーション">
+          <ul>
+            <li><a href="/mieru-osouji/service/">サービス一覧</a></li>
+            <li><a href="/mieru-osouji/business/">法人のお客様へ</a></li>
+            <li><a href="/mieru-osouji/#price">料金プラン</a></li>
+            <li><a href="/mieru-osouji/#cases">作業事例</a></li>
+            <li><a href="/mieru-osouji/#faq">よくある質問</a></li>
+          </ul>
+        </nav>
+        <div class="footer-operator">
+          <p class="footer-operator-name">運営：<a href="/company/">よりそいコネクト</a></p>
+          <ul>
+            <li><a href="/company/">会社概要</a></li>
+            <li><a href="/moshimoshi-call/">もしもしコール</a></li>
+            <!-- TODO プライバシー：サイトにプライバシーポリシーのページがまだない。作成したらここにリンクを追加 -->
+          </ul>
+        </div>
+      </div>
+      <p class="footer-copy">© 2026 よりそいコネクト. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- スマホ用 固定CTAバー -->
+  <div class="cta-bar">
+    <a href="https://lin.ee/X21988f" target="_blank" rel="noopener" class="btn btn-line">LINEで相談</a>
+    <a href="tel:08029685824" class="btn btn-outline">電話する</a>
+  </div>
+
+  <script src="/assets/js/site.js" defer></script>
+  <script src="/mieru-osouji/assets/js/header.js?v=20261119" defer></script>
+  <script src="/assets/js/analytics.js" defer></script>
+  <script src="/mieru-osouji/assets/js/motion.js?v=20261123a" defer></script>
+</body>
+</html>

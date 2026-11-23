@@ -2294,3 +2294,134 @@ html:not(.js) .price-jump {
 .opt-link a {
   color: var(--color-accent-dark);
 }
+
+/* ==========================================================================
+   14. 法人のお客様へ（/business/。2026-11-24）
+   ========================================================================== */
+.biz-madori {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-light);
+}
+
+.biz-consult {
+  font-weight: 700;
+  color: var(--color-accent-dark);
+}
+
+/* オプションの料金表（白い箱） */
+.biz-opt {
+  margin-top: 32px;
+  padding: 24px 24px 20px;
+  background: #fff;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.biz-opt-lead {
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+.biz-opt .price-now {
+  font-size: 20px;
+}
+
+.biz-opt .work-note-small a {
+  color: var(--color-accent-dark);
+}
+
+/* 仕上がりの確認：2枚のカード */
+.biz-check {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+  padding: 0;
+  list-style: none;
+}
+
+.biz-check li {
+  padding: 26px 24px 24px;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  text-align: center;
+}
+
+.biz-check-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  background: var(--color-accent-light);
+  color: var(--color-accent-dark);
+}
+
+.biz-check-icon svg {
+  width: 32px;
+  height: 32px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.biz-check h3 {
+  margin-bottom: 6px;
+  font-size: 18px;
+  color: var(--color-deep);
+}
+
+.biz-check p {
+  font-size: 14px;
+  text-align: left;
+}
+
+/* お問い合わせのメールアドレス */
+.contact-mail {
+  margin: -8px 0 20px;
+  text-align: center;
+}
+
+.contact-mail a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-deep);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.contact-mail svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (max-width: 600px) {
+  .biz-check {
+    grid-template-columns: 1fr;
+  }
+
+  .biz-opt {
+    padding: 20px 16px 16px;
+  }
+
+  .contact-mail a {
+    font-size: 16px;
+  }
+}

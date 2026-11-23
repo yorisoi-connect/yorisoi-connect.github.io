@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <!--
+    ======================================================================
+    準備中ページ（2026-11-21）
+      トップの「ほかの作業事例を見る」のリンク先。中身ができるまで準備中の表示にしている。
+      作りは /mieru-osouji/ の準備中トップと同じ（見た目は assets/css/coming-soon.css）
+    ======================================================================
+  -->
+  <!-- 公開時に削除：この1行を消すと検索エンジンに載るようになる -->
+  <meta name="robots" content="noindex">
+  <script>(function(d){d.className+=" js"})(document.documentElement)</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作業事例（準備中）｜みえる！おそうじ｜よりそいコネクト</title>
+  <meta name="description" content="みえる！おそうじの作業事例のページは、ただいま準備中です。ご相談・お見積りはお電話・LINEで受け付けています。">
+  <link rel="canonical" href="https://yorisoi-connect.com/mieru-osouji/cases/">
+
+  <!-- OGP -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="みえる！おそうじ">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="作業事例（準備中）｜みえる！おそうじ">
+  <meta property="og:description" content="みえる！おそうじの作業事例のページは、ただいま準備中です。ご相談・お見積りはお電話・LINEで受け付けています。">
+  <meta property="og:url" content="https://yorisoi-connect.com/mieru-osouji/cases/">
+  <!-- TODO 画像：OGP画像。専用画像ができたら https://yorisoi-connect.com/mieru-osouji/assets/img/ogp.png に差し替え -->
+  <meta property="og:image" content="https://yorisoi-connect.com/assets/images/ogp.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&display=swap" rel="stylesheet">
+  <!-- 丸ゴシック（ヒーロー見出しと「4つのみえる」「作業の流れ」の番号用）。text= で使う文字だけ読み込んで軽くしている。
+       見出しの文言を変えたら、ここの text= も同じ文字にそろえること（ない文字だけ別の書体になる） -->
+  <!-- ?v= はブラウザに古いCSSを使わせないための番号。style.css を変えたら日付などに書き換える -->
+  <link rel="stylesheet" href="/mieru-osouji/assets/css/style.css?v=20261123n">
+  <link rel="stylesheet" href="/mieru-osouji/assets/css/service.css?v=20261124a">
+  <link rel="stylesheet" href="/mieru-osouji/assets/css/coming-soon.css?v=20261124a">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG9KYK977N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TG9KYK977N');
+  </script>
+</head>
+<body>
+  <!-- アイコン置き場。各セクションから <svg><use href="#i-名前"/></svg> で呼び出す
+       （線の色・太さは呼び出し側の CSS で指定する） -->
+  <svg class="icon-sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-house" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-5h4v5"/></symbol>
+    <symbol id="i-aircon" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="8" rx="2"/><path d="M5.5 10.5h13"/><path d="M8 16v2.5M12 16v4M16 16v2.5"/></symbol>
+    <symbol id="i-kitchen" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="13" rx="2"/><circle cx="8" cy="12.5" r="3"/><circle cx="16" cy="12.5" r="3"/><path d="M8 8.5v1M8 15.5v1M4 12.5h1M11 12.5h1M16 8.5v1M16 15.5v1M12 12.5h1M19 12.5h1"/></symbol>
+    <symbol id="i-hood" viewBox="0 0 24 24"><path d="M9.5 3h5v5.5l6 5.5h-17l6-5.5z"/><path d="M3.5 14v2h17v-2"/><path d="M8 19.5h.01M12 19.5h.01M16 19.5h.01"/></symbol>
+    <symbol id="i-bath" viewBox="0 0 24 24"><path d="M3 12h18v2a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5z"/><path d="M6 12V6.5a2.5 2.5 0 0 1 4.5-1.5"/><path d="M7 19l-1 2M17 19l1 2"/></symbol>
+    <symbol id="i-sink" viewBox="0 0 24 24"><path d="M3 12h18v1.5a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6z"/><path d="M12 12V6h4"/><path d="M9 12v-1.5"/></symbol>
+    <symbol id="i-toilet" viewBox="0 0 24 24"><rect x="8" y="3" width="8" height="6" rx="1"/><path d="M4 9h16a4 4 0 0 1-4 5H8a4 4 0 0 1-4-5z"/><path d="M9 14l-1 7h8l-1-7"/></symbol>
+    <symbol id="i-washer" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="13.5" r="4.5"/><path d="M7.5 6.5h.01M10.5 6.5h.01"/></symbol>
+    <symbol id="i-floor" viewBox="0 0 24 24"><path d="M2.5 18l4-11h15l-4 11z"/><path d="M8 18l4-11M13 18l4-11"/></symbol>
+    <symbol id="i-window" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M12 3v18"/><path d="M14 10.5v3"/></symbol>
+    <symbol id="i-balcony" viewBox="0 0 24 24"><rect x="2" y="5.5" width="20" height="2" rx="1"/><path d="M4.5 7.5v8.5M9 7.5v8.5M15 7.5v8.5M19.5 7.5v8.5"/><path d="M2 16h20M2 19h20"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="12" r="4"/><path d="M12 12h9M18 12v3M15 12v2"/></symbol>
+    <symbol id="i-room" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1.5"/><path d="M3 13h7v8"/><path d="M14 21a5 5 0 0 1 5-5"/><path d="M14 3v5"/></symbol>
+    <symbol id="i-cash" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.8"/><path d="M6 9.5v5M18 9.5v5"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M4 16.5V12l2-5h12l2 5v4.5z"/><path d="M4 12h16"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></symbol>
+    <symbol id="i-tel" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 7.5h3l1.6-2.5h6.8L17 7.5h3a1 1 0 0 1 1 1V18a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8.5a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.5"/></symbol>
+  </svg>
+
+  <!-- ヘッダー：準備中はメニューを置かず、ロゴと電話だけ -->
+  <header class="site-header cs-header" id="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <a href="/mieru-osouji/" class="site-logo">みえる！おそうじ</a>
+      </div>
+      <div class="header-cta">
+        <a href="https://lin.ee/X21988f" target="_blank" rel="noopener" class="btn btn-line btn-small">LINEで相談</a>
+        <a href="tel:08029685824" class="btn btn-outline btn-small">電話する</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="price-page">
+    <div class="page-hero cs-sub-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="パンくずリスト">
+          <ol><li><a href="/mieru-osouji/">みえる！おそうじ</a></li><li aria-current="page">作業事例</li></ol>
+        </nav>
+        <p class="cs-badge">ただいま準備中です</p>
+        <h1 class="page-title">作業事例</h1>
+        <div class="cs-sub-text">
+          <p>作業前・作業中・作業後の写真で、実際のお掃除の様子をご紹介するページを、ただいま準備しています。</p>
+          <p>公開まで、もうしばらくお待ちください。</p>
+        </div>
+        <p class="cs-back"><a href="/mieru-osouji/" class="btn btn-outline btn-back">みえる！おそうじのトップへ<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14L4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg></a></p>
+      </div>
+    </div>
+
+    <!-- お問い合わせ（準備中は電話のみ。もしもしコールの担当者直通の携帯を仮で使う） -->
+    <section class="section section-dark" id="contact" data-ga-section="contact_cta">
+      <div class="container">
+        <p class="section-eyebrow fade-in">CONTACT</p>
+        <h2 class="section-title wipe">ご相談・お見積り</h2>
+        <p class="section-lead fade-in">LINEまたはお電話で受け付けています。</p>
+        <div class="contact-btns fade-in">
+          <a href="https://lin.ee/X21988f" target="_blank" rel="noopener" class="btn btn-line">LINEで相談する</a>
+          <a href="tel:08029685824" class="btn btn-ghost">
+            <svg aria-hidden="true"><use href="#i-tel"/></svg>080-2968-5824
+          </a>
+        </div>
+        <p class="contact-meta">
+          LINE 24時間受付中／お電話 9:00〜19:00<br>
+          作業中は電話に出られない場合があります。その際は折り返しお電話します。
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <p class="footer-logo">みえる！おそうじ</p>
+          <p>東京・千葉・埼玉・神奈川</p>
+        </div>
+        <div class="footer-operator">
+          <p class="footer-operator-name">運営：<a href="/company/">よりそいコネクト</a></p>
+          <ul>
+            <li><a href="/company/">会社概要</a></li>
+            <li><a href="/moshimoshi-call/">もしもしコール</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer-copy">© 2026 よりそいコネクト. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- スマホ用 固定CTAバー（準備中は電話だけ） -->
+  <div class="cta-bar">
+    <a href="https://lin.ee/X21988f" target="_blank" rel="noopener" class="btn btn-line">LINEで相談</a>
+    <a href="tel:08029685824" class="btn btn-outline">電話する</a>
+  </div>
+
+  <script src="/assets/js/site.js" defer></script>
+  <script src="/mieru-osouji/assets/js/header.js?v=20261119" defer></script>
+  <script src="/mieru-osouji/assets/js/bubbles.js?v=20261105b" defer></script>
+  <script src="/assets/js/analytics.js" defer></script>
+</body>
+</html>
