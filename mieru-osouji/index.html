@@ -67,7 +67,7 @@
   <!-- 丸ゴシック（ヒーロー見出しと「4つのみえる」「作業の流れ」の番号用）。text= で使う文字だけ読み込んで軽くしている。
        見出しの文言を変えたら、ここの text= も同じ文字にそろえること（ない文字だけ別の書体になる） -->
   <!-- ?v= はブラウザに古いCSSを使わせないための番号。style.css を変えたら日付などに書き換える -->
-  <link rel="stylesheet" href="/mieru-osouji/assets/css/style.css?v=20261123f">
+  <link rel="stylesheet" href="/mieru-osouji/assets/css/style.css?v=20261123j">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG9KYK977N"></script>
   <script>
@@ -185,7 +185,7 @@
     </section>
 
     <!-- 4つの「みえる」 -->
-    <section class="section" id="aircon" data-ga-section="features">
+    <section class="section" id="aircon" data-wm="FEATURES" data-ga-section="features">
       <div class="container">
         <p class="section-eyebrow fade-in">FEATURES</p>
         <h2 class="section-title wipe">4つの「みえる」</h2>
@@ -242,7 +242,7 @@
     <!-- できること（サービスメニュー）。対応できる場所をアイコンで一覧にする。
          エアコンは今は壁掛けのみだが、将来ほかの型にも対応するため、ここでは「エアコン」とだけ書き、
          型の確認は問い合わせのときに口頭・LINEで行う -->
-    <section class="section section-green" id="service" data-ga-section="service">
+    <section class="section section-green" id="service" data-wm="SERVICE" data-ga-section="service">
       <div class="container">
         <p class="section-eyebrow fade-in">SERVICE</p>
         <h2 class="section-title wipe">できること</h2>
@@ -320,7 +320,7 @@
     </section>
 
     <!-- 料金 -->
-    <section class="section" id="price" data-ga-section="price">
+    <section class="section" id="price" data-wm="PRICE" data-ga-section="price">
       <div class="container">
         <p class="section-eyebrow fade-in">PRICE</p>
         <h2 class="section-title wipe">料金</h2>
@@ -424,7 +424,7 @@
     </section>
 
     <!-- 作業の流れ -->
-    <section class="section section-green" id="flow" data-ga-section="flow">
+    <section class="section section-green" id="flow" data-wm="FLOW" data-ga-section="flow">
       <div class="container">
         <p class="section-eyebrow fade-in">FLOW</p>
         <h2 class="section-title wipe">作業の流れ</h2>
@@ -477,7 +477,7 @@
     </section>
 
     <!-- 作業事例 -->
-    <section class="section" id="cases" data-ga-section="cases">
+    <section class="section" id="cases" data-wm="CASES" data-ga-section="cases">
       <div class="container">
         <p class="section-eyebrow fade-in">CASES</p>
         <h2 class="section-title wipe">作業事例</h2>
@@ -522,7 +522,7 @@
     </section>
 
     <!-- ご利用の前に（注意事項） -->
-    <section class="section section-green" id="info" data-ga-section="info">
+    <section class="section section-green" id="info" data-wm="BEFORE USE" data-ga-section="info">
       <div class="container">
         <p class="section-eyebrow fade-in">BEFORE USE</p>
         <h2 class="section-title wipe">ご利用の前に</h2>
@@ -578,7 +578,7 @@
     </section>
 
     <!-- 法人のお客様へ（ヘッダーの「法人のお客様へ」からのリンク先） -->
-    <section class="section" id="business" data-ga-section="other_menu">
+    <section class="section" id="business" data-wm="FOR BUSINESS" data-ga-section="other_menu">
       <div class="container">
         <p class="section-eyebrow fade-in">FOR BUSINESS</p>
         <h2 class="section-title wipe">法人のお客様へ</h2>
@@ -590,7 +590,7 @@
     </section>
 
     <!-- 代表紹介（サービスの条件をひととおり読んだあと、よくある質問・お問い合わせの前に人を見せる） -->
-    <section class="section section-green" id="profile" data-ga-section="profile">
+    <section class="section section-green" id="profile" data-wm="PROFILE" data-ga-section="profile">
       <div class="container">
         <p class="section-eyebrow fade-in">PROFILE</p>
         <h2 class="section-title wipe">代表紹介</h2>
@@ -611,7 +611,7 @@
     </section>
 
     <!-- よくある質問 -->
-    <section class="section" id="faq" data-ga-section="faq">
+    <section class="section" id="faq" data-wm="FAQ" data-ga-section="faq">
       <div class="container">
         <p class="section-eyebrow fade-in">FAQ</p>
         <h2 class="section-title wipe">よくある質問</h2>
@@ -712,6 +712,9 @@
     </div>
   </footer>
 
+  <!-- 上にもどるボタン（motion.js が少しスクロールしたら出す。2026-11-23） -->
+  <a href="#" class="to-top" aria-label="ページの先頭へもどる"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 14l6-6 6 6"/></svg></a>
+
   <!-- スマホ用 固定CTAバー -->
   <div class="cta-bar">
     <a href="https://lin.ee/X21988f" target="_blank" rel="noopener" class="btn btn-line">LINEで相談</a>
@@ -723,6 +726,7 @@
   <script src="/mieru-osouji/assets/js/hero.js" defer></script>
   <script src="/mieru-osouji/assets/js/price-carousel.js" defer></script>
   <script src="/mieru-osouji/assets/js/bubbles.js?v=20261105b" defer></script>
+  <script src="/mieru-osouji/assets/js/motion.js?v=20261123a" defer></script>
   <script src="/assets/js/analytics.js" defer></script>
 </body>
 </html>
