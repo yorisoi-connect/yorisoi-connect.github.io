@@ -2425,3 +2425,86 @@ html:not(.js) .price-jump {
     font-size: 16px;
   }
 }
+
+/* --------------------------------------------------------------------------
+   プライバシーポリシー（2026-11-24）
+   -------------------------------------------------------------------------- */
+.policy-lead {
+  margin-bottom: 32px;
+}
+
+.policy h2 {
+  margin: 40px 0 12px;
+  padding-left: 12px;
+  border-left: 4px solid var(--color-accent, currentColor);
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.policy h2:first-of-type {
+  margin-top: 0;
+}
+
+.policy p + p,
+.policy ul + p {
+  margin-top: 10px;
+}
+
+.policy ul {
+  margin: 10px 0 0;
+  padding-left: 1.4em;
+  list-style: disc;
+}
+
+.policy li + li {
+  margin-top: 4px;
+}
+
+.policy-contact {
+  margin-top: 12px;
+}
+
+.policy-contact > div {
+  display: grid;
+  grid-template-columns: 6em minmax(0, 1fr);
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.policy-contact dt {
+  font-weight: 700;
+}
+
+.policy-date {
+  margin-top: 40px;
+  text-align: right;
+  font-size: 14px;
+}
+
+/* 利用規約の項の番号つきリスト（2026-11-24） */
+.terms-list {
+  margin: 0;
+  padding-left: 1.6em;
+  list-style: decimal;
+}
+
+.terms-list li + li {
+  margin-top: 6px;
+}
+
+.terms-list ul {
+  margin-top: 6px;
+  padding-left: 1.2em;
+  list-style: disc;
+}
+
+.policy > p + .terms-list,
+.policy h2 + p ul {
+  margin-top: 6px;
+}
+
+.policy p ul,
+.policy li ul {
+  list-style: disc;
+}
